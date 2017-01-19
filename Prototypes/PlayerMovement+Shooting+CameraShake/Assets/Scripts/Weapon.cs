@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Weapon : MonoBehaviour {
 
 	public float fireRate = 0;
 	public float Damage = 10;
 	public LayerMask whatToHit;
+	public float strayFactor = 4;
 	
 	public Transform BulletTrailPrefab;
 	float timeToSpawnEffect = 0;
 	public float effectSpawnRate = 10;
 	
+	public CameraShake cameraShake;
+
 	float timeToFire = 0;
 	Transform firePoint;
 
@@ -20,14 +22,19 @@ public class Weapon : MonoBehaviour {
 	
 	void Update () {
 		if (fireRate == 0) {
-			if (Input.GetButtonDown ("Fire1")) {
+			if (Input.GetButton ("Fire1")) {
 				Shoot();
+				if(cameraShake.shakeAmount < 3f){
+					cameraShake.ShakeCamera(2f, 1f);
+				}	
 			}
-		}
-		else {
+		} else {
 			if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
 				timeToFire = Time.time + 1/fireRate;
 				Shoot();
+				if(cameraShake.shakeAmount < 3f){
+					cameraShake.ShakeCamera(2f, 1f);
+				}	
 			}
 		}
 	}
@@ -46,7 +53,11 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 	
-	void Effect () {
-		Instantiate (BulletTrailPrefab, firePoint.position, firePoint.rotation);
+	void Effect () {	
+		float randomNumberX = Random.Range(-strayFactor, strayFactor);
+     	float randomNumberY = Random.Range(-strayFactor, strayFactor);
+     	float randomNumberZ = Random.Range(-strayFactor, strayFactor);
+     	Transform bullet = Instantiate (BulletTrailPrefab, firePoint.position, firePoint.rotation);
+    	bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 	}
 }

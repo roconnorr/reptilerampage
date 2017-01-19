@@ -4,7 +4,7 @@ public class Player : MonoBehaviour {
 
    float speed = 10;
 
-   public Rigidbody2D rb;
+   Rigidbody2D rb;
 
    void Start() {
         rb = GetComponent<Rigidbody2D>();
