@@ -20,8 +20,6 @@ public class Chase : MonoBehaviour {
 	// (initialise via the Inspector Panel)
 	public float speed;
 
-	public static bool pathingActive = false;
-	public static bool idleActive = false;
 
 	// Chasing game object must have a AStarPathfinder component - 
 	// this is a reference to that component, which will get initialised

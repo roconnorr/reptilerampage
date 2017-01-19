@@ -20,11 +20,13 @@ public class Enemy : MonoBehaviour
     void FixedUpdate()
     {
         if (CanPlayerBeSeen()){
-			this.GetComponent<Idle>().enabled = false;
-			this.GetComponent<Chase>().enabled = true;
+			transform.position = Vector3.MoveTowards(this.transform.position,player.position, 0.1f);
+			this.GetComponent<Chase>().enabled = false;
+			   
 		}else{
-            this.GetComponent<Chase>().enabled = false;
-			this.GetComponent<Idle>().enabled = true;
+			//pathfind for a few seconds
+			this.GetComponent<Chase>().enabled = true;
+			//go back to idling
 		}
     }
 
@@ -32,22 +34,12 @@ public class Enemy : MonoBehaviour
     bool CanPlayerBeSeen()
     {
         // we only need to check visibility if the player is within the enemy's visual range
-        if (playerInRange)
-        {
-			if (PlayerInFieldOfView()){
-                return (!PlayerHiddenByObstacles());
-			}else{
-                return false;
-			}
-
-        }
-        else
-        {
-            // always false if the player is not within the enemy's range
+        if (playerInRange){
+            return (!PlayerHiddenByObstacles());
+		}else{
             return false;
-        }
+		}
 
-        //return playerInRange;
 
     }
     void OnTriggerStay2D(Collider2D other)
@@ -64,31 +56,6 @@ public class Enemy : MonoBehaviour
         // note, we don't really need to check the transform tag since the collision matrix is set to only 'see' collisions with the player layer
         if (other.transform.tag == "Player")
             playerInRange = false;
-    }
-
-    bool PlayerInFieldOfView()
-    {
-        // check if the player is within the enemy's field of view
-        // this is only checked if the player is within the enemy's sight range
-
-        // find the angle between the enemy's 'forward' direction and the player's location and return true if it's within 65 degrees (for 130 degree field of view)
- 
-        /*Vector2 directionToPlayer = player.position - transform.position; // represents the direction from the enemy to the player    
-        Debug.DrawLine(transform.position, player.position, Color.magenta); // a line drawn in the Scene window equivalent to directionToPlayer
-        
-        Vector2 lineOfSight = lineOfSightEnd.position - transform.position; // the centre of the enemy's field of view, the direction of looking directly ahead
-        Debug.DrawLine(transform.position, lineOfSightEnd.position, Color.yellow); // a line drawn in the Scene window equivalent to the enemy's field of view centre
-        
-        // calculate the angle formed between the player's position and the centre of the enemy's line of sight
-        float angle = Vector2.Angle(directionToPlayer, lineOfSight);
-        
-        // if the player is within 65 degrees (either direction) of the enemy's centre of vision (i.e. within a 130 degree cone whose centre is directly ahead of the enemy) return true
-        if (angle < 65)
-            return true;
-        else
-            return false;
-			*/
-			return true;
     }
 
     bool PlayerHiddenByObstacles()
