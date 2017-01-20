@@ -190,7 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2e31f2e6d9a4c799e0c3e19a9626d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
   shakeAmount: 2
   shakeDuration: 2
   smooth: 1
@@ -217,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 614848881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.3, y: 0.7, z: 0}
+  m_LocalPosition: {x: 4.95, y: 0.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1091016487}
@@ -476,11 +475,13 @@ MonoBehaviour:
   Damage: 10
   whatToHit:
     serializedVersion: 2
-    m_Bits: 0
-  strayFactor: 4
-  BulletTrailPrefab: {fileID: 4119862889299828, guid: 6b3cc764cec3d4d25946133e7cd29015,
+    m_Bits: 524288
+  strayFactor: 2
+  BulletTrailPrefab: {fileID: 4946869545903092, guid: 8809d422011104a3c97855cf45a6d0e9,
     type: 2}
-  effectSpawnRate: 10
+  MuzzleFlashPrefab: {fileID: 4652897480954686, guid: 4134fe834eb1a4821a08b39922100a54,
+    type: 2}
+  effectSpawnRate: 7
   cameraShake: {fileID: 548086422}
 --- !u!114 &1091016490
 MonoBehaviour:
@@ -493,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0cd54566e8b544f6b424df44a958e13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 4
 --- !u!50 &1091016491
 Rigidbody2D:
   serializedVersion: 4
@@ -566,7 +568,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f2e31f2e6d9a4c799e0c3e19a9626d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMode: 0
   shakeAmount: 5
   shakeDuration: 5
   smooth: 0

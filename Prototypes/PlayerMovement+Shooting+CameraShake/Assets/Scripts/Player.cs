@@ -2,7 +2,7 @@
 
 public class Player : MonoBehaviour {
 
-   float speed = 10;
+   public float speed = 10;
 
    Rigidbody2D rb;
 
