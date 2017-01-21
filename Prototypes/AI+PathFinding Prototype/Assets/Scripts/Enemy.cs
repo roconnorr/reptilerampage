@@ -1,32 +1,41 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
-public class Enemy : MonoBehaviour
-{
+public class Enemy : MonoBehaviour {
 
-    // Use this for initialization
-    public bool playerInRange; // is the player within the enemy's sight range collider (this only checks if the enemy can theoretically see the player if nothing is in the way)
-
-	[SerializeField]
-	Transform lineOfSightEnd;
     Transform player; // a reference to the player for raycasting
+    public bool playerInRange; // is the player within the enemy's sight range
+
+    public bool playerSeen;
+    // Target of the chase
+	// (initialise via the Inspector Panel)
+	public GameObject target = null;
+    //pathfinding speed
+    public float speed;
+
+    private AStarPathfinder pathfinder = null;
+
+    public Transform[] navpoints;
+    private int destPoint = 0;
+
+	
     void Start()
     {
         playerInRange = false;
         player = GameObject.Find("Player").transform;
+        pathfinder = transform.GetComponent<AStarPathfinder> ();
     }
 
   
     void FixedUpdate()
     {
         if (CanPlayerBeSeen()){
-			transform.position = Vector3.MoveTowards(this.transform.position,player.position, 0.1f);
-			this.GetComponent<Chase>().enabled = false;
-			   
+			transform.position = Vector3.MoveTowards(this.transform.position,player.position, 0.05f);
+            //broken pathfinding
+            //pathfinder.GoTowards(target, speed);	   
 		}else{
-			//pathfind for a few seconds
-			this.GetComponent<Chase>().enabled = true;
-			//go back to idling
+		    //NextPoint();
 		}
     }
 
@@ -45,7 +54,6 @@ public class Enemy : MonoBehaviour
     void OnTriggerStay2D(Collider2D other)
     {
         // if 'other' is player, the player is seen 
-        // note, we don't really need to check the transform tag since the collision matrix is set to only 'see' collisions with the player layer
         if (other.transform.tag == "Player")
             playerInRange = true;
     }
@@ -57,6 +65,23 @@ public class Enemy : MonoBehaviour
         if (other.transform.tag == "Player")
             playerInRange = false;
     }
+
+    void NextPoint() {
+            // Returns if no points have been set up
+            if (navpoints.Length == 0)
+                return;
+
+            //transform.position = Vector3.MoveTowards(this.transform.position,navpoints[destPoint].position, 0.1f);
+            pathfinder.GoTowards(navpoints[destPoint].position, speed);
+
+            // Choose the next point in the array as the destination,
+            // cycling to the start if necessary.
+            if(Vector3.Distance(navpoints[destPoint].position, this.transform.position) < 0.5){
+                //destPoint = (destPoint + 1) % navpoints.Length;
+                //random movement between points
+                destPoint = Random.Range(0, navpoints.Length);
+            }
+        }
 
     bool PlayerHiddenByObstacles()
     {
@@ -75,12 +100,18 @@ public class Enemy : MonoBehaviour
             // if anything other than the player is hit then it must be between the player and the enemy's eyes (since the player can only see as far as the player)
             if (hit.transform.tag != "Player")
             {
+                if(playerSeen == true){
+                    pathfinder.Reset(this.transform.position, player.position);
+                }
+                playerSeen = false;
                 return true;
             }
         }
 
         // if no objects were closer to the enemy than the player return false (player is not hidden by an object)
+        playerSeen = true;
         return false; 
+        
 
     }
 

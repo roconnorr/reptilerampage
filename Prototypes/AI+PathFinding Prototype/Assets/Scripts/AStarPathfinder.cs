@@ -5,7 +5,6 @@
 */
 
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 /* This script can be used as a component of game object that needs to
@@ -136,7 +135,7 @@ public class AStarPathfinder : MonoBehaviour {
 		// shortest path found
 
 		// Compute the distance to travel in this frame
-		float distAllowed = atSpeed * timeDelta;
+		float distAllowed = 1000000;//atSpeed * timeDelta;
 
 		// Travel along the designated path
 		while(moveIndex < moves.Count) {
@@ -175,6 +174,15 @@ public class AStarPathfinder : MonoBehaviour {
 				break;
 			}
 		}
+	}
+
+	public void ClearPath(){
+		moves = null;
+	}
+
+	public void Reset(Vector2 start, Vector2 target){
+		ClearPath();
+		moves = grid.ShortestPath(start, target);
 	}
 
 #if UNITY_EDITOR

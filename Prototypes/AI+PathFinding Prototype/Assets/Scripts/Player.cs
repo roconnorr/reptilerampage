@@ -10,9 +10,6 @@ public class Player : MonoBehaviour
     Vector3 currentDirection = Vector3.zero;
 
     private Rigidbody2D player;
-	
-
-
 
     // Use this for initialization
     void Start()
@@ -28,8 +25,6 @@ public class Player : MonoBehaviour
         player.velocity = move * speed * Time.deltaTime;
 
     }
-
-
 
     void OnCollisionEnter2D(Collision2D other)
     {
