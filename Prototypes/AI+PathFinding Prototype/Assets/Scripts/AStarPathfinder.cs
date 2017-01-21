@@ -83,6 +83,10 @@ public class AStarPathfinder : MonoBehaviour {
 		Vector2 fromPosition = transform.position;
 
 		float timeDelta = Time.time-timeKeeper;
+		//If its been a while since path finding then just reset the time between frames
+		if (timeDelta > 0.1f) {
+			timeDelta = 0.02f;
+		}
 		if (targetPosition != previousTargetPosition && timeLeftUntilPathUpdate <= 0.0f) {
 			moves = grid.ShortestPath (fromPosition, targetPosition);
 			moveIndex = 0;
@@ -130,29 +134,27 @@ public class AStarPathfinder : MonoBehaviour {
 			}
 		}
 #endif
-
 		// Travel distance according to specified speed along the
 		// shortest path found
 
 		// Compute the distance to travel in this frame
-		float distAllowed = 1000000;//atSpeed * timeDelta;
+		float distAllowed = atSpeed * timeDelta;
 
 		// Travel along the designated path
-		while(moveIndex < moves.Count) {
+		while (moveIndex < moves.Count) {
 			Vector2 nextPos = moves [moveIndex];
 
 			//Get the current position
 			currentPos.x = transform.position.x;
 			currentPos.y = transform.position.y;
 			//Get the travel vector for the next move
-			Vector2 travelVec = nextPos-currentPos;
+			Vector2 travelVec = nextPos - currentPos;
 			//COmpute travel distance in the next move
 			float travelDist = travelVec.magnitude;
 			Vector2 nextMove;
-
 			//If the travel distance is less than the total
 			//distance to travel, execute the entire move
-			if(travelDist < distAllowed) {
+			if (travelDist < distAllowed) {
 				nextMove = nextPos;
 				moveIndex++;
 			} else {
@@ -160,17 +162,17 @@ public class AStarPathfinder : MonoBehaviour {
 				//distance to travel, move along the travel vector
 				//but only a bit, covering the remaining distance to
 				// travel
-				nextMove = currentPos+travelVec.normalized*distAllowed;
+				nextMove = currentPos + travelVec.normalized * distAllowed;
 				travelDist = distAllowed;
 			}
 
 			//Get the next position based on the next move
-			Vector3 nextPosition = new Vector3(nextMove.x, nextMove.y, transform.position.z);
+			Vector3 nextPosition = new Vector3 (nextMove.x, nextMove.y, transform.position.z);
 
 			//Udate remaining distance to travel
 			transform.position = nextPosition;
 			distAllowed -= travelDist;
-			if(distAllowed <= 0f) {
+			if (distAllowed <= 0f) {
 				break;
 			}
 		}
