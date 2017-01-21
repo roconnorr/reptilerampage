@@ -1,12 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
     Transform player; // a reference to the player for raycasting
     public bool playerInRange; // is the player within the enemy's sight range
-
     public bool playerSeen;
     // Target of the chase
 	// (initialise via the Inspector Panel)
@@ -36,6 +34,7 @@ public class Enemy : MonoBehaviour {
             //pathfinder.GoTowards(target, speed);	   
 		}else{
 		    //NextPoint();
+            pathfinder.GoTowards(player.position, 2, true);
 		}
     }
 
@@ -72,7 +71,8 @@ public class Enemy : MonoBehaviour {
                 return;
 
             //transform.position = Vector3.MoveTowards(this.transform.position,navpoints[destPoint].position, 0.1f);
-            pathfinder.GoTowards(navpoints[destPoint].position, speed);
+            pathfinder.GoTowards(navpoints[destPoint].position, speed, false);
+
 
             // Choose the next point in the array as the destination,
             // cycling to the start if necessary.
@@ -101,7 +101,7 @@ public class Enemy : MonoBehaviour {
             if (hit.transform.tag != "Player")
             {
                 if(playerSeen == true){
-                    pathfinder.Reset(this.transform.position, player.position);
+                   // pathfinder.Reset(this.transform.position, player.position);
                 }
                 playerSeen = false;
                 return true;
