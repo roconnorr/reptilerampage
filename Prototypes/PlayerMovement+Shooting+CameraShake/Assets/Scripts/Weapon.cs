@@ -62,7 +62,7 @@ public class Weapon : MonoBehaviour {
     	bullet.transform.Rotate(randomNumberX, randomNumberY, randomNumberZ);
 		Transform clone = Instantiate (MuzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
 		clone.parent = firePoint;
-		float size = Random.Range (0.8f, 1.5f);
+		float size = Random.Range (0.05f, 0.1f);
 		clone.localScale = new Vector3 (size, size, size);
 		Destroy (clone.gameObject, 0.02f);
 	}
