@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour {
 			if (Input.GetButton ("Fire1")) {
 				Shoot();
 				if(cameraShake.shakeAmount < 3f){
-					cameraShake.ShakeCamera(2f, 1f);
+					cameraShake.ShakeCamera(2f, 0.5f);
 				}	
 			}
 		} else {
@@ -34,7 +34,7 @@ public class Weapon : MonoBehaviour {
 				timeToFire = Time.time + 1/fireRate;
 				Shoot();
 				if(cameraShake.shakeAmount < 3f){
-					cameraShake.ShakeCamera(2f, 1f);
+					cameraShake.ShakeCamera(2f, 0.5f);
 				}	
 			}
 		}
