@@ -25,6 +25,7 @@ public class Player : MonoBehaviour {
          Vector3 movement = new Vector2(horizontal, vertical);
 
          rb.AddForce(movement * speed / Time.deltaTime);
+         //rb.velocity = movement * speed;
  
          if (rb.velocity.magnitude > speed)
          {
