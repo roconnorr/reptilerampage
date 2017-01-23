@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
 	public GameObject target;
 	private Transform destination;
 
+
 	//Boolean variables
 	private bool targetInRange;
 	private bool targetViewBlocked;

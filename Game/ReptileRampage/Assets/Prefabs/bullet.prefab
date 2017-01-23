@@ -94,9 +94,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1453132568796580, guid: a116b3dc443e642d9a7ffaf5c9c29af0,
     type: 2}
+  deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   moveSpeed: 20
   damage: 0
   dmgPlayer: 0
+  wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
 --- !u!212 &212810719183750744
 SpriteRenderer:
   m_ObjectHideFlags: 1

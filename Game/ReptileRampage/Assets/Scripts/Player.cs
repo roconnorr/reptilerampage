@@ -4,10 +4,13 @@ public class Player : MonoBehaviour {
 
    public float speed = 10;
 
+   private AudioSource soundSource;
+
    Rigidbody2D rb;
 
    void Start() {
         rb = GetComponent<Rigidbody2D>();
+        soundSource = gameObject.GetComponent<AudioSource>();
     }
 
    void OnCollisionEnter2D(Collision2D other){
@@ -27,5 +30,13 @@ public class Player : MonoBehaviour {
          {
              rb.velocity = rb.velocity.normalized * speed;
          }
+
+         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
+             if(!soundSource.isPlaying){
+                soundSource.Play();
+             }
+        }else{
+            soundSource.Stop();
+        }
    }
 }
