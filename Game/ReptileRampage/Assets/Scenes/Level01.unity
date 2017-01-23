@@ -673,6 +673,7 @@ MonoBehaviour:
   crossHairPrefab: {fileID: 4949299490797038, guid: 20f55d271d2e4479aa13ec4b316b303b,
     type: 2}
   effectSpawnRate: 7
+  shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
 --- !u!212 &1132384661
 SpriteRenderer:
   m_ObjectHideFlags: 0
