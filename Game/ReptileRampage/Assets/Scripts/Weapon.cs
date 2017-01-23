@@ -11,8 +11,6 @@ public class Weapon : MonoBehaviour {
 	public Transform MuzzleFlashPrefab;
 	float timeToSpawnEffect = 0;
 	public float effectSpawnRate = 10;
-	
-	public CameraShake cameraShake;
 
 	float timeToFire = 0;
 	Transform firePoint;
@@ -25,17 +23,13 @@ public class Weapon : MonoBehaviour {
 		if (fireRate == 0) {
 			if (Input.GetButton ("Fire1")) {
 				Shoot();
-				if(cameraShake.shakeAmount < 3f){
-					cameraShake.ShakeCamera(2f, 0.5f);
-				}	
+				gameObject.GetComponent<CameraShake>().StartShaking(0.08f);
 			}
 		} else {
 			if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
 				timeToFire = Time.time + 1/fireRate;
 				Shoot();
-				if(cameraShake.shakeAmount < 3f){
-					cameraShake.ShakeCamera(2f, 0.5f);
-				}	
+				gameObject.GetComponent<CameraShake>().StartShaking(0.08f);
 			}
 		}
 	}

@@ -629,7 +629,6 @@ GameObject:
   - component: {fileID: 825450956}
   - component: {fileID: 825450955}
   - component: {fileID: 825450954}
-  - component: {fileID: 825450959}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -705,21 +704,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &825450959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 825450953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmount: 0.1
-  shakeDuration: 0.5
-  smooth: 1
-  smoothAmount: 5
 --- !u!1 &1160042126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,6 +1074,7 @@ GameObject:
   - component: {fileID: 1440599717}
   - component: {fileID: 1440599716}
   - component: {fileID: 1440599715}
+  - component: {fileID: 1440599718}
   m_Layer: 0
   m_Name: gun
   m_TagString: Untagged
@@ -1145,7 +1130,6 @@ MonoBehaviour:
   MuzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
     type: 2}
   effectSpawnRate: 7
-  cameraShake: {fileID: 825450959}
 --- !u!212 &1440599717
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1181,6 +1165,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1440599718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1440599713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 825450957}
 --- !u!1 &1584492060
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,60 +1,34 @@
 ﻿using UnityEngine;
 using System.Collections;
- 
-public class CameraShake : MonoBehaviour {
- 
-	public float shakeAmount;
-	public float shakeDuration;
- 
-	float shakePercentage;
-	float startAmount;
-	float startDuration;
- 
-	bool isRunning = false;
- 
-	public bool smooth;
-	public float smoothAmount = 5f;
- 
+
+public class CameraShake : MonoBehaviour 
+{
+
+	Vector3 originalCameraPosition;
+
+	float shakeAmt = 0;
+
+	public Camera mainCamera;
+
+	public void StartShaking(float shakeAmt) {
+		this.shakeAmt = shakeAmt;
+		InvokeRepeating("ShakeCamera", 0, .02f);
+		Invoke("StopShaking", 0.16f);
+	}
+
 	void ShakeCamera() {
- 
-		startAmount = shakeAmount;
-		startDuration = shakeDuration;
-		if (!isRunning) StartCoroutine (Shake());
-	}
- 
-	public void ShakeCamera(float amount, float duration) {
- 
-		shakeAmount += amount;
-		startAmount = shakeAmount;
-		shakeDuration += duration;
-		startDuration = shakeDuration;
- 
-		if(!isRunning) StartCoroutine (Shake());
-	}
- 
- 
-	IEnumerator Shake() {
-		isRunning = true;
- 
-		while (shakeDuration > 0.01f) {
-			Vector3 rotationAmount = Random.insideUnitSphere * shakeAmount;
-			rotationAmount.z = 0;
- 
-			shakePercentage = shakeDuration / startDuration;
- 
-			shakeAmount = startAmount * shakePercentage;
-			shakeDuration = Mathf.Lerp(shakeDuration, 0, Time.deltaTime);
- 
- 
-			if(smooth)
-				transform.localRotation = Quaternion.Lerp(transform.localRotation, Quaternion.Euler(rotationAmount), Time.deltaTime * smoothAmount);
-			else
-				transform.localRotation = Quaternion.Euler (rotationAmount);
- 
-			yield return null;
+		if(shakeAmt>0) {
+			float quakeAmtX = Random.value*shakeAmt*2 - shakeAmt;
+			float quakeAmtY = Random.value*shakeAmt*2 - shakeAmt;
+			Vector3 pp = mainCamera.transform.position;
+			pp.x += quakeAmtX;
+			pp.y += quakeAmtY;
+			mainCamera.transform.position = pp;
 		}
-		transform.localRotation = Quaternion.identity;
-		isRunning = false;
 	}
- 
+
+	void StopShaking() {
+		CancelInvoke("ShakeCamera");
+		mainCamera.transform.position = new Vector3(0, 0, -10);
+	}
 }
