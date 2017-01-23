@@ -4,7 +4,9 @@ public class Bullet : MonoBehaviour {
 
 	public GameObject explosionPrefab;
 	
-	public int moveSpeed;
+	public float moveSpeed;
+	public float damage;
+	public bool dmgPlayer;
 	
 	void Update () {
 		transform.Translate (Vector3.right * Time.deltaTime * moveSpeed);
