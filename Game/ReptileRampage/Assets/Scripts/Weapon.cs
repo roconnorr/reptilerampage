@@ -23,13 +23,13 @@ public class Weapon : MonoBehaviour {
 		if (fireRate == 0) {
 			if (Input.GetButton ("Fire1")) {
 				Shoot();
-				gameObject.GetComponent<CameraShake>().StartShaking(0.08f);
+				gameObject.GetComponent<CameraShake>().StartShaking(0.05f);
 			}
 		} else {
 			if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
 				timeToFire = Time.time + 1/fireRate;
 				Shoot();
-				gameObject.GetComponent<CameraShake>().StartShaking(0.08f);
+				gameObject.GetComponent<CameraShake>().StartShaking(0.05f);
 			}
 		}
 	}

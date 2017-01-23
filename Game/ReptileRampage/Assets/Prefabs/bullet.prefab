@@ -20,10 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4946869545903092}
   - component: {fileID: 212810719183750744}
-  - component: {fileID: 114102576776719130}
-  - component: {fileID: 114792735838884298}
   - component: {fileID: 60112029318241364}
   - component: {fileID: 50573039768083324}
+  - component: {fileID: 114667399039985448}
   m_Layer: 0
   m_Name: bullet
   m_TagString: Untagged
@@ -39,7 +38,7 @@ Transform:
   m_GameObject: {fileID: 1532358654588558}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,7 +81,7 @@ PolygonCollider2D:
       - {x: -0.049999997, y: -0.04}
       - {x: 0.049999997, y: -0.04}
       - {x: 0.049999997, y: 0.04}
---- !u!114 &114102576776719130
+--- !u!114 &114667399039985448
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -93,20 +92,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6e304d787a447b2adbc173fb954961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
---- !u!114 &114792735838884298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1532358654588558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fad7fe08458bb416a9214b530964be15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1453132568796580, guid: a116b3dc443e642d9a7ffaf5c9c29af0,
     type: 2}
+  moveSpeed: 20
 --- !u!212 &212810719183750744
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -1124,7 +1124,7 @@ MonoBehaviour:
   whatToHit:
     serializedVersion: 2
     m_Bits: 0
-  strayFactor: 3
+  strayFactor: 5
   BulletTrailPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
     type: 2}
   MuzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
