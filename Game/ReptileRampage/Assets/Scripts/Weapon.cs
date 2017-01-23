@@ -2,22 +2,19 @@
 
 public class Weapon : MonoBehaviour {
 
-	public float fireRate = 0;
-	public float damage = 10;
-	public float strayFactor = 4;
+	public float damage;
+	public float fireRate;
+	public float shotSpeed;
+	public float strayFactor;
+	public float screenShake;
 	
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
-
 	public Transform crossHairPrefab;
-	float timeToSpawnEffect = 0;
-	public float effectSpawnRate = 10;
-
 	public AudioClip shotSound = null;
-
 	float timeToFire = 0;
+
 	Transform firePoint;
-	Vector2 mousePosition;
 	Transform crossHair;
 
 	void Awake () {
@@ -26,37 +23,24 @@ public class Weapon : MonoBehaviour {
 	}
 	
 	void Update () {
-		mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-		crossHair.position = mousePosition;
-		if (fireRate == 0) {
-			if (Input.GetButton ("Fire1")) {
-				Shoot();
-				gameObject.GetComponent<CameraShake>().StartShaking(0.05f);
-			}
-		} else {
-			if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
-				timeToFire = Time.time + 1/fireRate;
-				Shoot();
-				gameObject.GetComponent<CameraShake>().StartShaking(0.05f);
-			}
-		}
-	}
-	
-	void Shoot () {
-		if (Time.time >= timeToSpawnEffect) {
-			Effect ();
-			timeToSpawnEffect = Time.time + 1/effectSpawnRate;
-		}
-		if(shotSound != null){
-			AudioSource.PlayClipAtPoint(shotSound, transform.position);
+		crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
+			timeToFire = Time.time + 1/fireRate;
+			CreateBullet ();
 		}
 	}
 
-	void Effect () {
+	void CreateBullet () {
 		//Create bullet with stray modifier
-		float randomNumberZ = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + randomNumberZ, damage, 20, false);
-		//Create muzzle flash
+		float strayValue = Random.Range(-strayFactor, strayFactor);
+		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue, damage, shotSpeed, false);
+		//Play sound
+		if(shotSound != null){
+			AudioSource.PlayClipAtPoint(shotSound, transform.position);
+		}
+		//Shake screen
+		gameObject.GetComponent<CameraShake>().StartShaking(screenShake);
+		//Create muzzle flash - needs to have a custom one
 		Transform flash = Instantiate (muzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
 		flash.parent = firePoint;
 		float size = Random.Range (0.05f, 0.1f);
