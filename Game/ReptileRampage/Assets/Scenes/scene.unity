@@ -451,7 +451,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8721c87dffafa45d28313b2251268b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 5
 --- !u!212 &531786186
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -739,15 +739,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 825450953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d932d8816672e49d7b38c08e64795a7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6cfbdc591454844efbbd8770aa687967, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 531786187}
-  damping: 1
-  lookAheadFactor: 3
-  lookAheadReturnSpeed: 0.5
-  lookAheadMoveThreshold: 0.1
-  yPosRestriction: -1
+  player: {fileID: 531786184}
 --- !u!1 &1115343956
 GameObject:
   m_ObjectHideFlags: 0
