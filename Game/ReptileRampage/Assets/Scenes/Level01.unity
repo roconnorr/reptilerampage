@@ -680,16 +680,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 5
   damage: 10
+  fireRate: 10
+  shotSpeed: 20
   strayFactor: 5
+  screenShake: 0.2
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
     type: 2}
   crossHairPrefab: {fileID: 4949299490797038, guid: 20f55d271d2e4479aa13ec4b316b303b,
     type: 2}
-  effectSpawnRate: 7
   shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
 --- !u!212 &1132384661
 SpriteRenderer:
@@ -866,6 +867,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 377948821}
+  followDistance: 4
 --- !u!1001 &1335146753
 Prefab:
   m_ObjectHideFlags: 0
@@ -904,6 +906,14 @@ Prefab:
     - target: {fileID: 4711301387132562, guid: c2578c6c3ef9d467082a70181e727a29, type: 2}
       propertyPath: m_RootOrder
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280827685044848, guid: c2578c6c3ef9d467082a70181e727a29, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4280827685044848, guid: c2578c6c3ef9d467082a70181e727a29, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c2578c6c3ef9d467082a70181e727a29, type: 2}
