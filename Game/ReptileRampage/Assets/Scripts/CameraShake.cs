@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class CameraShake : MonoBehaviour 
 {
@@ -29,6 +28,6 @@ public class CameraShake : MonoBehaviour
 
 	void StopShaking() {
 		CancelInvoke("ShakeCamera");
-		mainCamera.transform.position = new Vector3(0, 0, -10);
+		mainCamera.transform.position = Camera2DFollow.newPos;
 	}
 }

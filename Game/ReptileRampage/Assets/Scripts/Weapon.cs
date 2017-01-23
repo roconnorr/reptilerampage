@@ -8,17 +8,24 @@ public class Weapon : MonoBehaviour {
 	
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
+
+	public Transform crossHairPrefab;
 	float timeToSpawnEffect = 0;
 	public float effectSpawnRate = 10;
 
 	float timeToFire = 0;
 	Transform firePoint;
+	Vector2 mousePosition;
+	Transform crossHair;
 
 	void Awake () {
 		firePoint = transform.FindChild ("FirePoint");
+		crossHair = Instantiate (crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
 	}
 	
 	void Update () {
+		mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+		crossHair.position = mousePosition;
 		if (fireRate == 0) {
 			if (Input.GetButton ("Fire1")) {
 				Shoot();
@@ -34,8 +41,6 @@ public class Weapon : MonoBehaviour {
 	}
 	
 	void Shoot () {
-		Vector2 mousePosition = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-		Vector2 firePointPosition = new Vector2 (firePoint.position.x, firePoint.position.y);
 		if (Time.time >= timeToSpawnEffect) {
 			Effect ();
 			timeToSpawnEffect = Time.time + 1/effectSpawnRate;
