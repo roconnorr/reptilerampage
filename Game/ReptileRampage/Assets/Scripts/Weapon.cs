@@ -13,6 +13,8 @@ public class Weapon : MonoBehaviour {
 	float timeToSpawnEffect = 0;
 	public float effectSpawnRate = 10;
 
+	public AudioClip shotSound = null;
+
 	float timeToFire = 0;
 	Transform firePoint;
 	Vector2 mousePosition;
@@ -44,6 +46,9 @@ public class Weapon : MonoBehaviour {
 		if (Time.time >= timeToSpawnEffect) {
 			Effect ();
 			timeToSpawnEffect = Time.time + 1/effectSpawnRate;
+		}
+		if(shotSound != null){
+			AudioSource.PlayClipAtPoint(shotSound, transform.position);
 		}
 	}
 
