@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 940c470ddfebe4378b4fc5b2ac5105cd
-timeCreated: 1485240919
+guid: 7dfc03256ab274ec5b6f6bd234372d41
+timeCreated: 1485247075
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -97,9 +97,9 @@ TextureImporter:
       name: 4 Directions_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 1
         y: 76
-        width: 14
+        width: 13
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -123,9 +123,9 @@ TextureImporter:
       name: 4 Directions_2
       rect:
         serializedVersion: 2
-        x: 27
+        x: 28
         y: 76
-        width: 15
+        width: 14
         height: 24
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -149,7 +149,7 @@ TextureImporter:
       name: 4 Directions_4
       rect:
         serializedVersion: 2
-        x: 0
+        x: 56
         y: 51
         width: 14
         height: 24
@@ -162,7 +162,7 @@ TextureImporter:
       name: 4 Directions_5
       rect:
         serializedVersion: 2
-        x: 14
+        x: 70
         y: 50
         width: 13
         height: 24
@@ -175,7 +175,7 @@ TextureImporter:
       name: 4 Directions_6
       rect:
         serializedVersion: 2
-        x: 28
+        x: 84
         y: 51
         width: 14
         height: 24
@@ -188,7 +188,7 @@ TextureImporter:
       name: 4 Directions_7
       rect:
         serializedVersion: 2
-        x: 42
+        x: 98
         y: 50
         width: 13
         height: 24
@@ -214,10 +214,10 @@ TextureImporter:
       name: 4 Directions_9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 56
+        y: 1
         width: 14
-        height: 25
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -266,7 +266,7 @@ TextureImporter:
       name: 4 Directions_13
       rect:
         serializedVersion: 2
-        x: 14
+        x: 70
         y: 0
         width: 14
         height: 24
@@ -279,7 +279,7 @@ TextureImporter:
       name: 4 Directions_14
       rect:
         serializedVersion: 2
-        x: 28
+        x: 84
         y: 1
         width: 14
         height: 24
@@ -292,7 +292,7 @@ TextureImporter:
       name: 4 Directions_15
       rect:
         serializedVersion: 2
-        x: 42
+        x: 98
         y: 0
         width: 14
         height: 24
