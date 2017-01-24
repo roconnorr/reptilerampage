@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour {
 
 	void FixedUpdate() {
 		//Check obstruction
-		targetViewBlocked = TargetHiddenByObstacles ();
+		targetViewBlocked = TargetHiddenByObstacles();
 		//If in view move direct
 		if (targetInRange && !targetViewBlocked) {
 			//Try change to steering to stop clumping
