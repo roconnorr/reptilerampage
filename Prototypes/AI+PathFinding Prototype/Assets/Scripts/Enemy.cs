@@ -64,7 +64,6 @@ public class Enemy : MonoBehaviour {
 		float distanceToPlayer = Vector2.Distance(this.transform.position, target.transform.position);
 		RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, target.transform.position - transform.position, distanceToPlayer);
 		Debug.DrawRay(this.transform.position, target.transform.position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
-        List<float> distances = new List<float>();
      
         foreach (RaycastHit2D hit in hits) {           
             // ignore the enemy's own colliders (and other enemies)

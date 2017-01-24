@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class MouseTarget : MonoBehaviour {
 
-	SpriteRenderer sprite = null;
-
 	private Enemy enemyScript;
 	private Vector3 pos;
 
-	private GameObject[] enemyGameObjects;
 	private Rigidbody2D player;
+
+	private GameObject[] enemyGameObjects;
 
 	
 	// Use this for initialization

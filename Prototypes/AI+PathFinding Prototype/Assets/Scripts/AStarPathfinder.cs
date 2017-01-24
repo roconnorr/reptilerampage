@@ -70,7 +70,7 @@ public class AStarPathfinder : MonoBehaviour {
 	 * param: targetPosition - position to travel towards
 	 * param: atSpeed - speed at which to travel (in units/s)
 	 */
-	public void  GoTowards(Vector2 targetPosition, float atSpeed) {
+	public void GoTowards(Vector2 targetPosition, float atSpeed) {
 
 		if (grid == null) {
 			Debug.LogError ("Pathfinding grid object is missing AStarGrid component!");
@@ -138,9 +138,9 @@ public class AStarPathfinder : MonoBehaviour {
 		// shortest path found
 
 		// Compute the distance to travel in this frame
-		float distAllowed = atSpeed * timeDelta;
+		//float distAllowed = atSpeed * timeDelta;
 
-		// Travel along the designated path
+		/* Travel along the designated path
 		while (moveIndex < moves.Count) {
 			Vector2 nextPos = moves [moveIndex];
 
@@ -175,11 +175,21 @@ public class AStarPathfinder : MonoBehaviour {
 			if (distAllowed <= 0f) {
 				break;
 			}
-		}
+		}*/
+
+		//steering instead
+		//while (moveIndex < moves.Count) {
+		//	float desired_velocity = normalize(target - position) * max_velocity
+		//	steering = desired_velocity - velocity
+		//}
 	}
 
 	public void ClearPath(){
 		moves = null;
+	}
+
+	public List<Vector2> GetPath(){
+		return moves;
 	}
 
 	public void Reset(Vector2 start, Vector2 target){
