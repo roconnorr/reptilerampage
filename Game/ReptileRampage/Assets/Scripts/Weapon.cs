@@ -18,6 +18,7 @@ public class Weapon : MonoBehaviour {
 	Transform crossHair;
 
 	void Awake () {
+		Cursor.visible = false;
 		firePoint = transform.FindChild ("FirePoint");
 		crossHair = Instantiate (crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
 	}

@@ -28,6 +28,10 @@ public class CameraShake : MonoBehaviour
 
 	void StopShaking() {
 		CancelInvoke("ShakeCamera");
-		mainCamera.transform.position = CameraFollow.cameraPosition;
+		if (GetComponent<CameraFollow>() == null) {
+			mainCamera.transform.position = new Vector3 (0, 0, -10);
+		} else {
+			mainCamera.transform.position = CameraFollow.cameraPosition;
+		}
 	}
 }
