@@ -4,11 +4,14 @@ using System.Collections.Generic;
 public class Enemy : MonoBehaviour {
 
 	public float speed;
+	public int health;
 
 	public int sightRange;
 
 	public GameObject target;
 	private Transform destination;
+
+	public AudioClip deathRoar;
 
 	//Boolean variables
 	private bool targetInRange;
@@ -72,4 +75,12 @@ public class Enemy : MonoBehaviour {
         // if no objects were closer to the enemy than the player return false (player is not hidden by an object)
         return false; 
     }
+
+	public void TakeDamage(int amount) {
+		health -= amount;
+		if (health < 0) {
+			AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+			Destroy (gameObject);
+		}
+	}
 }

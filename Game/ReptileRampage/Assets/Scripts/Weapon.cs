@@ -2,7 +2,7 @@
 
 public class Weapon : MonoBehaviour {
 
-	public float damage;
+	public int damage;
 	public float fireRate;
 	public float shotSpeed;
 	public float strayFactor;
@@ -53,7 +53,7 @@ public class Weapon : MonoBehaviour {
 	void CreateBullet () {
 		//Create bullet with stray modifier
 		float strayValue = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue, damage, shotSpeed, false);
+		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90, damage, shotSpeed, false);
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);

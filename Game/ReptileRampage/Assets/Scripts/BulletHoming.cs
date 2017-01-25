@@ -1,22 +1,47 @@
 ﻿using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+public class BulletHoming : MonoBehaviour {
 
 	public GameObject explosionPrefab;
-	
+
 	public float moveSpeed;
+	public float turnSpeed;
+	public int turnDelay;
 	public int damage;
 	public bool dmgPlayer;
+	public Transform target;
 
+	private int turnCount = 0;
 
 	public AudioClip wallHitSound = null;
-	
+
 	void Update () {
+		Vector3 difference = target.position - transform.position;
+		float rotation = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+		if (rotation < 0) {
+			rotation += 360;
+		}
+		float a = rotation -transform.rotation.eulerAngles.z;
+		if (a < 0) {
+			a += 360;
+		}
+		if (turnCount == 0) {
+			if (a < 80 || a > 270) {
+				transform.Rotate (0, 0, -turnSpeed);
+			} else if (a > 100 && a < 270) {
+				transform.Rotate (0, 0, turnSpeed);
+			} else {
+				turnCount = turnDelay;
+			}
+		} else {
+			turnCount--;
+		}
+
 		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
 		// Check if the game object is visible, if not, destroy self   
-		if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main)) {
-			Destroy(gameObject);
-		}
+//		if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main)) {
+//			Destroy(gameObject);
+//		}
 	}
 
 	//Collide with wall and player
