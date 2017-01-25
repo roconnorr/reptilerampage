@@ -13,17 +13,36 @@ public class Weapon : MonoBehaviour {
 	public Transform crossHairPrefab;
 	public AudioClip shotSound = null;
 	float timeToFire = 0;
+	public int rotationOffset = 0;
+
+	private SpriteRenderer spriteRenderer;
 
 	Transform firePoint;
 	Transform crossHair;
 
-	void Awake () {
+	void Start () {
+		spriteRenderer = GetComponent<SpriteRenderer> ();
 		Cursor.visible = false;
 		firePoint = transform.FindChild ("FirePoint");
 		crossHair = Instantiate (crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
 	}
-	
+
 	void Update () {
+		//Rotation
+		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
+		difference.Normalize ();
+		float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
+		if (rotZ < 0) {
+			rotZ += 360;
+		}
+		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
+		if (rotZ > 45 && rotZ < 135) {
+			spriteRenderer.sortingOrder = 0;
+		} else {
+			spriteRenderer.sortingOrder = 2;
+		}
+
 		crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
 			timeToFire = Time.time + 1/fireRate;

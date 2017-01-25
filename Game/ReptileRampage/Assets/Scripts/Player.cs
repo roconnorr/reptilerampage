@@ -6,7 +6,6 @@ public class Player : MonoBehaviour {
 
    private AudioSource soundSource;
 
-   private Animator animator;
    Rigidbody2D rb;
 
    float horizontal;
@@ -14,45 +13,10 @@ public class Player : MonoBehaviour {
    void Start() {
         rb = GetComponent<Rigidbody2D>();
         soundSource = gameObject.GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
     }
 
    void OnCollisionEnter2D(Collision2D other){
     	rb.velocity = Vector3.zero;
-    }
-
-    void Update() {
-
-         if(Input.GetKey("d") && !Input.GetKey("w") && !Input.GetKey("s")) {
-             animator.Play("MoveRight");
-         }
-         if(Input.GetKey("d") && Input.GetKey("w")) { 
-             animator.Play("MoveUp_Right");
-         }
-         if(Input.GetKey("a") && !Input.GetKey("w") && !Input.GetKey("s")) {
-             animator.Play("MoveLeft");
-         }
-         if(Input.GetKey("a") && Input.GetKey("w")) {
-             animator.Play("MoveUp_Left");
-         }
-         if(Input.GetKey("w") && !Input.GetKey("a") && !Input.GetKey("d")) {
-             animator.Play("MoveUp");
-         }
-         if(Input.GetKey("s") && Input.GetKey("d")) {
-             animator.Play("MoveDown_Right");
-         }
-         if(Input.GetKey("s") && !Input.GetKey("d") && !Input.GetKey("a")) {
-             animator.Play("MoveDown");
-         }
-         if(Input.GetKey("s") && Input.GetKey("a")) {
-             animator.Play("MoveDown_Left");
-         }
-
-
-         if(horizontal == 0 && vertical == 0) {
-             animator.Play("Idle");
-         }
-
     }
 
    void FixedUpdate () {
