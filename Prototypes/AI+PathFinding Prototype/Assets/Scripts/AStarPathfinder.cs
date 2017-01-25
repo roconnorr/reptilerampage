@@ -20,6 +20,8 @@ public class AStarPathfinder : MonoBehaviour {
 										 //can be used to reduce number of updates so as not to slow
 										 //down the game too much.
 
+	public Rigidbody2D rb;
+
 	private AStarGrid grid = null; 	//Referendce to the grid (attached to the gridObject)
 
 	private Vector2 previousTargetPosition; //Keeps track of change in target (for path updates)
@@ -38,6 +40,9 @@ public class AStarPathfinder : MonoBehaviour {
 										   //(set via the Inspector Panel)
 	private float GizmoTime = 0.5f;
 	private float GizmoTimeKeeper = 0.0f;
+
+	public float MaxForce;
+
 #endif
 
 	void Start() {
@@ -47,6 +52,7 @@ public class AStarPathfinder : MonoBehaviour {
 			return;
 		}
 		grid = gridObject.GetComponent<AStarGrid> ();
+		rb = GetComponent<Rigidbody2D>();
 		previousTargetPosition = transform.position;
 		timeLeftUntilPathUpdate = 0;
 		timeKeeper = Time.time;
@@ -138,9 +144,9 @@ public class AStarPathfinder : MonoBehaviour {
 		// shortest path found
 
 		// Compute the distance to travel in this frame
-		//float distAllowed = atSpeed * timeDelta;
+		float distAllowed = atSpeed * timeDelta;
 
-		/* Travel along the designated path
+		//Travel along the designated path
 		while (moveIndex < moves.Count) {
 			Vector2 nextPos = moves [moveIndex];
 
@@ -169,19 +175,22 @@ public class AStarPathfinder : MonoBehaviour {
 			//Get the next position based on the next move
 			Vector3 nextPosition = new Vector3 (nextMove.x, nextMove.y, transform.position.z);
 
+			//calculate steering forces
+			Vector2 desiredVelocity = currentPos - nextPos * atSpeed;
+			desiredVelocity.Normalize();
+			Vector2 steering = desiredVelocity - rb.velocity;
+
+			steering = steering / rb.mass;
+			Vector2 velocity = rb.velocity + steering;
+
 			//Udate remaining distance to travel
-			transform.position = nextPosition;
+			transform.position = transform.position + new Vector3(velocity.x, velocity.y, 0);
+
 			distAllowed -= travelDist;
 			if (distAllowed <= 0f) {
 				break;
 			}
-		}*/
-
-		//steering instead
-		//while (moveIndex < moves.Count) {
-		//	float desired_velocity = normalize(target - position) * max_velocity
-		//	steering = desired_velocity - velocity
-		//}
+		}
 	}
 
 	public void ClearPath(){
