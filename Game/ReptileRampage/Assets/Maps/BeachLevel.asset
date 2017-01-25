@@ -12,10 +12,36 @@ MonoBehaviour:
   m_Name: BeachLevel
   m_EditorClassIdentifier: 
   TileLayerSettings:
-  - LayerName: Background
+  - LayerName: Sand
     GenerateRenderMesh: 1
     GenerateCollisionMesh: 0
     ImportLayer: 0
-  ObjectLayerSettings: []
+  - LayerName: Grass
+    GenerateRenderMesh: 1
+    GenerateCollisionMesh: 0
+    ImportLayer: 0
+  - LayerName: Water
+    GenerateRenderMesh: 1
+    GenerateCollisionMesh: 0
+    ImportLayer: 0
+  - LayerName: Cliffs
+    GenerateRenderMesh: 1
+    GenerateCollisionMesh: 0
+    ImportLayer: 0
+  - LayerName: Trees 1
+    GenerateRenderMesh: 1
+    GenerateCollisionMesh: 0
+    ImportLayer: 0
+  - LayerName: Trees 2
+    GenerateRenderMesh: 1
+    GenerateCollisionMesh: 0
+    ImportLayer: 0
+  - LayerName: Details
+    GenerateRenderMesh: 1
+    GenerateCollisionMesh: 0
+    ImportLayer: 0
+  ObjectLayerSettings:
+  - LayerName: Colliders
+    ImportLayer: 1
   MapFilename: Assets/Maps/BeachLevel.tmx
   PixelsPerUnit: 100
