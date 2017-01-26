@@ -78,9 +78,9 @@ public class Enemy : MonoBehaviour {
 
 	public void TakeDamage(int amount) {
 		health -= amount;
-		if (health < 0) {
-			AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+		if (health <= 0) {
 			Destroy (gameObject);
+			AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 		}
 	}
 }
