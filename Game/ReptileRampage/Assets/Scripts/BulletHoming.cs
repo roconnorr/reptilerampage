@@ -6,8 +6,10 @@ public class BulletHoming : MonoBehaviour {
 
 	public float moveSpeed;
 	public int damage;
+	public float range;
 	public bool dmgPlayer;
 	public bool dmgEnemy;
+	public float initialAngle;
 	public Transform target;
 	private Rigidbody2D rb;
 	public int iFrames;
@@ -17,9 +19,15 @@ public class BulletHoming : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		iFrames = 50;
+		rb.AddForce ((Quaternion.Euler(0, 0, initialAngle) * Vector2.up) * moveSpeed);
 	}
 
 	void Update () {
+		if (range > 0) {
+			range--;
+		} else {
+			Explode ();
+		}
 		if (iFrames > 0) {
 			iFrames--;
 		}
@@ -34,34 +42,29 @@ public class BulletHoming : MonoBehaviour {
 	//Collide with wall and player
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Wall"){
-			Explode();
 			if (wallHitSound != null){
 				AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
 			}
-			Destroy(gameObject);
+			Explode();
 		}
 		if (other.gameObject.tag == "Player" && iFrames == 0) {
 			if (dmgPlayer) {
-				//damage player
-			} else {
-				Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
+				Explode ();
 			}
-		} else {
-			Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
 		}
 	}
 
 	//Collide with enemy
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy && iFrames == 0) {
-			Explode ();
 			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
-			Destroy (gameObject);
+			Explode ();
 		}
 	}
 
 	void Explode(){
 		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
 		explosion.transform.position = transform.position;
+		Destroy(gameObject);
 	}
 }

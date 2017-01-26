@@ -54,7 +54,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.004
+  m_Mass: 0.005
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -98,6 +98,7 @@ MonoBehaviour:
   damage: 10
   dmgPlayer: 0
   dmgEnemy: 0
+  initialAngle: 0
   target: {fileID: 0}
   iFrames: 0
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}

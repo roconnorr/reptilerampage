@@ -20,7 +20,6 @@ public class Enemy : MonoBehaviour {
 			//don't take damage
 		} else {
 			health -= amount;
-			Debug.Log (health);
 			//FireBloodParticles(dir);
 			if (health <= 0) {
 				Destroy (gameObject);

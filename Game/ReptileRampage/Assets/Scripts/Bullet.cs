@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour {
 	
 	public float moveSpeed;
 	public int damage;
+	public float range;
 	public bool dmgPlayer;
 	public bool dmgEnemy;
 
@@ -14,29 +15,26 @@ public class Bullet : MonoBehaviour {
 	
 	void Update () {
 		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
-		// Check if the game object is visible, if not, destroy self   
-		if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main)) {
-			Destroy(gameObject);
+
+		if (range > 0) {
+			range--;
+		} else {
+			Explode ();
 		}
 	}
 
 	//Collide with wall and player
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Wall"){
-			Explode();
 			if (wallHitSound != null){
 				AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
 			}
-			Destroy(gameObject);
+			Explode();
 		}
 		if(other.gameObject.tag == "Player"){
 			if (dmgPlayer) {
-				//damage player
-			} else {
-				Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
+				Explode ();
 			}
-		} else {
-			Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
 		}
 	}
 
@@ -45,12 +43,12 @@ public class Bullet : MonoBehaviour {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
 			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
 			Explode ();
-			Destroy (gameObject);
 		}
 	}
 
 	void Explode(){
 		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
 		explosion.transform.position = transform.position;
+		Destroy (gameObject);
 	}
 }
