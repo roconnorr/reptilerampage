@@ -57,9 +57,9 @@ public class TRex : MonoBehaviour {
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
 				state = State.Idle;
 			}
-			if (targetLocation.x - transform.position.x > 0) {
+			if (targetLocation.x - transform.position.x > 0.01) {
 				sr.flipX = true;
-			} else {
+			} else if (targetLocation.x - transform.position.x < -0.01){
 				sr.flipX = false;
 			}
 		}
