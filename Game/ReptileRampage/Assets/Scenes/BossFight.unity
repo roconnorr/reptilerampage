@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
+  damage: 10
   fireRate: 10
   shotSpeed: 20
   strayFactor: 10
@@ -3181,7 +3181,7 @@ MonoBehaviour:
   rocketPrefab: {fileID: 4059685238493994, guid: a46d619bbd2576b4a92f2b51c8c566b8,
     type: 2}
   speed: 3
-  health: 100
+  health: 5000
 --- !u!60 &1559066790
 PolygonCollider2D:
   m_ObjectHideFlags: 0

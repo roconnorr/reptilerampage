@@ -15,8 +15,8 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void TakeDamage(int amount, Quaternion dir) {	
-		health -= 1;
-		FireBloodParticles(dir);
+		health -= amount;
+		//FireBloodParticles(dir);
 		if (health <= 0) {
 			Destroy (gameObject);
 			AudioSource.PlayClipAtPoint (deathRoar, transform.position);
