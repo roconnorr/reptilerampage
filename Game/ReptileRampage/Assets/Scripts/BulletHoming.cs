@@ -55,7 +55,7 @@ public class BulletHoming : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy && iFrames == 0) {
 			Explode ();
-			other.GetComponent<Enemy>().TakeDamage (damage);
+			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
 			Destroy (gameObject);
 		}
 	}
