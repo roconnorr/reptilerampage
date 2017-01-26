@@ -76,7 +76,7 @@ public class BulletHoming : MonoBehaviour {
 
 		if (other.gameObject.tag == "Enemy" && !dmgPlayer) {
 			Explode ();
-			other.GetComponent<Enemy>().TakeDamage (damage);
+			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
 			Destroy (gameObject);
 		}
 	}

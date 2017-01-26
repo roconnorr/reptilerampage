@@ -11,6 +11,9 @@ public class Enemy : MonoBehaviour {
 	public GameObject target;
 	private Transform destination;
 
+	public ParticleSystem bloodParticles;
+	private GameObject particleRotation;
+
 	public AudioClip deathRoar;
 
 	//Boolean variables
@@ -27,6 +30,7 @@ public class Enemy : MonoBehaviour {
 	void Start() {
 		targetInRange = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
+		particleRotation = GameObject.Find("ParticleRotation");
 	}
 
 	void FixedUpdate() {
@@ -76,11 +80,18 @@ public class Enemy : MonoBehaviour {
         return false; 
     }
 
-	public void TakeDamage(int amount) {
-		health -= amount;
+	public void TakeDamage(int amount, Quaternion dir) {	
+		health -= 1;
+		FireBloodParticles(dir);
 		if (health <= 0) {
 			Destroy (gameObject);
 			AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 		}
+	}
+
+	public void FireBloodParticles(Quaternion dir){
+		dir *= Quaternion.Euler(0, 0, -90);
+		particleRotation.transform.rotation = dir;
+		bloodParticles.Play();
 	}
 }

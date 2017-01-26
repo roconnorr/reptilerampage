@@ -245,6 +245,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  bloodParticles: {fileID: 0}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &578955498
 SpriteRenderer:
@@ -357,6 +358,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  bloodParticles: {fileID: 0}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &631618505
 SpriteRenderer:
@@ -404,7 +406,7 @@ GameObject:
   - component: {fileID: 867225982}
   - component: {fileID: 867225981}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: BloodParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -416,13 +418,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 867225979}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.023, y: 0.037, z: 1}
-  m_LocalScale: {x: 0.25, y: 1, z: 0.25000012}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 0.25000012, y: 1, z: 0.25000024}
   m_Children: []
-  m_Father: {fileID: 1625859421}
+  m_Father: {fileID: 1663426283}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!199 &867225981
 ParticleSystemRenderer:
   serializedVersion: 2
@@ -458,8 +460,8 @@ ParticleSystemRenderer:
   m_SortingOrder: 0
   m_RenderMode: 0
   m_SortMode: 0
-  m_MinParticleSize: 1
-  m_MaxParticleSize: 4
+  m_MinParticleSize: 0.2
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2
@@ -480,11 +482,11 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 867225979}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 1
   speed: 1
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   autoRandomSeed: 1
   startDelay:
     scalar: 0
@@ -528,12 +530,12 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1041201851
+  randomSeed: 1479675989
   InitialModule:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 5
+      scalar: 2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -572,7 +574,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 5
+      scalar: 15
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -582,34 +584,22 @@ ParticleSystem:
           inSlope: 0
           outSlope: 0
           tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       minCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0
-          inSlope: 0
-          outSlope: 0
-          tangentMode: 0
-        - serializedVersion: 2
-          time: 1
-          value: 0
+          value: 0.13333334
           inSlope: 0
           outSlope: 0
           tangentMode: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
-      minMaxState: 0
+        m_RotationOrder: 0
+      minMaxState: 3
     startColor:
       serializedVersion: 2
       maxGradient:
@@ -938,11 +928,11 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     randomizeRotationDirection: 0
-    maxNumParticles: 1000
+    maxNumParticles: 100
     size3D: 0
     rotation3D: 0
     gravityModifier:
-      scalar: 0
+      scalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -983,13 +973,13 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 3
     enabled: 1
-    type: 4
+    type: 5
     radius: 0.01
     angle: 25.000002
     length: 5
-    boxX: 1
-    boxY: 1
-    boxZ: 1
+    boxX: 0
+    boxY: 0
+    boxZ: 0
     arc: 360
     placementMode: 0
     m_Mesh: {fileID: 0}
@@ -1007,7 +997,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 10
+      scalar: 200
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -2590,9 +2580,9 @@ ParticleSystem:
       minMaxState: 1
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     plane0: {fileID: 0}
     plane1: {fileID: 0}
@@ -3954,6 +3944,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  bloodParticles: {fileID: 0}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &1624918417
 SpriteRenderer:
@@ -4019,7 +4010,7 @@ Transform:
   m_LocalPosition: {x: -8.53, y: 5.65, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
-  - {fileID: 867225980}
+  - {fileID: 1663426283}
   m_Father: {fileID: 283253274}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4064,9 +4055,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  health: 10
+  health: 100
   sightRange: 10
   target: {fileID: 1076168193}
+  bloodParticles: {fileID: 867225982}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &1625859425
 SpriteRenderer:
@@ -4103,6 +4095,35 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!1 &1663426282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1663426283}
+  m_Layer: 0
+  m_Name: ParticleRotation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1663426283
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1663426282}
+  m_LocalRotation: {x: -0, y: -0, z: 0.0026354964, w: 0.9999966}
+  m_LocalPosition: {x: 0.00000023841858, y: 0.00000035762787, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 867225980}
+  m_Father: {fileID: 1625859421}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.30200002}
 --- !u!1 &2047962548
 GameObject:
   m_ObjectHideFlags: 0

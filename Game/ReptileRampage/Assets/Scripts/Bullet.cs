@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 
 		if (other.gameObject.tag == "Enemy" && !dmgPlayer) {
-			other.GetComponent<Enemy>().TakeDamage (damage);
+			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
 			Explode ();
 			Destroy (gameObject);
 		}
