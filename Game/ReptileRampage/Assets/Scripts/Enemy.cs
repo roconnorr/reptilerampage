@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour {
 	private Transform destination;
 
 	public ParticleSystem bloodParticles;
-	private GameObject particleRotation;
 
 	public AudioClip deathRoar;
 
@@ -30,7 +29,6 @@ public class Enemy : MonoBehaviour {
 	void Start() {
 		targetInRange = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
-		particleRotation = GameObject.Find("ParticleRotation");
 	}
 
 	void FixedUpdate() {
@@ -90,8 +88,11 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void FireBloodParticles(Quaternion dir){
-		dir *= Quaternion.Euler(0, 0, -90);
-		particleRotation.transform.rotation = dir;
-		bloodParticles.Play();
+		print(dir);
+		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
+		//particleRotation.transform.rotation = dir;
+		//Vector3 position = transform.position;
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		localBloodParticles.Play();
 	}
 }
