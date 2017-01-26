@@ -236,7 +236,7 @@ Prefab:
     - target: {fileID: 114269018578552206, guid: d783bdabab5d23f48a4112ff73663e86,
         type: 2}
       propertyPath: moveSpeed
-      value: 5
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 114269018578552206, guid: d783bdabab5d23f48a4112ff73663e86,
         type: 2}
@@ -268,7 +268,18 @@ Prefab:
       propertyPath: turnDelay
       value: 50
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114269018578552206, guid: d783bdabab5d23f48a4112ff73663e86,
+        type: 2}
+      propertyPath: mass
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269018578552206, guid: d783bdabab5d23f48a4112ff73663e86,
+        type: 2}
+      propertyPath: damage
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 50442276513961566, guid: d783bdabab5d23f48a4112ff73663e86, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: d783bdabab5d23f48a4112ff73663e86, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1029762027

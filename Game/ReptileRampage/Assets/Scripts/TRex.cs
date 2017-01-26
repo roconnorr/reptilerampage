@@ -24,7 +24,7 @@ public class TRex : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-//		Debug.Log (state);
+		Debug.Log (state);
 		//Idle Behaviour
 		if (state == State.Idle) {
 			if (Random.Range (0, 100) == 1) {

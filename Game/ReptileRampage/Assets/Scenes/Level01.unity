@@ -245,7 +245,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
-  deathRoar: {fileID: 0}
+  deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &578955498
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
-  deathRoar: {fileID: 0}
+  deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &631618505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3954,7 +3954,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
-  deathRoar: {fileID: 0}
+  deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &1624918417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4067,7 +4067,7 @@ MonoBehaviour:
   health: 10
   sightRange: 10
   target: {fileID: 1076168193}
-  deathRoar: {fileID: 0}
+  deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
 --- !u!212 &1625859425
 SpriteRenderer:
   m_ObjectHideFlags: 0

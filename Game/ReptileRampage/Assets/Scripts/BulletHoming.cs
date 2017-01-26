@@ -5,39 +5,48 @@ public class BulletHoming : MonoBehaviour {
 	public GameObject explosionPrefab;
 
 	public float moveSpeed;
-	public float turnSpeed;
+	public float mass;
 	public int turnDelay;
 	public int damage;
 	public bool dmgPlayer;
 	public Transform target;
 
 	private int turnCount = 0;
+	private Vector3 velocity;
 
 	public AudioClip wallHitSound = null;
 
 	void Update () {
-		Vector3 difference = target.position - transform.position;
-		float rotation = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
-		if (rotation < 0) {
-			rotation += 360;
-		}
-		float a = rotation -transform.rotation.eulerAngles.z;
-		if (a < 0) {
-			a += 360;
-		}
-		if (turnCount == 0) {
-			if (a < 80 || a > 270) {
-				transform.Rotate (0, 0, -turnSpeed);
-			} else if (a > 100 && a < 270) {
-				transform.Rotate (0, 0, turnSpeed);
-			} else {
-				turnCount = turnDelay;
-			}
-		} else {
-			turnCount--;
-		}
+		Vector3 desired_velocity = Vector3.Normalize (target.position - transform.position) * moveSpeed;
+		Vector3 steering = desired_velocity - velocity;
+		steering = steering / mass;
 
-		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
+		velocity = velocity + steering;
+
+		transform.Translate (velocity);
+
+//		Vector3 difference = target.position - transform.position;
+//		float rotation = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+//		if (rotation < 0) {
+//			rotation += 360;
+//		}
+//		float a = rotation -transform.rotation.eulerAngles.z;
+//		if (a < 0) {
+//			a += 360;
+//		}
+//		if (turnCount == 0) {
+//			if (a < 80 || a > 270) {
+//				transform.Rotate (0, 0, -turnSpeed);
+//			} else if (a > 100 && a < 270) {
+//				transform.Rotate (0, 0, turnSpeed);
+//			} else {
+//				turnCount = turnDelay;
+//			}
+//		} else {
+//			turnCount--;
+//		}
+//
+//		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
 		// Check if the game object is visible, if not, destroy self   
 //		if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main)) {
 //			Destroy(gameObject);

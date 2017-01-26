@@ -9,11 +9,11 @@ public class GameMaster : MonoBehaviour {
 		bullet.GetComponent<Bullet>().dmgPlayer = dmgPlayer;
 	}
 
-	public static void CreateHomingBullet(Transform prefab, Vector3 position, float angle, int damage, float speed, bool dmgPlayer, Transform target, float turnSpeed) {
+	public static void CreateHomingBullet(Transform prefab, Vector3 position, float angle, int damage, float speed, bool dmgPlayer, Transform target, float mass) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));
 		bullet.GetComponent<BulletHoming>().moveSpeed = speed;
 		bullet.GetComponent<BulletHoming>().damage = damage;
-		bullet.GetComponent<BulletHoming>().turnSpeed = turnSpeed;
+		bullet.GetComponent<BulletHoming>().mass = mass;
 		bullet.GetComponent<BulletHoming> ().target = target;
 		bullet.GetComponent<BulletHoming>().dmgPlayer = dmgPlayer;
 	}
