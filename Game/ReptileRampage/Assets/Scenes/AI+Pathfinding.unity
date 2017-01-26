@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 503509336}
   - component: {fileID: 503509334}
   - component: {fileID: 503509340}
-  - component: {fileID: 503509335}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -309,25 +308,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 503509333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cfe25055739b3e42915b1cfe6ae04e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f8f8e90a0f6645be9aa84ad6919862f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  target: {fileID: 531786184}
---- !u!58 &503509335
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 503509333}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0.000000014901161}
-  serializedVersion: 2
-  m_Radius: 2.23
+  gridObject: {fileID: 2104836706}
+  updateFrequency: 5
+  DrawPathInEditor: 1
+  PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
 --- !u!114 &503509336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,15 +323,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 503509333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19f93d5566322b46bf6da0e7888bebe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridObject: {fileID: 2104836706}
-  updateFrequency: 5
-  rb: {fileID: 0}
-  DrawPathInEditor: 1
-  PathColor: {r: 0.3241377, g: 0, b: 1, a: 1}
-  MaxForce: 0
+  speed: 2
+  health: 5
+  sightRange: 10
+  target: {fileID: 531786184}
+  deathRoar: {fileID: 0}
 --- !u!212 &503509337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -376,7 +362,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d853e38b6512b944e95148795d1a2b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c43d3e7e286d64ae49f12b976336c931, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -422,9 +408,9 @@ GameObject:
   m_Component:
   - component: {fileID: 531786187}
   - component: {fileID: 531786186}
-  - component: {fileID: 531786185}
   - component: {fileID: 531786189}
   - component: {fileID: 531786188}
+  - component: {fileID: 531786185}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -440,7 +426,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 531786184}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 648c8f867da56487b956a0805840e12e, type: 3}
+  m_Script: {fileID: 11500000, guid: 25d135fbec10e4f5dac34dfb57b89977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &531786186
@@ -474,7 +460,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4be0db32131d6d84c948d6d4e2a56c9b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e894a4950e1ff4b808e97f1a2926b546, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -657,7 +643,6 @@ GameObject:
   - component: {fileID: 1231414468}
   - component: {fileID: 1231414470}
   - component: {fileID: 1231414471}
-  - component: {fileID: 1231414467}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -696,7 +681,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d853e38b6512b944e95148795d1a2b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c43d3e7e286d64ae49f12b976336c931, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -713,20 +698,6 @@ Transform:
   m_Father: {fileID: 1164766827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &1231414467
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1231414464}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 2.23
 --- !u!114 &1231414468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -735,15 +706,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1231414464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19f93d5566322b46bf6da0e7888bebe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridObject: {fileID: 2104836706}
-  updateFrequency: 5
-  rb: {fileID: 0}
-  DrawPathInEditor: 1
-  PathColor: {r: 0.3241377, g: 0, b: 1, a: 1}
-  MaxForce: 0
+  speed: 2
+  health: 5
+  sightRange: 10
+  target: {fileID: 531786184}
+  deathRoar: {fileID: 0}
 --- !u!114 &1231414470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -752,11 +722,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1231414464}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cfe25055739b3e42915b1cfe6ae04e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f8f8e90a0f6645be9aa84ad6919862f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  target: {fileID: 531786184}
+  gridObject: {fileID: 2104836706}
+  updateFrequency: 5
+  DrawPathInEditor: 1
+  PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
 --- !u!50 &1231414471
 Rigidbody2D:
   serializedVersion: 4
@@ -789,7 +761,6 @@ GameObject:
   - component: {fileID: 1290162268}
   - component: {fileID: 1290162266}
   - component: {fileID: 1290162272}
-  - component: {fileID: 1290162267}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -805,25 +776,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290162265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cfe25055739b3e42915b1cfe6ae04e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f8f8e90a0f6645be9aa84ad6919862f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  target: {fileID: 531786184}
---- !u!58 &1290162267
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1290162265}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: -0.00000011920929, y: -0.00000011920929}
-  serializedVersion: 2
-  m_Radius: 2.23
+  gridObject: {fileID: 2104836706}
+  updateFrequency: 5
+  DrawPathInEditor: 1
+  PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
 --- !u!114 &1290162268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -832,15 +791,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290162265}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19f93d5566322b46bf6da0e7888bebe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridObject: {fileID: 2104836706}
-  updateFrequency: 5
-  rb: {fileID: 0}
-  DrawPathInEditor: 1
-  PathColor: {r: 0.3241377, g: 0, b: 1, a: 1}
-  MaxForce: 0
+  speed: 2
+  health: 5
+  sightRange: 10
+  target: {fileID: 531786184}
+  deathRoar: {fileID: 0}
 --- !u!212 &1290162269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -872,7 +830,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d853e38b6512b944e95148795d1a2b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c43d3e7e286d64ae49f12b976336c931, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1035,7 +993,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6a3fb74cca5d5f2498b71bc09650832c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5fc0ee8b50c2745359d1bec43ea3c662, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1143,7 +1101,6 @@ GameObject:
   - component: {fileID: 1949178143}
   - component: {fileID: 1949178141}
   - component: {fileID: 1949178147}
-  - component: {fileID: 1949178142}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -1159,25 +1116,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949178140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cfe25055739b3e42915b1cfe6ae04e9, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f8f8e90a0f6645be9aa84ad6919862f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
-  target: {fileID: 531786184}
---- !u!58 &1949178142
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1949178140}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0.00000023841858, y: -0.00000011920929}
-  serializedVersion: 2
-  m_Radius: 2.23
+  gridObject: {fileID: 2104836706}
+  updateFrequency: 5
+  DrawPathInEditor: 1
+  PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
 --- !u!114 &1949178143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,15 +1131,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949178140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b19f93d5566322b46bf6da0e7888bebe, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gridObject: {fileID: 2104836706}
-  updateFrequency: 5
-  rb: {fileID: 0}
-  DrawPathInEditor: 1
-  PathColor: {r: 0.3241377, g: 0, b: 1, a: 1}
-  MaxForce: 0
+  speed: 2
+  health: 5
+  sightRange: 10
+  target: {fileID: 531786184}
+  deathRoar: {fileID: 0}
 --- !u!212 &1949178144
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1226,7 +1170,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d853e38b6512b944e95148795d1a2b11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c43d3e7e286d64ae49f12b976336c931, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1287,7 +1231,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2104836706}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c42f68c6c7ebce4b959482db55d8bdd, type: 3}
+  m_Script: {fileID: 11500000, guid: 379637c79d15f48e3af47821d022e5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Tilesize: 0.64
