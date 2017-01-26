@@ -242,8 +242,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  deathRoar: {fileID: 0}
 --- !u!212 &578955498
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -352,8 +354,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  deathRoar: {fileID: 0}
 --- !u!212 &631618505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3947,8 +3951,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  deathRoar: {fileID: 0}
 --- !u!212 &1624918417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4058,8 +4064,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  health: 10
   sightRange: 10
   target: {fileID: 1076168193}
+  deathRoar: {fileID: 0}
 --- !u!212 &1625859425
 SpriteRenderer:
   m_ObjectHideFlags: 0
