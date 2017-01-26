@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 578955497}
   - component: {fileID: 578955496}
   - component: {fileID: 578955495}
+  - component: {fileID: 578955499}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -241,12 +242,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 10
-  sightRange: 10
-  target: {fileID: 1076168193}
-  bloodParticles: {fileID: 0}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  bloodParticles: {fileID: 867225982}
 --- !u!212 &578955498
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -282,6 +280,20 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &578955499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 578955493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 1076168193}
 --- !u!1 &631618500
 GameObject:
   m_ObjectHideFlags: 0
@@ -294,6 +306,7 @@ GameObject:
   - component: {fileID: 631618504}
   - component: {fileID: 631618503}
   - component: {fileID: 631618502}
+  - component: {fileID: 631618506}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -354,12 +367,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 10
-  sightRange: 10
-  target: {fileID: 1076168193}
-  bloodParticles: {fileID: 0}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  bloodParticles: {fileID: 867225982}
 --- !u!212 &631618505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -395,6 +405,20 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &631618506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 631618500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 1076168193}
 --- !u!1 &867225979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3880,6 +3904,7 @@ GameObject:
   - component: {fileID: 1624918416}
   - component: {fileID: 1624918415}
   - component: {fileID: 1624918414}
+  - component: {fileID: 1624918418}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -3940,12 +3965,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 10
-  sightRange: 10
-  target: {fileID: 1076168193}
-  bloodParticles: {fileID: 0}
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  bloodParticles: {fileID: 867225982}
 --- !u!212 &1624918417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3981,6 +4003,20 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1624918418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1624918412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 1076168193}
 --- !u!1 &1625859420
 GameObject:
   m_ObjectHideFlags: 0
@@ -3993,6 +4029,7 @@ GameObject:
   - component: {fileID: 1625859424}
   - component: {fileID: 1625859423}
   - component: {fileID: 1625859422}
+  - component: {fileID: 1625859426}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -4054,12 +4091,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  health: 100
-  sightRange: 10
-  target: {fileID: 1076168193}
-  bloodParticles: {fileID: 867225982}
+  health: 10
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  bloodParticles: {fileID: 867225982}
 --- !u!212 &1625859425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4095,6 +4129,20 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1625859426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1625859420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 1076168193}
 --- !u!1 &1663426282
 GameObject:
   m_ObjectHideFlags: 0
