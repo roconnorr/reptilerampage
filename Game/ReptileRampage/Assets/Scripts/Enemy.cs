@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
 	private GameObject particleRotation;
 
 	void Start() {
-		particleRotation = GameObject.Find("ParticleRotation");
+		
 	}
 
 	public void TakeDamage(int amount, Quaternion dir) {
@@ -29,8 +29,11 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void FireBloodParticles(Quaternion dir){
-		dir *= Quaternion.Euler(0, 0, -90);
-		particleRotation.transform.rotation = dir;
-		bloodParticles.Play();
+		print(dir);
+		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
+		//particleRotation.transform.rotation = dir;
+		//Vector3 position = transform.position;
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		localBloodParticles.Play();
 	}
 }
