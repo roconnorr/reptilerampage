@@ -13,15 +13,20 @@ public class TRex : MonoBehaviour {
 	public Transform rocketPrefab;
 
 	public float speed;
-	public int health;
 
 	private int timeSinceLastAction = 0;
+	public bool defencesDown;
+	private int defenceTimer = 0;
 
 	Vector3 targetLocation;
+
+	SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {
 		state = State.Idle;
+		defencesDown = false;
+		sr = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame
@@ -36,10 +41,10 @@ public class TRex : MonoBehaviour {
 					state = State.Walking;
 					timeSinceLastAction = 0;
 					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
-				} else if (rand < 7) {
+				} else if (rand < 10) {
 					state = State.Roaring;
 					timeSinceLastAction = 0;
-				} else if (rand < 9) {
+				} else if (rand < 13) {
 					state = State.Shooting;
 					timeSinceLastAction = 0;
 				}
@@ -66,6 +71,14 @@ public class TRex : MonoBehaviour {
 			Invoke("ShootWave", .2f);
 			state = State.Idle;
 		}
+
+		if (defenceTimer > 0) {
+			defenceTimer--;
+			sr.color = Color.red;
+		} else {
+			defencesDown = false;
+			sr.color = Color.white;
+		}
 	}
 
 	void ShootWave() {
@@ -75,6 +88,13 @@ public class TRex : MonoBehaviour {
 		for (int i = 0; i < 5; i++) {
 			GameMaster.CreateBullet (bulletPrefab, transform.position, angle, 10, 10, true, false);
 			angle += 5;
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		if(other.gameObject.GetComponent<BulletHoming>() && other.gameObject.GetComponent<BulletHoming>().iFrames == 0) {
+			defencesDown = true;
+			defenceTimer = 200;
 		}
 	}
 }

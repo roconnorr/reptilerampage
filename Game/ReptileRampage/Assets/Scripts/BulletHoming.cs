@@ -10,7 +10,7 @@ public class BulletHoming : MonoBehaviour {
 	public bool dmgEnemy;
 	public Transform target;
 	private Rigidbody2D rb;
-	private int iFrames;
+	public int iFrames;
 
 	public AudioClip wallHitSound = null;
 

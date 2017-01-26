@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Enemy : MonoBehaviour {
 	
 	public int health;
+	public bool isTRex;
 
 	public AudioClip deathRoar;
 	
@@ -14,12 +15,17 @@ public class Enemy : MonoBehaviour {
 		particleRotation = GameObject.Find("ParticleRotation");
 	}
 
-	public void TakeDamage(int amount, Quaternion dir) {	
-		health -= amount;
-		//FireBloodParticles(dir);
-		if (health <= 0) {
-			Destroy (gameObject);
-			AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+	public void TakeDamage(int amount, Quaternion dir) {
+		if (isTRex && !GetComponent<TRex>().defencesDown) {
+			//don't take damage
+		} else {
+			health -= amount;
+			Debug.Log (health);
+			//FireBloodParticles(dir);
+			if (health <= 0) {
+				Destroy (gameObject);
+				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+			}
 		}
 	}
 

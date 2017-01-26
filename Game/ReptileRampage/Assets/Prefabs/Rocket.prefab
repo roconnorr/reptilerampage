@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 60640896906122940}
   - component: {fileID: 114251337749436048}
   - component: {fileID: 50681907059552080}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,7 @@ MonoBehaviour:
   dmgPlayer: 0
   dmgEnemy: 0
   target: {fileID: 0}
+  iFrames: 0
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
 --- !u!212 &212867491844839290
 SpriteRenderer:

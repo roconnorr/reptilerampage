@@ -35,6 +35,8 @@ public class Bullet : MonoBehaviour {
 			} else {
 				Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
 			}
+		} else {
+			Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
 		}
 	}
 
