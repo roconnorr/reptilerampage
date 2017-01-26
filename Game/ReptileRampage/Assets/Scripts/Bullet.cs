@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour {
 	public float moveSpeed;
 	public int damage;
 	public bool dmgPlayer;
+	public bool dmgEnemy;
 
 
 	public AudioClip wallHitSound = null;
@@ -40,7 +41,7 @@ public class Bullet : MonoBehaviour {
 	//Collide with enemy
 	void OnTriggerEnter2D(Collider2D other) {
 
-		if (other.gameObject.tag == "Enemy" && !dmgPlayer) {
+		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
 			other.GetComponent<Enemy>().TakeDamage (damage);
 			Explode ();
 			Destroy (gameObject);

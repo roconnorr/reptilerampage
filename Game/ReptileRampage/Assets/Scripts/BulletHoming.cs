@@ -5,52 +5,30 @@ public class BulletHoming : MonoBehaviour {
 	public GameObject explosionPrefab;
 
 	public float moveSpeed;
-	public float mass;
-	public int turnDelay;
 	public int damage;
 	public bool dmgPlayer;
+	public bool dmgEnemy;
 	public Transform target;
-
-	private int turnCount = 0;
-	private Vector3 velocity;
+	private Rigidbody2D rb;
+	private int iFrames;
 
 	public AudioClip wallHitSound = null;
 
+	void Start () {
+		rb = GetComponent<Rigidbody2D> ();
+		iFrames = 50;
+	}
+
 	void Update () {
-		Vector3 desired_velocity = Vector3.Normalize (target.position - transform.position) * moveSpeed;
-		Vector3 steering = desired_velocity - velocity;
-		steering = steering / mass;
-
-		velocity = velocity + steering;
-
-		transform.Translate (velocity);
-
-//		Vector3 difference = target.position - transform.position;
-//		float rotation = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
-//		if (rotation < 0) {
-//			rotation += 360;
-//		}
-//		float a = rotation -transform.rotation.eulerAngles.z;
-//		if (a < 0) {
-//			a += 360;
-//		}
-//		if (turnCount == 0) {
-//			if (a < 80 || a > 270) {
-//				transform.Rotate (0, 0, -turnSpeed);
-//			} else if (a > 100 && a < 270) {
-//				transform.Rotate (0, 0, turnSpeed);
-//			} else {
-//				turnCount = turnDelay;
-//			}
-//		} else {
-//			turnCount--;
-//		}
-//
-//		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
-		// Check if the game object is visible, if not, destroy self   
-//		if(!Utility.isVisible(GetComponent<Renderer>(), Camera.main)) {
-//			Destroy(gameObject);
-//		}
+		if (iFrames > 0) {
+			iFrames--;
+		}
+		if(rb.velocity.magnitude > moveSpeed) {
+			rb.velocity = rb.velocity.normalized * moveSpeed;
+		}
+		rb.AddForce(Vector3.Normalize (target.position - transform.position) * 0.08f);
+		float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
+		transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 	}
 
 	//Collide with wall and player
@@ -62,19 +40,20 @@ public class BulletHoming : MonoBehaviour {
 			}
 			Destroy(gameObject);
 		}
-		if(other.gameObject.tag == "Player"){
+		if (other.gameObject.tag == "Player" && iFrames == 0) {
 			if (dmgPlayer) {
 				//damage player
 			} else {
 				Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
 			}
+		} else {
+			Physics2D.IgnoreCollision (other.collider, gameObject.GetComponent<Collider2D> ());
 		}
 	}
 
 	//Collide with enemy
 	void OnTriggerEnter2D(Collider2D other) {
-
-		if (other.gameObject.tag == "Enemy" && !dmgPlayer) {
+		if (other.gameObject.tag == "Enemy" && dmgEnemy && iFrames == 0) {
 			Explode ();
 			other.GetComponent<Enemy>().TakeDamage (damage);
 			Destroy (gameObject);
