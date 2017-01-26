@@ -60,7 +60,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1875707763596864}
   serializedVersion: 5
-  lengthInSec: 1
+  lengthInSec: 0.1
   speed: 1
   looping: 0
   prewarm: 0
@@ -113,7 +113,7 @@ ParticleSystem:
     serializedVersion: 3
     enabled: 1
     startLifetime:
-      scalar: 2
+      scalar: 0.2
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -152,7 +152,7 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     startSpeed:
-      scalar: 15
+      scalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -170,7 +170,7 @@ ParticleSystem:
         m_Curve:
         - serializedVersion: 2
           time: 0
-          value: 0.13333334
+          value: 0.5
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -506,11 +506,11 @@ ParticleSystem:
         m_RotationOrder: 4
       minMaxState: 0
     randomizeRotationDirection: 0
-    maxNumParticles: 100
+    maxNumParticles: 200
     size3D: 0
     rotation3D: 0
     gravityModifier:
-      scalar: 0.1
+      scalar: 3
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -555,8 +555,8 @@ ParticleSystem:
     radius: 0.01
     angle: 25.000002
     length: 5
-    boxX: 0
-    boxY: 0
+    boxX: 2
+    boxY: 4
     boxZ: 0
     arc: 360
     placementMode: 0
@@ -575,7 +575,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     rateOverTime:
-      scalar: 200
+      scalar: 400
       maxCurve:
         serializedVersion: 2
         m_Curve:

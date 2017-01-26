@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour {
 			//don't take damage
 		} else {
 			health -= amount;
-			//FireBloodParticles(dir);
+			FireBloodParticles(dir);
 			if (health <= 0) {
 				Destroy (gameObject);
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
@@ -29,10 +29,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void FireBloodParticles(Quaternion dir){
-		print(dir);
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
-		//particleRotation.transform.rotation = dir;
-		//Vector3 position = transform.position;
 		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
 		localBloodParticles.Play();
 	}
