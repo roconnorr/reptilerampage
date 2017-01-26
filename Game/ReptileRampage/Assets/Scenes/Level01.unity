@@ -243,8 +243,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  isTRex: 0
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
-  bloodParticles: {fileID: 867225982}
+  bloodParticles: {fileID: 198187515249569352, guid: 8e8b2505f6e75264dade04ef0c8180d7,
+    type: 2}
 --- !u!212 &578955498
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -368,8 +370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  isTRex: 0
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
-  bloodParticles: {fileID: 867225982}
+  bloodParticles: {fileID: 198187515249569352, guid: 8e8b2505f6e75264dade04ef0c8180d7,
+    type: 2}
 --- !u!212 &631618505
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3966,8 +3970,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  isTRex: 0
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
-  bloodParticles: {fileID: 867225982}
+  bloodParticles: {fileID: 198187515249569352, guid: 8e8b2505f6e75264dade04ef0c8180d7,
+    type: 2}
 --- !u!212 &1624918417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4092,8 +4098,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 10
+  isTRex: 0
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
-  bloodParticles: {fileID: 867225982}
+  bloodParticles: {fileID: 198187515249569352, guid: 8e8b2505f6e75264dade04ef0c8180d7,
+    type: 2}
 --- !u!212 &1625859425
 SpriteRenderer:
   m_ObjectHideFlags: 0
