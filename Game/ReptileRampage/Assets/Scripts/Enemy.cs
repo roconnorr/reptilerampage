@@ -9,10 +9,17 @@ public class Enemy : MonoBehaviour {
 	public AudioClip deathRoar;
 	
 	public ParticleSystem bloodParticles;
-	private GameObject particleRotation;
+
+	public ParticleSystem dustParticles;
+	private Quaternion dustRotation;
 
 	void Start() {
-		
+		//dustRotation = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
+		ParticleSystem localDustParticles = Instantiate(dustParticles, transform.position, dustRotation, transform) as ParticleSystem;
+		localDustParticles.Play();
+	}
+
+	void Update(){
 	}
 
 	public void TakeDamage(int amount, Quaternion dir) {
