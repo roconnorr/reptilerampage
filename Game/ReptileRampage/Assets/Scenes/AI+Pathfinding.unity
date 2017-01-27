@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 503509336}
   - component: {fileID: 503509334}
   - component: {fileID: 503509340}
+  - component: {fileID: 503509335}
   m_Layer: 0
   m_Name: Enemy (3)
   m_TagString: Enemy
@@ -315,6 +316,20 @@ MonoBehaviour:
   updateFrequency: 5
   DrawPathInEditor: 1
   PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
+--- !u!114 &503509335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 503509333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 531786184}
 --- !u!114 &503509336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -326,11 +341,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 5
-  sightRange: 10
-  target: {fileID: 531786184}
+  isTRex: 0
   deathRoar: {fileID: 0}
+  bloodParticles: {fileID: 0}
 --- !u!212 &503509337
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -643,6 +657,7 @@ GameObject:
   - component: {fileID: 1231414468}
   - component: {fileID: 1231414470}
   - component: {fileID: 1231414471}
+  - component: {fileID: 1231414467}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -698,6 +713,20 @@ Transform:
   m_Father: {fileID: 1164766827}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1231414467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1231414464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 531786184}
 --- !u!114 &1231414468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,11 +738,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 5
-  sightRange: 10
-  target: {fileID: 531786184}
+  isTRex: 0
   deathRoar: {fileID: 0}
+  bloodParticles: {fileID: 0}
 --- !u!114 &1231414470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -761,6 +789,7 @@ GameObject:
   - component: {fileID: 1290162268}
   - component: {fileID: 1290162266}
   - component: {fileID: 1290162272}
+  - component: {fileID: 1290162267}
   m_Layer: 0
   m_Name: Enemy (2)
   m_TagString: Enemy
@@ -783,6 +812,20 @@ MonoBehaviour:
   updateFrequency: 5
   DrawPathInEditor: 1
   PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
+--- !u!114 &1290162267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1290162265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 531786184}
 --- !u!114 &1290162268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -794,11 +837,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 5
-  sightRange: 10
-  target: {fileID: 531786184}
+  isTRex: 0
   deathRoar: {fileID: 0}
+  bloodParticles: {fileID: 0}
 --- !u!212 &1290162269
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1101,6 +1143,7 @@ GameObject:
   - component: {fileID: 1949178143}
   - component: {fileID: 1949178141}
   - component: {fileID: 1949178147}
+  - component: {fileID: 1949178142}
   m_Layer: 0
   m_Name: Enemy (1)
   m_TagString: Enemy
@@ -1123,6 +1166,20 @@ MonoBehaviour:
   updateFrequency: 5
   DrawPathInEditor: 1
   PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
+--- !u!114 &1949178142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949178140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
+  sightRange: 10
+  target: {fileID: 531786184}
 --- !u!114 &1949178143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1134,11 +1191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
   health: 5
-  sightRange: 10
-  target: {fileID: 531786184}
+  isTRex: 0
   deathRoar: {fileID: 0}
+  bloodParticles: {fileID: 0}
 --- !u!212 &1949178144
 SpriteRenderer:
   m_ObjectHideFlags: 0
