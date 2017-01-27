@@ -78,7 +78,9 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void MoveDirect() {
-		transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed/40);
+		if (Vector3.Distance (transform.position, target.transform.position) > 0.2) {
+			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed / 40);
+		}
 	}
 
 	void MovePathFind() {
