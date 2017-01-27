@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TRex : MonoBehaviour {
 	
@@ -19,9 +17,9 @@ public class TRex : MonoBehaviour {
 	private int defenceTimer = 0;
 	private int blocked = 0;
 
-	Vector3 targetLocation;
+	private Vector3 targetLocation;
 
-	SpriteRenderer sr;
+	private SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {

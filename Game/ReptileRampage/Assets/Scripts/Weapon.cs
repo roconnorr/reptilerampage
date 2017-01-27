@@ -18,8 +18,8 @@ public class Weapon : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
 
-	Transform firePoint;
-	Transform crossHair;
+	private Transform firePoint;
+	private Transform crossHair;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();

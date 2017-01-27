@@ -8,10 +8,10 @@ public class Player : MonoBehaviour {
 
    public ParticleSystem dustParticles;
 
-   Rigidbody2D rb;
+   private Rigidbody2D rb;
 
-   float horizontal;
-   float vertical;
+   private float horizontal;
+   private float vertical;
    void Start() {
         rb = GetComponent<Rigidbody2D>();
         soundSource = gameObject.GetComponent<AudioSource>();
@@ -26,7 +26,7 @@ public class Player : MonoBehaviour {
          horizontal = Input.GetAxis("Horizontal");
          vertical = Input.GetAxis("Vertical");
  
-         Vector3 movement = new Vector2(horizontal, vertical);
+         Vector2 movement = new Vector2(horizontal, vertical);
 
          rb.AddForce(movement * speed / Time.deltaTime);
          //rb.velocity = movement * speed;
