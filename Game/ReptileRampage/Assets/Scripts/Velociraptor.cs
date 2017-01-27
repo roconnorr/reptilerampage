@@ -17,12 +17,18 @@ public class Velociraptor : MonoBehaviour {
 	private bool hasSeenTarget = false;
 	private bool avoiding = false;
 
+	private Animator animator;
+	private SpriteRenderer sr;
+	private float xPrev = 0;
+
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
 
 	void Start() {
 		targetInRange = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
+		animator = GetComponent<Animator>();
+		sr = GetComponent<SpriteRenderer> ();
 	}
 
 	void FixedUpdate() {
@@ -42,7 +48,10 @@ public class Velociraptor : MonoBehaviour {
 				Avoid (nearestEnemy);
 			}
 			MoveDirect ();
-			hasSeenTarget = true;
+			if (hasSeenTarget == false) {
+				hasSeenTarget = true;
+				animator.Play("velociraptor_run");
+			}
 		} else {
 			if (hasSeenTarget) {
 				MovePathFind ();
@@ -50,6 +59,8 @@ public class Velociraptor : MonoBehaviour {
 				MovePatrol ();
 			}
 		}
+		sr.flipX = transform.position.x > xPrev;
+		xPrev = transform.position.x;
 	}
 
 
