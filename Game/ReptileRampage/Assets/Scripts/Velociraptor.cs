@@ -37,15 +37,17 @@ public class Velociraptor : MonoBehaviour {
 		targetInRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < sightRange;
 		if (targetInRange && !targetViewBlocked) {
 			Transform nearestEnemy = GetNearestEnemy();
-			float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-			if (avoiding) {
-				if (dist > 2) {
-					avoiding = false;
+			if (nearestEnemy != null) {
+				float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+				if (avoiding) {
+					if (dist > 2) {
+						avoiding = false;
+					}
+					Avoid (nearestEnemy);
+				} else if (dist < 1.5) {
+					avoiding = true;
+					Avoid (nearestEnemy);
 				}
-				Avoid (nearestEnemy);
-			} else if (nearestEnemy != null && dist < 1.5) {
-				avoiding = true;
-				Avoid (nearestEnemy);
 			}
 			MoveDirect ();
 			if (hasSeenTarget == false) {
