@@ -15,6 +15,7 @@ public class Velociraptor : MonoBehaviour {
 	private bool targetViewBlocked;
 	private bool followingPath;
 	private bool hasSeenTarget = false;
+	private bool avoiding = false;
 
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
@@ -28,19 +29,25 @@ public class Velociraptor : MonoBehaviour {
 		//Check obstruction
 		targetViewBlocked = TargetHiddenByObstacles ();
 		targetInRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < sightRange;
-		//If in view move direct
 		if (targetInRange && !targetViewBlocked) {
-			//Try change to steering to stop clumping
-			transform.position = Vector3.MoveTowards (this.transform.position, target.transform.position, speed/40);
+			Transform nearestEnemy = GetNearestEnemy();
+			float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+			if (avoiding) {
+				if (dist > 2) {
+					avoiding = false;
+				}
+				Avoid (nearestEnemy);
+			} else if (nearestEnemy != null && dist < 1.5) {
+				avoiding = true;
+				Avoid (nearestEnemy);
+			}
+			MoveDirect ();
 			hasSeenTarget = true;
-			//If not in view...
 		} else {
-			//Pathfind if target has been seen previously
 			if (hasSeenTarget) {
-				pathfinder.GoTowards (target, speed);
-				//Patrol if target has not been seen previously
+				MovePathFind ();
 			} else {
-				//patrol
+				MovePatrol ();
 			}
 		}
 	}
@@ -50,7 +57,6 @@ public class Velociraptor : MonoBehaviour {
 		float distanceToPlayer = Vector2.Distance(this.transform.position, target.transform.position);
 		RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, target.transform.position - transform.position, distanceToPlayer);
 		Debug.DrawRay(this.transform.position, target.transform.position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
-		List<float> distances = new List<float>();
 
 		foreach (RaycastHit2D hit in hits) {           
 			// ignore the enemy's own colliders (and other enemies)
@@ -69,5 +75,35 @@ public class Velociraptor : MonoBehaviour {
 
 		// if no objects were closer to the enemy than the player return false (player is not hidden by an object)
 		return false; 
+	}
+
+	void MoveDirect() {
+		transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed/40);
+	}
+
+	void MovePathFind() {
+		pathfinder.GoTowards (target, speed);
+	}
+
+	void MovePatrol() {
+		//patrol
+	}
+
+	void Avoid(Transform obj) {
+		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed/80);
+	}
+
+	Transform GetNearestEnemy() {
+		float nearestDistance = 9999;
+		Transform nearestEnemy = null;
+		var objects = GameObject.FindGameObjectsWithTag ("Enemy");
+		foreach (var obj in objects) {
+			float dist = Vector3.Distance (obj.transform.position, transform.position);
+			if (dist < nearestDistance && dist > 0) {
+				nearestEnemy = obj.GetComponent<Transform> ();
+				nearestDistance = dist;
+			}
+		}
+		return nearestEnemy;
 	}
 }
