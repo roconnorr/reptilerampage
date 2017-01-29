@@ -33,25 +33,26 @@ public class StegoTurret : MonoBehaviour {
 	void Update () {
 		targetInShootRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < shootRange;
 
-		//Rotation
-		Vector3 dir = target.transform.position - transform.position;
-		dir.Normalize();
-		float rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
-		if (rotZ < 0) {
-			rotZ += 360;
-		}
+		if(targetInShootRange){
+			Vector3 dir = target.transform.position - transform.position;
+			dir.Normalize();
+			float rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
+			if (rotZ < 0) {
+				rotZ += 360;
+			}
 
-		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
+			spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
 
-		while (trigger && Time.time > timeToFire && targetInShootRange) {
-			timeToFire = Time.time + 1/fireRate;
-			CreateBullet();
-			bulletCount++;	
+			while (trigger && Time.time > timeToFire) {
+				timeToFire = Time.time + 1/fireRate;
+				CreateBullet();
+				bulletCount++;	
+			}
+			if (trigger && bulletCount >= burstBulletLimit){
+				StartCoroutine(Shoot());
+			}
 		}
-		if (trigger && bulletCount >= burstBulletLimit){
-            StartCoroutine(Shoot());
-        }
 	}
 
 	IEnumerator Shoot() {
