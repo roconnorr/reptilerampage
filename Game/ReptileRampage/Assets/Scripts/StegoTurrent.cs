@@ -1,70 +1,74 @@
 ﻿using UnityEngine;
+using System.Collections;
 
-public class Weapon : MonoBehaviour {
+public class StegoTurrent : MonoBehaviour {
 
 	public int damage;
 	public float fireRate;
 	public float shotSpeed;
 	public float range;
 	public float strayFactor;
-	public float screenShake;
-	
+	public GameObject target;
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
-	public Transform crossHairPrefab;
 	public AudioClip shotSound = null;
-	float timeToFire = 0;
 	public int rotationOffset = 0;
+	public float rotSpeed = 90f;
+	public int burstBulletLimit = 5;
+	public float timeTilNextBurst = 3f;
 
+	private float timeToFire = 0;
+	private bool trigger = true;
 	private SpriteRenderer spriteRenderer;
-
 	private Transform firePoint;
-	private Transform crossHair;
+	private int bulletCount;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		Cursor.visible = false;
 		firePoint = transform.FindChild ("FirePoint");
-		crossHair = Instantiate (crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
 	}
 
 	void Update () {
 		//Rotation
-		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
-		difference.Normalize ();
-		float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+		Vector3 dir = target.transform.position - transform.position;
+		dir.Normalize();
+		float rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
 		if (rotZ < 0) {
 			rotZ += 360;
 		}
-		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
-		if (rotZ > 45 && rotZ < 135) {
-			spriteRenderer.sortingOrder = 0;
-		} else {
-			spriteRenderer.sortingOrder = 2;
-		}
 
-		crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
+		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
+
+		while (trigger && Time.time > timeToFire) {
 			timeToFire = Time.time + 1/fireRate;
-			CreateBullet ();
+			CreateBullet();
+			bulletCount++;	
 		}
+		if (trigger && bulletCount >= burstBulletLimit){
+            StartCoroutine(Shoot());
+        }
 	}
+
+	IEnumerator Shoot() {
+    	trigger = false;
+    	yield return new WaitForSeconds(timeTilNextBurst);
+		bulletCount = 0;
+    	trigger = true;
+ 	}
 
 	void CreateBullet () {
 		//Create bullet with stray modifier
 		float strayValue = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90, damage, shotSpeed, range, false, true);
+		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90, damage, shotSpeed, range, true, false);
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);
 		}
-		//Shake screen
-		gameObject.GetComponent<CameraShake>().StartShaking(screenShake);
 		//Create muzzle flash - needs to have a custom one
 		Transform flash = Instantiate (muzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
 		flash.parent = firePoint;
-		float size = Random.Range (0.1f, 0.13f);
+		float size = Random.Range (0.1f, 0.15f);
 		flash.localScale = new Vector3 (size, size, size);
 		Destroy (flash.gameObject, 0.02f);
 	}

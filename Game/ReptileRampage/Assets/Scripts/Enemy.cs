@@ -28,8 +28,8 @@ public class Enemy : MonoBehaviour {
 			health -= amount;
 			FireBloodParticles(dir);
 			if (health <= 0) {
-				Destroy (gameObject);
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+				Destroy (gameObject);
 			}
 		}
 	}
