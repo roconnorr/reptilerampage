@@ -195,7 +195,6 @@ MonoBehaviour:
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198187515249569352, guid: 8e8b2505f6e75264dade04ef0c8180d7,
     type: 2}
-  dustParticles: {fileID: 0}
 --- !u!114 &256214287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,12 +318,12 @@ GameObject:
   - component: {fileID: 947523972}
   - component: {fileID: 947523977}
   m_Layer: 0
-  m_Name: Enemy (2)
+  m_Name: Velociraptor (2)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &947523971
 Transform:
   m_ObjectHideFlags: 0
@@ -349,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   sightRange: 10
   target: {fileID: 1076168193}
 --- !u!61 &947523973
@@ -396,8 +395,6 @@ MonoBehaviour:
   isTRex: 0
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
-    type: 2}
-  dustParticles: {fileID: 198043415610577090, guid: 39c2caeec458f8a46a4e1c19f817973d,
     type: 2}
 --- !u!212 &947523976
 SpriteRenderer:
@@ -1359,12 +1356,12 @@ GameObject:
   - component: {fileID: 1624918418}
   - component: {fileID: 1624918419}
   m_Layer: 0
-  m_Name: Enemy (1)
+  m_Name: Velociraptor (1)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1624918413
 Transform:
   m_ObjectHideFlags: 0
@@ -1423,8 +1420,6 @@ MonoBehaviour:
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
-  dustParticles: {fileID: 198043415610577090, guid: 39c2caeec458f8a46a4e1c19f817973d,
-    type: 2}
 --- !u!212 &1624918417
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1471,7 +1466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   sightRange: 10
   target: {fileID: 1076168193}
 --- !u!95 &1624918419
@@ -1506,7 +1501,7 @@ GameObject:
   - component: {fileID: 1625859426}
   - component: {fileID: 1625859427}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Velociraptor
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1570,8 +1565,6 @@ MonoBehaviour:
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
-  dustParticles: {fileID: 198043415610577090, guid: 39c2caeec458f8a46a4e1c19f817973d,
-    type: 2}
 --- !u!212 &1625859425
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1618,7 +1611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   sightRange: 10
   target: {fileID: 1076168193}
 --- !u!95 &1625859427
@@ -1653,12 +1646,12 @@ GameObject:
   - component: {fileID: 1659405080}
   - component: {fileID: 1659405085}
   m_Layer: 0
-  m_Name: Enemy (3)
+  m_Name: Velociraptor (3)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1659405079
 Transform:
   m_ObjectHideFlags: 0
@@ -1683,7 +1676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  speed: 2
   sightRange: 10
   target: {fileID: 1076168193}
 --- !u!61 &1659405081
@@ -1730,8 +1723,6 @@ MonoBehaviour:
   isTRex: 0
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
-    type: 2}
-  dustParticles: {fileID: 198043415610577090, guid: 39c2caeec458f8a46a4e1c19f817973d,
     type: 2}
 --- !u!212 &1659405084
 SpriteRenderer:

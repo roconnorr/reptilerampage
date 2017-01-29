@@ -38,6 +38,6 @@ public class SumScoreManager : MonoBehaviour {
       GUI.skin.label.alignment = TextAnchor.UpperRight;
       GUI.skin.label.fontSize = 30;
       //GUI.skin.label.fontStyle = FontStyle.Bold;
-      GUI.Label(new Rect(10,60,300,60), "Highest Score: " + SumScore.HighScore);
+      GUI.Label(new Rect(-5,60,300,60), "Highest Score: " + SumScore.HighScore);
    }
 }

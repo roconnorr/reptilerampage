@@ -35,9 +35,9 @@ public class Player : MonoBehaviour {
          {
              rb.velocity = rb.velocity.normalized * speed;
          }
-         Quaternion rotation = Quaternion.LookRotation(movement);
+ /*        Quaternion rotation = Quaternion.LookRotation(movement);
          dustParticles.transform.rotation = Quaternion.Lerp(dustParticles.transform.rotation, Quaternion.Inverse(rotation), 0.1f);
-/*
+
         if(Input.GetKey("d")) {
             dustParticles.transform.rotation = Quaternion.Euler(0f, -90f, 0f);
 		} else if(Input.GetKey("a")) {
