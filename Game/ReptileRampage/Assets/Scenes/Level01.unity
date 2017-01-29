@@ -1948,11 +1948,11 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -0.00000023841858, y: 0}
+  m_Offset: {x: 0.07909149, y: 0.0016477704}
   serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.34}
+  m_Size: {x: 1.48, y: 0.58}
 --- !u!114 &1759105400
 MonoBehaviour:
   m_ObjectHideFlags: 0

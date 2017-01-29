@@ -16,9 +16,11 @@ public class StegoTurret : MonoBehaviour {
 	public float rotSpeed = 90f;
 	public int burstBulletLimit = 5;
 	public float timeTilNextBurst = 3f;
+	public int shootRange;
 
 	private float timeToFire = 0;
 	private bool trigger = true;
+	private bool targetInShootRange = false;
 	private SpriteRenderer spriteRenderer;
 	private Transform firePoint;
 	private int bulletCount;
@@ -29,6 +31,8 @@ public class StegoTurret : MonoBehaviour {
 	}
 
 	void Update () {
+		targetInShootRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < shootRange;
+
 		//Rotation
 		Vector3 dir = target.transform.position - transform.position;
 		dir.Normalize();
@@ -40,7 +44,7 @@ public class StegoTurret : MonoBehaviour {
 
 		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
 
-		while (trigger && Time.time > timeToFire) {
+		while (trigger && Time.time > timeToFire && targetInShootRange) {
 			timeToFire = Time.time + 1/fireRate;
 			CreateBullet();
 			bulletCount++;	

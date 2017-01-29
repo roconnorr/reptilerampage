@@ -4,13 +4,13 @@ public class Stegosaurus : MonoBehaviour {
 
 	public float speed;
 
-	public int sightRange;
+	public int moveRange;
 
 	public GameObject target;
 	private Transform destination;
 
 	//Boolean variables
-	private bool targetInRange;
+	private bool targetInMoveRange;
 	private bool targetViewBlocked;
 	private bool followingPath;
 	private bool hasSeenTarget = false;
@@ -24,17 +24,17 @@ public class Stegosaurus : MonoBehaviour {
 	private AStarPathfinder pathfinder = null;
 
 	void Start() {
-		targetInRange = false;
+		targetInMoveRange = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		//animator = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer> ();
 	}
 
-	void FixedUpdate() {
+	void Update() {
 		//Check obstruction
 		targetViewBlocked = TargetHiddenByObstacles ();
-		targetInRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < sightRange;
-		if (targetInRange && !targetViewBlocked) {
+		targetInMoveRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < moveRange;
+		if (targetInMoveRange && !targetViewBlocked) {
 			Transform nearestEnemy = GetNearestEnemy();
 			if (nearestEnemy != null) {
 				float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
@@ -54,7 +54,7 @@ public class Stegosaurus : MonoBehaviour {
 				//animator.Play("velociraptor_run");
 			}
 		} else {
-			if (hasSeenTarget) {
+			if (hasSeenTarget && targetInMoveRange) {
 				MovePathFind ();
 			} else {
 				MovePatrol ();
@@ -113,7 +113,7 @@ public class Stegosaurus : MonoBehaviour {
 		var objects = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (var obj in objects) {
 			float dist = Vector3.Distance (obj.transform.position, transform.position);
-			if (dist < nearestDistance && dist > 0) {
+			if (dist < nearestDistance && dist > 0 && obj.GetComponent<Stegosaurus>()) {
 				nearestEnemy = obj.GetComponent<Transform> ();
 				nearestDistance = dist;
 			}
