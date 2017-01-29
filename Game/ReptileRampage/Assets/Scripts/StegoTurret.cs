@@ -41,8 +41,8 @@ public class StegoTurret : MonoBehaviour {
 			if (rotZ < 0) {
 				rotZ += 360;
 			}
-
-			spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
+			Debug.Log(rotZ);
+			spriteRenderer.flipY = (rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
 
 			while (trigger && Time.time > timeToFire) {
 				timeToFire = Time.time + 1/fireRate;
