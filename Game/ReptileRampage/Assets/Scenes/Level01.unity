@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379637c79d15f48e3af47821d022e5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilesize: 1.28
+  Tilesize: 2.3
   MapStartPosition: {x: -64, y: -64}
   MapEndPosition: {x: 66, y: 66}
   DisallowedTags:
@@ -1204,6 +1204,10 @@ Prefab:
         type: 2}
       propertyPath: InitialModule.startLifetime.scalar
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134010484056032, guid: 39c2caeec458f8a46a4e1c19f817973d, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39c2caeec458f8a46a4e1c19f817973d, type: 2}
