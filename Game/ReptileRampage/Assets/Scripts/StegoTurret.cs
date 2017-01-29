@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StegoTurrent : MonoBehaviour {
+public class StegoTurret : MonoBehaviour {
 
 	public int damage;
 	public float fireRate;

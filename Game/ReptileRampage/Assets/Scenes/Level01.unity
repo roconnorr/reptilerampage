@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 39978713}
   - component: {fileID: 39978711}
   m_Layer: 0
-  m_Name: Turrent
+  m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -115,7 +115,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 39978709}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.116, y: 0.303, z: -1}
+  m_LocalPosition: {x: 0.024, y: 0.282, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1812092893}
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 39978709}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13283beaa249a4dd1958ade0569a7ed8, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dc78f505ab3145cd9e461a3ee658713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 10
@@ -1901,7 +1901,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1759105395}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.03, y: -2.07, z: -1}
+  m_LocalPosition: {x: 6.86, y: -2.07, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 39978710}
