@@ -4,13 +4,14 @@ public class Stegosaurus : MonoBehaviour {
 
 	public float speed;
 
-	public int moveRange;
+	public int sightRange;
 
 	public GameObject target;
 	private Transform destination;
 
 	//Boolean variables
-	private bool targetInMoveRange;
+	private bool needToMove;
+	private bool targetInRange;
 	private bool targetViewBlocked;
 	private bool followingPath;
 	private bool hasSeenTarget = false;
@@ -24,7 +25,8 @@ public class Stegosaurus : MonoBehaviour {
 	private AStarPathfinder pathfinder = null;
 
 	void Start() {
-		targetInMoveRange = false;
+		targetInRange = false;
+		needToMove = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		//animator = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer> ();
@@ -33,8 +35,9 @@ public class Stegosaurus : MonoBehaviour {
 	void Update() {
 		//Check obstruction
 		targetViewBlocked = TargetHiddenByObstacles ();
-		targetInMoveRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < moveRange;
-		if (targetInMoveRange && !targetViewBlocked) {
+		targetInRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < sightRange;
+		needToMove = Vector3.Distance(gameObject.transform.position, target.transform.position) >= sightRange;
+		if (targetInRange && !targetViewBlocked) {
 			Transform nearestEnemy = GetNearestEnemy();
 			if (nearestEnemy != null) {
 				float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
@@ -48,13 +51,13 @@ public class Stegosaurus : MonoBehaviour {
 					Avoid (nearestEnemy);
 				}
 			}
-			MoveDirect ();
+			if(needToMove) MoveDirect ();
 			if (hasSeenTarget == false) {
 				hasSeenTarget = true;
 				//animator.Play("velociraptor_run");
 			}
 		} else {
-			if (hasSeenTarget && targetInMoveRange) {
+			if (hasSeenTarget && needToMove) {
 				MovePathFind ();
 			} else {
 				MovePatrol ();
