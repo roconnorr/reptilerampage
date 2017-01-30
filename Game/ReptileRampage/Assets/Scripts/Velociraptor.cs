@@ -6,6 +6,7 @@ public class Velociraptor : MonoBehaviour {
 	public float speed;
 	public float sightRange;
 	public float followRange;
+	public float patrolRange;
 	public GameObject target;
 
 	//Boolean variables
@@ -13,10 +14,13 @@ public class Velociraptor : MonoBehaviour {
 	private bool targetInSightRange = false;
 	private bool targetViewBlocked;
 	private bool isChasing = false;
+	private bool isWandering = false;
 	private bool avoiding = false;
 	private bool flipped = false;
 
 	private float xPrev = 0;
+	private Vector3 patrolLocation;
+	private Vector3 wanderLocation;
 
 	//Component variables
 	private AStarPathfinder pathfinder = null;
@@ -26,12 +30,13 @@ public class Velociraptor : MonoBehaviour {
 	void Start() {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		animator = GetComponent<Animator>();
+		patrolLocation = transform.position;
 	}
 
 	//Run every tick
 	void Update() {
 		//Get vision booleans
-		targetViewBlocked = TargetHiddenByObstacles ();
+		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
 		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < followRange;
 		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 
@@ -67,7 +72,10 @@ public class Velociraptor : MonoBehaviour {
 				}
 			}
 		} else {
-			isChasing = false;
+			if (isChasing) {
+				isChasing = false;
+				patrolLocation = transform.position;
+			}
 			MovePatrol ();
 		}
 
@@ -83,26 +91,20 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 
-	bool TargetHiddenByObstacles()  {
-		float distanceToPlayer = Vector2.Distance(this.transform.position, target.transform.position);
-		RaycastHit2D[] hits = Physics2D.RaycastAll(this.transform.position, target.transform.position - transform.position, distanceToPlayer);
-		Debug.DrawRay(this.transform.position, target.transform.position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
+	bool PositionHiddenByObstacles(Vector3 position)  {
+		float distanceToPlayer = Vector2.Distance(transform.position, position);
+		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, position - transform.position, distanceToPlayer);
+		Debug.DrawRay(transform.position, position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
 
-		foreach (RaycastHit2D hit in hits) {           
-			// ignore the enemy's own colliders (and other enemies)
-			if (hit.transform.tag == "Enemy") {
-				continue;
-			}
-
-			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the player can only see as far as the player)
-			if (hit.transform.tag != "Player") {
+		foreach (RaycastHit2D hit in hits) {
+			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)
+			if (hit.transform.tag == "Wall") {
 				if (targetViewBlocked == false){
-					pathfinder.Reset(this.transform.position, target.transform.position);
+					pathfinder.Reset(transform.position, position);
 				}
 				return true;
 			}
 		}
-
 		// if no objects were closer to the enemy than the player return false (player is not hidden by an object)
 		return false; 
 	}
@@ -118,11 +120,44 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void MovePatrol() {
-		//patrol
+		if (Random.Range (0, 200) == 1) {
+			if (!isWandering) {
+				bool foundLocation = false;
+				int tries = 0;
+				while (foundLocation == false && tries < 5) {
+					wanderLocation = new Vector3 (patrolLocation.x + Random.Range (-patrolRange, patrolRange), patrolLocation.y + Random.Range (-patrolRange, patrolRange));
+					if (PositionHiddenByObstacles (wanderLocation)) {
+						tries++;
+					} else {
+						foundLocation = true;
+					}
+				}
+				if (tries < 5) {
+					isWandering = true;
+					animator.Play ("velociraptor_run");
+				}
+			} else {
+				isWandering = false;
+				animator.Play ("velociraptor_idle");
+			}
+		}
+		if (isWandering) {
+			transform.position = Vector3.MoveTowards (transform.position, wanderLocation, speed / 80);
+		}
 	}
 
 	void Avoid(Transform obj) {
-		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed/80);
+		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed /80);
+	}
+
+	//Stop patrolling if collide with wall
+	void OnCollisionEnter2D (Collision2D other){
+		Debug.Log ("Bang");
+		if(other.gameObject.tag == "Wall"){
+			if (isWandering) {
+				isWandering = false;
+			}
+		}
 	}
 
 	Transform GetNearestEnemy() {

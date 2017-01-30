@@ -458,6 +458,7 @@ GameObject:
   - component: {fileID: 947523973}
   - component: {fileID: 947523972}
   - component: {fileID: 947523977}
+  - component: {fileID: 947523978}
   m_Layer: 0
   m_Name: Velociraptor (2)
   m_TagString: Enemy
@@ -472,7 +473,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 947523970}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 4.81, z: -1}
+  m_LocalPosition: {x: 13.75, y: 15.62, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 283253274}
@@ -491,7 +492,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
-  followRange: 0
+  followRange: 20
+  patrolRange: 5
   target: {fileID: 1076168193}
 --- !u!61 &947523973
 BoxCollider2D:
@@ -506,7 +508,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.00000023841858, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.34}
+  m_Size: {x: 0.3, y: 0.2}
 --- !u!114 &947523974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -590,6 +592,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!50 &947523978
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 947523970}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &997063099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1454,7 @@ GameObject:
   - component: {fileID: 1624918414}
   - component: {fileID: 1624918418}
   - component: {fileID: 1624918419}
+  - component: {fileID: 1624918420}
   m_Layer: 0
   m_Name: Velociraptor (1)
   m_TagString: Enemy
@@ -1446,7 +1469,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1624918412}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.61, y: 5.41, z: -1}
+  m_LocalPosition: {x: 11.63, y: 16.22, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 283253274}
@@ -1465,7 +1488,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.00000023841858, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.34}
+  m_Size: {x: 0.3, y: 0.2}
 --- !u!114 &1624918415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1545,7 +1568,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
-  followRange: 0
+  followRange: 20
+  patrolRange: 5
   target: {fileID: 1076168193}
 --- !u!95 &1624918419
 Animator:
@@ -1564,6 +1588,26 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!50 &1624918420
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1624918412}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1625859420
 GameObject:
   m_ObjectHideFlags: 0
@@ -1592,7 +1636,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1625859420}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.44, y: 6.21, z: -1}
+  m_LocalPosition: {x: 15.68, y: 17.02, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 283253274}
@@ -1611,7 +1655,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.00000023841858, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.34}
+  m_Size: {x: 0.3, y: 0.2}
 --- !u!114 &1625859423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1691,7 +1735,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
-  followRange: 0
+  followRange: 20
+  patrolRange: 5
   target: {fileID: 1076168193}
 --- !u!95 &1625859427
 Animator:
@@ -1738,7 +1783,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1659405078}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.64, y: 3.21, z: -1}
+  m_LocalPosition: {x: 15.88, y: 14.02, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 283253274}
@@ -1757,7 +1802,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
-  followRange: 0
+  followRange: 20
+  patrolRange: 5
   target: {fileID: 1076168193}
 --- !u!61 &1659405081
 BoxCollider2D:
@@ -1772,7 +1818,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.00000023841858, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.59, y: 0.34}
+  m_Size: {x: 0.3, y: 0.2}
 --- !u!114 &1659405082
 MonoBehaviour:
   m_ObjectHideFlags: 0
