@@ -18,6 +18,7 @@ public class Player : MonoBehaviour {
    public GameObject slot2 = null;
    public WeaponType slot1type;
    public WeaponType slot2type;
+   
    private bool slot1active = true;
    private bool intrigger = false;
    private PickupPrefab pk;
@@ -67,7 +68,17 @@ public class Player : MonoBehaviour {
    void Update(){
        if(Input.GetButtonDown("Pickup") && intrigger == true){
             ChangeWeapon(pk.type, pk);
-            //instead of this check distance to player in the prefab?
+        }
+        if(slot1active){
+            slot1.SetActive(true);
+            slot2.SetActive(false);
+        }else{
+            slot1.SetActive(false);
+            slot2.SetActive(true);
+        }
+
+        if(Input.GetButton("Swap")){
+            SwapSlot();
         }
 
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
@@ -77,9 +88,7 @@ public class Player : MonoBehaviour {
         }else{
             soundSource.Stop();
         }
-        //if(Input.GetButton("Swap")){
-          //  SwapSlot();
-        //}
+        
    }
 
    public void ChangeWeapon(WeaponType type, PickupPrefab pickup){
@@ -91,6 +100,7 @@ public class Player : MonoBehaviour {
 			}else if(slot2 == null){
                 slot2 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
+                slot1active = false;
                 Destroy(pickupObject);
 			}else{
 				//drop slot 1 gun
