@@ -18,8 +18,8 @@ public class Weapon : MonoBehaviour {
 
 	private SpriteRenderer spriteRenderer;
 
-	Transform firePoint;
-	Transform crossHair;
+	private Transform firePoint;
+	private Transform crossHair;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
@@ -64,7 +64,7 @@ public class Weapon : MonoBehaviour {
 		//Create muzzle flash - needs to have a custom one
 		Transform flash = Instantiate (muzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
 		flash.parent = firePoint;
-		float size = Random.Range (0.05f, 0.1f);
+		float size = Random.Range (0.1f, 0.13f);
 		flash.localScale = new Vector3 (size, size, size);
 		Destroy (flash.gameObject, 0.02f);
 	}

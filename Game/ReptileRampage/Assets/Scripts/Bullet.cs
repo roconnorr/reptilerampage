@@ -42,6 +42,8 @@ public class Bullet : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
 			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
+			SumScore.Add(100);
+			SumScore.SaveHighScore();
 			Explode ();
 		}
 	}
