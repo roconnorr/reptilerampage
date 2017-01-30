@@ -7,19 +7,19 @@ public class Velociraptor : MonoBehaviour {
 	public int sightRange;
 
 	public GameObject target;
-	private Transform destination;
+	//private Transform destination;
 
 	//Boolean variables
 	private bool targetInRange;
 	private bool targetViewBlocked;
-	private bool followingPath;
+	//private bool followingPath;
 	private bool hasSeenTarget = false;
 	private bool avoiding = false;
 
 	private Animator animator;
 	private SpriteRenderer sr;
 	private float xPrev = 0;
-
+	private bool flipped = false;
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
 
@@ -60,7 +60,18 @@ public class Velociraptor : MonoBehaviour {
 				MovePatrol ();
 			}
 		}
-		sr.flipX = transform.position.x > xPrev;
+
+		//sr.flipX = transform.position.x > xPrev;
+		//xPrev = transform.position.x;
+
+		if((transform.position.x > xPrev) && !flipped){
+			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
+			flipped = true;
+		}
+		if((transform.position.x < xPrev) && flipped){
+			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
+			flipped = false;
+		}
 		xPrev = transform.position.x;
 	}
 
