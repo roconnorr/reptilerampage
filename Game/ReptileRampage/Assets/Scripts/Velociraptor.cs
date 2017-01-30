@@ -147,12 +147,10 @@ public class Velociraptor : MonoBehaviour {
 				}
 				if (tries < 5) {
 					isWandering = true;
-					Debug.Log ("Run");
 					animator.Play ("velociraptor_run");
 				}
 			} else {
 				isWandering = false;
-				Debug.Log ("Idle");
 				animator.Play ("velociraptor_idle");
 			}
 		}
