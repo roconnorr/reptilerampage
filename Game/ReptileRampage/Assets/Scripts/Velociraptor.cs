@@ -5,7 +5,7 @@ public class Velociraptor : MonoBehaviour {
 	//Public variables
 	public float speed;
 	public float sightRange;
-	public float followRange;
+	public float chaseRange;
 	public float patrolRange;
 	public GameObject target;
 
@@ -37,7 +37,7 @@ public class Velociraptor : MonoBehaviour {
 	void Update() {
 		//Get vision booleans
 		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < followRange;
+		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < chaseRange;
 		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 
 		//If seeing player when not chasing
@@ -50,7 +50,7 @@ public class Velociraptor : MonoBehaviour {
 		if (isChasing && targetInChaseRange) {
 			if (!targetViewBlocked) {
 				//Find nearest enemy and avoid if they're too close
-				Transform nearestEnemy = GetNearestEnemy ();
+				Transform nearestEnemy = GetNearestSameDino ();
 				if (nearestEnemy != null) {
 					float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
 					if (avoiding) {
@@ -78,7 +78,7 @@ public class Velociraptor : MonoBehaviour {
 			}
 			MovePatrol ();
 		}
-
+		//Direction
 		//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
 		if (isWandering) {
 			if ((transform.position.x > xPrev) && !flipped) {
@@ -165,13 +165,13 @@ public class Velociraptor : MonoBehaviour {
 		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed /80);
 	}
 
-	Transform GetNearestEnemy() {
+	Transform GetNearestSameDino() {
 		float nearestDistance = 9999;
 		Transform nearestEnemy = null;
 		var objects = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (var obj in objects) {
 			float dist = Vector3.Distance (obj.transform.position, transform.position);
-			if (dist < nearestDistance && dist > 0) {
+			if (dist < nearestDistance && dist > 0 && obj.GetComponent<Velociraptor>()) {
 				nearestEnemy = obj.GetComponent<Transform> ();
 				nearestDistance = dist;
 			}

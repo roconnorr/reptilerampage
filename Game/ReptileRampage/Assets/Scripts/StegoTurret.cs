@@ -33,7 +33,7 @@ public class StegoTurret : MonoBehaviour {
 	void Update () {
 		targetInShootRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < shootRange;
 
-		if(targetInShootRange){
+		if(targetInShootRange && GetComponentInParent<Stegosaurus>().isChasing){
 			Vector3 dir = target.transform.position - transform.position;
 			dir.Normalize();
 			float rotZ = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
