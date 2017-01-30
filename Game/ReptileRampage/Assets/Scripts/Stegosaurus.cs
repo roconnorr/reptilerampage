@@ -1,39 +1,40 @@
 ﻿using UnityEngine;
 
-public class Velociraptor : MonoBehaviour {
+public class Stegosaurus : MonoBehaviour {
 
 	public float speed;
-
 	public int sightRange;
-
 	public GameObject target;
-	//private Transform destination;
 
 	//Boolean variables
+	private bool needToMove;
 	private bool targetInRange;
 	private bool targetViewBlocked;
-	//private bool followingPath;
+	private bool followingPath;
 	private bool hasSeenTarget = false;
 	private bool avoiding = false;
 
-	private Animator animator;
+	//private Animator animator;
 	private SpriteRenderer sr;
 	private float xPrev = 0;
 	private bool flipped = false;
+
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
 
 	void Start() {
 		targetInRange = false;
+		needToMove = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
-		animator = GetComponent<Animator>();
+		//animator = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer> ();
 	}
 
-	void FixedUpdate() {
+	void Update() {
 		//Check obstruction
 		targetViewBlocked = TargetHiddenByObstacles ();
 		targetInRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < sightRange;
+		needToMove = Vector3.Distance(gameObject.transform.position, target.transform.position) >= sightRange;
 		if (targetInRange && !targetViewBlocked) {
 			Transform nearestEnemy = GetNearestEnemy();
 			if (nearestEnemy != null) {
@@ -48,31 +49,35 @@ public class Velociraptor : MonoBehaviour {
 					Avoid (nearestEnemy);
 				}
 			}
-			MoveDirect ();
+			if(needToMove) MoveDirect ();
 			if (hasSeenTarget == false) {
 				hasSeenTarget = true;
-				animator.Play("velociraptor_run");
+				//animator.Play("velociraptor_run");
 			}
 		} else {
-			if (hasSeenTarget) {
+			if (hasSeenTarget && needToMove) {
 				MovePathFind ();
 			} else {
 				MovePatrol ();
 			}
 		}
 
-		//sr.flipX = transform.position.x > xPrev;
-		//xPrev = transform.position.x;
-
-		if((transform.position.x > xPrev) && !flipped){
+		sr.flipX = transform.position.x > xPrev;
+		xPrev = transform.position.x;
+		/*if((transform.position.x > xPrev) && !flipped){
 			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
+			foreach (Transform child in transform){
+         		Vector3 childScale = transform.localScale;
+         		childScale.x  *= -1;
+        		transform.localScale = childScale;
+			}
 			flipped = true;
 		}
 		if((transform.position.x < xPrev) && flipped){
 			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
 			flipped = false;
 		}
-		xPrev = transform.position.x;
+		xPrev = transform.position.x;*/
 	}
 
 
@@ -101,7 +106,7 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void MoveDirect() {
-		if (Vector3.Distance (transform.position, target.transform.position) > 0.2) {
+		if (Vector3.Distance (transform.position, target.transform.position) > 0.5) {
 			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed / 40);
 		}
 	}
@@ -124,7 +129,7 @@ public class Velociraptor : MonoBehaviour {
 		var objects = GameObject.FindGameObjectsWithTag ("Enemy");
 		foreach (var obj in objects) {
 			float dist = Vector3.Distance (obj.transform.position, transform.position);
-			if (dist < nearestDistance && dist > 0) {
+			if (dist < nearestDistance && dist > 0 && obj.GetComponent<Stegosaurus>()) {
 				nearestEnemy = obj.GetComponent<Transform> ();
 				nearestDistance = dist;
 			}

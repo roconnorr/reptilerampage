@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections.Generic;
 
 public class Enemy : MonoBehaviour {
 	
@@ -10,13 +9,13 @@ public class Enemy : MonoBehaviour {
 	
 	public ParticleSystem bloodParticles;
 
-	public ParticleSystem dustParticles;
-	private Quaternion dustRotation;
+	//public ParticleSystem dustParticles;
+	//private Quaternion dustRotation;
 
 	void Start() {
 		//dustRotation = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
-		ParticleSystem localDustParticles = Instantiate(dustParticles, transform.position, dustRotation, transform) as ParticleSystem;
-		localDustParticles.Play();
+		//ParticleSystem localDustParticles = Instantiate(dustParticles, transform.position, dustRotation, transform) as ParticleSystem;
+		//localDustParticles.Play();
 	}
 
 	void Update(){
@@ -29,8 +28,8 @@ public class Enemy : MonoBehaviour {
 			health -= amount;
 			FireBloodParticles(dir);
 			if (health <= 0) {
-				Destroy (gameObject);
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+				Destroy (gameObject);
 			}
 		}
 	}
