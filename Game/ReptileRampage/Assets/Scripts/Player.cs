@@ -14,8 +14,8 @@ public class Player : MonoBehaviour {
 
    public enum WeaponType {handgun, machinegun};
    public GameObject[] weapons;
-   public GameObject slot1 = null;
-   public GameObject slot2 = null;
+   private GameObject slot1 = null;
+   private GameObject slot2 = null;
    public WeaponType slot1type;
    public WeaponType slot2type;
    
@@ -69,12 +69,16 @@ public class Player : MonoBehaviour {
        if(Input.GetButtonDown("Pickup") && intrigger == true){
             ChangeWeapon(pk.type, pk);
         }
-        if(slot1active){
+        if(slot1active && slot1 != null){
             slot1.SetActive(true);
-            slot2.SetActive(false);
-        }else{
+            if(slot2 != null){
+                slot2.SetActive(false);
+            }
+        }else if(!slot1active && slot2 != null){
             slot1.SetActive(false);
-            slot2.SetActive(true);
+            if(slot1 != null){
+                slot2.SetActive(true);
+            }
         }
 
         if(Input.GetButton("Swap")){
