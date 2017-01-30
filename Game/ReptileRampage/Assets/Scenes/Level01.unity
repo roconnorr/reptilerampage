@@ -491,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
+  followRange: 0
   target: {fileID: 1076168193}
 --- !u!61 &947523973
 BoxCollider2D:
@@ -849,11 +850,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   dustParticles: {fileID: 545259278}
-  weapons:
+  weaponsprefabs:
   - {fileID: 1663475684822718, guid: a4378de8e0e994ed8b9cd76f8142a284, type: 2}
   - {fileID: 1396562609181444, guid: db93a2e8dd9c74b9e86eec7321553218, type: 2}
+  slot1: {fileID: 0}
+  slot2: {fileID: 0}
   slot1type: 0
   slot2type: 0
+  intrigger: 0
 --- !u!212 &1076168199
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1541,6 +1545,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
+  followRange: 0
   target: {fileID: 1076168193}
 --- !u!95 &1624918419
 Animator:
@@ -1686,6 +1691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
+  followRange: 0
   target: {fileID: 1076168193}
 --- !u!95 &1625859427
 Animator:
@@ -1751,6 +1757,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   sightRange: 10
+  followRange: 0
   target: {fileID: 1076168193}
 --- !u!61 &1659405081
 BoxCollider2D:
