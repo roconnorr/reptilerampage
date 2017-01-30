@@ -11,7 +11,6 @@ public class Weapon : MonoBehaviour {
 	
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
-	public Transform crossHairPrefab;
 	public AudioClip shotSound = null;
 	float timeToFire = 0;
 	public int rotationOffset = 0;
@@ -19,13 +18,11 @@ public class Weapon : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 
 	private Transform firePoint;
-	private Transform crossHair;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		Cursor.visible = false;
 		firePoint = transform.FindChild ("FirePoint");
-		crossHair = Instantiate (crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
 	}
 
 	void Update () {
@@ -44,7 +41,6 @@ public class Weapon : MonoBehaviour {
 			spriteRenderer.sortingOrder = 2;
 		}
 
-		crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
 			timeToFire = Time.time + 1/fireRate;
 			CreateBullet ();

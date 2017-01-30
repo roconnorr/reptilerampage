@@ -7,8 +7,11 @@ public class CameraShake : MonoBehaviour
 
 	float shakeAmt = 0;
 
-	public Camera mainCamera;
+	private Camera mainCamera;
 
+	void Start(){
+		mainCamera = Camera.main;
+	}
 	public void StartShaking(float shakeAmt) {
 		this.shakeAmt = shakeAmt;
 		InvokeRepeating("ShakeCamera", 0, .02f);
