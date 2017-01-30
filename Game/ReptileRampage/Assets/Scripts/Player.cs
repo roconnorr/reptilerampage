@@ -7,6 +7,8 @@ public class Player : MonoBehaviour {
    private AudioSource soundSource;
 
    public ParticleSystem dustParticles;
+   public Transform crossHairPrefab;
+   private Transform crossHair;
 
    private Rigidbody2D rb;
 
@@ -30,21 +32,13 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
+        crossHair = Instantiate (crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
+
     }
 
    void OnCollisionEnter2D(Collision2D other){
     	rb.velocity = Vector3.zero;
     }
-    /*
-    void OnTriggerEnter2D(Collider2D other){
-        intrigger = true;
-        pickupObject = other.gameObject;
-        pk = other.gameObject.GetComponent<PickupPrefab>();
-    }
-
-    void OnTriggerExit2D(Collider2D other){
-        intrigger = false;
-    }*/
 
 
    void FixedUpdate () {
@@ -107,7 +101,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        
+        crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
              if(!soundSource.isPlaying){
