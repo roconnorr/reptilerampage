@@ -79,13 +79,26 @@ public class Velociraptor : MonoBehaviour {
 			MovePatrol ();
 		}
 
-		if((transform.position.x > xPrev + 0.05) && !flipped){
-			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
-			flipped = true;
-		}
-		if((transform.position.x < xPrev - 0.05) && flipped){
-			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
-			flipped = false;
+		//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
+		if (isWandering) {
+			if ((transform.position.x > xPrev) && !flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = true;
+			}
+			if ((transform.position.x < xPrev) && flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = false;
+			}
+		//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
+		} else {
+			if ((transform.position.x > xPrev + 0.05) && !flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = true;
+			}
+			if ((transform.position.x < xPrev - 0.05) && flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = false;
+			}
 		}
 		xPrev = transform.position.x;
 	}
@@ -134,10 +147,12 @@ public class Velociraptor : MonoBehaviour {
 				}
 				if (tries < 5) {
 					isWandering = true;
+					Debug.Log ("Run");
 					animator.Play ("velociraptor_run");
 				}
 			} else {
 				isWandering = false;
+				Debug.Log ("Idle");
 				animator.Play ("velociraptor_idle");
 			}
 		}
@@ -148,16 +163,6 @@ public class Velociraptor : MonoBehaviour {
 
 	void Avoid(Transform obj) {
 		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed /80);
-	}
-
-	//Stop patrolling if collide with wall
-	void OnCollisionEnter2D (Collision2D other){
-		Debug.Log ("Bang");
-		if(other.gameObject.tag == "Wall"){
-			if (isWandering) {
-				isWandering = false;
-			}
-		}
 	}
 
 	Transform GetNearestEnemy() {
