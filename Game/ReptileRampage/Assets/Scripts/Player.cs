@@ -71,7 +71,7 @@ public class Player : MonoBehaviour {
        //when the pickup button is pressed it gets the closest gun, if close enough its picked up
        if(Input.GetButtonDown("Pickup")){
            float minDist = Mathf.Infinity;
-           GameObject closestWeapon = new GameObject(); 
+           GameObject closestWeapon = null; 
            foreach (GameObject weapon in weaponslist){
                float dist = Vector3.Distance(transform.position, weapon.transform.position);
                if(dist < minDist){
@@ -132,8 +132,10 @@ public class Player : MonoBehaviour {
                 Destroy(pickupObject);
 			}else{
 				//drop slot 1 gun
-                pk.ChangeType(slot1type);  
+                Destroy(slot1);
+                pickup.ChangeType(slot1type);  
                 slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot1type = type;
 			}
 		}else{
 			if(slot2 == null){
@@ -146,8 +148,10 @@ public class Player : MonoBehaviour {
 				Destroy(pickupObject);
 			}else{
 				//drop slot 2 gun
-                pk.ChangeType(slot2type);
+                Destroy(slot2);
+                pickup.ChangeType(slot2type);
                 slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot2type = type;
 			}
 		}
 	}
