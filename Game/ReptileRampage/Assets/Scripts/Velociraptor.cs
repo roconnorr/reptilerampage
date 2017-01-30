@@ -2,73 +2,80 @@
 
 public class Velociraptor : MonoBehaviour {
 
+	//Public variables
 	public float speed;
-
-	public int sightRange;
-
+	public float sightRange;
+	public float followRange;
 	public GameObject target;
-	//private Transform destination;
 
 	//Boolean variables
-	private bool targetInRange;
+	private bool targetInChaseRange = false;
+	private bool targetInSightRange = false;
 	private bool targetViewBlocked;
-	//private bool followingPath;
-	private bool hasSeenTarget = false;
+	private bool isChasing = false;
 	private bool avoiding = false;
-
-	private Animator animator;
-	private SpriteRenderer sr;
-	private float xPrev = 0;
 	private bool flipped = false;
-	//Pathfinder variables
-	private AStarPathfinder pathfinder = null;
 
+	private float xPrev = 0;
+
+	//Component variables
+	private AStarPathfinder pathfinder = null;
+	private Animator animator;
+
+	//Run on game start
 	void Start() {
-		targetInRange = false;
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		animator = GetComponent<Animator>();
-		sr = GetComponent<SpriteRenderer> ();
 	}
 
-	void FixedUpdate() {
-		//Check obstruction
+	//Run every tick
+	void Update() {
+		//Get vision booleans
 		targetViewBlocked = TargetHiddenByObstacles ();
-		targetInRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < sightRange;
-		if (targetInRange && !targetViewBlocked) {
-			Transform nearestEnemy = GetNearestEnemy();
-			if (nearestEnemy != null) {
-				float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-				if (avoiding) {
-					if (dist > 2) {
-						avoiding = false;
-					}
-					Avoid (nearestEnemy);
-				} else if (dist < 1.5) {
-					avoiding = true;
-					Avoid (nearestEnemy);
-				}
-			}
-			MoveDirect ();
-			if (hasSeenTarget == false) {
-				hasSeenTarget = true;
-				animator.Play("velociraptor_run");
-			}
-		} else {
-			if (hasSeenTarget) {
-				MovePathFind ();
-			} else {
-				MovePatrol ();
-			}
+		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < followRange;
+		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
+
+		//If seeing player when not chasing
+		if (!isChasing && targetInSightRange && !targetViewBlocked) {
+			isChasing = true;
+			animator.Play ("velociraptor_run");
 		}
 
-		//sr.flipX = transform.position.x > xPrev;
-		//xPrev = transform.position.x;
+		//If chasing player
+		if (isChasing && targetInChaseRange) {
+			if (!targetViewBlocked) {
+				//Find nearest enemy and avoid if they're too close
+				Transform nearestEnemy = GetNearestEnemy ();
+				if (nearestEnemy != null) {
+					float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+					if (avoiding) {
+						if (dist > 2) {
+							avoiding = false;
+						}
+						Avoid (nearestEnemy);
+					} else if (dist < 1.5) {
+						avoiding = true;
+						Avoid (nearestEnemy);
+					}
+				}
+				//Move directly towards player
+				MoveDirect ();
+			//If in chase range but player is obstructed, pathfind to him
+			} else {
+				if (isChasing) {
+					MovePathFind ();
+				}
+			}
+		} else {
+			isChasing = false;
+			MovePatrol ();
+		}
 
-		if((transform.position.x > xPrev) && !flipped){
+		if((transform.position.x > xPrev + 0.05) && !flipped){
 			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
 			flipped = true;
 		}
-		if((transform.position.x < xPrev) && flipped){
+		if((transform.position.x < xPrev - 0.05) && flipped){
 			transform.localScale = new Vector3(transform.localScale.x *-1, transform.localScale.y, transform.localScale.z);
 			flipped = false;
 		}
