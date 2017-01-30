@@ -13,16 +13,16 @@ public class Player : MonoBehaviour {
    private Weapon weapon;
 
    public enum WeaponType {handgun, machinegun};
-   public GameObject[] weapons;
-   private GameObject slot1 = null;
-   private GameObject slot2 = null;
+   public GameObject[] weaponsprefabs;
+   private GameObject[] weaponslist;
+   public GameObject slot1 = null;
+   public GameObject slot2 = null;
    public WeaponType slot1type;
    public WeaponType slot2type;
    
    private bool slot1active = true;
-   private bool intrigger = false;
+   public bool intrigger;
    private PickupPrefab pk;
-   private GameObject pickupObject;
 
    private float horizontal;
    private float vertical;
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour {
    void OnCollisionEnter2D(Collision2D other){
     	rb.velocity = Vector3.zero;
     }
-
+    /*
     void OnTriggerEnter2D(Collider2D other){
         intrigger = true;
         pickupObject = other.gameObject;
@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
 
     void OnTriggerExit2D(Collider2D other){
         intrigger = false;
-    }
+    }*/
 
 
    void FixedUpdate () {
@@ -66,9 +66,35 @@ public class Player : MonoBehaviour {
    }
 
    void Update(){
-       if(Input.GetButtonDown("Pickup") && intrigger == true){
-            ChangeWeapon(pk.type, pk);
+       weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
+
+       //when the pickup button is pressed it gets the closest gun, if close enough its picked up
+       if(Input.GetButtonDown("Pickup")){
+           float minDist = Mathf.Infinity;
+           GameObject closestWeapon = new GameObject(); 
+           foreach (GameObject weapon in weaponslist){
+               float dist = Vector3.Distance(transform.position, weapon.transform.position);
+               if(dist < minDist){
+                   minDist = dist;
+                   closestWeapon = weapon;
+               }
+           }
+           if(minDist < 2){
+               PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
+               ChangeWeapon(pk.type, pk, closestWeapon);
+           }
         }
+
+       if(Input.GetButton("Slot1")){
+            slot1active = true;
+            slot1.SetActive(true);
+       }
+
+       if(Input.GetButton("Slot2")){
+            slot1active = false;
+            slot2.SetActive(true); 
+        }
+       
         if(slot1active && slot1 != null){
             slot1.SetActive(true);
             if(slot2 != null){
@@ -81,9 +107,7 @@ public class Player : MonoBehaviour {
             }
         }
 
-        if(Input.GetButton("Swap")){
-            SwapSlot();
-        }
+        
 
         if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
              if(!soundSource.isPlaying){
@@ -95,35 +119,35 @@ public class Player : MonoBehaviour {
         
    }
 
-   public void ChangeWeapon(WeaponType type, PickupPrefab pickup){
+   public void ChangeWeapon(WeaponType type, PickupPrefab pickup, GameObject pickupObject){
        if(slot1active){
 			if(slot1 == null){
-				slot1 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot1type = type;
                 Destroy(pickupObject);
 			}else if(slot2 == null){
-                slot2 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
                 slot1active = false;
                 Destroy(pickupObject);
 			}else{
 				//drop slot 1 gun
                 pk.ChangeType(slot1type);  
-                slot1 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
 			}
 		}else{
 			if(slot2 == null){
-                slot2 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
 				Destroy(pickupObject);
 			}else if(slot1 == null){
-                slot1 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot1type = type;
 				Destroy(pickupObject);
 			}else{
 				//drop slot 2 gun
                 pk.ChangeType(slot2type);
-                slot2 = Instantiate(weapons[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
+                slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0,0,0,0), this.transform);
 			}
 		}
 	}
