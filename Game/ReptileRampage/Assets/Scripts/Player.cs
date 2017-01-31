@@ -7,9 +7,11 @@ public class Player : MonoBehaviour {
    private AudioSource soundSource;
 
    public ParticleSystem dustParticles;
+   public ParticleSystem bloodParticles;
    public Transform crossHairPrefab;
    private Transform crossHair;
 
+   public int health = 5;
    private Rigidbody2D rb;
 
    private Weapon weapon;
@@ -112,6 +114,22 @@ public class Player : MonoBehaviour {
         }
         
    }
+
+   public void TakeDamage(int amount, Quaternion dir) {
+		health -= amount;
+		FireBloodParticles(dir);
+		if (health <= 0) {
+			//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+			Destroy (gameObject);
+		}
+	}
+
+    public void FireBloodParticles(Quaternion dir){
+		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		localBloodParticles.Play();
+	}
+	
 
    public void ChangeWeapon(WeaponType type, PickupPrefab pickup, GameObject pickupObject){
        if(slot1active){

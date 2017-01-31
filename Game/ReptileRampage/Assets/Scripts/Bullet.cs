@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour {
 	public float range;
 	public bool dmgPlayer;
 	public bool dmgEnemy;
+	public Player player;
 
 
 	public AudioClip wallHitSound = null;
@@ -33,6 +34,7 @@ public class Bullet : MonoBehaviour {
 		}
 		if(other.gameObject.tag == "Player"){
 			if (dmgPlayer) {
+				other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation);
 				Explode ();
 			}
 		}
