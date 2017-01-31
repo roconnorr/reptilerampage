@@ -1441,7 +1441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
@@ -2006,7 +2006,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
@@ -2162,10 +2162,10 @@ MonoBehaviour:
     type: 2}
   shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
   burstBulletLimit: 5
-  speed: 2
+  speed: 3
   sightRange: 10
   chaseRange: 20
-  stopRange: 10
+  stopRange: 5
   patrolRange: 5
   target: {fileID: 1019736887}
   isChasing: 0
@@ -2528,7 +2528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
