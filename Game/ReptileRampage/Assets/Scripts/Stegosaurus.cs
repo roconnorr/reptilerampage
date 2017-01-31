@@ -150,7 +150,7 @@ public class Stegosaurus : MonoBehaviour {
 		}
 		if (isWandering) {
 			transform.position = Vector3.MoveTowards (transform.position, wanderLocation, speed / 80);
-			if (Vector3.Distance (transform.position, wanderLocation) > 0.01) {
+			if (Vector3.Distance (transform.position, wanderLocation) < 0.02) {
 				isWandering = false;
 			}
 		}
