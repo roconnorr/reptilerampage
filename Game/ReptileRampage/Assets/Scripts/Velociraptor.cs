@@ -156,8 +156,9 @@ public class Velociraptor : MonoBehaviour {
 		}
 		if (isWandering) {
 			transform.position = Vector3.MoveTowards (transform.position, wanderLocation, speed / 80);
-			if (Vector3.Distance (transform.position, wanderLocation) < 0.02) {
+			if (Vector3.Distance (transform.position, wanderLocation) < 0.01) {
 				isWandering = false;
+				animator.Play ("velociraptor_idle");
 			}
 		}
 	}
