@@ -2,7 +2,8 @@
 
 public class Player : MonoBehaviour {
 
-   public float speed = 10;
+	public float speed;
+	public int health;
 
    private AudioSource soundSource;
 
@@ -10,8 +11,6 @@ public class Player : MonoBehaviour {
    public ParticleSystem bloodParticles;
    public Transform crossHairPrefab;
    private Transform crossHair;
-
-   public int health = 5;
    private Rigidbody2D rb;
 
    private Weapon weapon;
