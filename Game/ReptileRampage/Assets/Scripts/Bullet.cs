@@ -9,7 +9,6 @@ public class Bullet : MonoBehaviour {
 	public float range;
 	public bool dmgPlayer;
 	public bool dmgEnemy;
-	public Player player;
 
 
 	public AudioClip wallHitSound = null;
