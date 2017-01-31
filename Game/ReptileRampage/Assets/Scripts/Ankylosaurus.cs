@@ -2,6 +2,14 @@
 
 public class Ankylosaurus : MonoBehaviour {
 
+	public int damage;
+	public float fireRate;
+	public float shotSpeed;
+	public float range;
+	public Transform bulletPrefab;
+	public AudioClip shotSound = null;
+	public int burstBulletLimit = 5;
+
 	public float speed;
 	public float sightRange;
 	public float chaseRange;
@@ -24,6 +32,11 @@ public class Ankylosaurus : MonoBehaviour {
 	private Vector3 patrolLocation;
 	private Vector3 wanderLocation;
 
+	private float timeToFire = 0;
+	private bool trigger = true;
+	private Transform firePoint;
+	private Animator animator;
+
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
 
@@ -31,6 +44,8 @@ public class Ankylosaurus : MonoBehaviour {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		//animator = GetComponent<Animator>();
 		patrolLocation = transform.position;
+		firePoint = transform.FindChild ("FirePoint");
+		animator = GetComponent<Animator>();
 	}
 
 	void Update() {
@@ -67,11 +82,16 @@ public class Ankylosaurus : MonoBehaviour {
 					}
 					//Move directly towards player
 					MoveDirect ();
-				//If in chase range but player is obstructed, pathfind to him
+					//If in chase range but player is obstructed, pathfind to him
 				} else {
 					if (isChasing) {
 						MovePathFind ();
 					}
+				}
+			} else {//If in stop range
+				if (trigger && Time.time > timeToFire) {
+					animator.Play ("Ankylo_Smash");
+					timeToFire = Time.time + 1/fireRate;
 				}
 			}
 		} else {
@@ -182,5 +202,14 @@ public class Ankylosaurus : MonoBehaviour {
 			}
 		}
 		return nearestEnemy;
+	}
+
+	void FireBullets() {
+		for(int i=0; i<=360; i+=45){
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, i, damage, shotSpeed, range, true, false);
+		}
+		if(shotSound != null){
+			AudioSource.PlayClipAtPoint(shotSound, transform.position);
+		}
 	}
 }
