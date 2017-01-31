@@ -1881,7 +1881,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8721c87dffafa45d28313b2251268b13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   dustParticles: {fileID: 976598652}
   crossHairPrefab: {fileID: 4949299490797038, guid: 20f55d271d2e4479aa13ec4b316b303b,
     type: 2}
