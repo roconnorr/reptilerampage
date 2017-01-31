@@ -6,7 +6,7 @@ public class Player : MonoBehaviour {
 
    private AudioSource soundSource;
 
-   public ParticleSystem dustParticles;
+   //public ParticleSystem dustParticles;
    public ParticleSystem bloodParticles;
    public Transform crossHairPrefab;
    private Transform crossHair;
@@ -120,7 +120,8 @@ public class Player : MonoBehaviour {
 		FireBloodParticles(dir);
 		if (health <= 0) {
 			//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
-			Destroy (gameObject);
+			//Destroy (gameObject);
+            Debug.Log("you should be dead");
 		}
 	}
 

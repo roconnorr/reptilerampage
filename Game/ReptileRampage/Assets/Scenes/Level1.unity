@@ -1526,11 +1526,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!198 &976598652 stripped
-ParticleSystem:
-  m_PrefabParentObject: {fileID: 198043415610577090, guid: 39c2caeec458f8a46a4e1c19f817973d,
-    type: 2}
-  m_PrefabInternal: {fileID: 761210089}
 --- !u!4 &976598654 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4743863231823792, guid: 39c2caeec458f8a46a4e1c19f817973d,
@@ -1882,9 +1877,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 7
-  dustParticles: {fileID: 976598652}
+  bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
+    type: 2}
   crossHairPrefab: {fileID: 4949299490797038, guid: 20f55d271d2e4479aa13ec4b316b303b,
     type: 2}
+  health: 100
   weaponsprefabs:
   - {fileID: 1663475684822718, guid: a4378de8e0e994ed8b9cd76f8142a284, type: 2}
   - {fileID: 1396562609181444, guid: db93a2e8dd9c74b9e86eec7321553218, type: 2}
