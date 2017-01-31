@@ -13,7 +13,6 @@ public class StegoTurret : MonoBehaviour {
 	public Transform muzzleFlashPrefab;
 	public AudioClip shotSound = null;
 	public int rotationOffset = 0;
-	public float rotSpeed = 90f;
 	public int burstBulletLimit = 5;
 	public float timeTilNextBurst = 3f;
 	public int shootRange;
@@ -43,18 +42,18 @@ public class StegoTurret : MonoBehaviour {
 			}
 			spriteRenderer.flipY = (rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
 
-			while (trigger && Time.time > timeToFire) {
+			if(trigger && Time.time > timeToFire) {
 				timeToFire = Time.time + 1/fireRate;
 				CreateBullet();
 				bulletCount++;	
 			}
 			if (trigger && bulletCount >= burstBulletLimit){
-				StartCoroutine(Shoot());
+				StartCoroutine(Wait());
 			}
 		}
 	}
 
-	IEnumerator Shoot() {
+	IEnumerator Wait() {
     	trigger = false;
     	yield return new WaitForSeconds(timeTilNextBurst);
 		bulletCount = 0;
