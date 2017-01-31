@@ -2948,7 +2948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 379637c79d15f48e3af47821d022e5db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tilesize: 2.3
+  Tilesize: 1.9
   MapStartPosition: {x: -64, y: -64}
   MapEndPosition: {x: 66, y: 66}
   DisallowedTags:
