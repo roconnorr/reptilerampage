@@ -500,7 +500,6 @@ GameObject:
   - component: {fileID: 756433889}
   - component: {fileID: 756433888}
   - component: {fileID: 756433892}
-  - component: {fileID: 756433887}
   - component: {fileID: 756433886}
   m_Layer: 0
   m_Name: Ankylosaurus
@@ -540,28 +539,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &756433887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 756433884}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ed527d8a19ad41d58b1255e3c1128d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  fireRate: 10
-  shotSpeed: 20
-  range: 50
-  target: {fileID: 1076168193}
-  bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
-    type: 2}
-  shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
-  burstBulletLimit: 5
-  timeTilNextBurst: 5
-  shootRange: 15
 --- !u!61 &756433888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -653,10 +630,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8a2ed90d9b942dfa58485dd6da6055, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  damage: 10
+  fireRate: 0.3
+  shotSpeed: 10
+  range: 50
+  bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
+    type: 2}
+  shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
+  burstBulletLimit: 5
+  speed: 3
   sightRange: 10
   chaseRange: 20
-  stopRange: 10
+  stopRange: 5
   patrolRange: 5
   target: {fileID: 1076168193}
   isChasing: 0
@@ -772,7 +757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
@@ -1865,7 +1850,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
@@ -2032,7 +2017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
@@ -2099,7 +2084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecc7fe4847b70c94dac0ee8081fc1f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   sightRange: 10
   chaseRange: 20
   patrolRange: 5
