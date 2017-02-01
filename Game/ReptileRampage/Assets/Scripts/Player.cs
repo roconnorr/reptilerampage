@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
-        tfightscript = GameObject.Find("TRexFight").GetComponent<TRexFight>();
+        //tfightscript = GameObject.Find("TRexFight").GetComponent<TRexFight>();
 
     }
 
