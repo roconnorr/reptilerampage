@@ -8,9 +8,9 @@ public class Ankylosaurus : MonoBehaviour {
 	public float range;
 	public Transform bulletPrefab;
 	public AudioClip shotSound = null;
-	public int burstBulletLimit = 5;
 
 	public float speed;
+	public float maxSpeed;
 	public float sightRange;
 	public float chaseRange;
 	public float stopRange;
@@ -38,6 +38,7 @@ public class Ankylosaurus : MonoBehaviour {
 	private float timeToFire = 0;
 	private Transform firePoint;
 	private Animator animator;
+	private Rigidbody2D rb;
 
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
@@ -48,12 +49,13 @@ public class Ankylosaurus : MonoBehaviour {
 		patrolLocation = transform.position;
 		firePoint = transform.FindChild ("FirePoint");
 		animator = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody2D> ();
 	}
 
-	void Update() {
+	void FixedUpdate() {
 		//Get vision booleans
 		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < chaseRange;
+		targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
 		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 		targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
 
@@ -93,16 +95,16 @@ public class Ankylosaurus : MonoBehaviour {
 			} else {//If in stop range
 				if (!isCharging && Random.Range (0, 400) == 1) {
 					isCharging = true;
-					chargePosition = target.transform.position;
+					chargePosition = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
 				}
 				if (!isCharging && Time.time > timeToFire) {
 					smashes = Random.Range (1, 4);
 					animator.Play ("Ankylo_Smash");
-					timeToFire = Time.time + 1/fireRate;
+					timeToFire = Time.time + 1 / fireRate;
 				}
 				if (isCharging) {
-					if (Vector3.Distance (transform.position, chargePosition) > 0.2) {
-						transform.position = Vector3.MoveTowards (transform.position, chargePosition, speed / 30);
+					if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
+						rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed);
 					} else {
 						isCharging = false;
 					}
@@ -115,7 +117,12 @@ public class Ankylosaurus : MonoBehaviour {
 			}
 			MovePatrol ();
 		}
+		if(rb.velocity.magnitude > maxSpeed) {
+			rb.velocity = rb.velocity.normalized * maxSpeed;
+		}
+	}
 
+	void Update() {
 		//Direction
 		//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
 		if (isWandering) {
@@ -162,7 +169,7 @@ public class Ankylosaurus : MonoBehaviour {
 
 	void MoveDirect() {
 		if (Vector3.Distance (transform.position, target.transform.position) > 0.2) {
-			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed / 40);
+			rb.AddForce(Vector3.Normalize (target.transform.position - transform.position) * speed);
 		}
 	}
 
@@ -200,8 +207,14 @@ public class Ankylosaurus : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Wall") {
+			rb.velocity = Vector3.zero;
+		}
+	}
+
 	void Avoid(Transform obj) {
-		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed/80);
+		rb.AddForce(Vector3.Normalize (transform.position - obj.transform.position) * speed/4);
 	}
 
 	Transform GetNearestSameDino() {
@@ -220,7 +233,8 @@ public class Ankylosaurus : MonoBehaviour {
 
 	void FireBullets() {
 		for(int i=0; i<=360; i+=45){
-			GameMaster.CreateBullet (bulletPrefab, firePoint.position, i, damage, shotSpeed, range, true, false);
+			Transform bullet = GameMaster.CreateBullet (bulletPrefab, firePoint.position, i, damage, shotSpeed, range, true, false);
+			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 		}
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);

@@ -31,11 +31,9 @@ public class Bullet : MonoBehaviour {
 			}
 			Explode();
 		}
-		if(other.gameObject.tag == "Player"){
-			if (dmgPlayer) {
-				other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation);
-				Explode ();
-			}
+		if(other.gameObject.tag == "Player" && dmgPlayer){
+			other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation);
+			Explode ();
 		}
 		if (other.gameObject.tag == "Explosive"){
 			other.gameObject.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
@@ -45,17 +43,12 @@ public class Bullet : MonoBehaviour {
 			other.gameObject.GetComponent<Crate>().TakeDamage (damage);
 			Explode ();	
 		}
-	}
-
-	//Collide with enemy
-	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
 			SumScore.Add(100);
 			SumScore.SaveHighScore();
 			Explode ();
 		}
-		
 	}
 
 	void Explode(){

@@ -3,6 +3,7 @@
 public class Stegosaurus : MonoBehaviour {
 
 	public float speed;
+	public float maxSpeed;
 	public float sightRange;
 	public float chaseRange;
 	public float stopRange;
@@ -26,6 +27,7 @@ public class Stegosaurus : MonoBehaviour {
 
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
+	private Rigidbody2D rb;
 //	private Animator animator;
 	private SpriteRenderer sr;
 
@@ -33,13 +35,14 @@ public class Stegosaurus : MonoBehaviour {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		//animator = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer>();
+		rb = GetComponent<Rigidbody2D> ();
 		patrolLocation = transform.position;
 	}
 
-	void Update() {
+	void FixedUpdate() {
 		//Get vision booleans
 		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < chaseRange;
+		targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
 		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 		targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
 
@@ -70,7 +73,7 @@ public class Stegosaurus : MonoBehaviour {
 					}
 					//Move directly towards player
 					MoveDirect ();
-				//If in chase range but player is obstructed, pathfind to him
+					//If in chase range but player is obstructed, pathfind to him
 				} else {
 					if (isChasing) {
 						MovePathFind ();
@@ -85,6 +88,13 @@ public class Stegosaurus : MonoBehaviour {
 			MovePatrol ();
 		}
 
+		//Max Speed
+		if(rb.velocity.magnitude > maxSpeed) {
+			rb.velocity = rb.velocity.normalized * maxSpeed;
+		}
+	}
+
+	void Update() {
 		//Direction
 		if ((transform.position.x > xPrev + 0.02) && !flipped) {
 			sr.flipX = true;
@@ -118,7 +128,7 @@ public class Stegosaurus : MonoBehaviour {
 
 	void MoveDirect() {
 		if (Vector3.Distance (transform.position, target.transform.position) > 0.2) {
-			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed / 40);
+			rb.AddForce(Vector3.Normalize (target.transform.position - transform.position) * speed);
 		}
 	}
 
@@ -156,8 +166,14 @@ public class Stegosaurus : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Wall") {
+			rb.velocity = Vector3.zero;
+		}
+	}
+
 	void Avoid(Transform obj) {
-		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed/80);
+		rb.AddForce(Vector3.Normalize (transform.position - obj.transform.position) * speed/4);
 	}
 
 	Transform GetNearestSameDino() {

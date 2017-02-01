@@ -4,6 +4,7 @@ public class Velociraptor : MonoBehaviour {
 
 	//Public variables
 	public float speed;
+	public float maxSpeed;
 	public float sightRange;
 	public float chaseRange;
 	public float patrolRange;
@@ -25,19 +26,21 @@ public class Velociraptor : MonoBehaviour {
 	//Component variables
 	private AStarPathfinder pathfinder = null;
 	private Animator animator;
+	private Rigidbody2D rb;
 
 	//Run on game start
 	void Start() {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		animator = GetComponent<Animator>();
+		rb = GetComponent<Rigidbody2D> ();
 		patrolLocation = transform.position;
 	}
 
 	//Run every tick
-	void Update() {
+	void FixedUpdate() {
 		//Get vision booleans
 		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < chaseRange;
+		targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
 		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 
 		//If seeing player when not chasing
@@ -65,7 +68,7 @@ public class Velociraptor : MonoBehaviour {
 				}
 				//Move directly towards player
 				MoveDirect ();
-			//If in chase range but player is obstructed, pathfind to him
+				//If in chase range but player is obstructed, pathfind to him
 			} else {
 				if (isChasing) {
 					MovePathFind ();
@@ -78,6 +81,13 @@ public class Velociraptor : MonoBehaviour {
 			}
 			MovePatrol ();
 		}
+		//Max Speed
+		if(rb.velocity.magnitude > maxSpeed) {
+			rb.velocity = rb.velocity.normalized * maxSpeed;
+		}
+	}
+
+	void Update() {
 		//Direction
 		//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
 		if (isWandering) {
@@ -124,12 +134,12 @@ public class Velociraptor : MonoBehaviour {
 
 	void MoveDirect() {
 		if (Vector3.Distance (transform.position, target.transform.position) > 0.2) {
-			transform.position = Vector3.MoveTowards (transform.position, target.transform.position, speed / 40);
+			rb.AddForce(Vector3.Normalize (target.transform.position - transform.position) * speed);
 		}
 	}
 
 	void MovePathFind() {
-		pathfinder.GoTowards (target, speed);
+		pathfinder.GoTowards (target, maxSpeed/1.5f);
 	}
 
 	void MovePatrol() {
@@ -163,8 +173,14 @@ public class Velociraptor : MonoBehaviour {
 		}
 	}
 
+	void OnCollisionEnter2D(Collision2D other){
+		if (other.gameObject.tag == "Wall") {
+			rb.velocity = Vector3.zero;
+		}
+	}
+
 	void Avoid(Transform obj) {
-		transform.position = Vector3.MoveTowards (transform.position, obj.transform.position, -speed /80);
+		rb.AddForce(Vector3.Normalize (transform.position - obj.transform.position) * speed/4);
 	}
 
 	Transform GetNearestSameDino() {

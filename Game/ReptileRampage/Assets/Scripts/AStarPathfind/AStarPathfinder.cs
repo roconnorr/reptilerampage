@@ -29,6 +29,10 @@ public class AStarPathfinder : MonoBehaviour {
 	private float timeLeftUntilPathUpdate;	//Internal variables for keeping track of time
 	private float timeKeeper;			    //for 
 
+	private Rigidbody2D rb;
+	public float speed;
+	public float maxSpeed;
+
 
 #if UNITY_EDITOR
 	/* Temp variables for drawing of the path and nodes examined - debugging only */
@@ -50,6 +54,7 @@ public class AStarPathfinder : MonoBehaviour {
 		previousTargetPosition = transform.position;
 		timeLeftUntilPathUpdate = 0;
 		timeKeeper = Time.time;
+		rb = GetComponent<Rigidbody2D> ();
 	}
 
 	/* Moves game object at certain speed by changing its transform postion to follow
@@ -141,7 +146,8 @@ public class AStarPathfinder : MonoBehaviour {
 		float distAllowed = atSpeed * timeDelta;
 
 		// Travel along the designated path
-		while (moveIndex < moves.Count) {
+		if (moveIndex < moves.Count) {
+			/*
 			Vector2 nextPos = moves [moveIndex];
 
 			//Get the current position
@@ -174,6 +180,12 @@ public class AStarPathfinder : MonoBehaviour {
 			distAllowed -= travelDist;
 			if (distAllowed <= 0f) {
 				break;
+			}
+			*/
+			Vector3 nextPos = new Vector3 (moves [moveIndex].x, moves [moveIndex].y, transform.position.z);
+			rb.AddForce(Vector3.Normalize (nextPos - transform.position) *speed);
+			if (Vector3.Distance (nextPos, transform.position) < 0.3f) {
+				moveIndex++;
 			}
 		}
 	}
