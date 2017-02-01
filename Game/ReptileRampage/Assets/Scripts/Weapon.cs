@@ -38,9 +38,9 @@ public class Weapon : MonoBehaviour {
 		}
 		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
 		if (rotZ > 45 && rotZ < 135) {
-			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.sortingOrder = -9999;
 		} else {
-			spriteRenderer.sortingOrder = 2;
+			spriteRenderer.sortingOrder = 9999;
 		}
 
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
