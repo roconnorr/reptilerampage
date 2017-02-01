@@ -34,7 +34,7 @@ public class BulletHoming : MonoBehaviour {
 		if(rb.velocity.magnitude > moveSpeed) {
 			rb.velocity = rb.velocity.normalized * moveSpeed;
 		}
-		rb.AddForce(Vector3.Normalize (target.position - transform.position) * 0.08f);
+		rb.AddForce(Vector3.Normalize (target.position - transform.position) * 0.16f);
 		float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;
 		transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
 	}
