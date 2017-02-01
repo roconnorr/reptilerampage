@@ -139,7 +139,7 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void MovePathFind() {
-		pathfinder.GoTowards (target, maxSpeed/1.5f);
+		pathfinder.GoTowards (target, speed, maxSpeed);
 	}
 
 	void MovePatrol() {

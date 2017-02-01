@@ -133,7 +133,7 @@ public class Stegosaurus : MonoBehaviour {
 	}
 
 	void MovePathFind() {
-		pathfinder.GoTowards (target, speed);
+		pathfinder.GoTowards (target, speed, maxSpeed);
 	}
 
 	void MovePatrol() {
