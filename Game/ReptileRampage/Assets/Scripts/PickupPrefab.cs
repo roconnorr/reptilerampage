@@ -14,10 +14,6 @@ public class PickupPrefab : MonoBehaviour {
 		spriteRenderer.sprite = WeaponSprites[(int)type];
 	}
 
-	void Update(){
-		
-	}
-
 	public void ChangeType(Player.WeaponType newType){
 		type = newType;
 		spriteRenderer.sprite = WeaponSprites[(int)type];

@@ -91,7 +91,7 @@ MonoBehaviour:
   health: 30
   radius: 5
   power: 300
-  explodeDamage: 20
+  explodeDamage: 30
 --- !u!212 &212634510427192350
 SpriteRenderer:
   m_ObjectHideFlags: 1

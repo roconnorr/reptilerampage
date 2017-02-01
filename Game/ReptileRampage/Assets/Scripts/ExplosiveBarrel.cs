@@ -7,7 +7,7 @@ public class ExplosiveBarrel : MonoBehaviour {
 	public int health = 30;
 	public float radius = 5.0F;
     public float power = 300.0F;
-	public int explodeDamage = 20;
+	public int explodeDamage = 30;
     
     void Start() {
 		//soundSource = gameObject.GetComponent<AudioSource>();
@@ -32,6 +32,10 @@ public class ExplosiveBarrel : MonoBehaviour {
 					if(rb.tag == "Enemy"){
 						AddExplosionForce(rb, power * 100, transform.position, radius);
 						rb.GetComponent<Enemy>().TakeDamage (explodeDamage, transform.rotation);
+					}
+					if(rb.tag == "Crate"){
+						AddExplosionForce(rb, power * 100, transform.position, radius);
+						rb.GetComponent<Crate>().TakeDamage (explodeDamage);
 					}
 				}
 			}
