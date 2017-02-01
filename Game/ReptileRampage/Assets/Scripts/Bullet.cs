@@ -41,6 +41,10 @@ public class Bullet : MonoBehaviour {
 			other.gameObject.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
 			Explode ();	
 		}
+		if (other.gameObject.tag == "Crate"){
+			other.gameObject.GetComponent<Crate>().TakeDamage (damage);
+			Explode ();	
+		}
 	}
 
 	//Collide with enemy

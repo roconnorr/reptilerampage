@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     private Weapon weapon;
 
-    public enum WeaponType { handgun, machinegun, shotgun };
+	public enum WeaponType {usp45, m16, remington870, ak47};
     public GameObject[] weaponsprefabs;
     private GameObject[] weaponslist;
     public GameObject slot1 = null;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
-        tfightscript = GameObject.Find("TRexFight").GetComponent<TRexFight>();
+        //tfightscript = GameObject.Find("TRexFight").GetComponent<TRexFight>();
 
     }
 
@@ -148,44 +148,45 @@ public class Player : MonoBehaviour
     }
 
     public void FireBloodParticles(Quaternion dir){
-        Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
-        ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
-        localBloodParticles.Play();
-    }
+		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		localBloodParticles.Play();
+	}
+	
 
-
-    public void ChangeWeapon(WeaponType type, PickupPrefab pickup, GameObject pickupObject){
-        if (slot1active) {
-            if (slot1 == null){
-                slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0, 0, 0, 0), this.transform);
+   public void ChangeWeapon(WeaponType type, PickupPrefab pickup, GameObject pickupObject){
+       if(slot1active){
+			if(slot1 == null){
+				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot1type = type;
                 Destroy(pickupObject);
-            }else if (slot2 == null){
-                slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0, 0, 0, 0), this.transform);
+			}else if(slot2 == null){
+				slot2 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
                 slot1active = false;
                 Destroy(pickupObject);
             }else{
                 //drop slot 1 gun
                 Destroy(slot1);
-                pickup.ChangeType(slot1type);
-                slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0, 0, 0, 0), this.transform);
+                pickup.ChangeType(slot1type);  
+				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot1type = type;
-            }
-        }else{
-            if (slot2 == null){
-                slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0, 0, 0, 0), this.transform);
+			}
+		}else{
+			if(slot2 == null){
+				slot2 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
-                Destroy(pickupObject);
-            }else if (slot1 == null){
-                slot1 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0, 0, 0, 0), this.transform);
-                slot1type = type;
-                Destroy(pickupObject);
-            }else{
-                //drop slot 2 gun
+				Destroy(pickupObject);
+			}else if(slot1 == null){
+				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
+				slot1type = type;
+				slot1active = true;
+				Destroy(pickupObject);
+			}else{
+				//drop slot 2 gun
                 Destroy(slot2);
                 pickup.ChangeType(slot2type);
-                slot2 = Instantiate(weaponsprefabs[(int)type], this.transform.position, new Quaternion(0, 0, 0, 0), this.transform);
+				slot2 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
             }
         }
