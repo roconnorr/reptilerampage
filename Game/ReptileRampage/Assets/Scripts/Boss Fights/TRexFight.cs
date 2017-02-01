@@ -7,18 +7,20 @@ public class TRexFight : MonoBehaviour {
 
 	
 	public GameObject trex;
+	public GameObject trexInstance;
 	public GameObject player;
 	public GameObject textBox;
+	public GameObject textBoxManager;
 
 	public void StartFight(){
 		Dialogue();
-		//spawn rex
+		textBox.SetActive(true);
+		textBoxManager.SetActive(true);
+		trexInstance = Instantiate(trex, new Vector3(12, 47, -1), new Quaternion(0,0,0,0));
+		trexInstance.GetComponent<TRex>().target = player.transform;
 	}
 
 	public void Dialogue(){
-		player.GetComponent<Player>().canMove = false;
-		textBox.SetActive(true);
-		//Instantiate(textBox, this.transform.position, new Quaternion(0,0,0,0));
 	}
 		
 }

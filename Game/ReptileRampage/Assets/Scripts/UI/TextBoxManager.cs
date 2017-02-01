@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class TextBoxManager : MonoBehaviour {
 
+	public GameObject player;
 	public GameObject textBox;
 
 	public Text text;
@@ -28,6 +29,7 @@ public class TextBoxManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		player.GetComponent<Player>().canMove = false;
 		text.text = textLines[currentLine];
 
 		if(Input.GetButtonDown("Fire1")){
@@ -35,6 +37,7 @@ public class TextBoxManager : MonoBehaviour {
 		}
 
 		if(currentLine > endAtLine){
+			player.GetComponent<Player>().canMove = true;
 			textBox.SetActive(false);
 			this.gameObject.SetActive(false);
 		}
