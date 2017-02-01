@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour {
 
 	//Collide with wall and player
 	void OnCollisionEnter2D(Collision2D other){
-		if(other.gameObject.tag == "Wall"){
+		if(other.gameObject.tag == "Wall" || other.gameObject.tag == "DestructibleWall"){
 			if (wallHitSound != null){
 				AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
 			}
@@ -37,6 +37,10 @@ public class Bullet : MonoBehaviour {
 				Explode ();
 			}
 		}
+		if (other.gameObject.tag == "Explosive"){
+			other.gameObject.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
+			Explode ();	
+		}
 	}
 
 	//Collide with enemy
@@ -47,6 +51,7 @@ public class Bullet : MonoBehaviour {
 			SumScore.SaveHighScore();
 			Explode ();
 		}
+		
 	}
 
 	void Explode(){
