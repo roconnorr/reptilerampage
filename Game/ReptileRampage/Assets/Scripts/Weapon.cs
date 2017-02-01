@@ -11,6 +11,8 @@ public class Weapon : MonoBehaviour {
 	public float bulletCount;
 	public float bulletSpread;
 	
+	public Sprite sprite1;
+	public Sprite sprite2;
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
 	public AudioClip shotSound = null;
@@ -20,11 +22,15 @@ public class Weapon : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 
 	private Transform firePoint;
+	private Transform firePoint1;
+	private Transform firePoint2;
+	private bool flipped;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		Cursor.visible = false;
-		firePoint = transform.FindChild ("FirePoint");
+		firePoint1 = transform.FindChild ("FirePoint1");
+		firePoint2 = transform.FindChild ("FirePoint2");
 	}
 
 	void Update () {
@@ -36,11 +42,25 @@ public class Weapon : MonoBehaviour {
 		if (rotZ < 0) {
 			rotZ += 360;
 		}
-		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
+		if ((rotZ > 90 && rotZ < 270) && !flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
+			flipped = true;
+		} else if ((rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360) && flipped){
+			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
+			flipped = false;
+		}
 		if (rotZ > 45 && rotZ < 135) {
 			spriteRenderer.sortingOrder = -9999;
-		} else {
+			spriteRenderer.sprite = sprite2;
+			firePoint = firePoint2;
+		} else if (rotZ > 225 && rotZ < 315) {
 			spriteRenderer.sortingOrder = 9999;
+			spriteRenderer.sprite = sprite2;
+			firePoint = firePoint2;
+		}else {
+			spriteRenderer.sortingOrder = 9999;
+			spriteRenderer.sprite = sprite1;
+			firePoint = firePoint1;
 		}
 
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {

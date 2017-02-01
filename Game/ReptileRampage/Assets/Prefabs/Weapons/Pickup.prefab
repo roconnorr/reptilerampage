@@ -54,9 +54,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   WeaponSprites:
-  - {fileID: 21300004, guid: 841794c3a8aae4a0aa7de0efe6892492, type: 3}
-  - {fileID: 21300000, guid: 841794c3a8aae4a0aa7de0efe6892492, type: 3}
-  - {fileID: 21300006, guid: 841794c3a8aae4a0aa7de0efe6892492, type: 3}
+  - {fileID: 21300000, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
+  - {fileID: 21300000, guid: ff9af47a37cc27645ad011c7f12e34dd, type: 3}
+  - {fileID: 21300000, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
+  - {fileID: 21300000, guid: 07ed1dea413b7484e9dc69c2978fa7bb, type: 3}
 --- !u!212 &212395102703717260
 SpriteRenderer:
   m_ObjectHideFlags: 1
