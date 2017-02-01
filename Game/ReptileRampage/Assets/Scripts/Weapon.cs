@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour {
 	public float range;
 	public float strayFactor;
 	public float screenShake;
+	public float bulletCount;
+	public float bulletSpread;
 	
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
@@ -48,9 +50,13 @@ public class Weapon : MonoBehaviour {
 	}
 
 	void CreateBullet () {
-		//Create bullet with stray modifier
-		float strayValue = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90, damage, shotSpeed, range, false, true);
+		float angle = bulletCount / 2 * -bulletSpread;
+		for (int i = 0; i < bulletCount; i++) {
+			//Create bullet with stray modifier
+			float strayValue = Random.Range (-strayFactor, strayFactor);
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+			angle += bulletSpread;
+		}
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);

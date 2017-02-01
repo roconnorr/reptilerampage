@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 
    private Weapon weapon;
 
-   public enum WeaponType {handgun, machinegun};
+   public enum WeaponType {handgun, machinegun, shotgun};
    public GameObject[] weaponsprefabs;
    private GameObject[] weaponslist;
    public GameObject slot1 = null;
