@@ -88,8 +88,8 @@ MonoBehaviour:
   range: 10
   strayFactor: 0
   screenShake: 0.05
-  bulletCount: 5
-  bulletSpread: 10
+  bulletCount: 100
+  bulletSpread: 5
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,

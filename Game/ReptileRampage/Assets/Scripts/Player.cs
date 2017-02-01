@@ -79,8 +79,8 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
-        crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
+        crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
         //when the pickup button is pressed it gets the closest gun, if close enough its picked up
         if (Input.GetButtonDown("Pickup")){
@@ -98,6 +98,8 @@ public class Player : MonoBehaviour
                 ChangeWeapon(pk.type, pk, closestWeapon);
             }
         }
+
+        
 
         if (Input.GetButton("Slot1")){
             slot1active = true;
@@ -122,6 +124,7 @@ public class Player : MonoBehaviour
         }
 
         if(canMove){
+
             if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
                 if (!soundSource.isPlaying){
                     soundSource.Play();
