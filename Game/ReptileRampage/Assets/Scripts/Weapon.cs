@@ -8,6 +8,8 @@ public class Weapon : MonoBehaviour {
 	public float range;
 	public float strayFactor;
 	public float screenShake;
+	public float bulletCount;
+	public float bulletSpread;
 	
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
@@ -36,9 +38,9 @@ public class Weapon : MonoBehaviour {
 		}
 		spriteRenderer.flipY = !(rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360);
 		if (rotZ > 45 && rotZ < 135) {
-			spriteRenderer.sortingOrder = 0;
+			spriteRenderer.sortingOrder = -9999;
 		} else {
-			spriteRenderer.sortingOrder = 2;
+			spriteRenderer.sortingOrder = 9999;
 		}
 
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
@@ -48,9 +50,13 @@ public class Weapon : MonoBehaviour {
 	}
 
 	void CreateBullet () {
-		//Create bullet with stray modifier
-		float strayValue = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90, damage, shotSpeed, range, false, true);
+		float angle = bulletCount / 2 * -bulletSpread;
+		for (int i = 0; i < bulletCount; i++) {
+			//Create bullet with stray modifier
+			float strayValue = Random.Range (-strayFactor, strayFactor);
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+			angle += bulletSpread;
+		}
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);

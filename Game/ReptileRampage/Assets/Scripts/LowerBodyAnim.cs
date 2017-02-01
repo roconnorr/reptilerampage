@@ -22,5 +22,7 @@ public class LowerBodyAnim : MonoBehaviour {
 		} else {
 			animator.Play("lower_body_idle");
 		}
+
+		GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
 	}
 }
