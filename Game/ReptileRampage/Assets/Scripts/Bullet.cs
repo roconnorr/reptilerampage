@@ -47,6 +47,10 @@ public class Bullet : MonoBehaviour {
 			SumScore.SaveHighScore();
 			Explode ();
 		}
+		if (other.gameObject.tag == "Explosive"){
+			other.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
+			Explode ();	
+		}
 	}
 
 	void Explode(){
