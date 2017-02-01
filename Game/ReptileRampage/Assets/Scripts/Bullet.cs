@@ -37,6 +37,14 @@ public class Bullet : MonoBehaviour {
 				Explode ();
 			}
 		}
+		if (other.gameObject.tag == "Explosive"){
+			other.gameObject.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
+			Explode ();	
+		}
+		if (other.gameObject.tag == "DestructibleWall"){
+			other.gameObject.GetComponent<DestructibleWall>().TakeDamage (damage);
+			Explode ();	
+		}
 	}
 
 	//Collide with enemy
@@ -47,10 +55,7 @@ public class Bullet : MonoBehaviour {
 			SumScore.SaveHighScore();
 			Explode ();
 		}
-		if (other.gameObject.tag == "Explosive"){
-			other.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
-			Explode ();	
-		}
+		
 	}
 
 	void Explode(){
