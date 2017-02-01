@@ -117,15 +117,11 @@ MonoBehaviour:
   range: 10
   strayFactor: 0
   screenShake: 0.05
-<<<<<<< HEAD:Game/ReptileRampage/Assets/Prefabs/Weapons/ShotGun.prefab
-  bulletCount: 100
-  bulletSpread: 5
-=======
   bulletCount: 5
   bulletSpread: 10
   sprite1: {fileID: 21300002, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
   sprite2: {fileID: 21300004, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
->>>>>>> 7023694c5d152c3685e7620ae1f5921fc5f4f801:Game/ReptileRampage/Assets/Prefabs/Weapons/Remington 870.prefab
+Game/ReptileRampage/Assets/Prefabs/Weapons/Remington 870.prefab
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,

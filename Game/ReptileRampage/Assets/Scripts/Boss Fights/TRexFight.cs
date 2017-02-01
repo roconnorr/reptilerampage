@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class TRexFight : MonoBehaviour {
-
-	public GameObject rexfight;
 
 	public GameObject trex;
 
@@ -15,5 +15,6 @@ public class TRexFight : MonoBehaviour {
 
 	public void Dialogue(){
 		player.GetComponent<Player>().canMove = false;
+		
 	}
 }

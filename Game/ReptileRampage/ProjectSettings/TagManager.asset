@@ -10,6 +10,7 @@ TagManager:
   - Explosive
   - DestructibleWall
   - Crate
+  - BossFight
   layers:
   - Default
   - TransparentFX
