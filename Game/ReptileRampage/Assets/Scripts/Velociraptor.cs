@@ -139,7 +139,7 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void MovePathFind() {
-		pathfinder.GoTowards (target, maxSpeed/1.5f);
+		pathfinder.GoTowards (target, speed, maxSpeed);
 	}
 
 	void MovePatrol() {
@@ -148,7 +148,7 @@ public class Velociraptor : MonoBehaviour {
 				bool foundLocation = false;
 				int tries = 0;
 				while (foundLocation == false && tries < 5) {
-					wanderLocation = new Vector3 (patrolLocation.x + Random.Range (-patrolRange, patrolRange), patrolLocation.y + Random.Range (-patrolRange, patrolRange));
+					wanderLocation = new Vector3 (patrolLocation.x + Random.Range (-patrolRange, patrolRange), patrolLocation.y + Random.Range (-patrolRange, patrolRange), transform.position.z);
 					if (PositionHiddenByObstacles (wanderLocation)) {
 						tries++;
 					} else {
@@ -165,10 +165,13 @@ public class Velociraptor : MonoBehaviour {
 			}
 		}
 		if (isWandering) {
-			transform.position = Vector3.MoveTowards (transform.position, wanderLocation, speed / 80);
-			if (Vector3.Distance (transform.position, wanderLocation) < 0.01) {
+			rb.AddForce(Vector3.Normalize (wanderLocation - transform.position) * speed);
+			if (Vector3.Distance (transform.position, wanderLocation) < 0.1f) {
 				isWandering = false;
 				animator.Play ("velociraptor_idle");
+			}
+			if(rb.velocity.magnitude > maxSpeed/4) {
+				rb.velocity = rb.velocity.normalized * maxSpeed/4;
 			}
 		}
 	}

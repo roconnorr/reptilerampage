@@ -30,8 +30,6 @@ public class AStarPathfinder : MonoBehaviour {
 	private float timeKeeper;			    //for 
 
 	private Rigidbody2D rb;
-	public float speed;
-	public float maxSpeed;
 
 
 #if UNITY_EDITOR
@@ -63,9 +61,9 @@ public class AStarPathfinder : MonoBehaviour {
 	 * param: target - game object to travel towards
 	 * param: atSpeed - speed at which to travel (in units/s)
 	 */
-	public void GoTowards(GameObject target, float atSpeed) {
+	public void GoTowards(GameObject target, float speed, float maxSpeed) {
 		if (target != null) {
-			GoTowards (target.transform.position, atSpeed);
+			GoTowards (target.transform.position, speed, maxSpeed);
 		}
 	}
 
@@ -75,7 +73,7 @@ public class AStarPathfinder : MonoBehaviour {
 	 * param: targetPosition - position to travel towards
 	 * param: atSpeed - speed at which to travel (in units/s)
 	 */
-	public void  GoTowards(Vector2 targetPosition, float atSpeed) {
+	public void  GoTowards(Vector2 targetPosition, float speed, float maxSpeed) {
 
 		if (grid == null) {
 			Debug.LogError ("Pathfinding grid object is missing AStarGrid component!");
@@ -143,7 +141,7 @@ public class AStarPathfinder : MonoBehaviour {
 		// shortest path found
 
 		// Compute the distance to travel in this frame
-		float distAllowed = atSpeed * timeDelta;
+//		float distAllowed = speed * timeDelta;
 
 		// Travel along the designated path
 		if (moveIndex < moves.Count) {
