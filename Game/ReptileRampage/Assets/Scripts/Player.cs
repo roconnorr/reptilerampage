@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
 
     private Weapon weapon;
 
-	public enum WeaponType {usp45, m16, remington870, ak47};
+	public enum WeaponType {usp45, m16, remington870, ak47, spas12};
     public GameObject[] weaponsprefabs;
     private GameObject[] weaponslist;
     public GameObject slot1 = null;
