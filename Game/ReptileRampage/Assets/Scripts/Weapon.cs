@@ -26,11 +26,17 @@ public class Weapon : MonoBehaviour {
 	private Transform firePoint2;
 	private bool flipped;
 
+	private GameObject player;
+
+	private Player playerScript;
+
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		Cursor.visible = false;
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
+		playerScript = GameObject.Find("Player").GetComponent<Player>();
+
 	}
 
 	void Update () {
@@ -63,9 +69,12 @@ public class Weapon : MonoBehaviour {
 			firePoint = firePoint1;
 		}
 
+		
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
-			timeToFire = Time.time + 1/fireRate;
-			CreateBullet ();
+			if(playerScript.canMove){
+				timeToFire = Time.time + 1/fireRate;
+				CreateBullet ();
+			}
 		}
 	}
 

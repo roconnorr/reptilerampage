@@ -4,23 +4,19 @@ using UnityEngine;
 
 
 public class TRexFight : MonoBehaviour {
-
-	
 	public GameObject trex;
-	public GameObject trexInstance;
+	private GameObject trexInstance;
 	public GameObject player;
-	public GameObject textBox;
-	public GameObject textBoxManager;
 
 	public void StartFight(){
-		Dialogue();
-		textBox.SetActive(true);
-		textBoxManager.SetActive(true);
-		trexInstance = Instantiate(trex, new Vector3(12, 47, -1), new Quaternion(0,0,0,0));
-		trexInstance.GetComponent<TRex>().target = player.transform;
+		player.GetComponent<Player>().canMove = false;
+		this.gameObject.GetComponent<TextBoxManager>().dialogActive = true;
 	}
 
-	public void Dialogue(){
+	public void SpawnTRex(){
+		player.GetComponent<Player>().canMove = true;
+		trexInstance = Instantiate(trex, new Vector3(12, 47, -1), new Quaternion(0,0,0,0));
+		trexInstance.GetComponent<TRex>().target = player.transform;
+		this.gameObject.SetActive(false);
 	}
-		
 }
