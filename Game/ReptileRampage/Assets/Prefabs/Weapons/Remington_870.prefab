@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 114429138194291038}
   - component: {fileID: 114604995518058606}
   m_Layer: 0
-  m_Name: Remington 870
+  m_Name: Remington_870
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
