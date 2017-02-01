@@ -19,6 +19,9 @@ public class ExplosiveBarrel : MonoBehaviour {
 			//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 			Collider2D[] colliders = Physics2D.OverlapCircleAll (transform.position, radius);
 			foreach(Collider2D col in colliders){
+				if(col.tag == "DestructibleWall"){
+					col.GetComponent<DestructibleWall>().destroy();
+				}
 				Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
 				if(rb != null){
 					//Player takes damage if in radius
