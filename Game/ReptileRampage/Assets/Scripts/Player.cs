@@ -111,7 +111,6 @@ public class Player : MonoBehaviour {
         }else{
             soundSource.Stop();
         }
-        
    }
 
    public void TakeDamage(int amount, Quaternion dir) {

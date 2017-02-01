@@ -33,5 +33,7 @@ public class UpperBodyAnim : MonoBehaviour {
 		} else {
 			animator.speed = 0;
 		}
+
+		GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
 	}
 }
