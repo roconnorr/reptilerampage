@@ -26,14 +26,16 @@ public class Ankylosaurus : MonoBehaviour {
 	private bool isWandering = false;
 	private bool avoiding = false;
 	private bool flipped = false;
+	private bool isCharging = false;
 
 	//private Animator animator;
 	private float xPrev = 0;
 	private Vector3 patrolLocation;
 	private Vector3 wanderLocation;
+	private Vector3 chargePosition;
 
+	private int smashes = 0;
 	private float timeToFire = 0;
-	private bool trigger = true;
 	private Transform firePoint;
 	private Animator animator;
 
@@ -89,9 +91,21 @@ public class Ankylosaurus : MonoBehaviour {
 					}
 				}
 			} else {//If in stop range
-				if (trigger && Time.time > timeToFire) {
+				if (!isCharging && Random.Range (0, 400) == 1) {
+					isCharging = true;
+					chargePosition = target.transform.position;
+				}
+				if (!isCharging && Time.time > timeToFire) {
+					smashes = Random.Range (1, 4);
 					animator.Play ("Ankylo_Smash");
 					timeToFire = Time.time + 1/fireRate;
+				}
+				if (isCharging) {
+					if (Vector3.Distance (transform.position, chargePosition) > 0.2) {
+						transform.position = Vector3.MoveTowards (transform.position, chargePosition, speed / 30);
+					} else {
+						isCharging = false;
+					}
 				}
 			}
 		} else {
@@ -210,6 +224,10 @@ public class Ankylosaurus : MonoBehaviour {
 		}
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);
+		}
+		smashes--;
+		if (smashes > 0) {
+			animator.Play ("Ankylo_Smash");
 		}
 	}
 }
