@@ -10,6 +10,7 @@ TagManager:
   - Explosive
   - DestructibleWall
   - Crate
+  - BossFight
   layers:
   - Default
   - TransparentFX
@@ -46,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 2998203101
     locked: 0
