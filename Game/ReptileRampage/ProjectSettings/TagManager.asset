@@ -9,6 +9,7 @@ TagManager:
   - Pickup
   - Explosive
   - DestructibleWall
+  - Crate
   layers:
   - Default
   - TransparentFX
