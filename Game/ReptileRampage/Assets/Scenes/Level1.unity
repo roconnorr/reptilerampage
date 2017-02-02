@@ -878,6 +878,7 @@ GameObject:
   - component: {fileID: 375465474}
   - component: {fileID: 375465473}
   - component: {fileID: 375465472}
+  - component: {fileID: 375465479}
   m_Layer: 0
   m_Name: Velociraptor (1)
   m_TagString: Enemy
@@ -1032,6 +1033,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &375465479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 375465470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!1001 &467801329
 Prefab:
   m_ObjectHideFlags: 0
@@ -2710,6 +2723,7 @@ GameObject:
   - component: {fileID: 897600934}
   - component: {fileID: 897600933}
   - component: {fileID: 897600939}
+  - component: {fileID: 897600940}
   m_Layer: 0
   m_Name: Velociraptor
   m_TagString: Enemy
@@ -2864,6 +2878,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &897600940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 897600931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!1001 &934796664
 Prefab:
   m_ObjectHideFlags: 0
@@ -3129,6 +3155,7 @@ GameObject:
   - component: {fileID: 981504193}
   - component: {fileID: 981504192}
   - component: {fileID: 981504191}
+  - component: {fileID: 981504198}
   m_Layer: 0
   m_Name: Velociraptor (2)
   m_TagString: Enemy
@@ -3283,6 +3310,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &981504198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 981504189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!1001 &1014933997
 Prefab:
   m_ObjectHideFlags: 0
@@ -3695,6 +3734,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d82ecbd9509f4484ba2b54838faafd1d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1127587174 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1068406023760928, guid: d82ecbd9509f4484ba2b54838faafd1d,
+    type: 2}
+  m_PrefabInternal: {fileID: 1127587173}
+--- !u!114 &1127587175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1127587174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 0
 --- !u!1001 &1151511697
 Prefab:
   m_ObjectHideFlags: 0
@@ -4304,6 +4360,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e8a548a5ab37c4f388ae8128ad13f392, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1160337525 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1320601603745612, guid: e8a548a5ab37c4f388ae8128ad13f392,
+    type: 2}
+  m_PrefabInternal: {fileID: 1160337524}
+--- !u!114 &1160337526
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1160337525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 0
 --- !u!1 &1172908235
 GameObject:
   m_ObjectHideFlags: 0
@@ -4387,6 +4460,7 @@ GameObject:
   - component: {fileID: 1212086265}
   - component: {fileID: 1212086263}
   - component: {fileID: 1212086264}
+  - component: {fileID: 1212086270}
   m_Layer: 0
   m_Name: Ankylosaurus
   m_TagString: Enemy
@@ -4551,6 +4625,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
+--- !u!114 &1212086270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212086261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!1 &1216443058
 GameObject:
   m_ObjectHideFlags: 0
@@ -4934,6 +5020,7 @@ GameObject:
   - component: {fileID: 1360148897}
   - component: {fileID: 1360148896}
   - component: {fileID: 1360148895}
+  - component: {fileID: 1360148902}
   m_Layer: 0
   m_Name: Velociraptor (3)
   m_TagString: Enemy
@@ -5088,6 +5175,18 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+--- !u!114 &1360148902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1360148893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!1001 &1391571489
 Prefab:
   m_ObjectHideFlags: 0
@@ -5265,6 +5364,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37cc2a2e5c0d54b05bf873698462996e, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1436217751 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1993178177048284, guid: 37cc2a2e5c0d54b05bf873698462996e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1436217750}
+--- !u!114 &1436217752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1436217751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 0
 --- !u!1001 &1453946532
 Prefab:
   m_ObjectHideFlags: 0
@@ -6882,6 +6998,7 @@ GameObject:
   - component: {fileID: 2025769274}
   - component: {fileID: 2025769273}
   - component: {fileID: 2025769279}
+  - component: {fileID: 2025769280}
   m_Layer: 0
   m_Name: Stegosaurus
   m_TagString: Enemy
@@ -7046,6 +7163,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &2025769280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2025769271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!1001 &2029800025
 Prefab:
   m_ObjectHideFlags: 0

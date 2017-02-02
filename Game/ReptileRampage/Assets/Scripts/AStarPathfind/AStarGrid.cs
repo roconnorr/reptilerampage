@@ -306,7 +306,7 @@ public class AStarGrid : MonoBehaviour {
 #if UNITY_EDITOR
 		if (DrawGridInEditor == true && Map != null) {
 			// Draw grid lines- debugging only */
-			DrawGridLines ();
+			//DrawGridLines ();
 		}
 #endif
 	}

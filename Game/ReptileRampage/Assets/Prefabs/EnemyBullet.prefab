@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 60613147063103896}
   - component: {fileID: 50769963182296266}
   - component: {fileID: 114577978209189878}
+  - component: {fileID: 114616018047340960}
   m_Layer: 10
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -100,6 +101,18 @@ MonoBehaviour:
   dmgPlayer: 0
   dmgEnemy: 0
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
+--- !u!114 &114616018047340960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354644296376642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!212 &212099968056553104
 SpriteRenderer:
   m_ObjectHideFlags: 1

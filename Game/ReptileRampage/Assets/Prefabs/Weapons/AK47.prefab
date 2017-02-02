@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 114673577212729884}
   - component: {fileID: 114054849823771540}
   - component: {fileID: 61909704615440136}
+  - component: {fileID: 114299139006355222}
   m_Layer: 0
   m_Name: AK47
   m_TagString: Untagged
@@ -126,6 +127,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114299139006355222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1752570124062964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!114 &114673577212729884
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -52,6 +52,7 @@ GameObject:
   - component: {fileID: 212647502961036756}
   - component: {fileID: 114429138194291038}
   - component: {fileID: 114604995518058606}
+  - component: {fileID: 114677297681640162}
   m_Layer: 0
   m_Name: Remington_870
   m_TagString: Untagged
@@ -140,6 +141,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114677297681640162
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1984896611416578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!212 &212647502961036756
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 212057743897170906}
   - component: {fileID: 114983832652904942}
   - component: {fileID: 114360274311756954}
+  - component: {fileID: 114180413187041026}
   m_Layer: 0
   m_Name: USP45
   m_TagString: Untagged
@@ -100,6 +101,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114180413187041026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663475684822718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!114 &114360274311756954
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,6 +143,7 @@ MonoBehaviour:
   screenShake: 0.05
   bulletCount: 1
   bulletSpread: 0
+  type: 0
   sprite1: {fileID: 21300002, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
   sprite2: {fileID: 21300004, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
@@ -138,6 +152,7 @@ MonoBehaviour:
     type: 2}
   shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
   rotationOffset: 0
+  noRotation: 0
 --- !u!212 &212057743897170906
 SpriteRenderer:
   m_ObjectHideFlags: 1

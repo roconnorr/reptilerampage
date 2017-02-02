@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 114276936059754038}
   - component: {fileID: 60026715398638314}
   - component: {fileID: 50210985924982660}
+  - component: {fileID: 114397031430288152}
   m_Layer: 9
   m_Name: Trike
   m_TagString: Enemy
@@ -227,6 +228,18 @@ MonoBehaviour:
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
+--- !u!114 &114397031430288152
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1320601603745612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!114 &114692400393136444
 MonoBehaviour:
   m_ObjectHideFlags: 1

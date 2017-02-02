@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212994395537725224}
   - component: {fileID: 114485369443299888}
   - component: {fileID: 114191379528080682}
+  - component: {fileID: 114136418807969282}
   m_Layer: 0
   m_Name: Grenade
   m_TagString: Untagged
@@ -100,6 +101,18 @@ Transform:
   m_Father: {fileID: 4060820017077642}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114136418807969282
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1062804867728130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
 --- !u!114 &114191379528080682
 MonoBehaviour:
   m_ObjectHideFlags: 1
