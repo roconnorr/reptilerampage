@@ -10,11 +10,7 @@ public class Weapon : MonoBehaviour {
 	public float screenShake;
 	public float bulletCount;
 	public float bulletSpread;
-<<<<<<< HEAD
-=======
 	public Player.WeaponType type;
-	
->>>>>>> 4c94512c39676cc30fa6e08d2147a3578ec0649f
 	public Sprite sprite1;
 	public Sprite sprite2;
 	public Transform bulletPrefab;
