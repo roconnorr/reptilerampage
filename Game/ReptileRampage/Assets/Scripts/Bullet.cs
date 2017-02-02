@@ -45,8 +45,6 @@ public class Bullet : MonoBehaviour {
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
 			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
-			SumScore.Add(100);
-			SumScore.SaveHighScore();
 			Explode ();
 		}
 	}
