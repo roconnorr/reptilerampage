@@ -2519,7 +2519,6 @@ GameObject:
   - component: {fileID: 1019736892}
   - component: {fileID: 1019736891}
   - component: {fileID: 1019736890}
-  - component: {fileID: 1019736889}
   - component: {fileID: 1019736888}
   m_Layer: 0
   m_Name: Player
@@ -2541,23 +2540,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialScore: 0
   storeHighScore: 1
---- !u!95 &1019736889
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1019736887}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86d594665fc50bd43b406ffa2e08a0fc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!82 &1019736890
 AudioSource:
   m_ObjectHideFlags: 0

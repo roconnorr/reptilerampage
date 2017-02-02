@@ -95,7 +95,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1453132568796580, guid: a116b3dc443e642d9a7ffaf5c9c29af0,
     type: 2}
   moveSpeed: 20
-  damage: 0
+  damage: 10
   range: 0
   dmgPlayer: 0
   dmgEnemy: 0
