@@ -18,6 +18,7 @@ public class Velociraptor : MonoBehaviour {
 	private bool isWandering = false;
 	private bool avoiding = false;
 	private bool flipped = false;
+	private bool disabled;
 
 	private float xPrev = 0;
 	private Vector3 patrolLocation;
@@ -38,79 +39,84 @@ public class Velociraptor : MonoBehaviour {
 
 	//Run every tick
 	void FixedUpdate() {
-		//Get vision booleans
-		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
-		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
+		if (!disabled) {
+			//Get vision booleans
+			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
+			targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
+			targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 
-		//If seeing player when not chasing
-		if (!isChasing && targetInSightRange && !targetViewBlocked) {
-			isChasing = true;
-			animator.Play ("velociraptor_run");
-		}
+			//If seeing player when not chasing
+			if (!isChasing && targetInSightRange && !targetViewBlocked) {
+				isChasing = true;
+				animator.Play ("velociraptor_run");
+			}
 
-		//If chasing player
-		if (isChasing && targetInChaseRange) {
-			if (!targetViewBlocked) {
-				//Find nearest enemy and avoid if they're too close
-				Transform nearestEnemy = GetNearestSameDino ();
-				if (nearestEnemy != null) {
-					float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-					if (avoiding) {
-						if (dist > 2) {
-							avoiding = false;
+			//If chasing player
+			if (isChasing && targetInChaseRange) {
+				if (!targetViewBlocked) {
+					//Find nearest enemy and avoid if they're too close
+					Transform nearestEnemy = GetNearestSameDino ();
+					if (nearestEnemy != null) {
+						float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+						if (avoiding) {
+							if (dist > 2) {
+								avoiding = false;
+							}
+							Avoid (nearestEnemy);
+						} else if (dist < 1.5) {
+							avoiding = true;
+							Avoid (nearestEnemy);
 						}
-						Avoid (nearestEnemy);
-					} else if (dist < 1.5) {
-						avoiding = true;
-						Avoid (nearestEnemy);
+					}
+					//Move directly towards player
+					MoveDirect ();
+					//If in chase range but player is obstructed, pathfind to him
+				} else {
+					if (isChasing) {
+						MovePathFind ();
 					}
 				}
-				//Move directly towards player
-				MoveDirect ();
-				//If in chase range but player is obstructed, pathfind to him
 			} else {
 				if (isChasing) {
-					MovePathFind ();
+					isChasing = false;
+					patrolLocation = transform.position;
 				}
+				MovePatrol ();
 			}
-		} else {
-			if (isChasing) {
-				isChasing = false;
-				patrolLocation = transform.position;
+			//Max Speed
+			if (rb.velocity.magnitude > maxSpeed) {
+				rb.velocity = rb.velocity.normalized * maxSpeed;
 			}
-			MovePatrol ();
-		}
-		//Max Speed
-		if(rb.velocity.magnitude > maxSpeed) {
-			rb.velocity = rb.velocity.normalized * maxSpeed;
 		}
 	}
 
 	void Update() {
-		//Direction
-		//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
-		if (isWandering) {
-			if ((transform.position.x > xPrev) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
+		disabled = Vector3.Distance (transform.position, target.transform.position) > 30;
+		if (!disabled) {
+			//Direction
+			//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
+			if (isWandering) {
+				if ((transform.position.x > xPrev) && !flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = true;
+				}
+				if ((transform.position.x < xPrev) && flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = false;
+				}
+				//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
+			} else {
+				if ((transform.position.x > xPrev + 0.05) && !flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = true;
+				}
+				if ((transform.position.x < xPrev - 0.05) && flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = false;
+				}
 			}
-			if ((transform.position.x < xPrev) && flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = false;
-			}
-		//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
-		} else {
-			if ((transform.position.x > xPrev + 0.05) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
-			}
-			if ((transform.position.x < xPrev - 0.05) && flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = false;
-			}
+			xPrev = transform.position.x;
 		}
-		xPrev = transform.position.x;
 	}
 
 

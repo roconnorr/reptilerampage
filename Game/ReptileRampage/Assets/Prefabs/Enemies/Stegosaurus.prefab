@@ -193,7 +193,7 @@ MonoBehaviour:
   sightRange: 10
   chaseRange: 20
   stopRange: 8
-  patrolRange: 5
+  patrolRange: 2
   target: {fileID: 0}
   isChasing: 0
 --- !u!114 &114179375817584696

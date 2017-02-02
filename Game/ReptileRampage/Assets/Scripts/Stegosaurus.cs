@@ -19,6 +19,7 @@ public class Stegosaurus : MonoBehaviour {
 	private bool isWandering = false;
 	private bool avoiding = false;
 	private bool flipped = false;
+	private bool disabled;
 
 	//private Animator animator;
 	private float xPrev = 0;
@@ -40,71 +41,76 @@ public class Stegosaurus : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		//Get vision booleans
-		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
-		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
-		targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
+		if (!disabled) {
+			//Get vision booleans
+			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
+			targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
+			targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
+			targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
 
-		//If seeing player when not chasing
-		if (!isChasing && targetInSightRange && !targetViewBlocked) {
-			isChasing = true;
-			isWandering = false;
-			//animator.Play ("velociraptor_run");
-		}
+			//If seeing player when not chasing
+			if (!isChasing && targetInSightRange && !targetViewBlocked) {
+				isChasing = true;
+				isWandering = false;
+				//animator.Play ("velociraptor_run");
+			}
 
-		//If chasing player
-		if (isChasing && targetInChaseRange) {
-			if (!targetInStopRange) {
-				if (!targetViewBlocked) {
-					//Find nearest enemy and avoid if they're too close
-					Transform nearestEnemy = GetNearestSameDino ();
-					if (nearestEnemy != null) {
-						float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-						if (avoiding) {
-							if (dist > 2) {
-								avoiding = false;
+			//If chasing player
+			if (isChasing && targetInChaseRange) {
+				if (!targetInStopRange) {
+					if (!targetViewBlocked) {
+						//Find nearest enemy and avoid if they're too close
+						Transform nearestEnemy = GetNearestSameDino ();
+						if (nearestEnemy != null) {
+							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+							if (avoiding) {
+								if (dist > 2) {
+									avoiding = false;
+								}
+								Avoid (nearestEnemy);
+							} else if (dist < 1.5) {
+								avoiding = true;
+								Avoid (nearestEnemy);
 							}
-							Avoid (nearestEnemy);
-						} else if (dist < 1.5) {
-							avoiding = true;
-							Avoid (nearestEnemy);
+						}
+						//Move directly towards player
+						MoveDirect ();
+						//If in chase range but player is obstructed, pathfind to him
+					} else {
+						if (isChasing) {
+							MovePathFind ();
 						}
 					}
-					//Move directly towards player
-					MoveDirect ();
-					//If in chase range but player is obstructed, pathfind to him
-				} else {
-					if (isChasing) {
-						MovePathFind ();
-					}
 				}
+			} else {
+				if (isChasing) {
+					isChasing = false;
+					patrolLocation = transform.position;
+				}
+				MovePatrol ();
 			}
-		} else {
-			if (isChasing) {
-				isChasing = false;
-				patrolLocation = transform.position;
-			}
-			MovePatrol ();
-		}
 
-		//Max Speed
-		if(rb.velocity.magnitude > maxSpeed) {
-			rb.velocity = rb.velocity.normalized * maxSpeed;
+			//Max Speed
+			if (rb.velocity.magnitude > maxSpeed) {
+				rb.velocity = rb.velocity.normalized * maxSpeed;
+			}
 		}
 	}
 
 	void Update() {
-		//Direction
-		if ((transform.position.x > xPrev + 0.02) && !flipped) {
-			sr.flipX = true;
-			flipped = true;
+		disabled = Vector3.Distance (transform.position, target.transform.position) > 30;
+		if (!disabled) {
+			//Direction
+			if ((transform.position.x > xPrev + 0.02) && !flipped) {
+				sr.flipX = true;
+				flipped = true;
+			}
+			if ((transform.position.x < xPrev - 0.02) && flipped) {
+				sr.flipX = false;
+				flipped = false;
+			}
+			xPrev = transform.position.x;
 		}
-		if ((transform.position.x < xPrev - 0.02) && flipped) {
-			sr.flipX = false;
-			flipped = false;
-		}
-		xPrev = transform.position.x;
 	}
 
 

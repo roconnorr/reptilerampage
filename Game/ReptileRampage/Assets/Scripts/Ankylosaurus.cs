@@ -27,6 +27,7 @@ public class Ankylosaurus : MonoBehaviour {
 	private bool avoiding = false;
 	private bool flipped = false;
 	private bool isCharging = false;
+	private bool disabled;
 
 	//private Animator animator;
 	private float xPrev = 0;
@@ -53,99 +54,104 @@ public class Ankylosaurus : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		//Get vision booleans
-		targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
-		targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
-		targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
-		targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
+		if (!disabled) {
+			//Get vision booleans
+			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
+			targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
+			targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
+			targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
 
-		//If seeing player when not chasing
-		if (!isChasing && targetInSightRange && !targetViewBlocked) {
-			isChasing = true;
-			isWandering = false;
-			//animator.Play ("velociraptor_run");
-		}
+			//If seeing player when not chasing
+			if (!isChasing && targetInSightRange && !targetViewBlocked) {
+				isChasing = true;
+				isWandering = false;
+				//animator.Play ("velociraptor_run");
+			}
 
-		//If chasing player
-		if (isChasing && targetInChaseRange) {
-			if (!targetInStopRange) {
-				if (!targetViewBlocked) {
-					//Find nearest enemy and avoid if they're too close
-					Transform nearestEnemy = GetNearestSameDino ();
-					if (nearestEnemy != null) {
-						float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-						if (avoiding) {
-							if (dist > 2) {
-								avoiding = false;
+			//If chasing player
+			if (isChasing && targetInChaseRange) {
+				if (!targetInStopRange) {
+					if (!targetViewBlocked) {
+						//Find nearest enemy and avoid if they're too close
+						Transform nearestEnemy = GetNearestSameDino ();
+						if (nearestEnemy != null) {
+							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+							if (avoiding) {
+								if (dist > 2) {
+									avoiding = false;
+								}
+								Avoid (nearestEnemy);
+							} else if (dist < 1.5) {
+								avoiding = true;
+								Avoid (nearestEnemy);
 							}
-							Avoid (nearestEnemy);
-						} else if (dist < 1.5) {
-							avoiding = true;
-							Avoid (nearestEnemy);
+						}
+						//Move directly towards player
+						MoveDirect ();
+						//If in chase range but player is obstructed, pathfind to him
+					} else {
+						if (isChasing) {
+							MovePathFind ();
 						}
 					}
-					//Move directly towards player
-					MoveDirect ();
-					//If in chase range but player is obstructed, pathfind to him
-				} else {
-					if (isChasing) {
-						MovePathFind ();
+				} else {//If in stop range
+					if (!isCharging && Random.Range (0, 400) == 1) {
+						isCharging = true;
+						chargePosition = new Vector3 (target.transform.position.x, target.transform.position.y, transform.position.z);
+					}
+					if (!isCharging && Time.time > timeToFire) {
+						smashes = Random.Range (1, 4);
+						animator.Play ("Ankylo_Smash");
+						timeToFire = Time.time + 1 / fireRate;
+					}
+					if (isCharging) {
+						if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
+							rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed);
+						} else {
+							isCharging = false;
+						}
 					}
 				}
-			} else {//If in stop range
-				if (!isCharging && Random.Range (0, 400) == 1) {
-					isCharging = true;
-					chargePosition = new Vector3(target.transform.position.x, target.transform.position.y, transform.position.z);
+			} else {
+				if (isChasing) {
+					isChasing = false;
+					patrolLocation = transform.position;
 				}
-				if (!isCharging && Time.time > timeToFire) {
-					smashes = Random.Range (1, 4);
-					animator.Play ("Ankylo_Smash");
-					timeToFire = Time.time + 1 / fireRate;
-				}
-				if (isCharging) {
-					if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
-						rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed);
-					} else {
-						isCharging = false;
-					}
-				}
+				MovePatrol ();
 			}
-		} else {
-			if (isChasing) {
-				isChasing = false;
-				patrolLocation = transform.position;
+			if (rb.velocity.magnitude > maxSpeed) {
+				rb.velocity = rb.velocity.normalized * maxSpeed;
 			}
-			MovePatrol ();
-		}
-		if(rb.velocity.magnitude > maxSpeed) {
-			rb.velocity = rb.velocity.normalized * maxSpeed;
 		}
 	}
 
 	void Update() {
-		//Direction
-		//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
-		if (isWandering) {
-			if ((transform.position.x > xPrev) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
+		disabled = Vector3.Distance (transform.position, target.transform.position) > 30;
+		if (!disabled) {
+			//Direction
+			//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
+			if (isWandering) {
+				if ((transform.position.x > xPrev) && !flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = true;
+				}
+				if ((transform.position.x < xPrev) && flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = false;
+				}
+				//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
+			} else {
+				if ((transform.position.x > xPrev + 0.02) && !flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = true;
+				}
+				if ((transform.position.x < xPrev - 0.02) && flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = false;
+				}
 			}
-			if ((transform.position.x < xPrev) && flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = false;
-			}
-		//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
-		} else {
-			if ((transform.position.x > xPrev + 0.02) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
-			}
-			if ((transform.position.x < xPrev - 0.02) && flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = false;
-			}
+			xPrev = transform.position.x;
 		}
-		xPrev = transform.position.x;
 	}
 
 
