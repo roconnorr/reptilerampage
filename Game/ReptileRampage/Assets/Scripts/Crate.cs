@@ -21,12 +21,12 @@ public class Crate : MonoBehaviour {
 			//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 			//GameObject weapon = weaponPrefabs[Random.Range(0,weaponPrefabs.Count)];
  			//Instantiate(weapon, transform.position, transform.rotation);
-
-			/*
-			PickupPrefab pickupPrefab = pickup.GetComponent<PickupPrefab>();
-			pickupPrefab.spriteRenderer.sprite = pickupPrefab.WeaponSprites[1];
-			Instantiate(pickupPrefab, transform.position, transform.rotation);
-			Destroy (gameObject);*/
+			Destroy (gameObject);
+			GameObject gun = Instantiate(pickup, transform.position, transform.rotation);
+			PickupPrefab pickupPrefab = gun.GetComponent<PickupPrefab>();
+			int gunNum = pickupPrefab.WeaponSprites.Length;
+			pickupPrefab.type = (Player.WeaponType) Random.Range(0, gunNum);			
+			
 		}
 	}
 }
