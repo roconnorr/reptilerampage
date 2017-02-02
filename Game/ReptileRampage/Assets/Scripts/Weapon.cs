@@ -10,7 +10,6 @@ public class Weapon : MonoBehaviour {
 	public float screenShake;
 	public float bulletCount;
 	public float bulletSpread;
-	
 	public Sprite sprite1;
 	public Sprite sprite2;
 	public Transform bulletPrefab;
