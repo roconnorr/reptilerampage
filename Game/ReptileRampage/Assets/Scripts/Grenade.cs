@@ -19,10 +19,10 @@ public class Grenade : MonoBehaviour {
 	public AudioClip wallHitSound = null;
 
 	void Update () {
-		amplitude *= 0.95f; //Lower = faster bounce height diminished
+		amplitude *= 0.93f; //Lower = faster bounce height diminished
 		time += 0.1f; //Lower = slower overall
 		period += 0.08f; //Higher = faster bounce length diminish
-		moveSpeed *= 0.97f; //Lower = faster speed diminish
+		moveSpeed *= 0.95f; //Lower = faster speed diminish
 		oldHeight = height;
 
 		height = Mathf.Abs(Mathf.Sin(time * period)) * -amplitude;
