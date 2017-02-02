@@ -47,7 +47,8 @@ public class TextBoxManager : MonoBehaviour {
 				BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 				dialogActive = false;
 				player.GetComponent<Player>().canMove = true;
-				player.GetComponent<Player>().canShoot = true;
+				
+		player.GetComponent<Player>().canShoot = true;
 			}
 		}
 	}
