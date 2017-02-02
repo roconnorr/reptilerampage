@@ -26,8 +26,6 @@ public class TextBoxManager : MonoBehaviour {
 		if(endAtLine == 0){
 			endAtLine = textLines.Length -1;
 		}
-		dialogBox.SetActive(false);
-
 	}
 	
 	// Update is called once per frame
