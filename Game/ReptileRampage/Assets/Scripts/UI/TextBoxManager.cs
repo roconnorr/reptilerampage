@@ -26,8 +26,6 @@ public class TextBoxManager : MonoBehaviour {
 		if(endAtLine == 0){
 			endAtLine = textLines.Length -1;
 		}
-		dialogBox.SetActive(false);
-
 	}
 	
 	// Update is called once per frame
@@ -47,8 +45,7 @@ public class TextBoxManager : MonoBehaviour {
 				BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 				dialogActive = false;
 				player.GetComponent<Player>().canMove = true;
-				
-		player.GetComponent<Player>().canShoot = true;
+				player.GetComponent<Player>().canShoot = true;
 			}
 		}
 	}
