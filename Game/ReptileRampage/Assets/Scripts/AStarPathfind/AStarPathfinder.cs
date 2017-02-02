@@ -48,7 +48,7 @@ public class AStarPathfinder : MonoBehaviour {
 			Debug.LogError ("Pathfinding grid object not initialised!");
 			return;
 		}
-		grid = gridObject.GetComponent<AStarGrid> ();
+//		grid = gridObject.GetComponent<AStarGrid> ();
 		previousTargetPosition = transform.position;
 		timeLeftUntilPathUpdate = 0;
 		timeKeeper = Time.time;
@@ -137,49 +137,9 @@ public class AStarPathfinder : MonoBehaviour {
 			}
 		}
 #endif
-		// Travel distance according to specified speed along the
-		// shortest path found
-
-		// Compute the distance to travel in this frame
-//		float distAllowed = speed * timeDelta;
 
 		// Travel along the designated path
 		if (moveIndex < moves.Count) {
-			/*
-			Vector2 nextPos = moves [moveIndex];
-
-			//Get the current position
-			currentPos.x = transform.position.x;
-			currentPos.y = transform.position.y;
-			//Get the travel vector for the next move
-			Vector2 travelVec = nextPos - currentPos;
-			//COmpute travel distance in the next move
-			float travelDist = travelVec.magnitude;
-			Vector2 nextMove;
-			//If the travel distance is less than the total
-			//distance to travel, execute the entire move
-			if (travelDist < distAllowed) {
-				nextMove = nextPos;
-				moveIndex++;
-			} else {
-				//If the travel distance is more than the total
-				//distance to travel, move along the travel vector
-				//but only a bit, covering the remaining distance to
-				// travel
-				nextMove = currentPos + travelVec.normalized * distAllowed;
-				travelDist = distAllowed;
-			}
-
-			//Get the next position based on the next move
-			Vector3 nextPosition = new Vector3 (nextMove.x, nextMove.y, transform.position.z);
-
-			//Udate remaining distance to travel
-			transform.position = nextPosition;
-			distAllowed -= travelDist;
-			if (distAllowed <= 0f) {
-				break;
-			}
-			*/
 			Vector3 nextPos = new Vector3 (moves [moveIndex].x, moves [moveIndex].y, transform.position.z);
 			rb.AddForce(Vector3.Normalize (nextPos - transform.position) *speed);
 			if (Vector3.Distance (nextPos, transform.position) < 0.3f) {
