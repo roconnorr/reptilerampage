@@ -7,10 +7,9 @@ public class TextBoxManager : MonoBehaviour {
 
 	public GameObject player;
 
-	public Text textDisplay;
-
+	public GameObject BossTrigger;
 	public GameObject dialogBox;
-
+	public Text text;
 	public bool dialogActive = false;
 
 	public TextAsset textFile;
@@ -34,8 +33,10 @@ public class TextBoxManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(dialogActive){
+			player.GetComponent<Player>().canMove = false;
+			player.GetComponent<Player>().canShoot = false;
 			dialogBox.SetActive(true);
-			textDisplay.text = textLines[currentLine];
+			text.text = textLines[currentLine];
 
 			if(Input.GetButtonDown("Fire1")){
 				currentLine += 1;
@@ -43,8 +44,10 @@ public class TextBoxManager : MonoBehaviour {
 
 			if(currentLine > endAtLine){
 				dialogBox.SetActive(false);
-				this.gameObject.GetComponent<TRexFight>().SpawnTRex();
+				BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 				dialogActive = false;
+				player.GetComponent<Player>().canMove = true;
+				player.GetComponent<Player>().canShoot = true;
 			}
 		}
 	}

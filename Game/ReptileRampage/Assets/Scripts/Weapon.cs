@@ -83,7 +83,7 @@ public class Weapon : MonoBehaviour {
 
 		
 		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
-			if(playerScript.canMove){
+			if(playerScript.canShoot){
 				timeToFire = Time.time + 1/fireRate;
 				CreateBullet ();
 			}

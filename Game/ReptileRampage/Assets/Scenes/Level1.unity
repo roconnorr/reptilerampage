@@ -174,8 +174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 84, y: -25.5}
-  m_SizeDelta: {x: 162, y: 31}
+  m_AnchoredPosition: {x: 60.25, y: -15.299998}
+  m_SizeDelta: {x: 120.5, y: 19.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &167047632
 CanvasRenderer:
@@ -270,6 +270,7 @@ GameObject:
   - component: {fileID: 232184921}
   - component: {fileID: 232184920}
   - component: {fileID: 232184924}
+  - component: {fileID: 232184925}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -378,6 +379,26 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bca644611a2b94522bebe2d0b95ef9bc, type: 3}
   HUDHealth: {fileID: 634152384}
   player: {fileID: 1019736887}
+--- !u!114 &232184925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 232184919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41a86920c42a3c948a78e40e2857db56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1019736887}
+  BossTrigger: {fileID: 756008265}
+  dialogBox: {fileID: 966438519}
+  text: {fileID: 1792758982}
+  dialogActive: 0
+  textFile: {fileID: 4900000, guid: 8263bd2fa7c9275468d317991211f034, type: 3}
+  textLines: []
+  currentLine: 0
+  endAtLine: 1
 --- !u!1 &265590191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1470,8 +1491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -90.5, y: 32}
-  m_SizeDelta: {x: 79, y: 33}
+  m_AnchoredPosition: {x: -71.00002, y: 26.099998}
+  m_SizeDelta: {x: 103.4, y: 33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &662615510
 CanvasRenderer:
@@ -2125,6 +2146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trex: {fileID: 1725395205753084, guid: 6ed234fb3e7cf834699fb817cb687f07, type: 2}
   player: {fileID: 1019736887}
+  DialogBox: {fileID: 966438519}
 --- !u!1001 &761210089
 Prefab:
   m_ObjectHideFlags: 0
@@ -2466,10 +2488,10 @@ RectTransform:
   m_Father: {fileID: 232184923}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 478, y: -430}
-  m_SizeDelta: {x: 350, y: 75}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 36.25}
+  m_SizeDelta: {x: 350, y: 73.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &966438521
 MonoBehaviour:
@@ -2889,6 +2911,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
+  canShoot: 0
   speed: 7
   health: 100
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
@@ -2949,7 +2972,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019736887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.24, y: -40.28, z: -1}
+  m_LocalPosition: {x: 44.9, y: 37.3, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1272741558}
@@ -2990,8 +3013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -90.5, y: -25.5}
-  m_SizeDelta: {x: 162, y: 31}
+  m_AnchoredPosition: {x: -71, y: -15.6}
+  m_SizeDelta: {x: 103.4, y: 19.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1053201614
 MonoBehaviour:
@@ -4090,8 +4113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 84, y: 32}
-  m_SizeDelta: {x: 79, y: 33}
+  m_AnchoredPosition: {x: 60.25, y: 26.1}
+  m_SizeDelta: {x: 120.5, y: 33}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1701437882
 Prefab:
@@ -4323,8 +4346,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 179, y: 51}
-  m_SizeDelta: {x: 359, y: 103}
+  m_AnchoredPosition: {x: 128.4, y: 36.5}
+  m_SizeDelta: {x: 257.9, y: 74}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1880812623
 MonoBehaviour:
@@ -4338,7 +4361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

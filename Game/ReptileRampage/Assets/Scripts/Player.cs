@@ -4,6 +4,8 @@ public class Player : MonoBehaviour
 {
 
     public bool canMove;
+
+    public bool canShoot;
     public float speed;
     public int health;
 
@@ -38,6 +40,7 @@ public class Player : MonoBehaviour
     void Start(){
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
+        canShoot = true;
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
