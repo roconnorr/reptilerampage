@@ -2149,6 +2149,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1134010484056032, guid: 39c2caeec458f8a46a4e1c19f817973d, type: 2}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 39c2caeec458f8a46a4e1c19f817973d, type: 2}
   m_IsPrefabParent: 0
@@ -2658,7 +2662,7 @@ GameObject:
   - component: {fileID: 1019736891}
   - component: {fileID: 1019736890}
   - component: {fileID: 1019736888}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -3218,7 +3222,7 @@ GameObject:
   - component: {fileID: 1272741561}
   - component: {fileID: 1272741560}
   - component: {fileID: 1272741559}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: UpperBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3715,7 +3719,7 @@ GameObject:
   - component: {fileID: 1611589370}
   - component: {fileID: 1611589369}
   - component: {fileID: 1611589368}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LowerBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
