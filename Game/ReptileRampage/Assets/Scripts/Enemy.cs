@@ -4,6 +4,7 @@ public class Enemy : MonoBehaviour {
 	
 	public int health;
 	public bool isTRex;
+	public int meleeDamage = 10;
 
 	public AudioClip deathRoar;
 	
@@ -38,5 +39,15 @@ public class Enemy : MonoBehaviour {
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
 		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
 		localBloodParticles.Play();
+	}
+
+
+	void OnCollisionEnter2D(Collision2D other){
+		if(other.gameObject.tag == "Player"){
+			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, transform.rotation);
+			Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
+			var dir = rb.transform.position - transform.position;
+			rb.AddForce (dir.normalized * 6000f );
+		}
 	}
 }
