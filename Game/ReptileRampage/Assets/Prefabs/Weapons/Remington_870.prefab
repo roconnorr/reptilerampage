@@ -119,6 +119,7 @@ MonoBehaviour:
   screenShake: 0.05
   bulletCount: 5
   bulletSpread: 10
+  type: 2
   sprite1: {fileID: 21300002, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
   sprite2: {fileID: 21300004, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
@@ -127,6 +128,7 @@ MonoBehaviour:
     type: 2}
   shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
   rotationOffset: 0
+  noRotation: 0
 --- !u!114 &114604995518058606
 MonoBehaviour:
   m_ObjectHideFlags: 1

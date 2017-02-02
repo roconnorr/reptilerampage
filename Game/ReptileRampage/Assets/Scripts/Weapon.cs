@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
 	public float screenShake;
 	public float bulletCount;
 	public float bulletSpread;
+	public Player.WeaponType type;
 	
 	public Sprite sprite1;
 	public Sprite sprite2;
@@ -18,6 +19,7 @@ public class Weapon : MonoBehaviour {
 	public AudioClip shotSound = null;
 	float timeToFire = 0;
 	public int rotationOffset = 0;
+	public bool noRotation;
 
 	private SpriteRenderer spriteRenderer;
 
@@ -35,38 +37,49 @@ public class Weapon : MonoBehaviour {
 		Cursor.visible = false;
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
+		firePoint = firePoint1;
 		playerScript = GameObject.Find("Player").GetComponent<Player>();
 
 	}
 
 	void Update () {
-		//Rotation
 		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
 		difference.Normalize ();
 		float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
-		if (rotZ < 0) {
-			rotZ += 360;
-		}
-		if ((rotZ > 90 && rotZ < 270) && !flipped) {
-			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
-			flipped = true;
-		} else if ((rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360) && flipped){
-			transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
-			flipped = false;
-		}
-		if (rotZ > 45 && rotZ < 135) {
-			spriteRenderer.sortingOrder = -9999;
-			spriteRenderer.sprite = sprite2;
-			firePoint = firePoint2;
-		} else if (rotZ > 225 && rotZ < 315) {
-			spriteRenderer.sortingOrder = 9999;
-			spriteRenderer.sprite = sprite2;
-			firePoint = firePoint2;
-		}else {
-			spriteRenderer.sortingOrder = 9999;
-			spriteRenderer.sprite = sprite1;
-			firePoint = firePoint1;
+		if (!noRotation) {
+			//Rotation
+			transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
+			if (rotZ < 0) {
+				rotZ += 360;
+			}
+			if ((rotZ > 90 && rotZ < 270) && !flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
+				flipped = true;
+			} else if ((rotZ > 0 && rotZ < 90 || rotZ > 270 && rotZ < 360) && flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x, transform.localScale.y * -1, transform.localScale.z);
+				flipped = false;
+			}
+			if (rotZ > 45 && rotZ < 135) {
+				spriteRenderer.sortingOrder = -9999;
+				spriteRenderer.sprite = sprite2;
+				firePoint = firePoint2;
+			} else if (rotZ > 225 && rotZ < 315) {
+				spriteRenderer.sortingOrder = 9999;
+				spriteRenderer.sprite = sprite2;
+				firePoint = firePoint2;
+			} else {
+				spriteRenderer.sortingOrder = 9999;
+				spriteRenderer.sprite = sprite1;
+				firePoint = firePoint1;
+			}
+		} else {
+			firePoint.transform.rotation = Quaternion.Euler (0f, 0f, rotZ + rotationOffset);
+			if (rotZ > 45 && rotZ < 135) {
+				spriteRenderer.enabled = false;
+			} else {
+				spriteRenderer.enabled = true;
+				spriteRenderer.sortingOrder = 9999;
+			}
 		}
 
 		
@@ -83,7 +96,11 @@ public class Weapon : MonoBehaviour {
 		for (int i = 0; i < bulletCount; i++) {
 			//Create bullet with stray modifier
 			float strayValue = Random.Range (-strayFactor, strayFactor);
-			GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+			if (type == Player.WeaponType.grenade) {
+				GameMaster.CreateGrenade (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+			} else {
+				GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+			}
 			angle += bulletSpread;
 		}
 		//Play sound
