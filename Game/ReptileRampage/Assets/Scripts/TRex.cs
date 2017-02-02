@@ -17,6 +17,9 @@ public class TRex : MonoBehaviour {
 	private int defenceTimer = 0;
 	private int blocked = 0;
 
+	private bool flipped;
+	private float xPrev;
+
 	private Vector3 targetLocation;
 
 	private SpriteRenderer sr;
@@ -55,11 +58,15 @@ public class TRex : MonoBehaviour {
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
 				state = State.Idle;
 			}
-			if (targetLocation.x - transform.position.x > 0.01) {
-				sr.flipX = true;
-			} else if (targetLocation.x - transform.position.x < -0.01){
-				sr.flipX = false;
+			if ((transform.position.x > xPrev + 0.02) && !flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = true;
 			}
+			if ((transform.position.x < xPrev - 0.02) && flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = false;
+			}
+			xPrev = transform.position.x;
 		}
 		//Fire Rockets
 		else if (state == State.Shooting) {
@@ -98,7 +105,7 @@ public class TRex : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter2D(Collider2D other) {
+	void OnCollisionEnter2D (Collision2D other) {
 		if(other.gameObject.GetComponent<BulletHoming>() && other.gameObject.GetComponent<BulletHoming>().iFrames == 0) {
 			defencesDown = true;
 			defenceTimer = 200;

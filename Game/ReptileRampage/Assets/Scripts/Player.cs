@@ -104,12 +104,12 @@ public class Player : MonoBehaviour
 
         
 
-        if (Input.GetButton("Slot1")){
+        if (Input.GetButton("Slot1") && slot1 != null){
             slot1active = true;
             slot1.SetActive(true);
         }
 
-        if (Input.GetButton("Slot2")){
+        if (Input.GetButton("Slot2") && slot2 != null){
             slot1active = false;
             slot2.SetActive(true);
         }
