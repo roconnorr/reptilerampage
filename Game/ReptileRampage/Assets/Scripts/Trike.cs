@@ -47,13 +47,13 @@ public class Trike : MonoBehaviour {
 					timeSinceLastAction = 0;
 					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
 				} else if (rand < 4) {
-					state = State.StompAttack;
+					state = State.VAttack;
 					timeSinceLastAction = 0;
 				} else if (rand < 5) {
 					state = State.GrenadeAttack;
 					timeSinceLastAction = 0;
 				} else if (rand < 6) {
-					state = State.VAttack;
+					state = State.StompAttack;
 					timeSinceLastAction = 0;
 				}
 			}

@@ -26,7 +26,7 @@ public class Grenade : MonoBehaviour {
 		oldHeight = height;
 
 		height = Mathf.Abs(Mathf.Sin(time * period)) * -amplitude;
-		Debug.Log (amplitude);
+		//Debug.Log (amplitude);
 
 		transform.position = new Vector3 (transform.position.x, transform.position.y + oldHeight, transform.position.z);
 
