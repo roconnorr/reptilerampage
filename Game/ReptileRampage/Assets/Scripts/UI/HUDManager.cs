@@ -21,12 +21,12 @@ public class HUDManager : MonoBehaviour {
    
 	void Update () {
 		if(playerScript.slot1 != null){
-			Slot1Text.text = playerScript.slot1.name;
+            Slot1Text.text = playerScript.slot1.name.Substring(0, playerScript.slot1.name.Length - 7).ToUpper();
 	   		Slot1Image.sprite = WeaponSprites[(int) playerScript.slot1type];
 	   }
 
 	   if(playerScript.slot2 != null){
-		   Slot2Text.text = playerScript.slot2.name;
+		   Slot2Text.text = playerScript.slot2.name.Substring(0, playerScript.slot2.name.Length - 7).ToUpper();
 		   Slot2Image.sprite = WeaponSprites[(int) playerScript.slot2type];
 	   }
       

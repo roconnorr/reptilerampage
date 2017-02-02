@@ -36,7 +36,7 @@ public class TextBoxManager : MonoBehaviour {
 			player.GetComponent<Player>().canMove = false;
 			player.GetComponent<Player>().canShoot = false;
 			dialogBox.SetActive(true);
-			text.text = textLines[currentLine];
+			text.text = textLines[currentLine].ToUpper();
 
 			if(Input.GetButtonDown("Fire1")){
 				currentLine += 1;
