@@ -110,9 +110,9 @@ public class AStarNode
 		// Create a weighted edge between this node and the specified node
 		AStarEdge edge = new AStarEdge (this, node, cost);
 		// Add the edge to this node's list of edges
-		this.neighbours.Add (edge);
+		//this.neighbours.Add (edge);
 		// Add the edge to the other node's list of edges
-		node.neighbours.Add (edge);
+		//node.neighbours.Add (edge);
 	}
 
 	/* Converts a reverse path (given by links from nodes to previous

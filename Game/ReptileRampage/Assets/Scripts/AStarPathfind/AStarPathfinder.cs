@@ -48,7 +48,7 @@ public class AStarPathfinder : MonoBehaviour {
 			Debug.LogError ("Pathfinding grid object not initialised!");
 			return;
 		}
-//		grid = gridObject.GetComponent<AStarGrid> ();
+		grid = gridObject.GetComponent<AStarGrid> ();
 		previousTargetPosition = transform.position;
 		timeLeftUntilPathUpdate = 0;
 		timeKeeper = Time.time;
