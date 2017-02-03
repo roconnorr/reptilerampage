@@ -34,4 +34,13 @@ public class GameMaster : MonoBehaviour {
 		bullet.GetComponent<Grenade>().dmgEnemy = dmgEnemy;
 		return bullet;
 	}
+
+	public static Transform CreateExplosion(Transform prefab, Vector3 position, int explodeDamage, float power, float radius) {
+		Transform explosion = Instantiate (prefab, position, Quaternion.Euler(0, 0, 0));
+		explosion.GetComponent<Explosion>().position = position;
+		explosion.GetComponent<Explosion>().explodeDamage = explodeDamage;
+		explosion.GetComponent<Explosion>().power = power;
+		explosion.GetComponent<Explosion>().radius = radius;
+		return explosion;
+	}
 }

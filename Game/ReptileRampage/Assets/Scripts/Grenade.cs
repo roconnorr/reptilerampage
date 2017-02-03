@@ -2,13 +2,16 @@
 
 public class Grenade : MonoBehaviour {
 
-	public GameObject explosionPrefab;
+	public Transform explosionPrefab;
 
 	public float moveSpeed;
 	public int damage;
 	public float range;
 	public bool dmgPlayer;
 	public bool dmgEnemy;
+	public float radius = 5.0F;
+    public float power = 300.0F;
+	public int explodeDamage = 30;
 
 	private float amplitude = 2f;
 	private float height = 0;
@@ -52,8 +55,7 @@ public class Grenade : MonoBehaviour {
 	}
 
 	void Explode(){
-		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
-		explosion.transform.position = transform.position;
+		GameMaster.CreateExplosion(explosionPrefab, transform.position, explodeDamage, power, radius);
 		Destroy (gameObject);
 	}
 }
