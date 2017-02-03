@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour {
 	public bool dmgPlayer;
 	[HideInInspector]
 	public bool dmgEnemy;
+	[HideInInspector]
+	public float knockBackForce;
 
 
 	public AudioClip wallHitSound = null;
@@ -26,6 +28,8 @@ public class Bullet : MonoBehaviour {
 		} else {
 			Explode ();
 		}
+
+		Enemy.knockBackForce = knockBackForce;
 	}
 
 	//Collide with wall and player

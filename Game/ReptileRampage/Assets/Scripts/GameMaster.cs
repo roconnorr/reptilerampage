@@ -2,8 +2,9 @@
 
 public class GameMaster : MonoBehaviour {
 
-	public static Transform CreateBullet(Transform prefab, Vector3 position, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy) {
+	public static Transform CreateBullet(Transform prefab, Vector3 position, float knockBackForce, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));
+		bullet.GetComponent<Bullet>().knockBackForce = knockBackForce;
 		bullet.GetComponent<Bullet>().moveSpeed = speed;
 		bullet.GetComponent<Bullet>().damage = damage;
 		bullet.GetComponent<Bullet>().range = range;
