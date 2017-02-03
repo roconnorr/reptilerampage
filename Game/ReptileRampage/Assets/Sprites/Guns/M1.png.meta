@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 37d9175bd7f053b479abf6b9beefcd14
-timeCreated: 1486090255
+guid: b1ab7a55ecd9f4a41b451de4de71403a
+timeCreated: 1486089284
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: USP45_0
-    21300002: USP45_1
-    21300004: USP45_2
+    21300000: M1_0
+    21300002: M1_1
+    21300004: M1_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -81,12 +81,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: USP45_0
+      name: M1_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 31
-        width: 10
+        x: 0
+        y: 33
+        width: 31
         height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -94,28 +94,28 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: USP45_1
+      name: M1_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 19
-        width: 20
-        height: 9
+        y: 18
+        width: 31
+        height: 10
       alignment: 9
-      pivot: {x: 0.32748944, y: 0.7910669}
+      pivot: {x: 0.48763365, y: 0.91530305}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: USP45_2
+      name: M1_2
       rect:
         serializedVersion: 2
-        x: 2
+        x: 0
         y: 0
-        width: 16
+        width: 31
         height: 14
       alignment: 9
-      pivot: {x: 0.024797365, y: 0.53194636}
+      pivot: {x: 0.21969613, y: 0.5365101}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0

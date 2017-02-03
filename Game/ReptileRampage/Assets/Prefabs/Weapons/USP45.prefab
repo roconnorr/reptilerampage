@@ -44,7 +44,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1925721859619414
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1925721859619414}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.167, y: -0.007, z: -1}
+  m_LocalPosition: {x: 0.138, y: -0.002, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4859060977994934}
@@ -80,7 +80,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238241445308080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.182, y: 0.011, z: -1}
+  m_LocalPosition: {x: 0.155, y: 0.015, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4859060977994934}
@@ -144,9 +144,9 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   automaticFire: 0
-  type: 0
-  sprite1: {fileID: 21300002, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
-  sprite2: {fileID: 21300004, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
+  type: 21
+  sprite1: {fileID: 21300002, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
+  sprite2: {fileID: 21300004, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300002, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
+  m_Sprite: {fileID: 21300002, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -55,12 +55,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   WeaponSprites:
-  - {fileID: 21300000, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
-  - {fileID: 21300000, guid: ff9af47a37cc27645ad011c7f12e34dd, type: 3}
-  - {fileID: 21300000, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
+  - {fileID: 21300000, guid: 6fb0269ec256cc64babc21b5095f4f5c, type: 3}
   - {fileID: 21300000, guid: 07ed1dea413b7484e9dc69c2978fa7bb, type: 3}
-  - {fileID: 21300000, guid: 59f8aadd2bf268148b7a59febd73171b, type: 3}
+  - {fileID: 21300000, guid: 08ea992e422484d419b5a73533edd491, type: 3}
+  - {fileID: 21300000, guid: b2be685429ed5bf41804a7e12b77cbfb, type: 3}
+  - {fileID: 21300000, guid: 314fbd01585fa5a4c804326961ca927a, type: 3}
+  - {fileID: 21300000, guid: 754d1033d4dd1c349b62e998f0c119a8, type: 3}
+  - {fileID: 21300000, guid: 29c36fff9cb788c40834bc99a5792c6f, type: 3}
+  - {fileID: 21300000, guid: eca7bd475d237c143b1e7cf3e7d954c0, type: 3}
   - {fileID: 21300000, guid: bca644611a2b94522bebe2d0b95ef9bc, type: 3}
+  - {fileID: 21300000, guid: b1ab7a55ecd9f4a41b451de4de71403a, type: 3}
+  - {fileID: 21300000, guid: ff9af47a37cc27645ad011c7f12e34dd, type: 3}
+  - {fileID: 21300000, guid: f6f6141efbbe9e24794c55695ce198a2, type: 3}
+  - {fileID: 21300000, guid: c5970d308b3e62b4b9c00ae3c97136fd, type: 3}
+  - {fileID: 21300000, guid: 0da80a110c9afd0408ee5dfb5325239c, type: 3}
+  - {fileID: 21300000, guid: e7fa6fa82bea57849bb29316dbfe5cd7, type: 3}
+  - {fileID: 21300000, guid: 982e24df27000cd49a48cc0dc7438f8e, type: 3}
+  - {fileID: 21300000, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
+  - {fileID: 21300000, guid: 887423592b0c6124ab0468d9c9aa1e15, type: 3}
+  - {fileID: 21300000, guid: 59f8aadd2bf268148b7a59febd73171b, type: 3}
+  - {fileID: 21300000, guid: ebfa1893bb4df574b893b7b8db139882, type: 3}
+  - {fileID: 21300000, guid: 07e682bb51b39724eb4f9d377bb3b102, type: 3}
+  - {fileID: 21300000, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
 --- !u!114 &114860870101444096
 MonoBehaviour:
   m_ObjectHideFlags: 1

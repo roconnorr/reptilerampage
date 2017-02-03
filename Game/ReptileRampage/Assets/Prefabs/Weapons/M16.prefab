@@ -159,7 +159,7 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   automaticFire: 1
-  type: 1
+  type: 10
   sprite1: {fileID: 21300002, guid: ff9af47a37cc27645ad011c7f12e34dd, type: 3}
   sprite2: {fileID: 21300004, guid: ff9af47a37cc27645ad011c7f12e34dd, type: 3}
   bulletPrefab: {fileID: 4946869545903092, guid: 7157387c5c2474f4d8105a7120d9be5a,

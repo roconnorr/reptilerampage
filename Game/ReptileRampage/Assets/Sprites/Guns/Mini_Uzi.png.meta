@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 37d9175bd7f053b479abf6b9beefcd14
-timeCreated: 1486090255
+guid: c5970d308b3e62b4b9c00ae3c97136fd
+timeCreated: 1486090089
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: USP45_0
-    21300002: USP45_1
-    21300004: USP45_2
+    21300000: Mini_Uzi_0
+    21300002: Mini_Uzi_1
+    21300004: Mini_Uzi_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -81,41 +81,41 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: USP45_0
+      name: Mini_Uzi_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 31
-        width: 10
-        height: 8
+        x: 5
+        y: 34
+        width: 15
+        height: 14
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: USP45_1
+      name: Mini_Uzi_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 19
-        width: 20
-        height: 9
+        y: 18
+        width: 19
+        height: 14
       alignment: 9
-      pivot: {x: 0.32748944, y: 0.7910669}
+      pivot: {x: 0.31102824, y: 0.79920524}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: USP45_2
+      name: Mini_Uzi_2
       rect:
         serializedVersion: 2
-        x: 2
+        x: 3
         y: 0
-        width: 16
-        height: 14
+        width: 15
+        height: 15
       alignment: 9
-      pivot: {x: 0.024797365, y: 0.53194636}
+      pivot: {x: 0.026258325, y: 0.5748013}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
