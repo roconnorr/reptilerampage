@@ -22,15 +22,15 @@ public class Explosion : MonoBehaviour {
 			if(rb != null){
 				//Player takes damage if in radius
 				if(rb.tag == "Player"){
-					AddExplosionForce(rb, power * 100, position, radius);
+					AddExplosionForce(rb, power * 1000, position, radius);
 					rb.GetComponent<Player>().TakeDamage (explodeDamage, transform.rotation);
 				}
 				if(rb.tag == "Enemy"){
-					AddExplosionForce(rb, power * 100, position, radius);
+					AddExplosionForce(rb, power * 1000, position, radius);
 					rb.GetComponent<Enemy>().TakeDamage (explodeDamage, transform.rotation);
 				}
 				if(rb.tag == "Crate"){
-					AddExplosionForce(rb, power * 100, position, radius);
+					AddExplosionForce(rb, power * 1000, position, radius);
 					rb.GetComponent<Crate>().TakeDamage (explodeDamage);
 				}
 			}
