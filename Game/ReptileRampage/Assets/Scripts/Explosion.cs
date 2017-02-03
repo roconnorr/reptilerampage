@@ -44,7 +44,7 @@ public class Explosion : MonoBehaviour {
 		if (calc <= 0) {
 			calc = 0;		
 		}
-		//body.AddForce (dir.normalized * expForce * calc);
-		body.velocity = Vector3.Lerp(body.velocity, dir*200 , 1000 * Time.deltaTime);
+		body.AddForce (dir.normalized * expForce * calc);
+		//body.velocity = Vector3.Lerp(body.velocity, dir*200 , 1000 * Time.deltaTime);
 	}
 }

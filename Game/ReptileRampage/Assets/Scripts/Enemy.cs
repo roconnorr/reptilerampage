@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+
+	[HideInInspector]
+	public Rigidbody2D rb;
 	
 	public int health;
 	public bool isTRex;
 	public int meleeDamage = 10;
-
 	public AudioClip deathRoar;
 	
 	public ParticleSystem bloodParticles;
@@ -17,12 +19,12 @@ public class Enemy : MonoBehaviour {
 		//dustRotation = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
 		//ParticleSystem localDustParticles = Instantiate(dustParticles, transform.position, dustRotation, transform) as ParticleSystem;
 		//localDustParticles.Play();
-	}
-
-	void Update(){
+		rb = GetComponent<Rigidbody2D>();
 	}
 
 	public void TakeDamage(int amount, Quaternion dir) {
+		Vector2 forceDir = dir * Vector2.up;
+		rb.AddForce (forceDir * 500f );
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
@@ -34,6 +36,10 @@ public class Enemy : MonoBehaviour {
 			}
 		}
 	}
+
+	/*Vector2 GetXYDirection(float angle, float magnitude){
+    	return Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * magnitude;
+	}*/
 
 	public void FireBloodParticles(Quaternion dir){
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
