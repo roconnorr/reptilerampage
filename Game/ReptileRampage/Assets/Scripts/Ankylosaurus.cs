@@ -22,6 +22,7 @@ public class Ankylosaurus : MonoBehaviour {
 	private bool targetInSightRange = false;
 	private bool targetInStopRange = false;
 	private bool targetViewBlocked;
+	[HideInInspector]
 	public bool isChasing = false;
 	private bool isWandering = false;
 	private bool avoiding = false;

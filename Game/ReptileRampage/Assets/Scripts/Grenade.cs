@@ -3,14 +3,21 @@
 public class Grenade : MonoBehaviour {
 
 	public Transform explosionPrefab;
-
+	[HideInInspector]
 	public float moveSpeed;
+	[HideInInspector]
 	public int damage;
+	[HideInInspector]
 	public float range;
+	[HideInInspector]
 	public bool dmgPlayer;
+	[HideInInspector]
 	public bool dmgEnemy;
+	[HideInInspector]
 	public float radius = 5.0F;
+	[HideInInspector]
     public float power = 300.0F;
+	[HideInInspector]
 	public int explodeDamage = 30;
 
 	private float amplitude = 2f;

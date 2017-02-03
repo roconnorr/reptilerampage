@@ -3,15 +3,23 @@
 public class BulletHoming : MonoBehaviour {
 
 	public GameObject explosionPrefab;
-
+	[HideInInspector]
 	public float moveSpeed;
+	[HideInInspector]
 	public int damage;
+	[HideInInspector]
 	public float range;
+	[HideInInspector]
 	public bool dmgPlayer;
+	[HideInInspector]
 	public bool dmgEnemy;
+	[HideInInspector]
 	public float initialAngle;
+	[HideInInspector]
 	public Transform target;
+	[HideInInspector]
 	private Rigidbody2D rb;
+	[HideInInspector]
 	public int iFrames;
 
 	public AudioClip wallHitSound = null;
