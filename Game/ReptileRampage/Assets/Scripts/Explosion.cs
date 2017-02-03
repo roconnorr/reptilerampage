@@ -2,9 +2,13 @@
 
 public class Explosion : MonoBehaviour {
 
+	[HideInInspector]
 	public float radius;
+	[HideInInspector]
     public float power;
+	[HideInInspector]
 	public int explodeDamage;
+	[HideInInspector]
 	public Vector3 position;
 
 	void FixedUpdate () {

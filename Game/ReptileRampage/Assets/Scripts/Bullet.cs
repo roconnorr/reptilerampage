@@ -2,12 +2,17 @@
 
 public class Bullet : MonoBehaviour {
 
+	[HideInInspector]
 	public GameObject explosionPrefab;
-	
+	[HideInInspector]
 	public float moveSpeed;
+	[HideInInspector]
 	public int damage;
+	[HideInInspector]
 	public float range;
+	[HideInInspector]
 	public bool dmgPlayer;
+	[HideInInspector]
 	public bool dmgEnemy;
 
 
