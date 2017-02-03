@@ -58,6 +58,14 @@ public class Trike : MonoBehaviour {
 				}
 			}
 		}
+		if (IsInvoking("VWave")) {
+			int rand = Random.Range (0, 200);
+			if (rand < 1) {
+				GrenadeWave ();
+			} else if (rand < 2) {
+				StompWave ();
+			}
+		}
 		//Walking Behaviour
 		else if (state == State.Walking) {
 			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
@@ -75,36 +83,33 @@ public class Trike : MonoBehaviour {
 			xPrev = transform.position.x;
 		}
 		//Fire Grenades
-		else if (state == State.GrenadeAttack) {
-			GrenadeWave();
-			for(float i = .1f; i <= .9f; i+=.2f){
+		else if (state == State.GrenadeAttack && !IsInvoking("GrenadeWave")) {
+			for(float i = 1f; i <= 3f; i+=1f){
 				Invoke("GrenadeWave", i);
 			}
-			state = State.Idle;
+			Invoke("SetStateIdle", 3f);
 		}
 		//V attack
-		else if (state == State.VAttack) {
+		else if (state == State.VAttack && !IsInvoking("VWave")) {
 			targetLocation = new Vector3 (target.position.x, target.position.y, -1);
-			VWave ();
-			for(float i = .1f; i <= .5f; i+=.1f){
+			for(float i = 0f; i <= 5f; i+=.1f){
 				Invoke("VWave", i);
 			}
-			state = State.Idle;
+			Invoke("SetStateIdle", 5f);
 		}
 		//Stomp Attack
-		else if (state == State.StompAttack) {
-			StompWave();
-			for(float i = .1f; i <= .5f; i+=.1f){
+		else if (state == State.StompAttack && !IsInvoking("StompWave")) {
+			for(float i = 1f; i <= 3f; i+=1f){
 				Invoke("StompWave", i);
 			}
-			state = State.Idle;
+			Invoke("SetStateIdle", 3f);
 		}
 	}
 
 	void VWave() {
-		float angle = Mathf.Atan2(targetLocation.y-transform.position.y, targetLocation.x-transform.position.x)*180 / Mathf.PI;
+		float angle = Mathf.Atan2(target.position.y-vFirePoint.position.y, target.position.x-vFirePoint.position.x)*180 / Mathf.PI;
 		angle -= 90;
-		angle -= 14;
+		angle -= 10;
 		for (int i = 0; i < 2; i++) {
 			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, angle, 10, 10, 80, true, false);
 			angle += 20;
@@ -112,13 +117,19 @@ public class Trike : MonoBehaviour {
 	}
 
 	void StompWave(){
-		for(int i=0; i<=360; i+=30){
-			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, i, 10, 10, 50, true, false);
+		for(int i=0; i<=360; i+=10){
+			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, i, 10, 5, 150, true, false);
 		}
 	}
 
 	void GrenadeWave(){
-		GameMaster.CreateGrenade (grenadePrefab, grenadeFirePoint.position, Random.Range (0, 360), 20, Random.Range(5, 15), 100, true, false);
+		float angle = Mathf.Atan2(target.position.y-vFirePoint.position.y, target.position.x-vFirePoint.position.x)*180 / Mathf.PI;
+		angle -= 90;
+		GameMaster.CreateGrenade (grenadePrefab, grenadeFirePoint.position, angle, 20, Random.Range(20, 30), 100, true, false);
+	}
+
+	void SetStateIdle() {
+		state = State.Idle;
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
