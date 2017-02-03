@@ -104,8 +104,8 @@ MonoBehaviour:
   health: 30
   explosionPrefab: {fileID: 4573351043576184, guid: 5f94c283afe65427b84807d4dedbb466,
     type: 2}
-  radius: 5
-  power: 300
+  radius: 3
+  power: 600
   explodeDamage: 30
 --- !u!212 &212634510427192350
 SpriteRenderer:

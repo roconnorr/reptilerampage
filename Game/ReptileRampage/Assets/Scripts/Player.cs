@@ -83,6 +83,7 @@ public class Player : MonoBehaviour
             if (rb.velocity.magnitude > speed){
                 rb.velocity = rb.velocity.normalized * speed;
             }
+			//Knockback
 			if (knockbackTimer > 0) {
 				rb.AddForce (knockback);
 				knockbackTimer -= 1;

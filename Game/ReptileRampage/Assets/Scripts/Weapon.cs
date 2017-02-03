@@ -10,7 +10,7 @@ public class Weapon : MonoBehaviour {
 	public float screenShake;
 	public float bulletCount;
 	public float bulletSpread;
-	public float knockBackForce = 2;
+	public float knockBackForce = 100;
 	public bool automaticFire;
 	public Player.WeaponType type;
 	public Sprite sprite1;

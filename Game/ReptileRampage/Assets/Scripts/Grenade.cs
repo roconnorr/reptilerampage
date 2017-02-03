@@ -14,7 +14,7 @@ public class Grenade : MonoBehaviour {
 	[HideInInspector]
 	public bool dmgEnemy;
 	[HideInInspector]
-	public float radius = 2.0F;
+	public float radius = 3.0F;
 	[HideInInspector]
     public float power = 300.0F;
 	[HideInInspector]
@@ -35,16 +35,11 @@ public class Grenade : MonoBehaviour {
 		moveSpeed *= 0.95f; //Lower = faster speed diminish
 		oldHeight = height;
 
+		//Bounce
 		height = Mathf.Abs(Mathf.Sin(time * period)) * -amplitude;
-		//Debug.Log (amplitude);
-
 		transform.position = new Vector3 (transform.position.x, transform.position.y + oldHeight, transform.position.z);
-
 		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
-
 		transform.position = new Vector3 (transform.position.x, transform.position.y - height, transform.position.z);
-
-		//transform.position = new Vector3 (location.position.x, location.position.y + height, transform.position.z);
 
 		if (range > 0) {
 			range--;
@@ -62,6 +57,7 @@ public class Grenade : MonoBehaviour {
 	}
 
 	void Explode(){
+		radius = 3.0f;
 		GameMaster.CreateExplosion(explosionPrefab, transform.position, explodeDamage, power, radius);
 		Destroy (gameObject);
 	}

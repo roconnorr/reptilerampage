@@ -61,7 +61,7 @@ public class BulletHoming : MonoBehaviour {
 			}
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy && iFrames == 0) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, 0);
 			Explode ();
 		}
 	}

@@ -28,8 +28,6 @@ public class Bullet : MonoBehaviour {
 		} else {
 			Explode ();
 		}
-
-		Enemy.knockBackForce = knockBackForce;
 	}
 
 	//Collide with wall and player
@@ -41,7 +39,7 @@ public class Bullet : MonoBehaviour {
 			Explode();
 		}
 		if(other.gameObject.tag == "Player" && dmgPlayer){
-			other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation);
+			other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation, knockBackForce);
 			Explode ();
 		}
 		if (other.gameObject.tag == "Explosive"){
@@ -53,14 +51,14 @@ public class Bullet : MonoBehaviour {
 			Explode ();	
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, knockBackForce);
 			Explode ();
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation);
+			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce);
 			Explode ();
 		}
 	}

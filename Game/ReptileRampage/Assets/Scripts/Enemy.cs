@@ -7,12 +7,15 @@ public class Enemy : MonoBehaviour {
 	
 	public int health;
 	public bool isTRex;
+	public float knockbackModifier;
 	public int meleeDamage = 10;
 	[HideInInspector]
-	public static float knockBackForce = 5;
 	public AudioClip deathRoar;
 	
 	public ParticleSystem bloodParticles;
+
+	private Vector3 knockback;
+	private int knockbackTimer = 0;
 
 	//public ParticleSystem dustParticles;
 	//private Quaternion dustRotation;
@@ -24,9 +27,19 @@ public class Enemy : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 	}
 
-	public void TakeDamage(int amount, Quaternion dir) {
-		Vector2 forceDir = dir * Vector2.up;
-		rb.AddForce (forceDir * 100f * knockBackForce);
+	void FixedUpdate() {
+		//Knockback
+		if (knockbackTimer > 0) {
+			rb.AddForce (knockback);
+			knockbackTimer -= 1;
+		}
+	}
+
+	public void TakeDamage(int amount, Quaternion dir, float force) {
+		knockback = dir * Vector2.up;
+		knockback *= (force / 2);
+		knockback *= knockbackModifier;
+		knockbackTimer = 3;
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
@@ -54,7 +67,7 @@ public class Enemy : MonoBehaviour {
 		if(other.gameObject.tag == "Player"){
 			float angle =Mathf.Atan2(other.transform.position.y-transform.position.y, other.transform.position.x-transform.position.x)*180 / Mathf.PI;
 			angle -= 90;
-			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle));
+			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle), 500);
 		}
 	}
 }

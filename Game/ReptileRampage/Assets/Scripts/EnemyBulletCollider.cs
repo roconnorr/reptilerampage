@@ -2,7 +2,7 @@
 
 public class EnemyBulletCollider : MonoBehaviour {
 
-	public void TakeDamage(int amount, Quaternion dir) {
-		GetComponentInParent<Enemy> ().TakeDamage (amount, dir);
+	public void TakeDamage(int amount, Quaternion dir, float force) {
+		GetComponentInParent<Enemy> ().TakeDamage (amount, dir, force);
 	}
 }
