@@ -60,13 +60,15 @@ public class Weapon : MonoBehaviour {
 				flipped = false;
 			}
 			if (rotZ > 45 && rotZ < 135) {
-				spriteRenderer.sortingOrder -= 9999;
+				spriteRenderer.sortingOrder = -9999;
 				spriteRenderer.sprite = sprite2;
 				firePoint = firePoint2;
 			} else if (rotZ > 225 && rotZ < 315) {
+				spriteRenderer.sortingOrder = 9999;
 				spriteRenderer.sprite = sprite2;
 				firePoint = firePoint2;
 			} else {
+				spriteRenderer.sortingOrder = 9999;
 				spriteRenderer.sprite = sprite1;
 				firePoint = firePoint1;
 			}

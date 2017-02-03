@@ -2,13 +2,23 @@
 
 public class Grenade : MonoBehaviour {
 
-	public GameObject explosionPrefab;
-
+	public Transform explosionPrefab;
+	[HideInInspector]
 	public float moveSpeed;
+	[HideInInspector]
 	public int damage;
+	[HideInInspector]
 	public float range;
+	[HideInInspector]
 	public bool dmgPlayer;
+	[HideInInspector]
 	public bool dmgEnemy;
+	[HideInInspector]
+	public float radius = 5.0F;
+	[HideInInspector]
+    public float power = 300.0F;
+	[HideInInspector]
+	public int explodeDamage = 30;
 
 	private float amplitude = 2f;
 	private float height = 0;
@@ -52,8 +62,7 @@ public class Grenade : MonoBehaviour {
 	}
 
 	void Explode(){
-		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
-		explosion.transform.position = transform.position;
+		GameMaster.CreateExplosion(explosionPrefab, transform.position, explodeDamage, power, radius);
 		Destroy (gameObject);
 	}
 }
