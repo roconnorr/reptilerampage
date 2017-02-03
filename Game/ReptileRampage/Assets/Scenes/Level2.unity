@@ -3794,9 +3794,9 @@ MonoBehaviour:
   weaponsprefabs:
   - {fileID: 1663475684822718, guid: a4378de8e0e994ed8b9cd76f8142a284, type: 2}
   - {fileID: 1396562609181444, guid: db93a2e8dd9c74b9e86eec7321553218, type: 2}
-  - {fileID: 1984896611416578, guid: 49b684795e7fb7149a29c13afe645a8d, type: 2}
+  - {fileID: 0}
   - {fileID: 1752570124062964, guid: bbe2374ccc2ebb641874b0b0f942f484, type: 2}
-  - {fileID: 1984896611416578, guid: f74dc9b223b641d469f513616a253258, type: 2}
+  - {fileID: 0}
   - {fileID: 1062804867728130, guid: e2d9738ca1dbb49f2b86185732a6a940, type: 2}
   slot1: {fileID: 0}
   slot2: {fileID: 0}
@@ -8154,7 +8154,7 @@ MonoBehaviour:
   Slot1Image: {fileID: 1434345072}
   Slot2Image: {fileID: 1976545933}
   WeaponSprites:
-  - {fileID: 21300000, guid: 7239361a80b9db744bfdc1cacf2e0c4b, type: 3}
+  - {fileID: 0}
   - {fileID: 21300000, guid: ff9af47a37cc27645ad011c7f12e34dd, type: 3}
   - {fileID: 21300000, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
   - {fileID: 21300000, guid: 07ed1dea413b7484e9dc69c2978fa7bb, type: 3}
