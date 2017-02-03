@@ -10,6 +10,8 @@ public class Trike : MonoBehaviour {
 	public Transform bulletPrefab;
 	public Transform grenadePrefab;
 
+	public float bulletKnockbackForce;
+
 	private Transform vFirePoint;
 	private Transform grenadeFirePoint;
 	private Transform stompFirePoint;
@@ -111,14 +113,14 @@ public class Trike : MonoBehaviour {
 		angle -= 90;
 		angle -= 10;
 		for (int i = 0; i < 2; i++) {
-			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, 0, angle, 10, 10, 80, true, false);
+			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, bulletKnockbackForce, angle, 10, 10, 80, true, false);
 			angle += 20;
 		}
 	}
 
 	void StompWave(){
 		for(int i=0; i<=360; i+=10){
-			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, 0, i, 10, 5, 150, true, false);
+			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, bulletKnockbackForce, i, 10, 5, 150, true, false);
 		}
 	}
 

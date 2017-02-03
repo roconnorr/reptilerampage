@@ -259,6 +259,7 @@ MonoBehaviour:
   fireRate: 10
   shotSpeed: 20
   range: 50
+  knockbackForce: 100
   strayFactor: 10
   target: {fileID: 0}
   bulletPrefab: {fileID: 4468996414422982, guid: b74ebb4e99f27a54597ad408c850307d,

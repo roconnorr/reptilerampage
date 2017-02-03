@@ -223,6 +223,7 @@ MonoBehaviour:
   fireRate: 0.2
   shotSpeed: 10
   range: 50
+  knockbackForce: 100
   bulletPrefab: {fileID: 4468996414422982, guid: b74ebb4e99f27a54597ad408c850307d,
     type: 2}
   shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}

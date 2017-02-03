@@ -158,6 +158,7 @@ MonoBehaviour:
   screenShake: 0.1
   bulletCount: 1
   bulletSpread: 0
+  knockBackForce: 100
   automaticFire: 1
   type: 19
   sprite1: {fileID: 21300002, guid: ebfa1893bb4df574b893b7b8db139882, type: 3}

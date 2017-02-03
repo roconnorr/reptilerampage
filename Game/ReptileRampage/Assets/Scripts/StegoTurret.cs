@@ -7,6 +7,7 @@ public class StegoTurret : MonoBehaviour {
 	public float fireRate;
 	public float shotSpeed;
 	public float range;
+	public float knockbackForce;
 	public float strayFactor;
 	public GameObject target;
 	public Transform bulletPrefab;
@@ -63,7 +64,7 @@ public class StegoTurret : MonoBehaviour {
 	void CreateBullet () {
 		//Create bullet with stray modifier
 		float strayValue = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, 0, firePoint.rotation.eulerAngles.z + strayValue + 90, damage, shotSpeed, range, true, false);
+		GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + strayValue + 90, damage, shotSpeed, range, true, false);
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);

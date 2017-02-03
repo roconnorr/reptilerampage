@@ -186,8 +186,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d8e0b514fe45493595ed07d3d216403, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   health: 5000
   isTRex: 0
+  knockbackModifier: 0
   meleeDamage: 10
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
@@ -220,6 +222,7 @@ MonoBehaviour:
     type: 2}
   grenadePrefab: {fileID: 4645237254359424, guid: aa28b7723530847cf93cd61de518f769,
     type: 2}
+  bulletKnockbackForce: 100
   speed: 7
 --- !u!212 &212819578712036370
 SpriteRenderer:

@@ -10,6 +10,8 @@ public class TRex : MonoBehaviour {
 	public Transform bulletPrefab;
 	public Transform rocketPrefab;
 
+	public float bulletKnockbackForce;
+
 	public float speed;
 
 	private int timeSinceLastAction = 0;
@@ -100,7 +102,7 @@ public class TRex : MonoBehaviour {
 		angle -= 90;
 		angle -= 14;
 		for (int i = 0; i < 5; i++) {
-			GameMaster.CreateBullet (bulletPrefab, transform.position, 0, angle, 10, 10, 80, true, false);
+			GameMaster.CreateBullet (bulletPrefab, transform.position, bulletKnockbackForce, angle, 10, 10, 80, true, false);
 			angle += 7;
 		}
 	}
