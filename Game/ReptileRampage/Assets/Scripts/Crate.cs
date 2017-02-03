@@ -11,6 +11,7 @@ public class Crate : MonoBehaviour {
 	public bool isTier3;
 
 	public GameObject pickup;
+	public GameObject healthPack;
 
 	private int[] tier1rare1 = new int[3] {1, 9, 11};
 	private int[] tier1rare2 = new int[4] {8, 12, 20, 21};
@@ -45,16 +46,16 @@ public class Crate : MonoBehaviour {
 
 	void SpawnStuff(){
 		float chance = Random.value;
-		//should be <= 0.25
-		if(chance <= 1){
+
+		if(chance <= 0.25){
 			pickAGun();
 		}
-		//if(chance > 0.25 && chance <= 0.75){
-			//Spawn ammo
-		//}
-		//if(chance > 0.75 && chance <= 1.0){
-			//Spawn health
-		//}
+		if(chance > 0.25 && chance <= 0.75){
+			Instantiate(healthPack, transform.position, transform.rotation);
+		}
+		if(chance > 0.75 && chance <= 1.0){
+			Instantiate(healthPack, transform.position, transform.rotation);
+		}
 	}
 
 	void pickAGun(){
