@@ -54,6 +54,13 @@ public class Bullet : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerEnter2D(Collider2D other) {
+		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
+			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation);
+			Explode ();
+		}
+	}
+
 	void Explode(){
 		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
 		explosion.transform.position = transform.position;
