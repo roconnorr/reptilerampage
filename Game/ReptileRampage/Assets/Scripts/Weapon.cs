@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour {
 	public float bulletCount;
 	public float bulletSpread;
 	public bool automaticFire;
+	public bool piercing;
 	public Player.WeaponType type;
 	public Sprite sprite1;
 	public Sprite sprite2;
@@ -100,7 +101,7 @@ public class Weapon : MonoBehaviour {
 			if (type == Player.WeaponType.grenade) {
 				GameMaster.CreateGrenade (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
 			} else {
-				GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+				GameMaster.CreateBullet (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true, piercing);
 			}
 			angle += bulletSpread;
 		}
