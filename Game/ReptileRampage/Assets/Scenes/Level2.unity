@@ -3786,6 +3786,7 @@ MonoBehaviour:
   canMove: 0
   canShoot: 0
   speed: 7
+  maxHealth: 100
   health: 100
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}

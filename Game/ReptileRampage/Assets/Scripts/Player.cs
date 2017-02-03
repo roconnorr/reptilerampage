@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
 
     public bool canShoot;
     public float speed;
+
+    public int maxHealth = 100;
+    [HideInInspector]
     public int health;
 
     private AudioSource soundSource;
@@ -41,6 +44,7 @@ public class Player : MonoBehaviour
     private float horizontal;
     private float vertical;
     void Start(){
+        health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
         canShoot = true;
@@ -62,6 +66,7 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate(){
+
         if (canMove){
 
             horizontal = Input.GetAxis("Horizontal");
