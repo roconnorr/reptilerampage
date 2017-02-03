@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour {
 	public int health;
 	public bool isTRex;
 	public int meleeDamage = 10;
+	[HideInInspector]
+	public static float knockBackForce = 5;
 	public AudioClip deathRoar;
 	
 	public ParticleSystem bloodParticles;
@@ -24,7 +26,7 @@ public class Enemy : MonoBehaviour {
 
 	public void TakeDamage(int amount, Quaternion dir) {
 		Vector2 forceDir = dir * Vector2.up;
-		rb.AddForce (forceDir * 500f );
+		rb.AddForce (forceDir * 100f * knockBackForce);
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {

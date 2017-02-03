@@ -144,6 +144,7 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   automaticFire: 1
+  knockBackForce: 5
   type: 1
   sprite1: {fileID: 21300002, guid: 07ed1dea413b7484e9dc69c2978fa7bb, type: 3}
   sprite2: {fileID: 21300004, guid: 07ed1dea413b7484e9dc69c2978fa7bb, type: 3}
