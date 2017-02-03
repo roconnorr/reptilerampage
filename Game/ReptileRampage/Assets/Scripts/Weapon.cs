@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour {
 	public float bulletCount;
 	public float bulletSpread;
 	public bool automaticFire;
+	public float knockBackForce = 5;
 	public Player.WeaponType type;
 	public Sprite sprite1;
 	public Sprite sprite2;
@@ -39,7 +40,6 @@ public class Weapon : MonoBehaviour {
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
 		playerScript = GameObject.Find("Player").GetComponent<Player>();
-
 	}
 
 	void Update () {
@@ -90,6 +90,7 @@ public class Weapon : MonoBehaviour {
 				}
 			}
 		}
+		Enemy.knockBackForce = knockBackForce;
 	}
 
 	void CreateBullet () {
