@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
                 rb.velocity = rb.velocity.normalized * speed;
             }
 			if (knockbackTimer > 0) {
-				rb.AddForce (knockback * 500f);
+				rb.AddForce (knockback);
 				knockbackTimer -= 1;
 			}
             //Quaternion rotation = Quaternion.LookRotation(movement);
@@ -157,12 +157,13 @@ public class Player : MonoBehaviour
         }
 }
 
-    public void TakeDamage(int amount, Quaternion dir){
+	public void TakeDamage(int amount, Quaternion dir, float force){
         health -= amount;
         FireBloodParticles(dir);
 
 		//Knockback
 		knockback = dir * Vector2.up;
+		knockback *= force;
 		knockbackTimer = 10;
 
         if (health <= 0){
