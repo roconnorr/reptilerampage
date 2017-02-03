@@ -100,7 +100,7 @@ public class TRex : MonoBehaviour {
 		angle -= 90;
 		angle -= 14;
 		for (int i = 0; i < 5; i++) {
-			GameMaster.CreateBullet (bulletPrefab, transform.position, angle, 10, 10, 80, true, false, false);
+			GameMaster.CreateBullet (bulletPrefab, transform.position, angle, 10, 10, 80, true, false);
 			angle += 7;
 		}
 	}

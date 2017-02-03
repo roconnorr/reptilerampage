@@ -242,7 +242,7 @@ public class Ankylosaurus : MonoBehaviour {
 
 	void FireBullets() {
 		for(int i=0; i<=360; i+=45){
-			Transform bullet = GameMaster.CreateBullet (bulletPrefab, firePoint.position, i, damage, shotSpeed, range, true, false, false);
+			Transform bullet = GameMaster.CreateBullet (bulletPrefab, firePoint.position, i, damage, shotSpeed, range, true, false);
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 		}
 		if(shotSound != null){
