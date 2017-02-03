@@ -14,13 +14,13 @@ public class Stegosaurus : MonoBehaviour {
 	private bool targetInChaseRange = false;
 	private bool targetInSightRange = false;
 	private bool targetInStopRange = false;
-	private bool targetViewBlocked;
+	private bool targetViewBlocked = true;
 	[HideInInspector]
 	public bool isChasing = false;
 	private bool isWandering = false;
 	private bool avoiding = false;
 	private bool flipped = false;
-	private bool disabled;
+	private bool disabled = true;
 
 	//private Animator animator;
 	private float xPrev = 0;
