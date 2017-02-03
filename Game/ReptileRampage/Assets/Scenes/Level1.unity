@@ -11190,7 +11190,7 @@ MonoBehaviour:
   MapEndPosition: {x: 66, y: 66}
   DisallowedTags:
   - Wall
-  DrawGridInEditor: 0
+  DrawGridInEditor: 1
 --- !u!4 &1954388955
 Transform:
   m_ObjectHideFlags: 0

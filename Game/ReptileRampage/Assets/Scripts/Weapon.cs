@@ -10,6 +10,7 @@ public class Weapon : MonoBehaviour {
 	public float screenShake;
 	public float bulletCount;
 	public float bulletSpread;
+	public bool automaticFire;
 	public Player.WeaponType type;
 	public Sprite sprite1;
 	public Sprite sprite2;
@@ -79,11 +80,12 @@ public class Weapon : MonoBehaviour {
 			}
 		}
 
-		
-		if (Input.GetButton ("Fire1") && Time.time > timeToFire) {
-			if(playerScript.canShoot){
-				timeToFire = Time.time + 1/fireRate;
-				CreateBullet ();
+		if (automaticFire && Input.GetButton ("Fire1") || !automaticFire && Input.GetButtonDown ("Fire1")) {
+			if (Time.time > timeToFire) {
+				if (playerScript.canShoot) {
+					timeToFire = Time.time + 1 / fireRate;
+					CreateBullet ();
+				}
 			}
 		}
 	}
