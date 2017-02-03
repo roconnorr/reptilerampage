@@ -14,7 +14,7 @@ public class Grenade : MonoBehaviour {
 	[HideInInspector]
 	public bool dmgEnemy;
 	[HideInInspector]
-	public float radius = 5.0F;
+	public float radius = 2.0F;
 	[HideInInspector]
     public float power = 300.0F;
 	[HideInInspector]

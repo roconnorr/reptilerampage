@@ -4,7 +4,7 @@ public class ExplosiveBarrel : MonoBehaviour {
 
 	public int health = 30;
 	public Transform explosionPrefab;
-	public float radius = 5.0F;
+	public float radius = 3.0F;
     public float power = 300.0F;
 	public int explodeDamage = 30;
     
