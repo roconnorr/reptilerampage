@@ -80,7 +80,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_Offset: {x: -0.00000023841858, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.3, y: 0.2}
+  m_Size: {x: 0.01, y: 0.01}
 --- !u!95 &95613438998678344
 Animator:
   serializedVersion: 3
