@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
     public bool intrigger;
     private PickupPrefab pk;
 
+	private Vector3 knockback;
+	private int knockbackTimer = 0;
+
     private float horizontal;
     private float vertical;
     void Start(){
@@ -80,6 +83,10 @@ public class Player : MonoBehaviour
             if (rb.velocity.magnitude > speed){
                 rb.velocity = rb.velocity.normalized * speed;
             }
+			if (knockbackTimer > 0) {
+				rb.AddForce (knockback * 500f);
+				knockbackTimer -= 1;
+			}
             //Quaternion rotation = Quaternion.LookRotation(movement);
             //dustParticles.transform.rotation = Quaternion.Lerp(dustParticles.transform.rotation, Quaternion.Inverse(rotation), 0.1f);
         }
@@ -153,6 +160,11 @@ public class Player : MonoBehaviour
     public void TakeDamage(int amount, Quaternion dir){
         health -= amount;
         FireBloodParticles(dir);
+
+		//Knockback
+		knockback = dir * Vector2.up;
+		knockbackTimer = 10;
+
         if (health <= 0){
             //AudioSource.PlayClipAtPoint (deathRoar, transform.position);
             //Destroy (gameObject);

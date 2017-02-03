@@ -50,10 +50,9 @@ public class Enemy : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Player"){
-			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, transform.rotation);
-			Rigidbody2D rb = other.gameObject.GetComponent<Rigidbody2D>();
-			var dir = rb.transform.position - transform.position;
-			rb.AddForce (dir.normalized * 6000f );
+			float angle =Mathf.Atan2(other.transform.position.y-transform.position.y, other.transform.position.x-transform.position.x)*180 / Mathf.PI;
+			angle -= 90;
+			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle));
 		}
 	}
 }
