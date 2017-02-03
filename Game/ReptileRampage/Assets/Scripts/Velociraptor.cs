@@ -13,12 +13,12 @@ public class Velociraptor : MonoBehaviour {
 	//Boolean variables
 	private bool targetInChaseRange = false;
 	private bool targetInSightRange = false;
-	private bool targetViewBlocked;
+	private bool targetViewBlocked = true;
 	private bool isChasing = false;
 	private bool isWandering = false;
 	private bool avoiding = false;
 	private bool flipped = false;
-	private bool disabled;
+	private bool disabled = true;
 
 	private float xPrev = 0;
 	private Vector3 patrolLocation;
