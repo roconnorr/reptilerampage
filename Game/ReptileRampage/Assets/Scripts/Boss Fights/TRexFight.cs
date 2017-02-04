@@ -6,6 +6,8 @@ public class TRexFight : MonoBehaviour {
 	private GameObject trexInstance;
 	public GameObject player;
 	public GameObject DialogBox;
+	private GameObject canvas;
+	private HUDManager hudManager;
 
 	public void StartFight(){
 		DialogBox.GetComponentInParent<TextBoxManager>().dialogActive = true;
@@ -14,6 +16,11 @@ public class TRexFight : MonoBehaviour {
 	public void SpawnTRex(){
 		trexInstance = Instantiate(trex);
 		trexInstance.GetComponent<TRex>().target = player.transform;
+		canvas = GameObject.Find("Canvas");
+		hudManager = canvas.GetComponent<HUDManager>();
+		hudManager.levelBoss = trexInstance;
+		hudManager.inBossFight = true;
+		hudManager.SetBossHealthActive(true);
 		this.gameObject.SetActive(false);
 	}
 
