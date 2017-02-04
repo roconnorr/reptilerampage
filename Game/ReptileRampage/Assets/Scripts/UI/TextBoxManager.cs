@@ -9,6 +9,9 @@ public class TextBoxManager : MonoBehaviour {
 
 	public GameObject BossTrigger;
 	public GameObject dialogBox;
+
+	public enum CurrentLevelBoss {trike, trex, gavin};
+	public CurrentLevelBoss levelBoss;
 	public Text text;
 	public bool dialogActive = false;
 
@@ -43,7 +46,16 @@ public class TextBoxManager : MonoBehaviour {
 
 			if(currentLine > endAtLine){
 				dialogBox.SetActive(false);
-				BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+
+				if(levelBoss == CurrentLevelBoss.trike){
+					BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+				}else if(levelBoss == CurrentLevelBoss.trex){
+					BossTrigger.GetComponent<TRexFight>().SpawnTRex();
+				}else{
+					//gavin
+					//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+				}
+
 				dialogActive = false;
 				player.GetComponent<Player>().canMove = true;
 				player.GetComponent<Player>().canShoot = true;
@@ -51,7 +63,6 @@ public class TextBoxManager : MonoBehaviour {
 
 				text.text = textLines[currentLine].ToUpper();
 			}
-
 		}
 	}
 }
