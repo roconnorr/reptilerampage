@@ -11,6 +11,9 @@ public class Weapon : MonoBehaviour {
 	public float bulletCount;
 	public float bulletSpread;
 	public float knockBackForce = 100;
+	public int maxAmmo;
+	public int ammo;
+	public int ammoPickup;
 	public bool automaticFire;
 	public Player.WeaponType type;
 	public Sprite sprite1;
@@ -84,9 +87,10 @@ public class Weapon : MonoBehaviour {
 
 		if (automaticFire && Input.GetButton ("Fire1") || !automaticFire && Input.GetButtonDown ("Fire1")) {
 			if (Time.time > timeToFire) {
-				if (playerScript.canShoot && Time.timeScale != 0) {
+				if (playerScript.canShoot && ammo > 0 && Time.timeScale != 0) {
 					timeToFire = Time.time + 1 / fireRate;
 					CreateBullet ();
+					ammo--;
 				}
 			}
 		}
@@ -116,5 +120,9 @@ public class Weapon : MonoBehaviour {
 		float size = Random.Range (0.1f, 0.13f);
 		flash.localScale = new Vector3 (size, size, size);
 		Destroy (flash.gameObject, 0.02f);
+	}
+
+	public void AddAmmo() {
+		ammo = Mathf.Min (maxAmmo, ammo + ammoPickup);
 	}
 }

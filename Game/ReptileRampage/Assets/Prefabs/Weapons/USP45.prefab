@@ -144,6 +144,9 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 100
+  maxAmmo: 150
+  ammo: 40
+  ammoPickup: 20
   automaticFire: 0
   type: 21
   sprite1: {fileID: 21300002, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}

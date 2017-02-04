@@ -143,16 +143,6 @@ public class Player : MonoBehaviour
 			slot1active = !slot1active;
 		}
 
-//        if (Input.GetButton("Slot1") && slot1 != null){
-//            slot1active = true;
-//            slot1.SetActive(true);
-//        }
-//
-//        if (Input.GetButton("Slot2") && slot2 != null){
-//            slot1active = false;
-//            slot2.SetActive(true);
-//        }
-
         if (slot1active && slot1 != null){
             slot1.SetActive(true);
             if (slot2 != null){
@@ -229,40 +219,59 @@ public class Player : MonoBehaviour
 	
 
    public void ChangeWeapon(WeaponType type, PickupPrefab pickup, GameObject pickupObject){
-       if(slot1active){
+		int pickupAmmo = pickup.ammo;
+		if(slot1active){
 			if(slot1 == null){
 				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot1type = type;
                 Destroy(pickupObject);
+				if (pickupAmmo != -1) {
+					slot1.GetComponent<Weapon> ().ammo = pickupAmmo;
+				}
 			}else if(slot2 == null){
 				slot2 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
                 slot1active = false;
-                Destroy(pickupObject);
+				Destroy(pickupObject);
+				if (pickupAmmo != -1) {
+					slot2.GetComponent<Weapon> ().ammo = pickupAmmo;
+				}
             }else{
-                //drop slot 1 gun
-                Destroy(slot1);
-                pickup.ChangeType(slot1type);  
+				//drop slot 1 gun
+				pickup.ChangeType(slot1type, slot1.GetComponent<Weapon>().ammo);
+                Destroy(slot1);  
 				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
-                slot1type = type;
+				slot1type = type;
+				if (pickupAmmo != -1) {
+					slot1.GetComponent<Weapon> ().ammo = pickupAmmo;
+				}
 			}
 		}else{
 			if(slot2 == null){
 				slot2 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
                 slot2type = type;
 				Destroy(pickupObject);
+				if (pickupAmmo != -1) {
+					slot2.GetComponent<Weapon> ().ammo = pickupAmmo;
+				}
 			}else if(slot1 == null){
 				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
 				slot1type = type;
 				slot1active = true;
 				Destroy(pickupObject);
+				if (pickupAmmo != -1) {
+					slot1.GetComponent<Weapon> ().ammo = pickupAmmo;
+				}
 			}else{
 				//drop slot 2 gun
+				pickup.ChangeType(slot2type, slot2.GetComponent<Weapon>().ammo);
                 Destroy(slot2);
-                pickup.ChangeType(slot2type);
 				slot2 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);
-                slot2type = type;
-            }
+				slot2type = type;
+				if (pickupAmmo != -1) {
+					slot2.GetComponent<Weapon> ().ammo = pickupAmmo;
+				}
+			}
         }
     }
 

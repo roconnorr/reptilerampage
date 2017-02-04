@@ -132,7 +132,10 @@ MonoBehaviour:
   screenShake: 0.15
   bulletCount: 3
   bulletSpread: 7
-  knockBackForce: 100
+  knockBackForce: 200
+  maxAmmo: 100
+  ammo: 30
+  ammoPickup: 10
   automaticFire: 0
   type: 18
   sprite1: {fileID: 21300002, guid: 59f8aadd2bf268148b7a59febd73171b, type: 3}
