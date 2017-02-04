@@ -21,9 +21,7 @@ public class Player : MonoBehaviour
     public Transform crossHairPrefab;
     private Transform crossHair;
     private Rigidbody2D rb;
-
-    private GameObject rexfight;
-    private TRexFight tfightscript;
+    private TrikeFight trikefightscript;
 
 
     private Weapon weapon;
@@ -57,7 +55,7 @@ public class Player : MonoBehaviour
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
-        tfightscript = GameObject.Find("BossFightTrigger").GetComponent<TRexFight>();
+        trikefightscript = GameObject.Find("BossTrigger").GetComponent<TrikeFight>();
 
     }
 
@@ -67,7 +65,7 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other){
         if (other.tag == "BossFight"){
-            tfightscript.StartFight();
+            trikefightscript.StartFight();
         }
     }
 

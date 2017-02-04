@@ -36,7 +36,6 @@ public class TextBoxManager : MonoBehaviour {
 			player.GetComponent<Player>().canMove = false;
 			player.GetComponent<Player>().canShoot = false;
 			dialogBox.SetActive(true);
-			text.text = textLines[currentLine].ToUpper();
 
 			if(Input.GetButtonDown("Fire1")){
 				currentLine += 1;
@@ -44,11 +43,15 @@ public class TextBoxManager : MonoBehaviour {
 
 			if(currentLine > endAtLine){
 				dialogBox.SetActive(false);
-				BossTrigger.GetComponent<TRexFight>().SpawnTRex();
+				BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
 				dialogActive = false;
 				player.GetComponent<Player>().canMove = true;
 				player.GetComponent<Player>().canShoot = true;
+			}else{
+
+				text.text = textLines[currentLine].ToUpper();
 			}
+
 		}
 	}
 }
