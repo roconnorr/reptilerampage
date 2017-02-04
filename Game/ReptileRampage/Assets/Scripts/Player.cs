@@ -175,7 +175,6 @@ public class Player : MonoBehaviour
             //Destroy (gameObject);
             Debug.Log("you should be dead");
             gameOver = true;
-
         }
     }
 

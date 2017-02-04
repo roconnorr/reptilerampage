@@ -17,11 +17,16 @@ public class HUDManager : MonoBehaviour {
 
    public GameObject pauseMenuPanel;
    private PauseMenuManager pauseMenu;
+
+   public GameObject gameOverPanel;
+   private GameOverManager gameOver;
    void Start () {
 		playerScript = player.GetComponent<Player>();
       	health = playerScript.health;
             pauseMenu = pauseMenuPanel.GetComponent<PauseMenuManager>();
             pauseMenu.Hide(); 
+            gameOver = gameOverPanel.GetComponent<GameOverManager>();
+            gameOver.Hide(); 
    }
    
 	void Update () {
@@ -42,7 +47,7 @@ public class HUDManager : MonoBehaviour {
 
       if(playerScript.gameOver) {
          // If gameover state detected, show the pause menu in gameover mode   
-         //pauseMenu.ShowGameOver();
+         gameOver.GameOver();
       } else if(Input.GetKey(KeyCode.Escape)) {
          // If user presses ESC, show the pause menu in pause mode
          pauseMenu.ShowPause();
