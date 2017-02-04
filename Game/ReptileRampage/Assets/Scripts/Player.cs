@@ -183,11 +183,12 @@ public class Player : MonoBehaviour
         
         if(!isInvulnerable){
              foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                 Color c = r.material.color;
-                 c.a = 0.3f;
-                 r.material.color = c;
+                 if(r.material.color != null){
+                    Color c = r.material.color;
+                    c.a = 0.3f;
+                    r.material.color = c;
+                 }
              }
-
             health -= amount;
             FireBloodParticles(dir);
 
@@ -211,9 +212,11 @@ public class Player : MonoBehaviour
     	isInvulnerable = true;
     	yield return new WaitForSeconds(invulnerableTime);
         foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                 Color c = r.material.color;
-                 c.a = 1f;
-                 r.material.color = c;
+            if(r.material.color != null){
+                Color c = r.material.color;
+                c.a = 0.3f;
+                r.material.color = c;
+            }
         }
     	isInvulnerable = false;
  	}
