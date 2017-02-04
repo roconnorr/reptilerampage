@@ -41,6 +41,8 @@ public class Gavin : MonoBehaviour {
 	private int bullet2Count = 0;
 	private int spawnCount = 0;
 
+	private HUDManager hudManager;
+
 	// Use this for initialization
 	void Start () {
 		sr = GetComponent<SpriteRenderer> ();
@@ -50,6 +52,10 @@ public class Gavin : MonoBehaviour {
 		firePoint = arm1.FindChild ("FirePoint");
 		spawnPoint1 = GameObject.Find ("SpawnPoint1").transform;
 		spawnPoint2 = GameObject.Find ("SpawnPoint2").transform;
+		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
+		hudManager.levelBoss = this.gameObject;
+		hudManager.inBossFight = true;
+		hudManager.SetBossHealthActive(true);
 	}
 	
 	// Update is called once per frame

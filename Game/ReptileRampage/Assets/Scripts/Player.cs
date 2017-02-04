@@ -167,16 +167,21 @@ public class Player : MonoBehaviour
         }else{
             soundSource.Stop();
         }
+        if(Time.timeScale!=0){
+            Cursor.visible = false;
+        } else if(Time.timeScale == 0){
+            Cursor.visible = true;
+        }
 }
 
 	public void TakeDamage(int amount, Quaternion dir, float force){
         
         if(!isInvulnerable){
              foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                 if(r.material.color != null){
-                    Color c = r.material.color;
-                    c.a = 0.3f;
-                    r.material.color = c;
+                 if(r.material.color != null && r.gameObject.tag != "MuzzelFlash"){
+                     Color c = r.material.color;
+                     c.a = 0.3f;
+                     r.material.color = c;
                  }
              }
             health -= amount;
@@ -202,9 +207,9 @@ public class Player : MonoBehaviour
     	isInvulnerable = true;
     	yield return new WaitForSeconds(invulnerableTime);
         foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-            if(r.material.color != null){
+            if(r.material.color != null && r.gameObject.tag != "MuzzelFlash"){
                 Color c = r.material.color;
-                c.a = 0.3f;
+                c.a = 1f;
                 r.material.color = c;
             }
         }

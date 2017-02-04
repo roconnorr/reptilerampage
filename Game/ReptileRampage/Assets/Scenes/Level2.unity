@@ -7357,6 +7357,11 @@ Prefab:
       propertyPath: levelBoss
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114170010350893968, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_MaxValue
+      value: 15
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
   m_IsPrefabParent: 0
@@ -10001,8 +10006,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trex: {fileID: 1725395205753084, guid: 6ed234fb3e7cf834699fb817cb687f07, type: 2}
-  player: {fileID: 0}
-  DialogBox: {fileID: 0}
+  player: {fileID: 1116174051}
+  DialogBox: {fileID: 940476442}
 --- !u!61 &1073217672
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10261,6 +10266,7 @@ MonoBehaviour:
   slot1type: 0
   slot2type: 0
   intrigger: 0
+  invulnerableTime: 1
 --- !u!212 &1116174056
 SpriteRenderer:
   m_ObjectHideFlags: 0

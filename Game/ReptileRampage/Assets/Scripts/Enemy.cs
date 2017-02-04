@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
 	public float knockbackModifier;
 	public int meleeDamage = 10;
 	public AudioClip deathRoar;
+
+	private GameObject canvas;
 	
 	public ParticleSystem bloodParticles;
 
@@ -27,6 +29,7 @@ public class Enemy : MonoBehaviour {
 		//ParticleSystem localDustParticles = Instantiate(dustParticles, transform.position, dustRotation, transform) as ParticleSystem;
 		//localDustParticles.Play();
 		rb = GetComponent<Rigidbody2D>();
+		canvas = GameObject.Find("Canvas");
 	}
 
 	void FixedUpdate() {
@@ -51,9 +54,11 @@ public class Enemy : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 				if(isTrike){
 					//possibly some more dialogue
+					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
          			SceneManager.LoadScene("Level2");
 				}else if(isTRex){
 					//possibly some more dialogue
+					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
 					SceneManager.LoadScene("Level3");
 				}else if(isGavin){
 					//you win
