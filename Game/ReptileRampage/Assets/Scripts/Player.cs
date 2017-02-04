@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -48,10 +49,12 @@ public class Player : MonoBehaviour
 
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
-
+    private bool isInvulnerable;
+    public int invulnerableTime = 1;
     private float horizontal;
     private float vertical;
     void Start(){
+        isInvulnerable = false;
         health = maxHealth;
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
@@ -177,10 +180,21 @@ public class Player : MonoBehaviour
 }
 
 	public void TakeDamage(int amount, Quaternion dir, float force){
-        health -= amount;
-        FireBloodParticles(dir);
+        
+        if(!isInvulnerable){
+             foreach (Renderer r in GetComponentsInChildren<Renderer>()){
+                 Color c = r.material.color;
+                 c.a = 0.1f;
+                 r.material.color = c;
+             }
 
-		//Knockback
+            health -= amount;
+            FireBloodParticles(dir);
+
+            StartCoroutine(becomeInvulnerable());
+        }
+
+        //Knockback
 		knockback = dir * Vector2.up;
 		knockback *= force;
 		knockbackTimer = 10;
@@ -192,6 +206,17 @@ public class Player : MonoBehaviour
             gameOver = true;
         }
     }
+
+    IEnumerator becomeInvulnerable() {
+    	isInvulnerable = true;
+    	yield return new WaitForSeconds(invulnerableTime);
+        foreach (Renderer r in GetComponentsInChildren<Renderer>()){
+                 Color c = r.material.color;
+                 c.a = 1f;
+                 r.material.color = c;
+        }
+    	isInvulnerable = false;
+ 	}
 
     public void FireBloodParticles(Quaternion dir){
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
