@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
     public bool canMove;
 
     public bool canShoot;
+
+    public bool gameOver;
     public float speed;
 
     public int maxHealth = 100;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
         canShoot = true;
+        gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
@@ -171,6 +174,8 @@ public class Player : MonoBehaviour
             //AudioSource.PlayClipAtPoint (deathRoar, transform.position);
             //Destroy (gameObject);
             Debug.Log("you should be dead");
+            gameOver = true;
+
         }
     }
 
