@@ -102,7 +102,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 30
-  explosionPrefab: {fileID: 4573351043576184, guid: 5f94c283afe65427b84807d4dedbb466,
+  animationPrefab: {fileID: 1776384836380538, guid: 36d66ffa4b251482183ea2061e98b790,
+    type: 2}
+  explosionScriptPrefab: {fileID: 1655185734893018, guid: 3a6f4ae2c4adf48ad83e5de46e48e556,
     type: 2}
   radius: 3
   power: 600
