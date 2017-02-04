@@ -6,16 +6,16 @@ using UnityEngine.SceneManagement;
 public class GameOverManager : MonoBehaviour {
 
 	public void Hide() {
-      gameObject.SetActive(false);
-   }
+            gameObject.SetActive(false);
+      }
 	public void GameOver(){
-      gameObject.SetActive(true);
+            gameObject.SetActive(true);
 	}
 	public void Restart(){
-	   SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-   }
+	      SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+      }
 
 	public void Quit(){
-         SceneManager.LoadScene("TitleScreen");
+            SceneManager.LoadScene("TitleScreen");
    }
 }
