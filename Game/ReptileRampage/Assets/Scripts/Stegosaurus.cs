@@ -14,6 +14,7 @@ public class Stegosaurus : MonoBehaviour {
 	private bool targetInChaseRange = false;
 	private bool targetInSightRange = false;
 	private bool targetInStopRange = false;
+	private bool targetObstructed = true;
 	private bool targetViewBlocked = true;
 	[HideInInspector]
 	public bool isChasing = false;
@@ -45,6 +46,7 @@ public class Stegosaurus : MonoBehaviour {
 		if (!disabled) {
 			//Get vision booleans
 			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
+			targetObstructed = PositionObstructedByObstacles (target.transform.position);
 			targetInChaseRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < chaseRange;
 			targetInSightRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
 			targetInStopRange = Vector3.Distance (gameObject.transform.position, target.transform.position) < stopRange;
@@ -60,26 +62,28 @@ public class Stegosaurus : MonoBehaviour {
 			if (isChasing && targetInChaseRange) {
 				if (!targetInStopRange) {
 					if (!targetViewBlocked) {
-						//Find nearest enemy and avoid if they're too close
-						Transform nearestEnemy = GetNearestSameDino ();
-						if (nearestEnemy != null) {
-							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-							if (avoiding) {
-								if (dist > 2) {
-									avoiding = false;
+						if (!targetObstructed) {
+							//Find nearest enemy and avoid if they're too close
+							Transform nearestEnemy = GetNearestSameDino ();
+							if (nearestEnemy != null) {
+								float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+								if (avoiding) {
+									if (dist > 2) {
+										avoiding = false;
+									}
+									Avoid (nearestEnemy);
+								} else if (dist < 1.5) {
+									avoiding = true;
+									Avoid (nearestEnemy);
 								}
-								Avoid (nearestEnemy);
-							} else if (dist < 1.5) {
-								avoiding = true;
-								Avoid (nearestEnemy);
 							}
-						}
-						//Move directly towards player
-						MoveDirect ();
-						//If in chase range but player is obstructed, pathfind to him
-					} else {
-						if (isChasing) {
-							MovePathFind ();
+							//Move directly towards player
+							MoveDirect ();
+							//If in chase range but player is obstructed, pathfind to him
+						} else {
+							if (isChasing) {
+								MovePathFind ();
+							}
 						}
 					}
 				}
@@ -122,8 +126,23 @@ public class Stegosaurus : MonoBehaviour {
 
 		foreach (RaycastHit2D hit in hits) {
 			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)
+			if (hit.transform.tag == "Wall" && hit.transform.gameObject.layer == 0) {
+				return true;
+			}
+		}
+		// if no objects were closer to the enemy than the player return false (player is not hidden by an object)
+		return false; 
+	}
+
+	bool PositionObstructedByObstacles(Vector3 position)  {
+		float distanceToPlayer = Vector2.Distance(transform.position, position);
+		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, position - transform.position, distanceToPlayer);
+		Debug.DrawRay(transform.position, position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
+
+		foreach (RaycastHit2D hit in hits) {
+			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)
 			if (hit.transform.tag == "Wall") {
-				if (targetViewBlocked == false){
+				if (targetObstructed == false){
 					pathfinder.Reset(transform.position, position);
 				}
 				return true;
