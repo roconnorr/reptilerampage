@@ -89,12 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2a1d3739f5554a54b9dc611fa85cf2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
+  health: 5
   isTier1: 1
   isTier2: 0
   isTier3: 0
   pickup: {fileID: 1154394682787550, guid: 373700b94b63144c2821298b2e9a3f95, type: 2}
   healthPack: {fileID: 1057376695768274, guid: fa65a589947ab419f9cab4ec030f3e65, type: 2}
+  ammoPack: {fileID: 1770400769561766, guid: 54dd1310cec8a564385ca8fa592112a4, type: 2}
 --- !u!114 &114892905279989414
 MonoBehaviour:
   m_ObjectHideFlags: 1

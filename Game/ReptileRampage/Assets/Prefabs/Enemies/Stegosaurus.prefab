@@ -309,7 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  health: 200
+  health: 100
   isTrike: 0
   isTRex: 0
   isGavin: 0

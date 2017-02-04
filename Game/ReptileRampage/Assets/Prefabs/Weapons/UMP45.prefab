@@ -161,7 +161,7 @@ MonoBehaviour:
   knockBackForce: 100
   maxAmmo: 500
   ammo: 150
-  ammoPickup: 50
+  ammoPickup: 70
   automaticFire: 1
   type: 20
   sprite1: {fileID: 21300002, guid: 07e682bb51b39724eb4f9d377bb3b102, type: 3}
