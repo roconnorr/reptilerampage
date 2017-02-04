@@ -3,7 +3,8 @@
 public class ExplosiveBarrel : MonoBehaviour {
 
 	public int health = 30;
-	public Transform explosionPrefab;
+	public GameObject animationPrefab;
+	public GameObject explosionScriptPrefab;
 	public float radius = 3.0F;
     public float power = 300.0F;
 	public int explodeDamage = 30;
@@ -15,7 +16,7 @@ public class ExplosiveBarrel : MonoBehaviour {
 	public void TakeDamage(int amount) {
 		health -= amount;
 		if (health <= 0) {
-			GameMaster.CreateExplosion(explosionPrefab, transform.position, explodeDamage, power, radius);
+			GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab ,transform.position, explodeDamage, power, radius);
 			Destroy (gameObject);
 		}
 	}

@@ -2,7 +2,6 @@
 
 public class Bullet : MonoBehaviour {
 
-	[HideInInspector]
 	public GameObject explosionPrefab;
 	[HideInInspector]
 	public float moveSpeed;

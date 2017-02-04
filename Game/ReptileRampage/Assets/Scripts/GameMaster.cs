@@ -35,8 +35,9 @@ public class GameMaster : MonoBehaviour {
 		return bullet;
 	}
 
-	public static Transform CreateExplosion(Transform prefab, Vector3 position, int explodeDamage, float power, float radius) {
-		Transform explosion = Instantiate (prefab, position, Quaternion.Euler(0, 0, 0));
+	public static GameObject CreateExplosion(GameObject animationPrefab, GameObject explosionScriptPrefab, Vector3 position, int explodeDamage, float power, float radius) {
+		GameObject animation = Instantiate (animationPrefab, position, Quaternion.Euler(0, 0, 0));
+		GameObject explosion = Instantiate (explosionScriptPrefab, position, Quaternion.Euler(0, 0, 0));
 		explosion.GetComponent<Explosion>().position = position;
 		explosion.GetComponent<Explosion>().explodeDamage = explodeDamage;
 		explosion.GetComponent<Explosion>().power = power;

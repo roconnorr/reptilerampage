@@ -7485,7 +7485,7 @@ Prefab:
     - target: {fileID: 114826954764352638, guid: 373700b94b63144c2821298b2e9a3f95,
         type: 2}
       propertyPath: type
-      value: 1
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 373700b94b63144c2821298b2e9a3f95, type: 2}
@@ -10350,6 +10350,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 0
   canShoot: 0
+  gameOver: 0
   speed: 5
   maxHealth: 100
   health: 100
@@ -10890,6 +10891,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
   HUDHealth: {fileID: 1680418964}
   player: {fileID: 1116174051}
+  pauseMenuPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
 --- !u!114 &1163938295
 MonoBehaviour:
   m_ObjectHideFlags: 0
