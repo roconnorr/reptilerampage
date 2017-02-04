@@ -13,6 +13,8 @@ TagManager:
   - BossFight1
   - BossFight2
   - BossFight3
+  - BossFight
+  - GavinCollider
   layers:
   - Default
   - TransparentFX
@@ -26,7 +28,7 @@ TagManager:
   - Enemy
   - EnemyProjectile
   - Player
-  - 
+  - Gavin
   - 
   - 
   - 
