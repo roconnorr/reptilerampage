@@ -2111,7 +2111,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 947877980}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -48.99, y: -60.06, z: -1}
+  m_LocalPosition: {x: 22.5, y: -44.5, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1523183404}
@@ -2447,14 +2447,13 @@ GameObject:
   m_Component:
   - component: {fileID: 1729587853}
   - component: {fileID: 1729587855}
-  - component: {fileID: 1729587854}
   m_Layer: 0
   m_Name: BossFightTrigger
-  m_TagString: BossFight
+  m_TagString: BossFight3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1729587853
 Transform:
   m_ObjectHideFlags: 0
@@ -2462,26 +2461,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1729587852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9, y: -93.5, z: 0}
+  m_LocalPosition: {x: -9.26, y: -93.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 619269078}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1729587854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1729587852}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c327210116c92614aadbb8dd6ad7c57b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trex: {fileID: 1725395205753084, guid: 6ed234fb3e7cf834699fb817cb687f07, type: 2}
-  player: {fileID: 947877980}
-  DialogBox: {fileID: 615073335}
 --- !u!61 &1729587855
 BoxCollider2D:
   m_ObjectHideFlags: 0

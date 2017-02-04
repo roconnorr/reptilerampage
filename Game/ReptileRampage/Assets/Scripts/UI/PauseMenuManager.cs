@@ -23,6 +23,7 @@ public class PauseMenuManager : MonoBehaviour {
    }
    
    public void Quit(){
+         Resume();
          SceneManager.LoadScene("TitleScreen");
    }
    
