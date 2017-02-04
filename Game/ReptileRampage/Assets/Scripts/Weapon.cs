@@ -35,7 +35,7 @@ public class Weapon : MonoBehaviour {
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		Cursor.visible = false;
+		//Cursor.visible = false;
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
@@ -84,7 +84,7 @@ public class Weapon : MonoBehaviour {
 
 		if (automaticFire && Input.GetButton ("Fire1") || !automaticFire && Input.GetButtonDown ("Fire1")) {
 			if (Time.time > timeToFire) {
-				if (playerScript.canShoot) {
+				if (playerScript.canShoot && Time.timeScale != 0) {
 					timeToFire = Time.time + 1 / fireRate;
 					CreateBullet ();
 				}

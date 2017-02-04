@@ -30,6 +30,9 @@ public class PauseMenuManager : MonoBehaviour {
    void Update () {   
       if(pauseGame) {
          Time.timeScale = 0;
+         Cursor.visible = true;
+      }else{
+            Cursor.visible = false;
       }      
    }
 }
