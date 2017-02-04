@@ -82,7 +82,7 @@ public class Player : MonoBehaviour
             trexfightscript.StartFight();
         }
         if (other.tag == "BossFight3"){
-            //last fight
+            SceneManager.LoadScene("FinalBoss");
         }
     }
 
