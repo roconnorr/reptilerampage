@@ -56,6 +56,7 @@ MonoBehaviour:
   power: 0
   explodeDamage: 0
   position: {x: 0, y: 0, z: 0}
+  explosionSound: {fileID: 8300000, guid: 27c402640cd9f4a4f972cb01770791cc, type: 3}
 --- !u!212 &212103431469429198
 SpriteRenderer:
   m_ObjectHideFlags: 1
