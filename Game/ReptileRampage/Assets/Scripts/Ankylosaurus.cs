@@ -16,6 +16,7 @@ public class Ankylosaurus : MonoBehaviour {
 	public float chaseRange;
 	public float stopRange;
 	public float patrolRange;
+	public float disabledDistance;
 	public GameObject target;
 
 	//Boolean variables
@@ -132,7 +133,7 @@ public class Ankylosaurus : MonoBehaviour {
 	}
 
 	void Update() {
-		disabled = Vector3.Distance (transform.position, target.transform.position) > 30;
+		disabled = Vector3.Distance (transform.position, target.transform.position) > disabledDistance;
 		if (!disabled) {
 			//Direction
 			//Has different check for isWandering because they go so slow that it doesn't trigger the 0.05
@@ -211,7 +212,7 @@ public class Ankylosaurus : MonoBehaviour {
 				int tries = 0;
 				while (foundLocation == false && tries < 5) {
 					wanderLocation = new Vector3 (patrolLocation.x + Random.Range (-patrolRange, patrolRange), patrolLocation.y + Random.Range (-patrolRange, patrolRange), transform.position.z);
-					if (PositionHiddenByObstacles (wanderLocation)) {
+					if (PositionObstructedByObstacles (wanderLocation)) {
 						tries++;
 					} else {
 						foundLocation = true;

@@ -201,6 +201,7 @@ MonoBehaviour:
   sightRange: 10
   chaseRange: 20
   patrolRange: 2
+  disabledDistance: 70
   target: {fileID: 0}
 --- !u!114 &114812755272971094
 MonoBehaviour:

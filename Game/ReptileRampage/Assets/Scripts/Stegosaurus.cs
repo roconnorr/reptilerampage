@@ -8,6 +8,7 @@ public class Stegosaurus : MonoBehaviour {
 	public float chaseRange;
 	public float stopRange;
 	public float patrolRange;
+	public float disabledDistance;
 	public GameObject target;
 
 	//Boolean variables
@@ -103,7 +104,7 @@ public class Stegosaurus : MonoBehaviour {
 	}
 
 	void Update() {
-		disabled = Vector3.Distance (transform.position, target.transform.position) > 30;
+		disabled = Vector3.Distance (transform.position, target.transform.position) > disabledDistance;
 		if (!disabled) {
 			//Direction
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
@@ -169,7 +170,7 @@ public class Stegosaurus : MonoBehaviour {
 				int tries = 0;
 				while (foundLocation == false && tries < 5) {
 					wanderLocation = new Vector3 (patrolLocation.x + Random.Range (-patrolRange, patrolRange), patrolLocation.y + Random.Range (-patrolRange, patrolRange), transform.position.z);
-					if (PositionHiddenByObstacles (wanderLocation)) {
+					if (PositionObstructedByObstacles (wanderLocation)) {
 						tries++;
 					} else {
 						foundLocation = true;

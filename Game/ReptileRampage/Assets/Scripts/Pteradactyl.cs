@@ -15,6 +15,7 @@ public class Pteradactyl : MonoBehaviour {
 	public Transform grenadePrefab;
 
 	private Vector3 targetLocation;
+	private Vector3 spawnLocation;
 	private float angle = 0;
 	private bool seen = false;
 	private float timeToFire = 0;
@@ -24,13 +25,17 @@ public class Pteradactyl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
+		angle = Random.Range (0, 360);
+		spawnLocation = transform.position;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		if (!seen) {
+			targetLocation = spawnLocation + (Quaternion.Euler (0, 0, angle) * Vector3.up * circleDistance);
+			rb.AddForce(Vector3.Normalize (targetLocation - transform.position) * speed);
+			angle += circleSpeed;
 			seen = Vector3.Distance (gameObject.transform.position, target.transform.position) < sightRange;
-			angle = Random.Range (0, 360);
 		}
 		if (seen) {
 			targetLocation = target.transform.position + (Quaternion.Euler (0, 0, angle) * Vector3.up * circleDistance);
