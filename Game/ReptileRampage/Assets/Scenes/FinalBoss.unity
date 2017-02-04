@@ -274,6 +274,7 @@ MonoBehaviour:
   slot1type: 0
   slot2type: 0
   intrigger: 0
+  invulnerableTime: 1
 --- !u!212 &50138770
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -382,11 +383,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Tilesize: 1.28
-  MapStartPosition: {x: -64, y: -64}
-  MapEndPosition: {x: 66, y: 66}
+  MapStartPosition: {x: -18, y: -18}
+  MapEndPosition: {x: 20, y: 20}
   DisallowedTags:
   - Wall
-  DrawGridInEditor: 0
+  DrawGridInEditor: 1
 --- !u!4 &248345394
 Transform:
   m_ObjectHideFlags: 0
@@ -1923,7 +1924,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1851779276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -45.2, y: -37.4, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 592273985}
