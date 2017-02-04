@@ -11,8 +11,10 @@ public class Explosion : MonoBehaviour {
 	[HideInInspector]
 	public Vector3 position;
 
+	public AudioClip explosionSound;
+
 	void FixedUpdate () {
-		//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+		AudioSource.PlayClipAtPoint (explosionSound, transform.position);
 		Collider2D[] colliders = Physics2D.OverlapCircleAll (transform.position, radius);
 		foreach(Collider2D col in colliders){
 			if(col.tag == "DestructibleWall"){
