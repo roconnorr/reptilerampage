@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
         if(!isInvulnerable){
              foreach (Renderer r in GetComponentsInChildren<Renderer>()){
                  Color c = r.material.color;
-                 c.a = 0.1f;
+                 c.a = 0.3f;
                  r.material.color = c;
              }
 
