@@ -35,7 +35,6 @@ public class Weapon : MonoBehaviour {
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		//Cursor.visible = false;
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
