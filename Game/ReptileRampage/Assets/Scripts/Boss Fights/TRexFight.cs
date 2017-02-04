@@ -12,7 +12,7 @@ public class TRexFight : MonoBehaviour {
 	}
 
 	public void SpawnTRex(){
-		trexInstance = Instantiate(trex, new Vector3(12, 47, -1), new Quaternion(0,0,0,0));
+		trexInstance = Instantiate(trex);
 		trexInstance.GetComponent<TRex>().target = player.transform;
 		this.gameObject.SetActive(false);
 	}
