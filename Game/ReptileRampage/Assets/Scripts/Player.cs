@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -21,9 +22,11 @@ public class Player : MonoBehaviour
     public Transform crossHairPrefab;
     private Transform crossHair;
     private Rigidbody2D rb;
-    private TrikeFight trikefightscript;
+    private TrikeFight trikefightscript = null;
 
-    private TRexFight trexfightscript;
+    private TRexFight trexfightscript = null;
+
+    //private GavinFight gavinFightScript;
 
 
     private Weapon weapon;
@@ -57,8 +60,13 @@ public class Player : MonoBehaviour
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
-        //trikefightscript = GameObject.Find("BossTrigger1").GetComponent<TrikeFight>();
-        trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
+        //need to get current level and load relevant script
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.name == "Level1"){
+            trikefightscript = GameObject.Find("BossTrigger1").GetComponent<TrikeFight>();
+        }else if (scene.name == "Level2"){
+            trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
+        }//else gavin
 
     }
 
