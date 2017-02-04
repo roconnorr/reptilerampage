@@ -12,7 +12,6 @@ public class Enemy : MonoBehaviour {
 	public bool isGavin;
 	public float knockbackModifier;
 	public int meleeDamage = 10;
-	[HideInInspector]
 	public AudioClip deathRoar;
 	
 	public ParticleSystem bloodParticles;
