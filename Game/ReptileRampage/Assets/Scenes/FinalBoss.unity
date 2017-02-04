@@ -1227,6 +1227,7 @@ MonoBehaviour:
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
     type: 2}
+  grid: {fileID: 248345394}
   shotSound: {fileID: 8300000, guid: ba7c2b35afb2023459ac54f5d10a18d7, type: 3}
   bulletDamage: 10
   fireRate: 15
@@ -1804,7 +1805,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1697696953}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.007999897, y: 0.4, z: 0}
+  m_LocalPosition: {x: 0.0061, y: 0.3921, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1568444847}
@@ -2066,7 +2067,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2072920320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05550003, y: 0.426, z: 0}
+  m_LocalPosition: {x: -0.0645, y: 0.3946, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1159768567}
