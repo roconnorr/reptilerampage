@@ -18,6 +18,7 @@ public class Gavin : MonoBehaviour {
 	public Transform bulletPrefab;
 	public Transform spawnPrefab;
 	public Transform muzzleFlashPrefab;
+	public Transform grid;
 	public AudioClip shotSound = null;
 
 	public int bulletDamage;
@@ -92,6 +93,12 @@ public class Gavin : MonoBehaviour {
 			Transform b = Instantiate (spawnPrefab, spawnPoint2.transform.position, new Quaternion(0,0,0,0));
 			a.GetComponent<Velociraptor> ().target = target.gameObject;
 			b.GetComponent<Velociraptor> ().target = target.gameObject;
+			a.GetComponent<AStarPathfinder> ().gridObject = grid.gameObject;
+			b.GetComponent<AStarPathfinder> ().gridObject = grid.gameObject;
+			a.GetComponent<Velociraptor> ().sightRange = 100;
+			b.GetComponent<Velociraptor> ().sightRange = 100;
+			a.GetComponent<Velociraptor> ().chaseRange = 100;
+			b.GetComponent<Velociraptor> ().chaseRange = 100;
 			timeToSpawn = Time.time + 0.2f;
 			spawnCount++;
 			if (spawnCount > 5) {

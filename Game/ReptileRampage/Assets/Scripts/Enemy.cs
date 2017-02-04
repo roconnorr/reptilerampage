@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 
-	void OnCollisionEnter2D(Collision2D other){
+	void OnCollisionStay2D(Collision2D other){
 		if(other.gameObject.tag == "Player"){
 			float angle =Mathf.Atan2(other.transform.position.y-transform.position.y, other.transform.position.x-transform.position.x)*180 / Mathf.PI;
 			angle -= 90;
