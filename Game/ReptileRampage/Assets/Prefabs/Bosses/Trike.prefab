@@ -187,8 +187,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  health: 5000
+  health: 100
+  isTrike: 1
   isTRex: 0
+  isGavin: 0
   knockbackModifier: 0
   meleeDamage: 10
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}

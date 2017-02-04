@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : MonoBehaviour {
 
@@ -6,7 +7,9 @@ public class Enemy : MonoBehaviour {
 	public Rigidbody2D rb;
 	
 	public int health;
+	public bool isTrike;
 	public bool isTRex;
+	public bool isGavin;
 	public float knockbackModifier;
 	public int meleeDamage = 10;
 	[HideInInspector]
@@ -47,6 +50,14 @@ public class Enemy : MonoBehaviour {
 			FireBloodParticles(dir);
 			if (health <= 0) {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+				if(isTrike){
+					//possibly some more dialogue
+         			SceneManager.LoadScene("Level2");
+				}else if(isTRex){
+					//SceneManager.LoadScene("Level3");
+				}else if(isGavin){
+					//you win
+				}
 				Destroy (gameObject);
 			}
 		}

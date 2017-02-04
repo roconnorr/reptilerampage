@@ -14,13 +14,23 @@ public class HUDManager : MonoBehaviour {
    public GameObject player;
    private Player playerScript;
    private float health;
+
+   public GameObject pauseMenuPanel;
+   private PauseMenuManager pauseMenu;
+
+   public GameObject gameOverPanel;
+   private GameOverManager gameOver;
    void Start () {
 		playerScript = player.GetComponent<Player>();
       	health = playerScript.health;
+            pauseMenu = pauseMenuPanel.GetComponent<PauseMenuManager>();
+            pauseMenu.Hide(); 
+            gameOver = gameOverPanel.GetComponent<GameOverManager>();
+            gameOver.Hide(); 
    }
    
 	void Update () {
-		if(playerScript.slot1 != null){
+	   if(playerScript.slot1 != null){
             Slot1Text.text = playerScript.slot1.name.Substring(0, playerScript.slot1.name.Length - 7).ToUpper();
 	   		Slot1Image.sprite = WeaponSprites[(int) playerScript.slot1type];
 	   }
@@ -34,5 +44,13 @@ public class HUDManager : MonoBehaviour {
       // gradually (over certain period of time)   
       health = Mathf.MoveTowards(health, playerScript.health, 20*Time.deltaTime);
       HUDHealth.value = health;
+
+      if(playerScript.gameOver) {
+         // If gameover state detected, show the pause menu in gameover mode   
+         gameOver.GameOver();
+      } else if(Input.GetKey(KeyCode.Escape)) {
+         // If user presses ESC, show the pause menu in pause mode
+         pauseMenu.ShowPause();
+      }
    }
 }
