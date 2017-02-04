@@ -54,7 +54,8 @@ public class Enemy : MonoBehaviour {
 					//possibly some more dialogue
          			SceneManager.LoadScene("Level2");
 				}else if(isTRex){
-					//SceneManager.LoadScene("Level3");
+					//possibly some more dialogue
+					SceneManager.LoadScene("Level3");
 				}else if(isGavin){
 					//you win
 				}
