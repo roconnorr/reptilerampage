@@ -35,7 +35,7 @@ public class Explosion : MonoBehaviour {
 					rb.GetComponent<Crate>().TakeDamage (explodeDamage);
 				}
 				if(rb.tag == "Explosive"){
-					rb.GetComponent<ExplosiveBarrel>().TakeDamage (explodeDamage);
+					rb.GetComponent<ExplosiveBarrel>().Destroy();
 				}
 			}
 		}

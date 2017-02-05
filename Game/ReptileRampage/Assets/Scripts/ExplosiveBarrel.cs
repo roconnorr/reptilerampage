@@ -2,7 +2,6 @@
 
 public class ExplosiveBarrel : MonoBehaviour {
 
-	public int health = 30;
 	public GameObject animationPrefab;
 	public GameObject explosionScriptPrefab;
 	public float radius = 3.0F;
@@ -13,11 +12,8 @@ public class ExplosiveBarrel : MonoBehaviour {
 		//soundSource = gameObject.GetComponent<AudioSource>();
     }
 
-	public void TakeDamage(int amount) {
-		health -= amount;
-		if (health <= 0) {
-			GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab ,transform.position, explodeDamage, power, radius);
-			Destroy (gameObject);
-		}
+	public void Destroy() {
+		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab ,transform.position, explodeDamage, power, radius);
+		Destroy (gameObject);
 	}
 }
