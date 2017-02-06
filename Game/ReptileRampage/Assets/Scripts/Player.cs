@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     public float speed;
     public static int playerMaxHP = 100;
 
+    private AudioSource soundSource;
+    public AudioClip[] footstepSounds;
+
+
     [HideInInspector]
     public int health;
-
-    private AudioSource soundSource;
 
     //public ParticleSystem dustParticles;
     public ParticleSystem bloodParticles;
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         soundSource = gameObject.GetComponent<AudioSource>();
         weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
+        StartCoroutine(cycleFootsteps());
         //need to get current level and load relevant script
         Scene scene = SceneManager.GetActiveScene();
         if(scene.name == "Level1"){
@@ -185,14 +188,7 @@ public class Player : MonoBehaviour
         }
 
         if(canMove){
-
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-                if (!soundSource.isPlaying){
-                    soundSource.Play();
-                }
-            }else{
-                soundSource.Stop();
-            }
+            
         }else{
             soundSource.Stop();
         }
@@ -202,6 +198,21 @@ public class Player : MonoBehaviour
             Cursor.visible = true;
         }
 }
+
+    private IEnumerator cycleFootsteps(){
+        while(true){
+            soundSource.clip = footstepSounds[Random.Range(0,4)];
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
+                if (!soundSource.isPlaying){
+                    soundSource.Play();
+                }
+            }else{
+                soundSource.Stop();
+            }
+            yield return new WaitForSeconds(soundSource.clip.length);
+
+        }
+    }
 
 	public void TakeDamage(int amount, Quaternion dir, float force){
         
@@ -226,6 +237,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0){
             //AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+            GameObject.Find("Canvas").GetComponent<HUDManager>().inBossFight = false;
             Destroy (gameObject);
             //Debug.Log("you should be dead");
             gameOver = true;

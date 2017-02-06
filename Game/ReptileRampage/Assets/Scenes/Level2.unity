@@ -8227,12 +8227,12 @@ Prefab:
     - target: {fileID: 224227104452302666, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224266233009725062, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
@@ -8252,6 +8252,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: da5216439e13a134eb58831c2b1f342f,
         type: 3}
+    - target: {fileID: 114018706801973214, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: levelBoss
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
   m_IsPrefabParent: 0
@@ -11512,9 +11517,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: cc2b705da630f43dda58ea714b8d9df9, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.275
+  m_Volume: 0.19
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11632,6 +11637,11 @@ MonoBehaviour:
   canShoot: 0
   gameOver: 0
   speed: 5
+  footstepSounds:
+  - {fileID: 8300000, guid: 4c328c85b1fe54f61bcc2bca8bb1b87c, type: 3}
+  - {fileID: 8300000, guid: fba396bb953df4ebeac315fd071b60b2, type: 3}
+  - {fileID: 8300000, guid: ee51702d3154841e99afaf2d6580d972, type: 3}
+  - {fileID: 8300000, guid: b433ec30d13a744e7b342876e95a2318, type: 3}
   health: 100
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
@@ -11713,7 +11723,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1116174051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.3, y: -52.4, z: -1}
+  m_LocalPosition: {x: 40.2, y: -48.3, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1187611139}
