@@ -114,11 +114,13 @@ public class Weapon : MonoBehaviour {
 		//Shake screen
 		gameObject.GetComponent<CameraShake>().StartShaking(screenShake);
 		//Create muzzle flash - needs to have a custom one
-		Transform flash = Instantiate (muzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
-		flash.parent = firePoint;
-		float size = Random.Range (0.1f, 0.13f);
-		flash.localScale = new Vector3 (size, size, size);
-		Destroy (flash.gameObject, 0.02f);
+		if (muzzleFlashPrefab != null) {
+			Transform flash = Instantiate (muzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
+			flash.parent = firePoint;
+			float size = Random.Range (0.1f, 0.13f);
+			flash.localScale = new Vector3 (size, size, size);
+			Destroy (flash.gameObject, 0.02f);
+		}
 	}
 
 	public void AddAmmo() {
