@@ -111,7 +111,7 @@ public class Gavin : MonoBehaviour {
 			b.GetComponent<Velociraptor> ().chaseRange = 100;
 			timeToSpawn = Time.time + 0.2f;
 			spawnCount++;
-			if (spawnCount > 5) {
+			if (spawnCount > 2) {
 				spawnCount = 0;
 				state = State.Idle;
 			}
