@@ -76,6 +76,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ebfa1893bb4df574b893b7b8db139882, type: 3}
   - {fileID: 21300000, guid: 07e682bb51b39724eb4f9d377bb3b102, type: 3}
   - {fileID: 21300000, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
+  - {fileID: 21300000, guid: 72b0eac0c57d0c34e9d774c9343d362f, type: 3}
+  - {fileID: 21300000, guid: 234691ace65b33742b2d02c0939de9f0, type: 3}
+  - {fileID: 21300000, guid: da5216439e13a134eb58831c2b1f342f, type: 3}
+  ammo: -1
 --- !u!212 &212395102703717260
 SpriteRenderer:
   m_ObjectHideFlags: 1

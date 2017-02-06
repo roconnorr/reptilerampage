@@ -22,15 +22,15 @@ public class Crate : MonoBehaviour {
 
 	private int[] tier2rare1 = new int[4] {1, 9, 10, 11};
 	private int[] tier2rare2 = new int[5] {8, 12, 14, 20, 21};
-	private int[] tier2rare3 = new int[4] {5, 13, 16, 17};
+	private int[] tier2rare3 = new int[5] {5, 13, 16, 17, 22};
 	private int[] tier2rare4 = new int[1] {0};
-	private int[] tier2rare5 = new int[1] {4};
+	private int[] tier2rare5 = new int[2] {4, 24};
 
 	private int[] tier3rare1 = new int[4] {1, 9, 10, 11};
 	private int[] tier3rare2 = new int[7] {2, 8, 12, 14, 15, 20, 21};
-	private int[] tier3rare3 = new int[5] {5, 13, 16, 17, 18};
+	private int[] tier3rare3 = new int[6] {5, 13, 16, 17, 18, 22};
 	private int[] tier3rare4 = new int[2] {0, 8};
-	private int[] tier3rare5 = new int[4] {3, 4, 6, 19};
+	private int[] tier3rare5 = new int[6] {3, 4, 6, 19, 23, 24};
  
     
     void Start() {
@@ -67,7 +67,7 @@ public class Crate : MonoBehaviour {
 		int [] array = null;
 		while(arrayEmpty){
 			float chance = Random.value;
-			if(chance <= 0.35){
+			if(chance <= 0.3){
 				if(isTier1){
 					array = tier1rare1;
 				} else if (isTier2){
@@ -76,7 +76,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare1;
 				}
 			}
-			if(chance > 0.35 && chance <= 0.6){
+			if(chance > 0.3 && chance <= 0.55){
 				if(isTier1){
 					array = tier1rare2;
 				} else if (isTier2){
@@ -85,7 +85,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare2;
 				}
 			}
-			if(chance > 0.6 && chance <= 0.8){
+			if(chance > 0.55 && chance <= 0.75){
 				if(isTier1){
 					array = tier1rare3;
 				} else if (isTier2){
@@ -94,7 +94,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare3;
 				}
         	}
-			if(chance > 0.8 && chance <= 0.95) {
+			if(chance > 0.75 && chance <= 0.9) {
 				if(isTier1){
 					array = tier1rare4;
 				} else if (isTier2){
@@ -103,7 +103,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare4;
 				}
     		}
-			if(chance > 0.95) {
+			if(chance > 0.9) {
 				if(isTier1){
 					array = tier1rare5;
 				} else if (isTier2){

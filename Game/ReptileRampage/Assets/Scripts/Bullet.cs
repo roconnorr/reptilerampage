@@ -3,6 +3,8 @@
 public class Bullet : MonoBehaviour {
 
 	public GameObject explosionPrefab;
+	public GameObject animationPrefab;
+	public GameObject explosionScriptPrefab;
 	[HideInInspector]
 	public float moveSpeed;
 	[HideInInspector]
@@ -15,6 +17,8 @@ public class Bullet : MonoBehaviour {
 	public bool dmgEnemy;
 	[HideInInspector]
 	public float knockBackForce;
+
+	public bool isExplosive;
 
 
 	public AudioClip wallHitSound = null;
@@ -63,8 +67,12 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void Explode(){
-		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
-		explosion.transform.position = transform.position;
+		if (isExplosive) {
+			GameMaster.CreateExplosion (animationPrefab, explosionScriptPrefab, transform.position, damage, 200, 2);
+		} else {
+			GameObject explosion = (GameObject)Instantiate (explosionPrefab);
+			explosion.transform.position = transform.position;
+		}
 		Destroy (gameObject);
 	}
 }
