@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TitleCameraMove : MonoBehaviour {
     public float speed = 0.1F;
@@ -14,13 +12,13 @@ public class TitleCameraMove : MonoBehaviour {
 
     public Transform cameraTransform;
 	public Transform target;
-	private Camera camera;
+	private Camera cam;
     public GameObject canvas;
     
     void Start() {
-		camera = GetComponent<Camera>();
+		cam = GetComponent<Camera>();
         startTime = Time.time;
-		startMarker = camera.transform;
+		startMarker = cam.transform;
         journeyLength = Vector3.Distance(startMarker.position, target.position);
         pos = new Vector3(-46, -39, -10);
     }
@@ -30,7 +28,7 @@ public class TitleCameraMove : MonoBehaviour {
             skip = true;
         }
         if(skip){
-            camera.transform.position = pos;
+            cam.transform.position = pos;
         }else{
             Lerp();
         }
@@ -44,7 +42,7 @@ public class TitleCameraMove : MonoBehaviour {
     void Lerp(){
         float distCovered = (Time.time - startTime) * speed;
         float fracJourney = distCovered / journeyLength;
-        camera.transform.position = Vector3.Lerp(startMarker.position, target.position, fracJourney);
-		camera.transform.position = new Vector3(camera.transform.position.x, camera.transform.position.y, -10);
+        cam.transform.position = Vector3.Lerp(startMarker.position, target.position, fracJourney);
+		cam.transform.position = new Vector3(cam.transform.position.x, cam.transform.position.y, -10);
     }
 }

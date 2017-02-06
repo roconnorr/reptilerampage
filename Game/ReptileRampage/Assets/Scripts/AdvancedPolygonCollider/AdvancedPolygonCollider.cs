@@ -6,16 +6,9 @@ Source code may not be redistributed. Use in apps and games is fine.
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-
 using UnityEngine;
 
-#if UNITY_EDITOR
-
-using UnityEditor;
-
-#endif
 
 namespace DigitalRuby.AdvancedPolygonCollider
 {

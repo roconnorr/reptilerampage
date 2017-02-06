@@ -26,9 +26,6 @@ public class Trike : MonoBehaviour {
 
 	private Vector3 targetLocation;
 	
-
-
-	// Use this for initialization
 	void Start () {
 		state = State.Idle;
 		vFirePoint = transform.FindChild ("VFirePoint");
@@ -36,7 +33,6 @@ public class Trike : MonoBehaviour {
 		stompFirePoint = transform.FindChild ("StompFirePoint");
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		if(target == null){
 			Destroy(gameObject);

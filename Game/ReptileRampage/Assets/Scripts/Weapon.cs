@@ -31,7 +31,6 @@ public class Weapon : MonoBehaviour {
 	private Transform firePoint1;
 	private Transform firePoint2;
 	private bool flipped;
-
 	private Player player;
 
 	void Start () {
@@ -39,7 +38,7 @@ public class Weapon : MonoBehaviour {
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
-		player = GameObject.Find("Player").GetComponent<Player>();
+		player = GameObject.FindWithTag("Player").GetComponent<Player>();
 	}
 
 	void Update () {

@@ -32,7 +32,7 @@ public class Player : MonoBehaviour
     //private GavinFight gavinFightScript;
 
 
-    private Weapon weapon;
+    //private Weapon weapon;
 
 	public enum WeaponType {acr, ak47, aug, barret50cal, crossbow, deserteagle, g18, 
                             golddeserteagle, grenade, m1, m16, m1911, miniuzi, 
@@ -47,11 +47,7 @@ public class Player : MonoBehaviour
     public GameObject slot2 = null;
     public WeaponType slot1type;
     public WeaponType slot2type;
-
     private bool slot1active = true;
-    public bool intrigger;
-    private PickupPrefab pk;
-
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
     private bool isInvulnerable;
@@ -65,7 +61,7 @@ public class Player : MonoBehaviour
         canShoot = true;
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
-        weapon = GetComponentInChildren<Weapon>();
+        //weapon = GetComponentInChildren<Weapon>();
         crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
         StartCoroutine(cycleFootsteps());
         //need to get current level and load relevant script

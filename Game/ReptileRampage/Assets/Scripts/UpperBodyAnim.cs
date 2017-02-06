@@ -4,12 +4,10 @@ public class UpperBodyAnim : MonoBehaviour {
 
 	private Animator animator;
 
-	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
 		float rotation = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;

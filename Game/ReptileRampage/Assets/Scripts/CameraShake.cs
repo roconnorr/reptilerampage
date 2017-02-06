@@ -1,11 +1,7 @@
 ﻿using UnityEngine;
 
-public class CameraShake : MonoBehaviour 
-{
-
-	Vector3 originalCameraPosition;
-
-	float shakeAmt = 0;
+public class CameraShake : MonoBehaviour {
+	private float shakeAmt = 0;
 
 	private Camera mainCamera;
 

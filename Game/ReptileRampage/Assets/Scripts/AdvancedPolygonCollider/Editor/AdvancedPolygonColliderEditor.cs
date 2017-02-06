@@ -1,7 +1,5 @@
-﻿using UnityEngine;
-using UnityEditor;
+﻿using UnityEditor;
 
-using System.Collections;
 
 namespace DigitalRuby.AdvancedPolygonCollider
 {
