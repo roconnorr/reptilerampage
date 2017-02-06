@@ -77,8 +77,10 @@ public class Bullet : MonoBehaviour {
 		if (isExplosive) {
 			GameMaster.CreateExplosion (animationPrefab, explosionScriptPrefab, transform.position, damage, 200, 2, !dmgPlayer);
 		} else {
-			GameObject explosion = (GameObject)Instantiate (explosionPrefab);
-			explosion.transform.position = transform.position;
+			if (explosionPrefab != null) {
+				GameObject explosion = (GameObject)Instantiate (explosionPrefab);
+				explosion.transform.position = transform.position;
+			}
 		}
 		Destroy (gameObject);
 	}

@@ -105,14 +105,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6e304d787a447b2adbc173fb954961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 1453132568796580, guid: a116b3dc443e642d9a7ffaf5c9c29af0,
-    type: 2}
+  explosionPrefab: {fileID: 0}
+  animationPrefab: {fileID: 0}
+  explosionScriptPrefab: {fileID: 0}
   moveSpeed: 20
   damage: 10
   range: 0
   dmgPlayer: 0
   dmgEnemy: 0
   knockBackForce: 0
+  isExplosive: 0
+  isRPG: 0
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
 --- !u!212 &212878328976729178
 SpriteRenderer:
