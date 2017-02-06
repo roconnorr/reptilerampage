@@ -216,8 +216,8 @@ public class Player : MonoBehaviour
 
         if (health <= 0){
             //AudioSource.PlayClipAtPoint (deathRoar, transform.position);
-            //Destroy (gameObject);
-            Debug.Log("you should be dead");
+            Destroy (gameObject);
+            //Debug.Log("you should be dead");
             gameOver = true;
         }
     }

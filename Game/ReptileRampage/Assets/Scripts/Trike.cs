@@ -38,6 +38,10 @@ public class Trike : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if(target == null){
+			Destroy(gameObject);
+			return;
+		}
 		//Idle Behaviour
 		if (state == State.Idle) {
 			if (timeSinceLastAction < 100) {

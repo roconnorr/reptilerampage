@@ -41,6 +41,10 @@ public class Velociraptor : MonoBehaviour {
 
 	//Run every tick
 	void FixedUpdate() {
+		if(target == null){
+			Destroy(gameObject);
+			return;
+		}
 		if (!disabled) {
 			//Get vision booleans
 			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);
@@ -96,6 +100,10 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void Update() {
+		if(target == null){
+			Destroy(gameObject);
+			return;
+		}
 		disabled = Vector3.Distance (transform.position, target.transform.position) > disabledDistance;
 		if (!disabled) {
 			//Direction
