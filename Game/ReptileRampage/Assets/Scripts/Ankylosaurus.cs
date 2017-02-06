@@ -111,14 +111,14 @@ public class Ankylosaurus : MonoBehaviour {
 						chargePosition = new Vector3 (target.transform.position.x, target.transform.position.y, transform.position.z);
 					}
 					if (!isCharging && Time.time > timeToFire) {
-						smashes = Random.Range (1, 4);
+						smashes = Random.Range (2, 5);
 						animator.Play ("Ankylo_Smash");
 						timeToFire = Time.time + 1 / fireRate;
 					}
 					if (isCharging) {
 						gameObject.GetComponent<Enemy>().knockbackModifier = 0;
 						if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
-							rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed);
+							rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed * 10);
 						} else {
 							isCharging = false;
 							gameObject.GetComponent<Enemy>().knockbackModifier = modifierOriginal;
@@ -279,7 +279,7 @@ public class Ankylosaurus : MonoBehaviour {
 	}
 
 	void FireBullets() {
-		for(int i=0; i<=360; i+=45){
+		for(int i=0; i<=360; i+=24){
 			Transform bullet = GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, i, damage, shotSpeed, range, true, false, transform);
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 		}
