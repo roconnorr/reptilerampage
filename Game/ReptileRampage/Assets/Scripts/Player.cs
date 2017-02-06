@@ -197,24 +197,7 @@ public class Player : MonoBehaviour
         } else if(Time.timeScale == 0){
             Cursor.visible = true;
         }
-}
 
-    private IEnumerator cycleFootsteps(){
-        while(true){
-            soundSource.clip = footstepSounds[Random.Range(0,4)];
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-                if (!soundSource.isPlaying){
-                    soundSource.Play();
-                }
-            }else{
-                soundSource.Stop();
-            }
-            yield return new WaitForSeconds(soundSource.clip.length);
-
-        }
-    }
-
-	public void TakeDamage(int amount, Quaternion dir, float force){
         if(!isInvulnerable){
             foreach (Renderer r in GetComponentsInChildren<Renderer>()){
                 if(r.gameObject.tag != "MuzzelFlash"){
@@ -232,7 +215,22 @@ public class Player : MonoBehaviour
                  }
              }
         }
-}
+    }
+
+    private IEnumerator cycleFootsteps(){
+        while(true){
+            soundSource.clip = footstepSounds[Random.Range(0,4)];
+            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
+                if (!soundSource.isPlaying){
+                    soundSource.Play();
+                }
+            }else{
+                soundSource.Stop();
+            }
+            yield return new WaitForSeconds(soundSource.clip.length);
+
+        }
+    }
 
 	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
         
