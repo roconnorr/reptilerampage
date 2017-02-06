@@ -67,7 +67,7 @@ public class Crate : MonoBehaviour {
 		int [] array = null;
 		while(arrayEmpty){
 			float chance = Random.value;
-			if(chance <= 0.35){
+			if(chance <= 0.3){
 				if(isTier1){
 					array = tier1rare1;
 				} else if (isTier2){
@@ -76,7 +76,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare1;
 				}
 			}
-			if(chance > 0.35 && chance <= 0.6){
+			if(chance > 0.3 && chance <= 0.55){
 				if(isTier1){
 					array = tier1rare2;
 				} else if (isTier2){
@@ -85,7 +85,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare2;
 				}
 			}
-			if(chance > 0.6 && chance <= 0.8){
+			if(chance > 0.55 && chance <= 0.75){
 				if(isTier1){
 					array = tier1rare3;
 				} else if (isTier2){
@@ -94,7 +94,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare3;
 				}
         	}
-			if(chance > 0.8 && chance <= 0.95) {
+			if(chance > 0.75 && chance <= 0.9) {
 				if(isTier1){
 					array = tier1rare4;
 				} else if (isTier2){
@@ -103,7 +103,7 @@ public class Crate : MonoBehaviour {
 					array = tier3rare4;
 				}
     		}
-			if(chance > 0.95) {
+			if(chance > 0.9) {
 				if(isTier1){
 					array = tier1rare5;
 				} else if (isTier2){

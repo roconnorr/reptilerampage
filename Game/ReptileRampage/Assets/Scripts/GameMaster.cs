@@ -2,6 +2,16 @@
 
 public class GameMaster : MonoBehaviour {
 
+	public static int playerHP = 100;
+	/*public static Player.WeaponType slot1type;
+    public static Player.WeaponType slot2type;
+	public static GameObject slot1;
+	public static GameObject slot2;*/
+
+	void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
+
 	public static Transform CreateBullet(Transform prefab, Vector3 position, float knockBackForce, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));
 		bullet.GetComponent<Bullet>().knockBackForce = knockBackForce;

@@ -146,15 +146,14 @@ MonoBehaviour:
   knockBackForce: 200
   maxAmmo: 20
   ammo: 10
-  ammoPickup: 2
+  ammoPickup: 3
   automaticFire: 0
   type: 4
   sprite1: {fileID: 21300002, guid: 314fbd01585fa5a4c804326961ca927a, type: 3}
   sprite2: {fileID: 21300004, guid: 314fbd01585fa5a4c804326961ca927a, type: 3}
   bulletPrefab: {fileID: 4449960396714002, guid: 5cdf9ce08c7aeb545bdd79f334bb4ddd,
     type: 2}
-  muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
-    type: 2}
+  muzzleFlashPrefab: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 84fad85595e387441a3414f307df0ddf, type: 3}
   rotationOffset: 0
   noRotation: 0

@@ -135,18 +135,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 150
   fireRate: 1
-  shotSpeed: 30
-  range: 75
-  strayFactor: 1
-  screenShake: 0
+  shotSpeed: 10
+  range: 35
+  strayFactor: 3
+  screenShake: 0.4
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 200
-  maxAmmo: 20
-  ammo: 10
-  ammoPickup: 2
+  maxAmmo: 50
+  ammo: 20
+  ammoPickup: 5
   automaticFire: 0
   type: 23
   sprite1: {fileID: 21300002, guid: 234691ace65b33742b2d02c0939de9f0, type: 3}
