@@ -59,7 +59,7 @@ public class Grenade : MonoBehaviour {
 
 	void Explode(){
 		radius = 3.0f;
-		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab, transform.position, explodeDamage, power, radius);
+		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab, transform.position, explodeDamage, power, radius, !dmgPlayer);
 		Destroy (gameObject);
 	}
 }
