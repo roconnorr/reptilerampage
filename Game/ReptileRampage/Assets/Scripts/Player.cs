@@ -35,9 +35,12 @@ public class Player : MonoBehaviour
 	public enum WeaponType {acr, ak47, aug, barret50cal, crossbow, deserteagle, g18, 
                             golddeserteagle, grenade, m1, m16, m1911, miniuzi, 
                             model1887, mp5, p90, remington870, skorpion, spas12, 
-                            thompson1928, ump45, usp45, rpg7, chinalake, plasmarifle};
+                            thompson1928, ump45, usp45, rpg7, chinalake, plasmarifle, empty};
     public GameObject[] weaponsprefabs;
     private GameObject[] weaponslist;
+
+    public WeaponType startWeapon1Type;
+    public WeaponType startWeapon2Type;
     public GameObject slot1 = null;
     public GameObject slot2 = null;
     public WeaponType slot1type;
@@ -74,6 +77,14 @@ public class Player : MonoBehaviour
         slot1type = GameMaster.slot1type;
         slot2 = GameMaster.slot2;
         slot2type = GameMaster.slot2type;*/
+        if(startWeapon1Type != WeaponType.empty){
+            slot1 = Instantiate(weaponsprefabs[(int)startWeapon1Type], transform.position + weaponsprefabs[(int)startWeapon1Type].transform.position, new Quaternion(0,0,0,0), this.transform);
+            slot1type = startWeapon1Type;
+        }
+        if(startWeapon2Type != WeaponType.empty){
+            slot2 = Instantiate(weaponsprefabs[(int)startWeapon2Type], transform.position + weaponsprefabs[(int)startWeapon2Type].transform.position, new Quaternion(0,0,0,0), this.transform);
+            slot2type = startWeapon2Type;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D other){

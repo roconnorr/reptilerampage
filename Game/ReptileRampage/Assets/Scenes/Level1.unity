@@ -6518,6 +6518,8 @@ MonoBehaviour:
   - {fileID: 1329185274965612, guid: 7a6748385beb9274797577c1e7dde772, type: 2}
   - {fileID: 1113457341494336, guid: 9fdaaacaa8e0ce84a92542e085f923e2, type: 2}
   - {fileID: 1843147178011080, guid: f824d2ce96eee14429ee33dd76d3c88e, type: 2}
+  startWeapon1Type: 11
+  startWeapon2Type: 10
   slot1: {fileID: 0}
   slot2: {fileID: 0}
   slot1type: 0
