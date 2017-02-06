@@ -211,7 +211,6 @@ public class Player : MonoBehaviour
             }
         }else{
             foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                 Debug.Log(r);
                  if(r.gameObject.tag != "MuzzelFlash"){
                      Color c = r.material.color;
                      c.a = 0.3f;
