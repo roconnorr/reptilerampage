@@ -73,7 +73,9 @@ public class Player : MonoBehaviour
             trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
         }//else gavin
         startWeapon1Type = GameMaster.slot1type;
-        startWeapon2Type = GameMaster.slot2type;
+		startWeapon2Type = GameMaster.slot2type;
+		GameMaster.levelStartSlot1Type = startWeapon1Type;
+		GameMaster.levelStartSlot2Type = startWeapon2Type;
         if(startWeapon1Type != WeaponType.empty){
             slot1 = Instantiate(weaponsprefabs[(int)startWeapon1Type], transform.position + weaponsprefabs[(int)startWeapon1Type].transform.position, new Quaternion(0,0,0,0), this.transform);
             slot1type = startWeapon1Type;
@@ -83,10 +85,12 @@ public class Player : MonoBehaviour
             slot2type = startWeapon2Type;
         }
         if(slot1 != null){
-            slot1.GetComponent<Weapon>().ammo = GameMaster.slot1ammo;
+			slot1.GetComponent<Weapon>().ammo = GameMaster.slot1ammo;
+			GameMaster.levelStartSlot1Ammo = slot1.GetComponent<Weapon>().ammo;
         }
         if(slot2 != null){
-            slot2.GetComponent<Weapon>().ammo = GameMaster.slot2ammo;
+			slot2.GetComponent<Weapon>().ammo = GameMaster.slot2ammo;
+			GameMaster.levelStartSlot2Ammo = slot2.GetComponent<Weapon>().ammo;
         }
     }
 
