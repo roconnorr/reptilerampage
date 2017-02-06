@@ -271,7 +271,7 @@ MonoBehaviour:
   shotSound: {fileID: 8300000, guid: e0c7ae77d1d659d4ea7203db85ac4c1a, type: 3}
   rotationOffset: 180
   burstBulletLimit: 5
-  timeTilNextBurst: 3
+  timeTilNextBurst: 2
   shootRange: 15
 --- !u!114 &114446488847777724
 MonoBehaviour:
@@ -318,6 +318,7 @@ MonoBehaviour:
   knockbackModifier: 0.5
   meleeDamage: 10
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  hasSeen: 0
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
 --- !u!212 &212624939415596542
