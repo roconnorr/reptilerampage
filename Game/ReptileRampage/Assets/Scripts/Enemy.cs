@@ -54,8 +54,10 @@ public class Enemy : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 				if(isTrike){
 					//possibly some more dialogue
+					//CarryOver.playerHP = GetComponent<Player>().health;
 					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
          			SceneManager.LoadScene("Level2");
+					//GetComponent<Player>().health = CarryOver.playerHP;
 				}else if(isTRex){
 					//possibly some more dialogue
 					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
