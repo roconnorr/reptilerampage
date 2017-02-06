@@ -48,7 +48,9 @@ public class Bullet : MonoBehaviour {
 			Explode();
 		}
 		if(other.gameObject.tag == "Player" && dmgPlayer){
-			other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation, knockBackForce, source);
+			if (!isExplosive) {
+				other.gameObject.GetComponent<Player> ().TakeDamage (damage, transform.rotation, knockBackForce, source);
+			}
 			Explode ();
 		}
 		if (other.gameObject.tag == "Explosive"){
@@ -60,7 +62,9 @@ public class Bullet : MonoBehaviour {
 			Explode ();	
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, knockBackForce, source, false);
+			if (!isExplosive) {
+				other.gameObject.GetComponent<Enemy> ().TakeDamage (damage, transform.rotation, knockBackForce, source, false);
+			}
 			Explode ();
 		}
 	}
