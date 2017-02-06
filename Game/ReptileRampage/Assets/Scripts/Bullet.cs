@@ -75,7 +75,7 @@ public class Bullet : MonoBehaviour {
 			gameObject.GetComponent<AudioSource>().Stop();
 		}
 		if (isExplosive) {
-			GameMaster.CreateExplosion (animationPrefab, explosionScriptPrefab, transform.position, damage, 200, 2);
+			GameMaster.CreateExplosion (animationPrefab, explosionScriptPrefab, transform.position, damage, 200, 2, !dmgPlayer);
 		} else {
 			GameObject explosion = (GameObject)Instantiate (explosionPrefab);
 			explosion.transform.position = transform.position;

@@ -48,13 +48,14 @@ public class GameMaster : MonoBehaviour {
 		return bullet;
 	}
 
-	public static GameObject CreateExplosion(GameObject animationPrefab, GameObject explosionScriptPrefab, Vector3 position, int explodeDamage, float power, float radius) {
+	public static GameObject CreateExplosion(GameObject animationPrefab, GameObject explosionScriptPrefab, Vector3 position, int explodeDamage, float power, float radius, bool playerSource) {
 		Instantiate (animationPrefab, position, Quaternion.Euler(0, 0, 0));
 		GameObject explosion = Instantiate (explosionScriptPrefab, position, Quaternion.Euler(0, 0, 0));
 		explosion.GetComponent<Explosion>().position = position;
 		explosion.GetComponent<Explosion>().explodeDamage = explodeDamage;
 		explosion.GetComponent<Explosion>().power = power;
 		explosion.GetComponent<Explosion>().radius = radius;
+		explosion.GetComponent<Explosion> ().playerSource = playerSource;
 		return explosion;
 	}
 }

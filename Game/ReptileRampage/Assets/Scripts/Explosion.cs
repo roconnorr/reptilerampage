@@ -10,6 +10,9 @@ public class Explosion : MonoBehaviour {
 	public int explodeDamage;
 	[HideInInspector]
 	public Vector3 position;
+	[HideInInspector]
+	public bool playerSource;
+
 	public AudioClip explosionSound;
 
 	void FixedUpdate () {
@@ -25,7 +28,11 @@ public class Explosion : MonoBehaviour {
 				angle -= 90;
 				//Player takes damage if in radius
 				if(rb.tag == "Player"){
-					rb.GetComponent<Player>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power);
+					if (playerSource) {
+						rb.GetComponent<Player> ().TakeDamage (explodeDamage / 2, Quaternion.Euler (0, 0, angle), power);
+					} else {
+						rb.GetComponent<Player> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power);
+					}
 				}
 				if(rb.tag == "Enemy"){
 					rb.GetComponent<Enemy>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power);

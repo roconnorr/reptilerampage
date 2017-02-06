@@ -13,7 +13,7 @@ public class ExplosiveBarrel : MonoBehaviour {
     }
 
 	public void Destroy() {
-		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab ,transform.position, explodeDamage, power, radius);
+		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab ,transform.position, explodeDamage, power, radius, false);
 		Destroy (gameObject);
 	}
 }
