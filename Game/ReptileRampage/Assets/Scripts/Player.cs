@@ -72,11 +72,8 @@ public class Player : MonoBehaviour
         }else if (scene.name == "Level2"){
             trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
         }//else gavin
-        health = GameMaster.playerHP;
-        /*slot1 = GameMaster.slot1;
-        slot1type = GameMaster.slot1type;
-        slot2 = GameMaster.slot2;
-        slot2type = GameMaster.slot2type;*/
+        startWeapon1Type = GameMaster.slot1type;
+        startWeapon2Type = GameMaster.slot2type;
         if(startWeapon1Type != WeaponType.empty){
             slot1 = Instantiate(weaponsprefabs[(int)startWeapon1Type], transform.position + weaponsprefabs[(int)startWeapon1Type].transform.position, new Quaternion(0,0,0,0), this.transform);
             slot1type = startWeapon1Type;
@@ -84,6 +81,12 @@ public class Player : MonoBehaviour
         if(startWeapon2Type != WeaponType.empty){
             slot2 = Instantiate(weaponsprefabs[(int)startWeapon2Type], transform.position + weaponsprefabs[(int)startWeapon2Type].transform.position, new Quaternion(0,0,0,0), this.transform);
             slot2type = startWeapon2Type;
+        }
+        if(slot1 != null){
+            slot1.GetComponent<Weapon>().ammo = GameMaster.slot1ammo;
+        }
+        if(slot2 != null){
+            slot2.GetComponent<Weapon>().ammo = GameMaster.slot2ammo;
         }
     }
 
@@ -133,11 +136,14 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
-        GameMaster.playerHP = health;
-        /*GameMaster.slot1 = slot1;
         GameMaster.slot1type = slot1type;
-        GameMaster.slot2 = slot2;
-        GameMaster.slot2type = slot2type;*/
+        GameMaster.slot2type = slot2type;
+        if(slot1 != null){
+            GameMaster.slot1ammo = slot1.GetComponent<Weapon>().ammo;
+        }
+        if(slot2 != null){
+            GameMaster.slot2ammo = slot2.GetComponent<Weapon>().ammo;
+        }
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
         crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
