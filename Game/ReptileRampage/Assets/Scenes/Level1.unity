@@ -5671,7 +5671,6 @@ MonoBehaviour:
   canShoot: 0
   gameOver: 0
   speed: 5
-  maxHealth: 100
   health: 100
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
@@ -5748,7 +5747,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1019736887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.7, y: 40.2, z: -1}
+  m_LocalPosition: {x: 40.3, y: 47, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1272741558}

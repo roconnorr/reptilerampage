@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
 
     public bool gameOver;
     public float speed;
+    public static int playerMaxHP = 100;
 
-    public int maxHealth = 100;
     [HideInInspector]
     public int health;
 
@@ -54,8 +54,7 @@ public class Player : MonoBehaviour
     private float horizontal;
     private float vertical;
     void Start(){
-        isInvulnerable = false;
-        health = maxHealth;
+        isInvulnerable = false;  
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
         canShoot = true;
@@ -70,7 +69,11 @@ public class Player : MonoBehaviour
         }else if (scene.name == "Level2"){
             trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
         }//else gavin
-
+        health = GameMaster.playerHP;
+        /*slot1 = GameMaster.slot1;
+        slot1type = GameMaster.slot1type;
+        slot2 = GameMaster.slot2;
+        slot2type = GameMaster.slot2type;*/
     }
 
     void OnCollisionEnter2D(Collision2D other){
@@ -119,6 +122,11 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
+        GameMaster.playerHP = health;
+        /*GameMaster.slot1 = slot1;
+        GameMaster.slot1type = slot1type;
+        GameMaster.slot2 = slot2;
+        GameMaster.slot2type = slot2type;*/
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
         crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
