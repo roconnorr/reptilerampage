@@ -361,7 +361,7 @@ MonoBehaviour:
   range: 50
   knockbackForce: 100
   strayFactor: 30
-  speed: 6
+  speed: 4
   laserDamage: 10
   dir: 1
 --- !u!114 &114104835019130982

@@ -264,7 +264,7 @@ MonoBehaviour:
   isTrike: 0
   isTRex: 0
   isGavin: 0
-  knockbackModifier: 0.5
+  knockbackModifier: 0
   meleeDamage: 10
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,

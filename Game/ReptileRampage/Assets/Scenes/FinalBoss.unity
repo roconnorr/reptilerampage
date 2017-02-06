@@ -1443,6 +1443,11 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: da5216439e13a134eb58831c2b1f342f,
         type: 3}
+    - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: levelBoss
+      value: 
+      objectReference: {fileID: 1710283529}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
   m_IsPrefabParent: 0
@@ -1474,6 +1479,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1710283529 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1325306542229694, guid: f3bd370666fcf8f46bee7ce2463a9af7,
+    type: 2}
+  m_PrefabInternal: {fileID: 598131507}
 --- !u!1 &1741465015
 GameObject:
   m_ObjectHideFlags: 0

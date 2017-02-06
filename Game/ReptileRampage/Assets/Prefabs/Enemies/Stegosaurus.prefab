@@ -258,7 +258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 10
   fireRate: 10
-  shotSpeed: 20
+  shotSpeed: 15
   range: 50
   knockbackForce: 100
   strayFactor: 10
