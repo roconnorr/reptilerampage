@@ -149,7 +149,7 @@ public class Stegosaurus : MonoBehaviour {
 		foreach (RaycastHit2D hit in hits) {
 			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)
 			if (hit.transform.tag == "Wall") {
-				if (targetObstructed == false){
+				if (targetObstructed == false && isChasing){
 					pathfinder.Reset(transform.position, position);
 				}
 				return true;
