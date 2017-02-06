@@ -37,7 +37,6 @@ GameObject:
   - component: {fileID: 212451364392588822}
   - component: {fileID: 114673577212729884}
   - component: {fileID: 114054849823771540}
-  - component: {fileID: 61909704615440136}
   - component: {fileID: 114299139006355222}
   m_Layer: 0
   m_Name: MP5
@@ -102,20 +101,6 @@ Transform:
   m_Father: {fileID: 4167816932953522}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61909704615440136
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1752570124062964}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.27}
 --- !u!114 &114054849823771540
 MonoBehaviour:
   m_ObjectHideFlags: 1
