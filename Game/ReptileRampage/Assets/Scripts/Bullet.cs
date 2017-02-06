@@ -17,6 +17,8 @@ public class Bullet : MonoBehaviour {
 	public bool dmgEnemy;
 	[HideInInspector]
 	public float knockBackForce;
+	[HideInInspector]
+	public Transform source;
 	public bool isExplosive;
 	public bool isRPG;
 	public AudioClip wallHitSound = null;
@@ -46,7 +48,7 @@ public class Bullet : MonoBehaviour {
 			Explode();
 		}
 		if(other.gameObject.tag == "Player" && dmgPlayer){
-			other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation, knockBackForce);
+			other.gameObject.GetComponent<Player>().TakeDamage (damage, transform.rotation, knockBackForce, source);
 			Explode ();
 		}
 		if (other.gameObject.tag == "Explosive"){
@@ -58,14 +60,14 @@ public class Bullet : MonoBehaviour {
 			Explode ();	
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, knockBackForce);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, knockBackForce, source);
 			Explode ();
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce);
+			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce, source);
 			Explode ();
 		}
 	}

@@ -21,6 +21,8 @@ public class BulletHoming : MonoBehaviour {
 	private Rigidbody2D rb;
 	[HideInInspector]
 	public int iFrames;
+	[HideInInspector]
+	public Transform source;
 
 	public AudioClip wallHitSound = null;
 
@@ -61,7 +63,7 @@ public class BulletHoming : MonoBehaviour {
 			}
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy && iFrames == 0) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, 0);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, 0, source);
 			Explode ();
 		}
 	}

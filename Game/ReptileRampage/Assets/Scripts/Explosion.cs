@@ -15,6 +15,14 @@ public class Explosion : MonoBehaviour {
 
 	public AudioClip explosionSound;
 
+	private Transform source = null;
+
+	void Start() {
+		if (playerSource) {
+			source = GameObject.Find ("Player").transform;
+		}
+	}
+
 	void FixedUpdate () {
 		AudioSource.PlayClipAtPoint (explosionSound, transform.position);
 		Collider2D[] colliders = Physics2D.OverlapCircleAll (transform.position, radius);
@@ -29,13 +37,13 @@ public class Explosion : MonoBehaviour {
 				//Player takes damage if in radius
 				if(rb.tag == "Player"){
 					if (playerSource) {
-						rb.GetComponent<Player> ().TakeDamage (explodeDamage / 2, Quaternion.Euler (0, 0, angle), power);
+						rb.GetComponent<Player> ().TakeDamage (explodeDamage / 2, Quaternion.Euler (0, 0, angle), power, source);
 					} else {
-						rb.GetComponent<Player> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power);
+						rb.GetComponent<Player> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power, source);
 					}
 				}
 				if(rb.tag == "Enemy"){
-					rb.GetComponent<Enemy>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power);
+					rb.GetComponent<Enemy>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power, source);
 				}
 				if(rb.tag == "Crate"){
 					rb.GetComponent<Crate>().TakeDamage (explodeDamage);

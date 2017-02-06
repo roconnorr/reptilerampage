@@ -47,13 +47,22 @@ public class Pteradactyl : MonoBehaviour {
 			if (Vector3.Distance (transform.position, target.transform.position) < 3 && Time.time > timeToFire) {
 				float angle = Mathf.Atan2(target.transform.position.y-transform.position.y, target.transform.position.x-transform.position.x)*180 / Mathf.PI;
 				angle -= 90;
-				GameMaster.CreateGrenade (grenadePrefab, transform.position, angle, damage, 5, 70, true, true);
+				GameMaster.CreateGrenade (grenadePrefab, transform.position, angle, damage, 5, 70, true, true, transform);
 				timeToFire = Time.time + 1/(fireRate);
 			}
 		}
 		//Max Speed
 		if (rb.velocity.magnitude > maxSpeed) {
 			rb.velocity = rb.velocity.normalized * maxSpeed;
+		}
+	}
+
+	void Update() {
+		if (GetComponent<Enemy> ().hasSeen) {
+			seen = true;
+		}
+		if (!seen) {
+			GetComponent<Enemy> ().hasSeen = false;
 		}
 	}
 }

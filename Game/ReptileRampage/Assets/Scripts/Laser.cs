@@ -22,7 +22,7 @@ public class Laser : MonoBehaviour {
 		if(other.gameObject.tag == "Player"){
 			float angle =Mathf.Atan2(other.transform.position.y-transform.position.y, transform.position.x-transform.position.x)*180 / Mathf.PI;
 			angle -= 90;
-			other.gameObject.GetComponent<Player>().TakeDamage (GetComponentInParent<Gavin>().laserDamage, Quaternion.Euler(0, 0, angle), 500);
+			other.gameObject.GetComponent<Player>().TakeDamage (GetComponentInParent<Gavin>().laserDamage, Quaternion.Euler(0, 0, angle), 500, GetComponentInParent<Gavin>().transform);
 		}
 	}
 }

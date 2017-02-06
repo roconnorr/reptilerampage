@@ -32,16 +32,14 @@ public class Weapon : MonoBehaviour {
 	private Transform firePoint2;
 	private bool flipped;
 
-	private GameObject player;
-
-	private Player playerScript;
+	private Player player;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
-		playerScript = GameObject.Find("Player").GetComponent<Player>();
+		player = GameObject.Find("Player").GetComponent<Player>();
 	}
 
 	void Update () {
@@ -86,7 +84,7 @@ public class Weapon : MonoBehaviour {
 
 		if (automaticFire && Input.GetButton ("Fire1") || !automaticFire && Input.GetButtonDown ("Fire1")) {
 			if (Time.time > timeToFire) {
-				if (playerScript.canShoot && ammo > 0 && Time.timeScale != 0) {
+				if (player.canShoot && ammo > 0 && Time.timeScale != 0) {
 					timeToFire = Time.time + 1 / fireRate;
 					CreateBullet ();
 					ammo--;
@@ -101,9 +99,9 @@ public class Weapon : MonoBehaviour {
 			//Create bullet with stray modifier
 			float strayValue = Random.Range (-strayFactor, strayFactor);
 			if (type == Player.WeaponType.grenade) {
-				GameMaster.CreateGrenade (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+				GameMaster.CreateGrenade (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true, player.transform);
 			} else {
-				GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockBackForce, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
+				GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockBackForce, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true, player.transform);
 			}
 			angle += bulletSpread;
 		}

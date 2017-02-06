@@ -117,21 +117,21 @@ public class Trike : MonoBehaviour {
 		angle -= 90;
 		angle -= 10;
 		for (int i = 0; i < 2; i++) {
-			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, bulletKnockbackForce, angle, 10, 10, 80, true, false);
+			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, bulletKnockbackForce, angle, 10, 10, 80, true, false, transform);
 			angle += 20;
 		}
 	}
 
 	void StompWave(){
 		for(int i=0; i<=360; i+=10){
-			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, bulletKnockbackForce, i, 10, 5, 150, true, false);
+			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, bulletKnockbackForce, i, 10, 5, 150, true, false, transform);
 		}
 	}
 
 	void GrenadeWave(){
 		float angle = Mathf.Atan2(target.position.y-vFirePoint.position.y, target.position.x-vFirePoint.position.x)*180 / Mathf.PI;
 		angle -= 90;
-		GameMaster.CreateGrenade (grenadePrefab, grenadeFirePoint.position, angle, 20, Random.Range(20, 30), 100, true, false);
+		GameMaster.CreateGrenade (grenadePrefab, grenadeFirePoint.position, angle, 20, Random.Range(20, 30), 100, true, false, transform);
 	}
 
 	void SetStateIdle() {

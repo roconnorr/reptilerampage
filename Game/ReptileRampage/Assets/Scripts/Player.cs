@@ -220,7 +220,7 @@ public class Player : MonoBehaviour
         }
 }
 
-	public void TakeDamage(int amount, Quaternion dir, float force){
+	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
         
         if(!isInvulnerable){
             health -= amount;

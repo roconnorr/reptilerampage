@@ -106,6 +106,12 @@ public class Stegosaurus : MonoBehaviour {
 	}
 
 	void Update() {
+		if (GetComponent<Enemy> ().hasSeen) {
+			isChasing = true;
+		}
+		if (!isChasing) {
+			GetComponent<Enemy> ().hasSeen = false;
+		}
 		if(target == null){
 			Destroy(gameObject);
 			return;
