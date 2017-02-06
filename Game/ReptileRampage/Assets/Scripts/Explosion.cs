@@ -53,6 +53,7 @@ public class Explosion : MonoBehaviour {
 				}
 			}
 		}
+		gameObject.GetComponent<CameraShake>().StartShaking(power/50);
 		Destroy (gameObject);
 	}
 

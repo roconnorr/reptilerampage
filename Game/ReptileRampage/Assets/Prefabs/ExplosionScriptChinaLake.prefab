@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4365375938799434}
   - component: {fileID: 212103431469429198}
   - component: {fileID: 114563283618124156}
+  - component: {fileID: 114703562767142644}
   m_Layer: 0
   m_Name: ExplosionScriptChinaLake
   m_TagString: Untagged
@@ -56,7 +57,19 @@ MonoBehaviour:
   power: 0
   explodeDamage: 0
   position: {x: 0, y: 0, z: 0}
+  playerSource: 0
   explosionSound: {fileID: 8300000, guid: acbda67c275755e4d98548a6036b91f5, type: 3}
+--- !u!114 &114703562767142644
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655185734893018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212103431469429198
 SpriteRenderer:
   m_ObjectHideFlags: 1

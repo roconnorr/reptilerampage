@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114905781669798104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +142,7 @@ MonoBehaviour:
   shotSpeed: 10
   range: 35
   strayFactor: 3
-  screenShake: 0.4
+  screenShake: 0.2
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 200
