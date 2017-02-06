@@ -138,7 +138,7 @@ MonoBehaviour:
   damage: 7
   fireRate: 12
   shotSpeed: 20
-  range: 51
+  range: 50
   strayFactor: 5
   screenShake: 0.05
   bulletCount: 1

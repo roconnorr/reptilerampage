@@ -109,7 +109,7 @@ MonoBehaviour:
     type: 2}
   animationPrefab: {fileID: 1776384836380538, guid: 36d66ffa4b251482183ea2061e98b790,
     type: 2}
-  explosionScriptPrefab: {fileID: 1655185734893018, guid: 3a6f4ae2c4adf48ad83e5de46e48e556,
+  explosionScriptPrefab: {fileID: 1655185734893018, guid: e630cac7ab3902c43afa53e9ff10ce9c,
     type: 2}
   moveSpeed: 20
   damage: 10
@@ -118,6 +118,7 @@ MonoBehaviour:
   dmgEnemy: 0
   knockBackForce: 0
   isExplosive: 1
+  isRPG: 0
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
 --- !u!212 &212246836703327118
 SpriteRenderer:

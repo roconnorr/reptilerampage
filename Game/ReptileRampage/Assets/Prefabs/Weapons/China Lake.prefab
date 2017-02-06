@@ -135,12 +135,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 100
+  damage: 150
   fireRate: 1
-  shotSpeed: 30
-  range: 75
-  strayFactor: 1
-  screenShake: 0
+  shotSpeed: 10
+  range: 35
+  strayFactor: 3
+  screenShake: 0.4
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 200
@@ -155,7 +155,7 @@ MonoBehaviour:
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
     type: 2}
-  shotSound: {fileID: 8300000, guid: 84fad85595e387441a3414f307df0ddf, type: 3}
+  shotSound: {fileID: 8300000, guid: 90a95f1798ae5004b8450dff7f3eeac9, type: 3}
   rotationOffset: 0
   noRotation: 0
 --- !u!212 &212049442800087632
