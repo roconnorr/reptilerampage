@@ -17,11 +17,15 @@ public class Bullet : MonoBehaviour {
 	public bool dmgEnemy;
 	[HideInInspector]
 	public float knockBackForce;
-
 	public bool isExplosive;
-
-
+	public bool isRPG;
 	public AudioClip wallHitSound = null;
+
+	void Start(){
+		if(isRPG){
+			gameObject.GetComponent<AudioSource>().Play();
+		}
+	}
 	
 	void Update () {
 		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
@@ -67,6 +71,9 @@ public class Bullet : MonoBehaviour {
 	}
 
 	void Explode(){
+		if(isRPG){
+			gameObject.GetComponent<AudioSource>().Stop();
+		}
 		if (isExplosive) {
 			GameMaster.CreateExplosion (animationPrefab, explosionScriptPrefab, transform.position, damage, 200, 2);
 		} else {

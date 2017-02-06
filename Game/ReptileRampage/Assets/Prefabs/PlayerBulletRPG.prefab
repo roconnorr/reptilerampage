@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50258396321844898}
   - component: {fileID: 114114969044126602}
   - component: {fileID: 114889797003370110}
+  - component: {fileID: 82085079112762570}
   m_Layer: 8
   m_Name: PlayerBulletRPG
   m_TagString: Untagged
@@ -82,6 +83,86 @@ PolygonCollider2D:
       - {x: -0.049999997, y: -0.04}
       - {x: 0.049999997, y: -0.04}
       - {x: 0.049999997, y: 0.04}
+--- !u!82 &82085079112762570
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1617955756309440}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 74b1230240d2e06468d6ee77ca99dd66, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.153
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114114969044126602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,7 +178,7 @@ MonoBehaviour:
     type: 2}
   animationPrefab: {fileID: 1776384836380538, guid: 36d66ffa4b251482183ea2061e98b790,
     type: 2}
-  explosionScriptPrefab: {fileID: 1655185734893018, guid: 3a6f4ae2c4adf48ad83e5de46e48e556,
+  explosionScriptPrefab: {fileID: 1655185734893018, guid: 41e49892b73f69c4980d30ce6edc323c,
     type: 2}
   moveSpeed: 20
   damage: 10
@@ -106,6 +187,7 @@ MonoBehaviour:
   dmgEnemy: 0
   knockBackForce: 0
   isExplosive: 1
+  isRPG: 1
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
 --- !u!114 &114889797003370110
 MonoBehaviour:

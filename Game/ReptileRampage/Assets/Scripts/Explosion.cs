@@ -10,7 +10,6 @@ public class Explosion : MonoBehaviour {
 	public int explodeDamage;
 	[HideInInspector]
 	public Vector3 position;
-
 	public AudioClip explosionSound;
 
 	void FixedUpdate () {
