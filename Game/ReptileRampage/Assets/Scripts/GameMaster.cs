@@ -15,7 +15,7 @@ public class GameMaster : MonoBehaviour {
         DontDestroyOnLoad(gameObject);
     }
 
-	public static Transform CreateBullet(Transform prefab, Vector3 position, float knockBackForce, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy) {
+	public static Transform CreateBullet(Transform prefab, Vector3 position, float knockBackForce, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy, Transform source) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));
 		bullet.GetComponent<Bullet>().knockBackForce = knockBackForce;
 		bullet.GetComponent<Bullet>().moveSpeed = speed;
@@ -23,10 +23,11 @@ public class GameMaster : MonoBehaviour {
 		bullet.GetComponent<Bullet>().range = range;
 		bullet.GetComponent<Bullet>().dmgPlayer = dmgPlayer;
 		bullet.GetComponent<Bullet>().dmgEnemy = dmgEnemy;
+		bullet.GetComponent<Bullet>().source = source;
 		return bullet;
 	}
 
-	public static Transform CreateHomingBullet(Transform prefab, Vector3 position, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy, Transform target) {
+	public static Transform CreateHomingBullet(Transform prefab, Vector3 position, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy, Transform target, Transform source) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));
 		bullet.GetComponent<BulletHoming> ().initialAngle = angle;
 		bullet.GetComponent<BulletHoming>().moveSpeed = speed;
@@ -35,6 +36,7 @@ public class GameMaster : MonoBehaviour {
 		bullet.GetComponent<BulletHoming> ().target = target;
 		bullet.GetComponent<BulletHoming>().dmgPlayer = dmgPlayer;
 		bullet.GetComponent<BulletHoming>().dmgEnemy = dmgEnemy;
+		bullet.GetComponent<BulletHoming>().source = source;
 		return bullet;
 	}
 
@@ -48,13 +50,14 @@ public class GameMaster : MonoBehaviour {
 		return bullet;
 	}
 
-	public static GameObject CreateExplosion(GameObject animationPrefab, GameObject explosionScriptPrefab, Vector3 position, int explodeDamage, float power, float radius) {
+	public static GameObject CreateExplosion(GameObject animationPrefab, GameObject explosionScriptPrefab, Vector3 position, int explodeDamage, float power, float radius, bool playerSource) {
 		Instantiate (animationPrefab, position, Quaternion.Euler(0, 0, 0));
 		GameObject explosion = Instantiate (explosionScriptPrefab, position, Quaternion.Euler(0, 0, 0));
 		explosion.GetComponent<Explosion>().position = position;
 		explosion.GetComponent<Explosion>().explodeDamage = explodeDamage;
 		explosion.GetComponent<Explosion>().power = power;
 		explosion.GetComponent<Explosion>().radius = radius;
+		explosion.GetComponent<Explosion> ().playerSource = playerSource;
 		return explosion;
 	}
 }

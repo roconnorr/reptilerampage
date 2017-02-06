@@ -154,10 +154,10 @@ public class Gavin : MonoBehaviour {
 		//Create bullet with stray modifier
 		float strayValue = Random.Range(-strayFactor, strayFactor);
 		if (bulletAttack1) {
-			GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + strayValue + 90, bulletDamage, shotSpeed/2, range, true, false);
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + strayValue + 90, bulletDamage, shotSpeed/2, range, true, false, transform);
 		} else {
-			GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + 90 + 5, bulletDamage, shotSpeed, range, true, false);
-			GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + 90 - 5, bulletDamage, shotSpeed, range, true, false);
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + 90 + 5, bulletDamage, shotSpeed, range, true, false, transform);
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + 90 - 5, bulletDamage, shotSpeed, range, true, false, transform);
 		}
 		//Play sound
 		if(shotSound != null){

@@ -82,29 +82,27 @@ public class Ankylosaurus : MonoBehaviour {
 			//If chasing player
 			if (isChasing && targetInChaseRange) {
 				if (!targetInStopRange) {
-					if (!targetViewBlocked) {
-						if (!targetObstructed) {
-							//Find nearest enemy and avoid if they're too close
-							Transform nearestEnemy = GetNearestSameDino ();
-							if (nearestEnemy != null) {
-								float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-								if (avoiding) {
-									if (dist > 2) {
-										avoiding = false;
-									}
-									Avoid (nearestEnemy);
-								} else if (dist < 1.5) {
-									avoiding = true;
-									Avoid (nearestEnemy);
+					if (!targetObstructed) {
+						//Find nearest enemy and avoid if they're too close
+						Transform nearestEnemy = GetNearestSameDino ();
+						if (nearestEnemy != null) {
+							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+							if (avoiding) {
+								if (dist > 2) {
+									avoiding = false;
 								}
+								Avoid (nearestEnemy);
+							} else if (dist < 1.5) {
+								avoiding = true;
+								Avoid (nearestEnemy);
 							}
-							//Move directly towards player
-							MoveDirect ();
-							//If in chase range but player is obstructed, pathfind to him
-						} else {
-							if (isChasing) {
-								MovePathFind ();
-							}
+						}
+						//Move directly towards player
+						MoveDirect ();
+						//If in chase range but player is obstructed, pathfind to him
+					} else {
+						if (isChasing) {
+							MovePathFind ();
 						}
 					}
 				} else {//If in stop range
@@ -141,6 +139,12 @@ public class Ankylosaurus : MonoBehaviour {
 	}
 
 	void Update() {
+		if (GetComponent<Enemy> ().hasSeen) {
+			isChasing = true;
+		}
+		if (!isChasing) {
+			GetComponent<Enemy> ().hasSeen = false;
+		}
 		if(target == null){
 			Destroy(gameObject);
 			return;
@@ -197,7 +201,7 @@ public class Ankylosaurus : MonoBehaviour {
 		foreach (RaycastHit2D hit in hits) {
 			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)
 			if (hit.transform.tag == "Wall") {
-				if (targetObstructed == false){
+				if (targetObstructed == false && isChasing){
 					pathfinder.Reset(transform.position, position);
 				}
 				return true;
@@ -276,7 +280,7 @@ public class Ankylosaurus : MonoBehaviour {
 
 	void FireBullets() {
 		for(int i=0; i<=360; i+=45){
-			Transform bullet = GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, i, damage, shotSpeed, range, true, false);
+			Transform bullet = GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, i, damage, shotSpeed, range, true, false, transform);
 			Physics2D.IgnoreCollision (bullet.GetComponent<Collider2D> (), GetComponent<Collider2D> ());
 		}
 		if(shotSound != null){

@@ -117,7 +117,7 @@ MonoBehaviour:
   shotSpeed: 15
   range: 50
   strayFactor: 7
-  screenShake: 0.4
+  screenShake: 0.05
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 200
@@ -147,6 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114689284863198044
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -15,8 +15,10 @@ public class TRex : MonoBehaviour {
 	public float speed;
 
 	private int timeSinceLastAction = 0;
+	[HideInInspector]
 	public bool defencesDown;
-	private int defenceTimer = 0;
+	[HideInInspector]
+	public int defenceTimer = 0;
 	private int blocked = 0;
 	private int actions = 0;
 
@@ -80,8 +82,8 @@ public class TRex : MonoBehaviour {
 		}
 		//Fire Rockets
 		else if (state == State.Shooting) {
-			GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target);
-			GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target);
+			GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+			GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
 			state = State.Idle;
 		}
 		//Roar
@@ -110,16 +112,12 @@ public class TRex : MonoBehaviour {
 		angle -= 90;
 		angle -= 14;
 		for (int i = 0; i < 5; i++) {
-			GameMaster.CreateBullet (bulletPrefab, transform.position, bulletKnockbackForce, angle, 10, 10, 80, true, false);
+			GameMaster.CreateBullet (bulletPrefab, transform.position, bulletKnockbackForce, angle, 10, 10, 80, true, false, transform);
 			angle += 7;
 		}
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
-		if(other.gameObject.GetComponent<BulletHoming>() && other.gameObject.GetComponent<BulletHoming>().iFrames == 0) {
-			defencesDown = true;
-			defenceTimer = 200;
-		}
 		if(other.gameObject.GetComponent<Bullet>() && !defencesDown) {
 			blocked = 3;
 		}

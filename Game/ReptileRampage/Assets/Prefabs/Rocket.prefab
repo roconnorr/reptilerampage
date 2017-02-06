@@ -93,7 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91a8de17bce33d439d88b75bead1366, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 1453132568796580, guid: a116b3dc443e642d9a7ffaf5c9c29af0,
+  explosionPrefab: {fileID: 1776384836380538, guid: 36d66ffa4b251482183ea2061e98b790,
+    type: 2}
+  explosionScriptPrefab: {fileID: 1655185734893018, guid: 3a6f4ae2c4adf48ad83e5de46e48e556,
     type: 2}
   moveSpeed: 10
   damage: 10
@@ -103,6 +105,7 @@ MonoBehaviour:
   initialAngle: 0
   target: {fileID: 0}
   iFrames: 0
+  source: {fileID: 0}
   wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
 --- !u!114 &114681679820658820
 MonoBehaviour:
@@ -116,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!212 &212867491844839290
 SpriteRenderer:
   m_ObjectHideFlags: 1

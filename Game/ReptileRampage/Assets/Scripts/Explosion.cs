@@ -10,7 +10,18 @@ public class Explosion : MonoBehaviour {
 	public int explodeDamage;
 	[HideInInspector]
 	public Vector3 position;
+	[HideInInspector]
+	public bool playerSource;
+
 	public AudioClip explosionSound;
+
+	private Transform source = null;
+
+	void Start() {
+		if (playerSource) {
+			source = GameObject.Find ("Player").transform;
+		}
+	}
 
 	void FixedUpdate () {
 		AudioSource.PlayClipAtPoint (explosionSound, transform.position);
@@ -25,10 +36,14 @@ public class Explosion : MonoBehaviour {
 				angle -= 90;
 				//Player takes damage if in radius
 				if(rb.tag == "Player"){
-					rb.GetComponent<Player>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power);
+					if (playerSource) {
+						rb.GetComponent<Player> ().TakeDamage (explodeDamage / 2, Quaternion.Euler (0, 0, angle), power, source);
+					} else {
+						rb.GetComponent<Player> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power, source);
+					}
 				}
 				if(rb.tag == "Enemy"){
-					rb.GetComponent<Enemy>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power);
+					rb.GetComponent<Enemy>().TakeDamage (explodeDamage, Quaternion.Euler(0, 0, angle), power, source, true);
 				}
 				if(rb.tag == "Crate"){
 					rb.GetComponent<Crate>().TakeDamage (explodeDamage);
@@ -38,6 +53,7 @@ public class Explosion : MonoBehaviour {
 				}
 			}
 		}
+		gameObject.GetComponent<CameraShake>().StartShaking(power/50);
 		Destroy (gameObject);
 	}
 

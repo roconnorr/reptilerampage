@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4459495119627586}
   - component: {fileID: 212831463979509940}
   - component: {fileID: 114179375817584696}
-  - component: {fileID: 114928709542757156}
   m_Layer: 9
   m_Name: Turret
   m_TagString: Untagged
@@ -225,6 +224,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 1
+  isParticles: 0
 --- !u!114 &114076400524551286
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -310,7 +311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  health: 100
+  health: 150
   isTrike: 0
   isTRex: 0
   isGavin: 0
@@ -319,18 +320,6 @@ MonoBehaviour:
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
---- !u!114 &114928709542757156
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1021798299103998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onUpdate: 1
 --- !u!212 &212624939415596542
 SpriteRenderer:
   m_ObjectHideFlags: 1

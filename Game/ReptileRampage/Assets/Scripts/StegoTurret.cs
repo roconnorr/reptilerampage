@@ -31,6 +31,10 @@ public class StegoTurret : MonoBehaviour {
 	}
 
 	void Update () {
+		if(target == null){
+			Destroy(gameObject);
+			return;
+		}
 		targetInShootRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < shootRange;
 
 		if(targetInShootRange && GetComponentInParent<Stegosaurus>().isChasing){
@@ -64,7 +68,7 @@ public class StegoTurret : MonoBehaviour {
 	void CreateBullet () {
 		//Create bullet with stray modifier
 		float strayValue = Random.Range(-strayFactor, strayFactor);
-		GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + strayValue + 90, damage, shotSpeed, range, true, false);
+		GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockbackForce, firePoint.rotation.eulerAngles.z + strayValue + 90, damage, shotSpeed, range, true, false, GetComponentInParent<Stegosaurus>().transform);
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);

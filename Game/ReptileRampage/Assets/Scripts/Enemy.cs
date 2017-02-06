@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour {
 	public float knockbackModifier;
 	public int meleeDamage = 10;
 	public AudioClip deathRoar;
+	[HideInInspector]
+	public bool hasSeen = false;
 
 	private GameObject canvas;
 	
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour {
 
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
+
+	private GameObject player;
 
 	//public ParticleSystem dustParticles;
 	//private Quaternion dustRotation;
@@ -30,6 +34,7 @@ public class Enemy : MonoBehaviour {
 		//localDustParticles.Play();
 		rb = GetComponent<Rigidbody2D>();
 		canvas = GameObject.Find("Canvas");
+		player = GameObject.Find ("Player");
 	}
 
 	void FixedUpdate() {
@@ -40,11 +45,15 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage(int amount, Quaternion dir, float force) {
+	public void TakeDamage(int amount, Quaternion dir, float force, Transform source, bool isExplosion) {
 		knockback = dir * Vector2.up;
 		knockback *= (force / 2);
 		knockback *= knockbackModifier;
 		knockbackTimer = 3;
+		if (isTRex && isExplosion) {
+			GetComponent<TRex> ().defencesDown = true;
+			GetComponent<TRex> ().defenceTimer = 200;
+		}
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
@@ -68,6 +77,9 @@ public class Enemy : MonoBehaviour {
 				Destroy (gameObject);
 			}
 		}
+		if (source != null && source.gameObject == player) {
+			hasSeen = true;
+		}
 	}
 
 	/*Vector2 GetXYDirection(float angle, float magnitude){
@@ -85,7 +97,7 @@ public class Enemy : MonoBehaviour {
 		if(other.gameObject.tag == "Player"){
 			float angle =Mathf.Atan2(other.transform.position.y-transform.position.y, other.transform.position.x-transform.position.x)*180 / Mathf.PI;
 			angle -= 90;
-			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle), 500);
+			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle), 500, transform);
 		}
 	}
 }

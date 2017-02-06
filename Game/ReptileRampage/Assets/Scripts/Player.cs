@@ -197,6 +197,7 @@ public class Player : MonoBehaviour
         } else if(Time.timeScale == 0){
             Cursor.visible = true;
         }
+<<<<<<< HEAD
 }
 
     private IEnumerator cycleFootsteps(){
@@ -216,14 +217,30 @@ public class Player : MonoBehaviour
 
 	public void TakeDamage(int amount, Quaternion dir, float force){
         
+=======
+>>>>>>> ee568f030f6b0e8ffbd77eb02c408a6275ce7a50
         if(!isInvulnerable){
-             foreach (Renderer r in GetComponentsInChildren<Renderer>()){
+            foreach (Renderer r in GetComponentsInChildren<Renderer>()){
+                if(r.gameObject.tag != "MuzzelFlash"){
+                    Color c = r.material.color;
+                    c.a = 1f;
+                    r.material.color = c;
+                }
+            }
+        }else{
+            foreach (Renderer r in GetComponentsInChildren<Renderer>()){
                  if(r.gameObject.tag != "MuzzelFlash"){
                      Color c = r.material.color;
                      c.a = 0.3f;
                      r.material.color = c;
                  }
              }
+        }
+}
+
+	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
+        
+        if(!isInvulnerable){
             health -= amount;
             FireBloodParticles(dir);
 
@@ -247,13 +264,6 @@ public class Player : MonoBehaviour
     IEnumerator becomeInvulnerable() {
     	isInvulnerable = true;
     	yield return new WaitForSeconds(invulnerableTime);
-        foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-            if(r.gameObject.tag != "MuzzelFlash"){
-                Color c = r.material.color;
-                c.a = 1f;
-                r.material.color = c;
-            }
-        }
     	isInvulnerable = false;
  	}
 

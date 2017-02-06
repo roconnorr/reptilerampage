@@ -56,4 +56,13 @@ public class Pteradactyl : MonoBehaviour {
 			rb.velocity = rb.velocity.normalized * maxSpeed;
 		}
 	}
+
+	void Update() {
+		if (GetComponent<Enemy> ().hasSeen) {
+			seen = true;
+		}
+		if (!seen) {
+			GetComponent<Enemy> ().hasSeen = false;
+		}
+	}
 }
