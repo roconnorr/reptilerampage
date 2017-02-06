@@ -82,29 +82,27 @@ public class Ankylosaurus : MonoBehaviour {
 			//If chasing player
 			if (isChasing && targetInChaseRange) {
 				if (!targetInStopRange) {
-					if (!targetViewBlocked) {
-						if (!targetObstructed) {
-							//Find nearest enemy and avoid if they're too close
-							Transform nearestEnemy = GetNearestSameDino ();
-							if (nearestEnemy != null) {
-								float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-								if (avoiding) {
-									if (dist > 2) {
-										avoiding = false;
-									}
-									Avoid (nearestEnemy);
-								} else if (dist < 1.5) {
-									avoiding = true;
-									Avoid (nearestEnemy);
+					if (!targetObstructed) {
+						//Find nearest enemy and avoid if they're too close
+						Transform nearestEnemy = GetNearestSameDino ();
+						if (nearestEnemy != null) {
+							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+							if (avoiding) {
+								if (dist > 2) {
+									avoiding = false;
 								}
+								Avoid (nearestEnemy);
+							} else if (dist < 1.5) {
+								avoiding = true;
+								Avoid (nearestEnemy);
 							}
-							//Move directly towards player
-							MoveDirect ();
-							//If in chase range but player is obstructed, pathfind to him
-						} else {
-							if (isChasing) {
-								MovePathFind ();
-							}
+						}
+						//Move directly towards player
+						MoveDirect ();
+						//If in chase range but player is obstructed, pathfind to him
+					} else {
+						if (isChasing) {
+							MovePathFind ();
 						}
 					}
 				} else {//If in stop range
