@@ -72,7 +72,6 @@ public class Player : MonoBehaviour
         }else if (scene.name == "Level2"){
             trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
         }//else gavin
-        health = GameMaster.playerHP;
         startWeapon1Type = GameMaster.slot1type;
         startWeapon2Type = GameMaster.slot2type;
         if(startWeapon1Type != WeaponType.empty){
@@ -137,7 +136,6 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
-        GameMaster.playerHP = health;
         GameMaster.slot1type = slot1type;
         GameMaster.slot2type = slot2type;
         if(slot1 != null){
