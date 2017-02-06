@@ -46,7 +46,7 @@ public class Bullet : MonoBehaviour {
 			Explode ();
 		}
 		if (other.gameObject.tag == "Explosive"){
-			other.gameObject.GetComponent<ExplosiveBarrel>().TakeDamage (damage);
+			other.gameObject.GetComponent<ExplosiveBarrel>().Destroy();
 			Explode ();	
 		}
 		if (other.gameObject.tag == "Crate"){

@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
         
         if(!isInvulnerable){
              foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                 if(r.material.color != null && r.gameObject.tag != "MuzzelFlash"){
+                 if(r.gameObject.tag != "MuzzelFlash"){
                      Color c = r.material.color;
                      c.a = 0.3f;
                      r.material.color = c;
@@ -207,7 +207,7 @@ public class Player : MonoBehaviour
     	isInvulnerable = true;
     	yield return new WaitForSeconds(invulnerableTime);
         foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-            if(r.material.color != null && r.gameObject.tag != "MuzzelFlash"){
+            if(r.gameObject.tag != "MuzzelFlash"){
                 Color c = r.material.color;
                 c.a = 1f;
                 r.material.color = c;

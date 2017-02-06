@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 
-using UnityEngine;
-
 public class HealthPack : MonoBehaviour {
 
 	public int addHealth = 10;
