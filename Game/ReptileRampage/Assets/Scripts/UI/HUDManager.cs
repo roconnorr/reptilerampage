@@ -69,9 +69,13 @@ public class HUDManager : MonoBehaviour {
       if(playerScript.gameOver) {
          // If gameover state detected, show the pause menu in gameover mode   
          gameOver.GameOver();
-      } else if(Input.GetKey(KeyCode.Escape)) {
+      } else if(Input.GetKeyDown(KeyCode.Escape)) {
          // If user presses ESC, show the pause menu in pause mode
-         pauseMenu.ShowPause();
+         if(pauseMenu.isPaused){
+               pauseMenu.Resume();
+         }else{
+            pauseMenu.ShowPause();
+         }
       }
    }
 
