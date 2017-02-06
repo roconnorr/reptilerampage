@@ -13,6 +13,9 @@ public class YLayering : MonoBehaviour {
 		if (onUpdate) {
 			if (GetComponent<SpriteRenderer> ().sortingOrder != -9999) {
 				GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+				if (GetComponent<Stegosaurus> ()) {
+					GetComponentInChildren<StegoTurret>().GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+				}
 			}
 		}
 	}
