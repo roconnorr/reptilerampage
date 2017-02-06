@@ -44,6 +44,7 @@ public class Ankylosaurus : MonoBehaviour {
 	private Transform firePoint;
 	private Animator animator;
 	private Rigidbody2D rb;
+	private float modifierOriginal;
 
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
@@ -55,6 +56,7 @@ public class Ankylosaurus : MonoBehaviour {
 		firePoint = transform.FindChild ("FirePoint");
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D> ();
+		modifierOriginal = gameObject.GetComponent<Enemy>().knockbackModifier;
 	}
 
 	void FixedUpdate() {
@@ -112,10 +114,12 @@ public class Ankylosaurus : MonoBehaviour {
 						timeToFire = Time.time + 1 / fireRate;
 					}
 					if (isCharging) {
+						gameObject.GetComponent<Enemy>().knockbackModifier = 0;
 						if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
 							rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed);
 						} else {
 							isCharging = false;
+							gameObject.GetComponent<Enemy>().knockbackModifier = modifierOriginal;
 						}
 					}
 				}
