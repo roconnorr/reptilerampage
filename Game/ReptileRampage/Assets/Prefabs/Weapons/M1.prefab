@@ -124,6 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114673577212729884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -135,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 25
   fireRate: 2
   shotSpeed: 30
   range: 85
@@ -144,9 +146,9 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 150
-  maxAmmo: 300
-  ammo: 100
-  ammoPickup: 50
+  maxAmmo: 100
+  ammo: 40
+  ammoPickup: 10
   automaticFire: 0
   type: 9
   sprite1: {fileID: 21300002, guid: b1ab7a55ecd9f4a41b451de4de71403a, type: 3}

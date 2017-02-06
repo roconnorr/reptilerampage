@@ -113,6 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114191379528080682
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -145,7 +147,7 @@ MonoBehaviour:
   bulletSpread: 0
   knockBackForce: 0
   maxAmmo: 20
-  ammo: 10
+  ammo: 8
   ammoPickup: 2
   automaticFire: 0
   type: 8

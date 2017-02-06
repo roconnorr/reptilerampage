@@ -122,7 +122,7 @@ MonoBehaviour:
   bulletSpread: 0
   knockBackForce: 200
   maxAmmo: 20
-  ammo: 10
+  ammo: 8
   ammoPickup: 2
   automaticFire: 0
   type: 22

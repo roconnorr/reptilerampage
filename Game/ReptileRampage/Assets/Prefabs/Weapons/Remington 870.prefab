@@ -123,7 +123,7 @@ MonoBehaviour:
   knockBackForce: 200
   maxAmmo: 100
   ammo: 40
-  ammoPickup: 20
+  ammoPickup: 10
   automaticFire: 0
   type: 16
   sprite1: {fileID: 21300002, guid: bfb7d2f0648eea441ad255bbcfb4cf72, type: 3}
@@ -158,6 +158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!212 &212647502961036756
 SpriteRenderer:
   m_ObjectHideFlags: 1
