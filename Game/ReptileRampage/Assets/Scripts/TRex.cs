@@ -18,6 +18,7 @@ public class TRex : MonoBehaviour {
 	public bool defencesDown;
 	private int defenceTimer = 0;
 	private int blocked = 0;
+	private int actions = 0;
 
 	private bool flipped;
 	private float xPrev;
@@ -45,16 +46,19 @@ public class TRex : MonoBehaviour {
 				timeSinceLastAction++;
 			} else {
 				int rand = Random.Range (0, 200);
-				if (rand < 2) {
+				if (actions > 3) {
+					state = State.Shooting;
+					timeSinceLastAction = 0;
+					actions = 0;
+				} else if (rand < 2) {
 					state = State.Walking;
 					timeSinceLastAction = 0;
 					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
+					actions++;
 				} else if (rand < 4) {
 					state = State.Roaring;
 					timeSinceLastAction = 0;
-				} else if (rand < 5) {
-					state = State.Shooting;
-					timeSinceLastAction = 0;
+					actions++;
 				}
 			}
 		}

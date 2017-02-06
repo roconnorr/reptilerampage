@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114251337749436048}
   - component: {fileID: 50681907059552080}
   - component: {fileID: 114681679820658820}
-  m_Layer: 10
+  m_Layer: 14
   m_Name: Rocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
