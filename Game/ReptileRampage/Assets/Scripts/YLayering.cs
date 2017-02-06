@@ -4,10 +4,15 @@ public class YLayering : MonoBehaviour {
 
 	public bool onUpdate;
 	public bool isStego;
+	public bool isParticles;
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(transform.position.y * 100f) * -1;
+		if (isParticles) {
+			GetComponent<Renderer>().sortingOrder = (Mathf.RoundToInt (transform.position.y * 100f) * -1) + 1;
+		} else {
+			GetComponent<SpriteRenderer> ().sortingOrder = Mathf.RoundToInt (transform.position.y * 100f) * -1;
+		}
 	}
 
 	void Update() {
