@@ -4,17 +4,17 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuManager : MonoBehaviour {
-   bool pauseGame;
+   public bool isPaused;
    
    public void ShowPause() {
-      pauseGame = true;
+      isPaused = true;
       gameObject.SetActive(true);
    }
    
    
    public void Hide() {
       gameObject.SetActive(false);
-      pauseGame = false;
+      isPaused = false;
       Time.timeScale = 1f;
    }
 
@@ -26,9 +26,10 @@ public class PauseMenuManager : MonoBehaviour {
          Resume();
          SceneManager.LoadScene("TitleScreen");
    }
+
    
    void Update () {   
-      if(pauseGame) {
+      if(isPaused) {
          Time.timeScale = 0;
       }  
    }

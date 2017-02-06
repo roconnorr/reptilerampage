@@ -572,7 +572,7 @@ MonoBehaviour:
   player: {fileID: 0}
   BossTrigger: {fileID: 0}
   dialogBox: {fileID: 1445876794807768}
-  levelBoss: 1
+  levelBoss: 0
   text: {fileID: 114846021886171006}
   dialogActive: 0
   textFile: {fileID: 4900000, guid: 8263bd2fa7c9275468d317991211f034, type: 3}
@@ -770,7 +770,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 15
+  m_MaxValue: 1000
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -1507,6 +1507,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ebfa1893bb4df574b893b7b8db139882, type: 3}
   - {fileID: 21300000, guid: 07e682bb51b39724eb4f9d377bb3b102, type: 3}
   - {fileID: 21300000, guid: 37d9175bd7f053b479abf6b9beefcd14, type: 3}
+  - {fileID: 21300000, guid: 72b0eac0c57d0c34e9d774c9343d362f, type: 3}
+  - {fileID: 21300000, guid: 234691ace65b33742b2d02c0939de9f0, type: 3}
+  - {fileID: 21300000, guid: da5216439e13a134eb58831c2b1f342f, type: 3}
   HUDHealth: {fileID: 114244846084947268}
   inBossFight: 0
   BossHealthObject: {fileID: 1464609624637906}
@@ -2097,9 +2100,9 @@ RectTransform:
   m_Father: {fileID: 224475339805957002}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 175.7, y: -36.7}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 20.2, y: 36.75}
   m_SizeDelta: {x: 343.4, y: 67.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224195817426645924
@@ -2303,8 +2306,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 63.222275, y: 37.25}
-  m_SizeDelta: {x: 350, y: 73.5}
+  m_AnchoredPosition: {x: 39.722, y: 37.25}
+  m_SizeDelta: {x: 303, y: 73.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224478417642075036
 RectTransform:
@@ -2439,10 +2442,10 @@ RectTransform:
   m_Father: {fileID: 224666271724465440}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.4748069, y: 0.8162435}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 33, y: 18}
-  m_SizeDelta: {x: -66, y: -35}
+  m_AnchoredPosition: {x: -157, y: -19}
+  m_SizeDelta: {x: 314, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224715709876550338
 RectTransform:
