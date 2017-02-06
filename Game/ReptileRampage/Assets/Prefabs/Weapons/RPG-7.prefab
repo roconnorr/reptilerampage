@@ -132,7 +132,7 @@ MonoBehaviour:
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
     type: 2}
-  shotSound: {fileID: 8300000, guid: 74b1230240d2e06468d6ee77ca99dd66, type: 3}
+  shotSound: {fileID: 0}
   rotationOffset: 0
   noRotation: 0
 --- !u!114 &114171277604344944
