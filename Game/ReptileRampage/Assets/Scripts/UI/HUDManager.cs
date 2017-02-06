@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour {
    public Text Slot1Text;
    public Text Slot2Text;
+   public Text Slot1Ammo;
+   public Text Slot2Ammo;
    public Image Slot1Image;
    public Image Slot2Image;
 
@@ -43,11 +45,13 @@ public class HUDManager : MonoBehaviour {
 	   if(playerScript.slot1 != null){
             Slot1Text.text = playerScript.slot1.name.Substring(0, playerScript.slot1.name.Length - 7).ToUpper();
 	   	Slot1Image.sprite = WeaponSprites[(int) playerScript.slot1type];
+            Slot1Ammo.text = playerScript.slot1.GetComponent<Weapon>().ammo + "/" +playerScript.slot1.GetComponent<Weapon>().maxAmmo;
 	   }
 
 	   if(playerScript.slot2 != null){
 		Slot2Text.text = playerScript.slot2.name.Substring(0, playerScript.slot2.name.Length - 7).ToUpper();
 		Slot2Image.sprite = WeaponSprites[(int) playerScript.slot2type];
+            Slot2Ammo.text = playerScript.slot2.GetComponent<Weapon>().ammo + "/" +playerScript.slot2.GetComponent<Weapon>().maxAmmo;
 	   }
          if(inBossFight){
             bossScript = levelBoss.GetComponent<Enemy>();
