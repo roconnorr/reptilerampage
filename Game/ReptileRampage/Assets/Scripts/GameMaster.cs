@@ -3,10 +3,11 @@
 public class GameMaster : MonoBehaviour {
 
 	public static int playerHP = 100;
-	/*public static Player.WeaponType slot1type;
-    public static Player.WeaponType slot2type;
-	public static GameObject slot1;
-	public static GameObject slot2;*/
+	public static Player.WeaponType slot1type = Player.WeaponType.m1911;
+    public static Player.WeaponType slot2type = Player.WeaponType.empty;
+
+	public static int slot1ammo = 100;
+	public static int slot2ammo;
 
 	void Awake() {
         DontDestroyOnLoad(gameObject);
