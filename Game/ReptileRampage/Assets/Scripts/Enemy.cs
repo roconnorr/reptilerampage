@@ -46,6 +46,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void TakeDamage(int amount, Quaternion dir, float force, Transform source, bool isExplosion) {
+		Debug.Log ("Meep");
 		knockback = dir * Vector2.up;
 		knockback *= (force / 2);
 		knockback *= knockbackModifier;

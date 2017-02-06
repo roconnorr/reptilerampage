@@ -187,13 +187,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  health: 1000
+  health: 2000
   isTrike: 1
   isTRex: 0
   isGavin: 0
   knockbackModifier: 0
   meleeDamage: 10
   deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  hasSeen: 0
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
 --- !u!114 &114397031430288152
@@ -208,6 +209,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114692400393136444
 MonoBehaviour:
   m_ObjectHideFlags: 1

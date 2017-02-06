@@ -44,7 +44,7 @@ public class TRex : MonoBehaviour {
 		}
 		//Idle Behaviour
 		if (state == State.Idle) {
-			if (timeSinceLastAction < 20) {
+			if (timeSinceLastAction < 50) {
 				timeSinceLastAction++;
 			} else {
 				int rand = Random.Range (0, 100);

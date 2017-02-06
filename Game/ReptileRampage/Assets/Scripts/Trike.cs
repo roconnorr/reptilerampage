@@ -44,17 +44,17 @@ public class Trike : MonoBehaviour {
 				timeSinceLastAction++;
 			} else {
 				int rand = Random.Range (0, 200);
-				if (rand < 2) {
+				if (rand < 6) {
 					state = State.Walking;
 					timeSinceLastAction = 0;
 					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
-				} else if (rand < 4) {
+				} else if (rand < 8) {
 					state = State.VAttack;
 					timeSinceLastAction = 0;
-				} else if (rand < 5) {
+				} else if (rand < 9) {
 					state = State.GrenadeAttack;
 					timeSinceLastAction = 0;
-				} else if (rand < 6) {
+				} else if (rand < 10) {
 					state = State.StompAttack;
 					timeSinceLastAction = 0;
 				}
