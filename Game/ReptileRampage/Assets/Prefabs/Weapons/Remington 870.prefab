@@ -114,7 +114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 15
   fireRate: 1
-  shotSpeed: 10
+  shotSpeed: 15
   range: 10
   strayFactor: 0
   screenShake: 0.15
