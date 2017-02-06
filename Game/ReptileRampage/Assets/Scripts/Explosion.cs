@@ -21,6 +21,7 @@ public class Explosion : MonoBehaviour {
 		if (playerSource) {
 			source = GameObject.Find ("Player").transform;
 		}
+		gameObject.GetComponent<CameraShake>().StartShaking(power/50);
 	}
 
 	void FixedUpdate () {
@@ -55,7 +56,6 @@ public class Explosion : MonoBehaviour {
 				}
 			}
 		}
-		gameObject.GetComponent<CameraShake>().StartShaking(power/50);
 		Destroy (gameObject);
 	}
 

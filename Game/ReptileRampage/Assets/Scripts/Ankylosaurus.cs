@@ -286,6 +286,7 @@ public class Ankylosaurus : MonoBehaviour {
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);
 		}
+		gameObject.GetComponent<CameraShake>().StartShaking(1f);
 		smashes--;
 		if (smashes > 0) {
 			animator.Play ("Ankylo_Smash");

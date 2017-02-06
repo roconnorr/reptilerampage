@@ -18,8 +18,6 @@ public class Grenade : MonoBehaviour {
 	public float radius = 3.0F;
 	[HideInInspector]
     public float power = 300.0F;
-	[HideInInspector]
-	public int explodeDamage = 30;
 
 	private float amplitude = 2f;
 	private float height = 0;
@@ -59,7 +57,7 @@ public class Grenade : MonoBehaviour {
 
 	void Explode(){
 		radius = 3.0f;
-		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab, transform.position, explodeDamage, power, radius, !dmgPlayer);
+		GameMaster.CreateExplosion(animationPrefab, explosionScriptPrefab, transform.position, damage, power, radius, !dmgPlayer);
 		Destroy (gameObject);
 	}
 }
