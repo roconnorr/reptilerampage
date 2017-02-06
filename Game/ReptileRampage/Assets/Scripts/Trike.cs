@@ -131,7 +131,7 @@ public class Trike : MonoBehaviour {
 	void GrenadeWave(){
 		float angle = Mathf.Atan2(target.position.y-vFirePoint.position.y, target.position.x-vFirePoint.position.x)*180 / Mathf.PI;
 		angle -= 90;
-		GameMaster.CreateGrenade (grenadePrefab, grenadeFirePoint.position, angle, 20, Random.Range(20, 30), 100, true, false, transform);
+		GameMaster.CreateGrenade (grenadePrefab, grenadeFirePoint.position, angle, 20, Random.Range(20, 30), 100, true, false);
 	}
 
 	void SetStateIdle() {

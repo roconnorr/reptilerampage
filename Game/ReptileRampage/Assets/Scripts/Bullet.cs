@@ -60,14 +60,14 @@ public class Bullet : MonoBehaviour {
 			Explode ();	
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, knockBackForce, source);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, knockBackForce, source, false);
 			Explode ();
 		}
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce, source);
+			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce, source, false);
 			Explode ();
 		}
 	}

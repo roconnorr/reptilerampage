@@ -99,7 +99,7 @@ public class Weapon : MonoBehaviour {
 			//Create bullet with stray modifier
 			float strayValue = Random.Range (-strayFactor, strayFactor);
 			if (type == Player.WeaponType.grenade) {
-				GameMaster.CreateGrenade (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true, player.transform);
+				GameMaster.CreateGrenade (bulletPrefab, firePoint.position, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true);
 			} else {
 				GameMaster.CreateBullet (bulletPrefab, firePoint.position, knockBackForce, firePoint.rotation.eulerAngles.z + strayValue - 90 + angle, damage, shotSpeed, range, false, true, player.transform);
 			}

@@ -15,8 +15,10 @@ public class TRex : MonoBehaviour {
 	public float speed;
 
 	private int timeSinceLastAction = 0;
+	[HideInInspector]
 	public bool defencesDown;
-	private int defenceTimer = 0;
+	[HideInInspector]
+	public int defenceTimer = 0;
 	private int blocked = 0;
 	private int actions = 0;
 
@@ -116,10 +118,6 @@ public class TRex : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D (Collision2D other) {
-		if(other.gameObject.GetComponent<BulletHoming>() && other.gameObject.GetComponent<BulletHoming>().iFrames == 0) {
-			defencesDown = true;
-			defenceTimer = 200;
-		}
 		if(other.gameObject.GetComponent<Bullet>() && !defencesDown) {
 			blocked = 3;
 		}

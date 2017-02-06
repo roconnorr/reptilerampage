@@ -3,6 +3,7 @@
 public class BulletHoming : MonoBehaviour {
 
 	public GameObject explosionPrefab;
+	public GameObject explosionScriptPrefab;
 	[HideInInspector]
 	public float moveSpeed;
 	[HideInInspector]
@@ -63,14 +64,12 @@ public class BulletHoming : MonoBehaviour {
 			}
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy && iFrames == 0) {
-			other.gameObject.GetComponent<Enemy>().TakeDamage (damage, transform.rotation, 0, source);
 			Explode ();
 		}
 	}
 
 	void Explode(){
-		GameObject explosion = (GameObject)Instantiate(explosionPrefab);
-		explosion.transform.position = transform.position;
+		GameMaster.CreateExplosion(explosionPrefab, explosionScriptPrefab, transform.position, damage, 200, 3f, !dmgPlayer);
 		Destroy(gameObject);
 	}
 }

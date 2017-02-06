@@ -36,18 +36,17 @@ public class GameMaster : MonoBehaviour {
 		bullet.GetComponent<BulletHoming> ().target = target;
 		bullet.GetComponent<BulletHoming>().dmgPlayer = dmgPlayer;
 		bullet.GetComponent<BulletHoming>().dmgEnemy = dmgEnemy;
-		bullet.GetComponent<Bullet>().source = source;
+		bullet.GetComponent<BulletHoming>().source = source;
 		return bullet;
 	}
 
-	public static Transform CreateGrenade(Transform prefab, Vector3 position, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy, Transform source) {
+	public static Transform CreateGrenade(Transform prefab, Vector3 position, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));
 		bullet.GetComponent<Grenade>().moveSpeed = speed;
 		bullet.GetComponent<Grenade>().damage = damage;
 		bullet.GetComponent<Grenade>().range = range;
 		bullet.GetComponent<Grenade>().dmgPlayer = dmgPlayer;
 		bullet.GetComponent<Grenade>().dmgEnemy = dmgEnemy;
-		bullet.GetComponent<Bullet>().source = source;
 		return bullet;
 	}
 

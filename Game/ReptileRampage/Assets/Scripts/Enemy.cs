@@ -45,11 +45,15 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage(int amount, Quaternion dir, float force, Transform source) {
+	public void TakeDamage(int amount, Quaternion dir, float force, Transform source, bool isExplosion) {
 		knockback = dir * Vector2.up;
 		knockback *= (force / 2);
 		knockback *= knockbackModifier;
 		knockbackTimer = 3;
+		if (isTRex && isExplosion) {
+			GetComponent<TRex> ().defencesDown = true;
+			GetComponent<TRex> ().defenceTimer = 200;
+		}
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
@@ -73,7 +77,7 @@ public class Enemy : MonoBehaviour {
 				Destroy (gameObject);
 			}
 		}
-		if (source.gameObject == player) {
+		if (source != null && source.gameObject == player) {
 			hasSeen = true;
 		}
 	}
