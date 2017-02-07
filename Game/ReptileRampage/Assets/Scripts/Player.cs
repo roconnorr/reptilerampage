@@ -268,6 +268,7 @@ public class Player : MonoBehaviour
 
    public void ChangeWeapon(WeaponType type, PickupPrefab pickup, GameObject pickupObject){
 		int pickupAmmo = pickup.ammo;
+        GameObject.Find("Canvas").GetComponent<HUDManager>().ResetStars();
 		if(slot1active){
 			if(slot1 == null){
 				slot1 = Instantiate(weaponsprefabs[(int)type], transform.position + weaponsprefabs[(int)type].transform.position, new Quaternion(0,0,0,0), this.transform);

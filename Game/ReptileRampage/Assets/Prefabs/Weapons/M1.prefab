@@ -146,6 +146,7 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 150
+  stars: 2
   maxAmmo: 100
   ammo: 40
   ammoPickup: 10
