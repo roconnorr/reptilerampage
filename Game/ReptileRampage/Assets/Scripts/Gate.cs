@@ -34,4 +34,8 @@ public class Gate : MonoBehaviour {
 			}
 		}
 	}
+
+	void ShakeScreen() {
+		gameObject.GetComponent<CameraShake>().StartShaking(1);
+	}
 }
