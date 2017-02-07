@@ -13,6 +13,7 @@ public class Weapon : MonoBehaviour {
 	public float knockBackForce = 100;
 	public int stars;
 	public int maxAmmo;
+	public int startingAmmo;
 	public int ammo;
 	public int ammoPickup;
 	public bool automaticFire;
@@ -121,7 +122,13 @@ public class Weapon : MonoBehaviour {
 		}
 	}
 
-	public void AddAmmo() {
-		ammo = Mathf.Min (maxAmmo, ammo + ammoPickup);
+	public void AddAmmo(int amount) {
+		if (amount == -2) {
+			ammo = Mathf.Min (maxAmmo, ammo + ammoPickup);
+		} else if (amount == -1) {
+			ammo = Mathf.Min (maxAmmo, ammo + startingAmmo);
+		} else {
+			ammo = Mathf.Min (maxAmmo, ammo + amount);
+	}
 	}
 }
