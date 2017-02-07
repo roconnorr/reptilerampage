@@ -9,11 +9,10 @@ public class TRex : MonoBehaviour {
 	public Transform target;
 	public Transform bulletPrefab;
 	public Transform rocketPrefab;
-
+	private Transform firePoint;
+	private Transform rocketFirePoint;
 	public float bulletKnockbackForce;
-
 	public float speed;
-
 	private int timeSinceLastAction = 0;
 	[HideInInspector]
 	public bool defencesDown;
@@ -21,12 +20,9 @@ public class TRex : MonoBehaviour {
 	public int defenceTimer = 0;
 	private int blocked = 0;
 	private int actions = 0;
-
 	private bool flipped;
 	private float xPrev;
-
 	private Vector3 targetLocation;
-
 	private SpriteRenderer sr;
 	private Animator animator;
 
@@ -36,6 +32,8 @@ public class TRex : MonoBehaviour {
 		defencesDown = false;
 		sr = GetComponent<SpriteRenderer> ();
 		animator = GetComponent<Animator>();
+		firePoint = transform.FindChild ("FirePoint");
+		rocketFirePoint = transform.FindChild ("RocketFirePoint");
 	}
 	
 	// Update is called once per frame
@@ -108,11 +106,19 @@ public class TRex : MonoBehaviour {
 	}
 
 	void ShootRocket(){
-		GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
-		GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+		GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+		GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
 	}
 
 	void CallShootWave(){
+		if ((target.position.x > transform.position.x) && !flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = true;
+		}
+		if ((target.position.x < transform.position.x) && flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = false;
+		}
 		targetLocation = new Vector3 (target.position.x, target.position.y, -1);
 		ShootWave ();
 		Invoke("ShootWave", .1f);
@@ -124,7 +130,7 @@ public class TRex : MonoBehaviour {
 		angle -= 90;
 		angle -= 14;
 		for (int i = 0; i < 5; i++) {
-			GameMaster.CreateBullet (bulletPrefab, transform.position, bulletKnockbackForce, angle, 10, 10, 80, true, false, transform);
+			GameMaster.CreateBullet (bulletPrefab, firePoint.position, bulletKnockbackForce, angle, 10, 10, 80, true, false, transform);
 			angle += 7;
 		}
 	}
