@@ -37,7 +37,7 @@ public class Explosion : MonoBehaviour {
 				angle -= 90;
 				//Player takes damage if in radius
 				if(rb.tag == "Player"){
-					rb.GetComponent<Player> ().TakeDamage (explodeDamage / 2, Quaternion.Euler (0, 0, angle), power, source);
+					rb.GetComponent<Player> ().TakeDamage (explodeDamage / 3, Quaternion.Euler (0, 0, angle), power, source);
 				}
 				if(rb.tag == "Enemy"){
 					if (rb.GetComponent<Enemy> ()) {

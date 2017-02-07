@@ -226,7 +226,7 @@ MonoBehaviour:
   screenShake: 0.1
   bulletCount: 1
   bulletSpread: 0
-  knockBackForce: 30
+  knockBackForce: 100
   stars: 4
   maxAmmo: 1000
   startingAmmo: 200

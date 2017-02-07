@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 4
+  damage: 5
   fireRate: 15
   shotSpeed: 20
   range: 50
@@ -226,8 +226,8 @@ MonoBehaviour:
   screenShake: 0.07
   bulletCount: 1
   bulletSpread: 0
-  knockBackForce: 30
-  stars: 2
+  knockBackForce: 50
+  stars: 3
   maxAmmo: 500
   startingAmmo: 200
   ammo: 200
