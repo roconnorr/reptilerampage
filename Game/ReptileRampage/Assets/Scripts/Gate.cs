@@ -31,6 +31,7 @@ public class Gate : MonoBehaviour {
 			//Debug.Log(dist);
 			if(dist > 6f && player.position.y > transform.position.y && hudManager.inBossFight){
 				gameObject.GetComponent<Collider2D>().enabled = true;
+				gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			}
 		}
 	}
