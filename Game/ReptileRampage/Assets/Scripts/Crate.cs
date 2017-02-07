@@ -37,6 +37,13 @@ public class Crate : MonoBehaviour {
 		//soundSource = gameObject.GetComponent<AudioSource>();
     }
 
+	void OnCollisionEnter2D(Collision2D other){
+		if(other.gameObject.tag == "Player"){
+			Destroy (gameObject);
+			SpawnStuff();
+		}
+	}
+
 	public void TakeDamage(int amount) {
 		health -= amount;
 		if (health <= 0) {
