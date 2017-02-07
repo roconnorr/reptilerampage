@@ -120,14 +120,14 @@ MonoBehaviour:
   screenShake: 0.05
   bulletCount: 1
   bulletSpread: 0
-  knockBackForce: 100
+  knockBackForce: 30
   stars: 4
   maxAmmo: 500
   startingAmmo: 200
   ammo: 200
   ammoPickup: 30
   automaticFire: 1
-  type: 0
+  type: 24
   sprite1: {fileID: 21300002, guid: da5216439e13a134eb58831c2b1f342f, type: 3}
   sprite2: {fileID: 21300004, guid: da5216439e13a134eb58831c2b1f342f, type: 3}
   bulletPrefab: {fileID: 4284089120443596, guid: 7113940a9205d3d4c96234d272b52d27,
