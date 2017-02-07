@@ -28,17 +28,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1674536360505862
+--- !u!1 &1328279382217562
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4559646028426558}
-  - component: {fileID: 212232758765706096}
+  - component: {fileID: 4176350117385762}
+  - component: {fileID: 212189186998649068}
   m_Layer: 0
-  m_Name: Shadow
+  m_Name: shadows_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 95022016451539758}
   - component: {fileID: 50088431224742132}
   - component: {fileID: 114749433451404678}
-  - component: {fileID: 114137213425995038}
+  - component: {fileID: 114834741432609516}
   m_Layer: 9
   m_Name: Ankylosaurus
   m_TagString: Enemy
@@ -83,6 +83,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4176350117385762
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328279382217562}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.165, y: -0.321, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4543969088931258}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4319503575411990
 Transform:
   m_ObjectHideFlags: 1
@@ -108,22 +121,9 @@ Transform:
   m_Children:
   - {fileID: 4319503575411990}
   - {fileID: 4596624997735934}
-  - {fileID: 4559646028426558}
+  - {fileID: 4176350117385762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4559646028426558
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1674536360505862}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.159, y: -0.317, z: 2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4543969088931258}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4596624997735934
 Transform:
@@ -228,17 +228,6 @@ MonoBehaviour:
   updateFrequency: 5
   DrawPathInEditor: 1
   PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
---- !u!114 &114137213425995038
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1774569827148862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114138549385961898
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -292,6 +281,17 @@ MonoBehaviour:
   onUpdate: 1
   isStego: 0
   isParticles: 0
+--- !u!114 &114834741432609516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774569827148862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114845155507285788
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,12 +314,12 @@ MonoBehaviour:
   hasSeen: 0
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
---- !u!212 &212232758765706096
+--- !u!212 &212189186998649068
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1674536360505862}
+  m_GameObject: {fileID: 1328279382217562}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
