@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7c9226b2e3a68439489a710621e2cece
-timeCreated: 1486448889
+timeCreated: 1486450011
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -101,10 +101,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -112,12 +112,12 @@ TextureImporter:
       name: gate_1
       rect:
         serializedVersion: 2
-        x: 15
+        x: 16
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -125,12 +125,12 @@ TextureImporter:
       name: gate_2
       rect:
         serializedVersion: 2
-        x: 31
+        x: 32
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -138,12 +138,12 @@ TextureImporter:
       name: gate_3
       rect:
         serializedVersion: 2
-        x: 47
+        x: 48
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -151,12 +151,12 @@ TextureImporter:
       name: gate_4
       rect:
         serializedVersion: 2
-        x: 63
+        x: 64
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -164,12 +164,12 @@ TextureImporter:
       name: gate_5
       rect:
         serializedVersion: 2
-        x: 79
+        x: 80
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -177,12 +177,12 @@ TextureImporter:
       name: gate_6
       rect:
         serializedVersion: 2
-        x: 95
+        x: 96
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -190,12 +190,12 @@ TextureImporter:
       name: gate_7
       rect:
         serializedVersion: 2
-        x: 111
+        x: 112
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -203,12 +203,12 @@ TextureImporter:
       name: gate_8
       rect:
         serializedVersion: 2
-        x: 127
+        x: 128
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -216,12 +216,12 @@ TextureImporter:
       name: gate_9
       rect:
         serializedVersion: 2
-        x: 143
+        x: 144
         y: 0
-        width: 16
+        width: 15
         height: 178
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
