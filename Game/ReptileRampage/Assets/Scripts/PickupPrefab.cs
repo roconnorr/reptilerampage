@@ -27,7 +27,7 @@ public class PickupPrefab : MonoBehaviour {
 				other.GetComponent<Player>().slot1.GetComponent<Weapon>().AddAmmo (ammo);
 				Destroy (gameObject);
 			} else if (other.GetComponent<Player>().slot2 != null && other.GetComponent<Player>().slot2.GetComponent<Weapon>().type == type) {
-				other.GetComponent<Player>().slot1.GetComponent<Weapon>().AddAmmo (ammo);
+				other.GetComponent<Player>().slot2.GetComponent<Weapon>().AddAmmo (ammo);
 				Destroy (gameObject);
 			}
 		}
