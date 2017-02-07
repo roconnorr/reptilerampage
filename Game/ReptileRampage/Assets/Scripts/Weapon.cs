@@ -23,6 +23,7 @@ public class Weapon : MonoBehaviour {
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
 	public AudioClip shotSound = null;
+	public AudioSource noBulletSound;
 	float timeToFire = 0;
 	public int rotationOffset = 0;
 	public bool noRotation;
@@ -41,6 +42,7 @@ public class Weapon : MonoBehaviour {
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
 		player = GameObject.FindWithTag("Player").GetComponent<Player>();
+		noBulletSound = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update () {
@@ -89,6 +91,8 @@ public class Weapon : MonoBehaviour {
 					timeToFire = Time.time + 1 / fireRate;
 					CreateBullet ();
 					ammo--;
+				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !noBulletSound.isPlaying){
+					noBulletSound.Play();
 				}
 			}
 		}
@@ -109,6 +113,7 @@ public class Weapon : MonoBehaviour {
 		//Play sound
 		if(shotSound != null){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);
+			
 		}
 		//Shake screen
 		gameObject.GetComponent<CameraShake>().StartShaking(screenShake);
