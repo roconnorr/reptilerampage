@@ -28,12 +28,14 @@ public class TRex : MonoBehaviour {
 	private Vector3 targetLocation;
 
 	private SpriteRenderer sr;
+	private Animator animator;
 
 	// Use this for initialization
 	void Start () {
 		state = State.Idle;
 		defencesDown = false;
 		sr = GetComponent<SpriteRenderer> ();
+		animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -66,6 +68,7 @@ public class TRex : MonoBehaviour {
 		}
 		//Walking Behaviour
 		else if (state == State.Walking) {
+			animator.Play("TrexWalk");
 			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
 				state = State.Idle;
@@ -82,16 +85,13 @@ public class TRex : MonoBehaviour {
 		}
 		//Fire Rockets
 		else if (state == State.Shooting) {
-			GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
-			GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+			//ShootRocket();
+			animator.Play("TrexShoot");
 			state = State.Idle;
 		}
 		//Roar
 		else if (state == State.Roaring) {
-			targetLocation = new Vector3 (target.position.x, target.position.y, -1);
-			ShootWave ();
-			Invoke("ShootWave", .1f);
-			Invoke("ShootWave", .2f);
+			animator.Play("TrexRoar");
 			state = State.Idle;
 		}
 		//Sprites
@@ -105,6 +105,18 @@ public class TRex : MonoBehaviour {
 			defencesDown = false;
 			sr.color = Color.white;
 		}
+	}
+
+	void ShootRocket(){
+		GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+		GameMaster.CreateHomingBullet (rocketPrefab, transform.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+	}
+
+	void CallShootWave(){
+		targetLocation = new Vector3 (target.position.x, target.position.y, -1);
+		ShootWave ();
+		Invoke("ShootWave", .1f);
+		Invoke("ShootWave", .2f);
 	}
 
 	void ShootWave() {

@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 60919180744575676}
   - component: {fileID: 50496754643441566}
   - component: {fileID: 114492709656604202}
+  - component: {fileID: 95701496484560104}
   m_Layer: 9
   m_Name: TRex
   m_TagString: Enemy
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1725395205753084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44, y: -15, z: -1}
+  m_LocalPosition: {x: 39.5366, y: -27.294676, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4651568480888330}
@@ -118,6 +119,23 @@ PolygonCollider2D:
       - {x: -0.18662998, y: -0.41903105}
       - {x: -0.010000002, y: -0.5608593}
       - {x: 0.27788535, y: -0.5808593}
+--- !u!95 &95701496484560104
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1725395205753084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1012dbcff606945b9ae905bcd68d7170, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114492709656604202
 MonoBehaviour:
   m_ObjectHideFlags: 1
