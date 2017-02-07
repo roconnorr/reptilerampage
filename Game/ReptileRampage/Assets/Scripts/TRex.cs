@@ -70,6 +70,7 @@ public class TRex : MonoBehaviour {
 			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
 				state = State.Idle;
+				animator.Play("TrexIdle");
 			}
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
