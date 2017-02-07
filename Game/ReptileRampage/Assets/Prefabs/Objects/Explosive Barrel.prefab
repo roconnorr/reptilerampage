@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114800900681270314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,7 +109,7 @@ MonoBehaviour:
     type: 2}
   radius: 3
   power: 600
-  explodeDamage: 30
+  explodeDamage: 100
 --- !u!212 &212634510427192350
 SpriteRenderer:
   m_ObjectHideFlags: 1
