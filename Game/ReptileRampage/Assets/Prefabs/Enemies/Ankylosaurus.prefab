@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 95022016451539758}
   - component: {fileID: 50088431224742132}
   - component: {fileID: 114749433451404678}
+  - component: {fileID: 114834741432609516}
   m_Layer: 9
   m_Name: Ankylosaurus
   m_TagString: Enemy
@@ -250,6 +251,17 @@ MonoBehaviour:
   onUpdate: 1
   isStego: 0
   isParticles: 0
+--- !u!114 &114834741432609516
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774569827148862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114845155507285788
 MonoBehaviour:
   m_ObjectHideFlags: 1
