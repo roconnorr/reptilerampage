@@ -14105,6 +14105,7 @@ GameObject:
   - component: {fileID: 2133060361}
   - component: {fileID: 2133060364}
   - component: {fileID: 2133060365}
+  - component: {fileID: 2133060366}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Wall
@@ -14206,6 +14207,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &2133060366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2133060360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2140999944
 Prefab:
   m_ObjectHideFlags: 0
