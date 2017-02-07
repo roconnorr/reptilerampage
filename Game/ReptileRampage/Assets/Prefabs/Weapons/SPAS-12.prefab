@@ -137,6 +137,7 @@ MonoBehaviour:
   knockBackForce: 200
   stars: 3
   maxAmmo: 100
+  startingAmmo: 40
   ammo: 40
   ammoPickup: 10
   automaticFire: 0
