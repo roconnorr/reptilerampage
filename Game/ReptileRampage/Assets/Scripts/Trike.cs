@@ -61,7 +61,7 @@ public class Trike : MonoBehaviour {
 			}
 		}
 		if (IsInvoking("VWave")) {
-			int rand = Random.Range (0, 200);
+			int rand = Random.Range (0, 400);
 			if (rand < 1) {
 				GrenadeWave ();
 			} else if (rand < 2) {
@@ -113,14 +113,14 @@ public class Trike : MonoBehaviour {
 		angle -= 90;
 		angle -= 10;
 		for (int i = 0; i < 2; i++) {
-			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, bulletKnockbackForce, angle, 10, 10, 200, true, false, transform);
+			GameMaster.CreateBullet (bulletPrefab, vFirePoint.position, bulletKnockbackForce, angle, 10, 10, 150, true, false, transform);
 			angle += 20;
 		}
 	}
 
 	void StompWave(){
-		for(int i=0; i<=360; i+=10){
-			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, bulletKnockbackForce, i, 10, 5, 300, true, false, transform);
+		for(int i=0; i<=360; i+=20){
+			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, bulletKnockbackForce, i, 10, 5, 200, true, false, transform);
 		}
 	}
 
