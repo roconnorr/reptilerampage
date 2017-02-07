@@ -41,6 +41,9 @@ public class Player : MonoBehaviour
     public GameObject[] weaponsprefabs;
     private GameObject[] weaponslist;
 
+    private WeaponType defaultWeaponType = WeaponType.m1911;
+    private GameObject defaultWeapon;
+
     public WeaponType startWeapon1Type;
     public WeaponType startWeapon2Type;
     public GameObject slot1 = null;
@@ -144,8 +147,12 @@ public class Player : MonoBehaviour
         if(slot1 != null){
             GameMaster.slot1ammo = slot1.GetComponent<Weapon>().ammo;
         }
-        if(slot2 != null){
-            GameMaster.slot2ammo = slot2.GetComponent<Weapon>().ammo;
+        
+        if(GameMaster.slot1ammo == 0 && GameMaster.slot2ammo == 0){
+            Destroy(slot1);  
+			slot1 = Instantiate(weaponsprefabs[(int)defaultWeaponType], transform.position + weaponsprefabs[(int)defaultWeaponType].transform.position, new Quaternion(0,0,0,0), this.transform);
+            slot1type = defaultWeaponType;
+            slot1.GetComponent<Weapon>().ammo = 200;
         }
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
         crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
@@ -183,11 +190,6 @@ public class Player : MonoBehaviour
             }
         }
 
-        if(canMove){
-            
-        }else{
-            soundSource.Stop();
-        }
         if(Time.timeScale!=0){
             Cursor.visible = false;
         } else if(Time.timeScale == 0){
