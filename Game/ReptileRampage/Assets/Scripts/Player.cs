@@ -147,13 +147,15 @@ public class Player : MonoBehaviour
         if(slot1 != null){
             GameMaster.slot1ammo = slot1.GetComponent<Weapon>().ammo;
         }
-        
-        if(GameMaster.slot1ammo == 0 && GameMaster.slot2ammo == 0){
-            Destroy(slot1);  
-			slot1 = Instantiate(weaponsprefabs[(int)defaultWeaponType], transform.position + weaponsprefabs[(int)defaultWeaponType].transform.position, new Quaternion(0,0,0,0), this.transform);
-            slot1type = defaultWeaponType;
-            slot1.GetComponent<Weapon>().ammo = 200;
-        }
+		if(slot2 != null){
+			GameMaster.slot2ammo = slot2.GetComponent<Weapon>().ammo;
+		}
+//        if(GameMaster.slot1ammo == 0 && GameMaster.slot2ammo == 0){
+//            Destroy(slot1);  
+//			slot1 = Instantiate(weaponsprefabs[(int)defaultWeaponType], transform.position + weaponsprefabs[(int)defaultWeaponType].transform.position, new Quaternion(0,0,0,0), this.transform);
+//            slot1type = defaultWeaponType;
+//            slot1.GetComponent<Weapon>().ammo = 200;
+//        }
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
         crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
