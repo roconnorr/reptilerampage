@@ -23,5 +23,4 @@ public class TrikeFight : MonoBehaviour {
 		hudManager.SetBossHealthActive(true);
 		this.gameObject.SetActive(false);
 	}
-
 }

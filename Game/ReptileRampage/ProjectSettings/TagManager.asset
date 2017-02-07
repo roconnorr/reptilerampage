@@ -16,6 +16,7 @@ TagManager:
   - BossFight
   - GavinCollider
   - MuzzelFlash
+  - Gate
   layers:
   - Default
   - TransparentFX

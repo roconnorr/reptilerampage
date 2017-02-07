@@ -23,5 +23,4 @@ public class TRexFight : MonoBehaviour {
 		hudManager.SetBossHealthActive(true);
 		this.gameObject.SetActive(false);
 	}
-
 }

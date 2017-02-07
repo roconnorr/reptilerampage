@@ -8232,7 +8232,7 @@ Prefab:
     - target: {fileID: 224266233009725062, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
@@ -11347,7 +11347,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1073217669}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.2, y: -90.7, z: 0}
+  m_LocalPosition: {x: -1.19, y: -90.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2114727404}
@@ -11378,9 +11378,9 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.5370255, y: 0.000073194504}
   serializedVersion: 2
-  m_Size: {x: 1.71, y: 10.32}
+  m_Size: {x: 0.6359204, y: 10.32}
 --- !u!4 &1078341560 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4980076246064736, guid: 2dc292e4eb80f4eee993c35d762988f0,
@@ -11684,7 +11684,6 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot1type: 0
   slot2type: 0
-  intrigger: 0
   invulnerableTime: 1
 --- !u!212 &1116174056
 SpriteRenderer:
@@ -11728,7 +11727,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1116174051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.4, y: -53.4, z: -1}
+  m_LocalPosition: {x: 39.5, y: -43.74, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1187611139}
