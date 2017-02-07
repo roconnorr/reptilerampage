@@ -11,6 +11,7 @@ public class Weapon : MonoBehaviour {
 	public float bulletCount;
 	public float bulletSpread;
 	public float knockBackForce = 100;
+	public int stars;
 	public int maxAmmo;
 	public int ammo;
 	public int ammoPickup;

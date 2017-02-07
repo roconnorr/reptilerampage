@@ -9,6 +9,10 @@ public class HUDManager : MonoBehaviour {
    public Image Slot1Image;
    public Image Slot2Image;
 
+   public Image[] Slot1Stars;
+   
+   public Image[] Slot2Stars;
+
    public Sprite[] WeaponSprites;
 
    public Slider HUDHealth;
@@ -38,6 +42,10 @@ public class HUDManager : MonoBehaviour {
             gameOver = gameOverPanel.GetComponent<GameOverManager>();
             gameOver.Hide(); 
             BossHealthObject.SetActive(false);
+            for(int i=0; i<Slot1Stars.Length; i++){
+                  Slot1Stars[i].enabled = false;
+                  Slot2Stars[i].enabled = false;
+            }
    }
    
       void Update () {
@@ -45,12 +53,18 @@ public class HUDManager : MonoBehaviour {
             Slot1Text.text = playerScript.slot1.name.Substring(0, playerScript.slot1.name.Length - 7).ToUpper();
 	   	Slot1Image.sprite = WeaponSprites[(int) playerScript.slot1type];
             Slot1Ammo.text = playerScript.slot1.GetComponent<Weapon>().ammo + "/" +playerScript.slot1.GetComponent<Weapon>().maxAmmo;
+            for(int i=0; i < playerScript.slot1.GetComponent<Weapon>().stars; i++){
+                  Slot1Stars[i].enabled = true;
+            }  
 	   }
 
 	   if(playerScript.slot2 != null){
 		Slot2Text.text = playerScript.slot2.name.Substring(0, playerScript.slot2.name.Length - 7).ToUpper();
 		Slot2Image.sprite = WeaponSprites[(int) playerScript.slot2type];
             Slot2Ammo.text = playerScript.slot2.GetComponent<Weapon>().ammo + "/" +playerScript.slot2.GetComponent<Weapon>().maxAmmo;
+            for(int i=0; i < playerScript.slot2.GetComponent<Weapon>().stars; i++){
+                  Slot2Stars[i].enabled = true;
+            }  
 	   }
          if(inBossFight){
             bossScript = levelBoss.GetComponent<Enemy>();
@@ -76,6 +90,13 @@ public class HUDManager : MonoBehaviour {
             pauseMenu.ShowPause();
          }
       }
+   }
+
+   public void ResetStars(){
+         for(int i=0; i<5; i++){
+               Slot1Stars[i].enabled = false;
+               Slot2Stars[i].enabled = false;
+         }
    }
 
    public void SetBossHealthActive(bool active){
