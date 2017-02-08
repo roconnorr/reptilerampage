@@ -42,9 +42,6 @@ public class Player : MonoBehaviour
     public GameObject[] weaponsprefabs;
     private GameObject[] weaponslist;
 
-    private WeaponType defaultWeaponType = WeaponType.m1911;
-    private GameObject defaultWeapon;
-
     public WeaponType startWeapon1Type;
 	public WeaponType startWeapon2Type;
 	public WeaponType startWeapon3Type;
