@@ -52,7 +52,7 @@ public class Player : MonoBehaviour
     public WeaponType slot1type;
     public WeaponType slot2type;
 	public int grenadeCount;
-    private bool slot1active = true;
+    public bool slot1active = true;
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
     private bool isInvulnerable;
