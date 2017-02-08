@@ -21,6 +21,7 @@ public class TrikeFight : MonoBehaviour {
 		hudManager.levelBoss = trikeInstance;
 		hudManager.inBossFight = true;
 		hudManager.SetBossHealthActive(true);
+		GameMaster.level1Checkpoint = true;
 		this.gameObject.SetActive(false);
 	}
 }
