@@ -17,6 +17,7 @@ public class Weapon : MonoBehaviour {
 	public int ammo;
 	public int ammoPickup;
 	public bool automaticFire;
+	public bool infiniteAmmo;
 	public Player.WeaponType type;
 	public Sprite sprite1;
 	public Sprite sprite2;
@@ -90,7 +91,9 @@ public class Weapon : MonoBehaviour {
 				if (player.canShoot && ammo > 0 && Time.timeScale != 0) {
 					timeToFire = Time.time + 1 / fireRate;
 					CreateBullet ();
-					ammo--;
+					if (!infiniteAmmo) {
+						ammo--;
+					}
 				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !noBulletSound.isPlaying){
 					noBulletSound.Play();
 				}

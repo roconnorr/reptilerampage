@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trex: {fileID: 1725395205753084, guid: 6ed234fb3e7cf834699fb817cb687f07, type: 2}
-  player: {fileID: 0}
+  player: {fileID: 790088526}
   DialogBox: {fileID: 940476442}
 --- !u!1001 &244127220
 Prefab:
