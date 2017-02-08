@@ -11,6 +11,7 @@ public class HUDManager : MonoBehaviour {
 
    public Image Slot1Active;
    public Image Slot2Active;
+   public Image Slot3Active;
 
    public Text GrenadeCount;
 
@@ -49,8 +50,7 @@ public class HUDManager : MonoBehaviour {
             pauseMenu = pauseMenuPanel.GetComponent<PauseMenuManager>();
             pauseMenu.Hide(); 
             gameOver = gameOverPanel.GetComponent<GameOverManager>();
-            gameOver.Hide(); 
-//            Slot2Active.enabled = false;
+            gameOver.Hide();
             BossHealthObject.SetActive(false);
             for(int i=0; i<Slot1Stars.Length; i++){
                   Slot1Stars[i].enabled = false;
@@ -76,17 +76,23 @@ public class HUDManager : MonoBehaviour {
                   Slot2Stars[i].enabled = true;
             }  
 	   }
-         //PistolImage.sprite = player.pistolSlot whatever
-         //PistolName.text = player.pistolslod.text
+         PistolImage.sprite = WeaponSprites[(int)playerScript.slot3type];
+         PistolName.text = playerScript.slot[2].name.Substring(0, playerScript.slot[2].name.Length - 7).ToUpper();
          GrenadeCount.text = playerScript.grenadeCount.ToString();
 
-//         if(playerScript.slot1active){
-//               Slot1Active.enabled = true;
-//               Slot2Active.enabled = false;
-//         }else{
-//               Slot2Active.enabled = true;
-//               Slot1Active.enabled = false;
-//         }
+         if(playerScript.slotActive == 0){
+               Slot1Active.enabled = true;
+               Slot2Active.enabled = false;
+               Slot3Active.enabled = false;
+         }else if(playerScript.slotActive == 1){
+               Slot2Active.enabled = true;
+               Slot1Active.enabled = false;         
+               Slot3Active.enabled = false;
+         }else{
+               Slot3Active.enabled = true;
+               Slot1Active.enabled = false;
+               Slot2Active.enabled = false;
+         }
          if(inBossFight){
             bossScript = levelBoss.GetComponent<Enemy>();
             bossHealth = bossScript.health;
