@@ -167,6 +167,7 @@ public class Player : MonoBehaviour
         GameMaster.slot1type = slot1type;
 		GameMaster.slot2type = slot2type;
 		GameMaster.slot3type = slot3type;
+		GameMaster.grenadeCount = grenadeCount;
 		if(slot[0] != null){
 			GameMaster.slot1ammo = slot[0].GetComponent<Weapon>().ammo;
 			GameMaster.slot1MaxAmmo = slot[0].GetComponent<Weapon>().maxAmmo;
