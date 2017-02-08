@@ -212,6 +212,15 @@ public class Player : MonoBehaviour
 				slotActive = (slotActive + 1) % 3;
 			}
 		}
+		if (Input.GetButtonDown ("Slot1") && slot[0] != null) {
+			slotActive = 0;
+		}
+		if (Input.GetButtonDown ("Slot2") && slot[1] != null) {
+			slotActive = 1;
+		}
+		if (Input.GetButtonDown ("Slot3")) {
+			slotActive = 2;
+		}
 
 		slot [slotActive].SetActive (true);
 		if (slot [(slotActive + 1) % 3] != null) {
