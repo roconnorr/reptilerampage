@@ -13,6 +13,8 @@ public class MusicPlayer : MonoBehaviour {
 	void Update () {
 		if(hudManager.inBossFight){
 			bossMusic.enabled = true;
+		}else{
+			bossMusic.enabled = false;
 		}
 	}
 }
