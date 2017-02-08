@@ -15,6 +15,9 @@ public class Gate : MonoBehaviour {
 	}
 	
 	void Update () {
+		if(player == null){
+			return;
+		}
 		float dist = Vector3.Distance(player.position, transform.position);
 
 		if(isLevel1){

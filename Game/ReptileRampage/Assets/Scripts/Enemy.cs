@@ -66,12 +66,14 @@ public class Enemy : MonoBehaviour {
 					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
 					canvas.GetComponent<HUDManager>().inBossFight = false;
 					GameMaster.currentLevel = 2;
+					GameMaster.level1Checkpoint = false;
          			SceneManager.LoadScene("Level2");
 				}else if(isTRex){
 					//possibly some more dialogue
 					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
 					canvas.GetComponent<HUDManager>().inBossFight = false;
 					GameMaster.currentLevel = 3;
+					GameMaster.level2Checkpoint = false;
 					SceneManager.LoadScene("Level3");
 				}else if(isGavin){
 					//you win

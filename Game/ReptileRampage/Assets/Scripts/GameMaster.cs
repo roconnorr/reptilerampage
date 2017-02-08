@@ -13,8 +13,12 @@ public class GameMaster : MonoBehaviour {
 
 	public static int slot1ammo = 0;
 	public static int slot2ammo = 0;
+	public static int slot1MaxAmmo = 0;
+	public static int slot2MaxAmmo = 0;
 	public static int levelStartSlot1Ammo;
 	public static int levelStartSlot2Ammo;
+	public static bool level1Checkpoint;
+	public static bool level2Checkpoint;
 
 	void Awake() {
         DontDestroyOnLoad(gameObject);

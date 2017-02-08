@@ -63,6 +63,11 @@ public class Player : MonoBehaviour
     private float vertical;
 
     void Start(){
+        if(GameMaster.level1Checkpoint){
+            transform.position = new Vector3(45, 46, -1);
+        } else if(GameMaster.level2Checkpoint){
+            transform.position = new Vector3(40, -40, -1);
+        }
         isInvulnerable = false;  
         rb = GetComponent<Rigidbody2D>();
         canMove = true;
@@ -164,9 +169,11 @@ public class Player : MonoBehaviour
 		GameMaster.slot3type = slot3type;
 		if(slot[0] != null){
 			GameMaster.slot1ammo = slot[0].GetComponent<Weapon>().ammo;
+			GameMaster.slot1MaxAmmo = slot[0].GetComponent<Weapon>().maxAmmo;
         }
 		if(slot[1] != null){
 			GameMaster.slot2ammo = slot[1].GetComponent<Weapon>().ammo;
+			GameMaster.slot2MaxAmmo = slot[1].GetComponent<Weapon>().maxAmmo;
 		}
 		if (Input.GetButtonDown ("ThrowGrenade")) {
 			Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;

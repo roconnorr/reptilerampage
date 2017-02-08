@@ -21,6 +21,7 @@ public class TRexFight : MonoBehaviour {
 		hudManager.levelBoss = trexInstance;
 		hudManager.inBossFight = true;
 		hudManager.SetBossHealthActive(true);
+		GameMaster.level2Checkpoint = true;
 		this.gameObject.SetActive(false);
 	}
 }
