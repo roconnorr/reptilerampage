@@ -6086,6 +6086,7 @@ MonoBehaviour:
   slot2: {fileID: 0}
   slot1type: 0
   slot2type: 0
+  slot1active: 1
   invulnerableTime: 1
 --- !u!212 &1019736894
 SpriteRenderer:
@@ -12450,11 +12451,6 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114170010350893968, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: m_MaxValue
-      value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
