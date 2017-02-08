@@ -5,6 +5,7 @@ public class GameMaster : MonoBehaviour {
     public static Player.WeaponType slot2type = Player.WeaponType.empty;
 	public static Player.WeaponType levelStartSlot1Type = Player.WeaponType.m1911;
 	public static Player.WeaponType levelStartSlot2Type = Player.WeaponType.empty;
+	public static int grenadeCount = 3;
 
 	public static int slot1ammo = 100;
 	public static int slot2ammo = 0;

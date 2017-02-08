@@ -13,15 +13,16 @@ public class Crate : MonoBehaviour {
 	public GameObject pickup;
 	public GameObject healthPack;
 	public GameObject ammoPack;
+	public GameObject grenadePickup;
 
 	private int[] tier1rare1 = new int[3] {1, 9, 11};
-	private int[] tier1rare2 = new int[4] {8, 12, 20, 21};
+	private int[] tier1rare2 = new int[3] { 12, 20, 21};
 	private int[] tier1rare3 = new int[1] {13};
 	private int[] tier1rare4 = new int[0] {};
 	private int[] tier1rare5 = new int[0] {};
 
 	private int[] tier2rare1 = new int[4] {1, 9, 10, 11};
-	private int[] tier2rare2 = new int[5] {8, 12, 14, 20, 21};
+	private int[] tier2rare2 = new int[4] {12, 14, 20, 21};
 	private int[] tier2rare3 = new int[5] {5, 13, 16, 17, 22};
 	private int[] tier2rare4 = new int[1] {0};
 	private int[] tier2rare5 = new int[2] {4, 24};
@@ -29,7 +30,7 @@ public class Crate : MonoBehaviour {
 	private int[] tier3rare1 = new int[1] {10};
 	private int[] tier3rare2 = new int[3] {2, 14, 15};
 	private int[] tier3rare3 = new int[5] {5, 16, 17, 18, 22};
-	private int[] tier3rare4 = new int[2] {0, 8};
+	private int[] tier3rare4 = new int[1] {0};
 	private int[] tier3rare5 = new int[7] {3, 4, 6, 7, 19, 23, 24};
  
     
@@ -55,8 +56,11 @@ public class Crate : MonoBehaviour {
 	void SpawnStuff(){
 		float chance = Random.value;
 
-		if(chance <= 0.35){
+		if(chance <= 0.25){
 			pickAGun();
+		}
+		if (chance > 0.25 && chance <= 0.35) {
+			Instantiate(grenadePickup, transform.position, transform.rotation);
 		}
 		if(chance > 0.35 && chance <= 0.75){
 			Instantiate(ammoPack, transform.position, transform.rotation);
