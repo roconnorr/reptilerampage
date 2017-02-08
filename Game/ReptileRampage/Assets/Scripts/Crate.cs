@@ -15,21 +15,21 @@ public class Crate : MonoBehaviour {
 	public GameObject ammoPack;
 	public GameObject grenadePickup;
 
-	private int[] tier1rare1 = new int[3] {1, 9, 11};
-	private int[] tier1rare2 = new int[3] { 12, 20, 21};
+	private int[] tier1rare1 = new int[2] {1, 9};
+	private int[] tier1rare2 = new int[2] {12, 20};
 	private int[] tier1rare3 = new int[1] {13};
 	private int[] tier1rare4 = new int[0] {};
 	private int[] tier1rare5 = new int[0] {};
 
-	private int[] tier2rare1 = new int[4] {1, 9, 10, 11};
-	private int[] tier2rare2 = new int[4] {12, 14, 20, 21};
-	private int[] tier2rare3 = new int[5] {5, 13, 16, 17, 22};
+	private int[] tier2rare1 = new int[3] {1, 9, 10};
+	private int[] tier2rare2 = new int[3] {12, 14, 20};
+	private int[] tier2rare3 = new int[4] {13, 16, 17, 22};
 	private int[] tier2rare4 = new int[1] {0};
 	private int[] tier2rare5 = new int[2] {4, 24};
 
 	private int[] tier3rare1 = new int[1] {10};
 	private int[] tier3rare2 = new int[3] {2, 14, 15};
-	private int[] tier3rare3 = new int[5] {5, 16, 17, 18, 22};
+	private int[] tier3rare3 = new int[4] {16, 17, 18, 22};
 	private int[] tier3rare4 = new int[1] {0};
 	private int[] tier3rare5 = new int[7] {3, 4, 6, 7, 19, 23, 24};
  
