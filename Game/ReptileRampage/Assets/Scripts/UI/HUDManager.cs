@@ -77,7 +77,9 @@ public class HUDManager : MonoBehaviour {
             }  
 	   }
          PistolImage.sprite = WeaponSprites[(int)playerScript.slot3type];
-         PistolName.text = playerScript.slot[2].name.Substring(0, playerScript.slot[2].name.Length - 7).ToUpper();
+         if(player != null){
+            PistolName.text = playerScript.slot[2].name.Substring(0, playerScript.slot[2].name.Length - 7).ToUpper();
+         }
          GrenadeCount.text = playerScript.grenadeCount.ToString();
 
          if(playerScript.slotActive == 0){
