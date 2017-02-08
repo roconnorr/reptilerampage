@@ -17052,7 +17052,7 @@ Prefab:
       objectReference: {fileID: 940476442}
     - target: {fileID: 1614689836832504, guid: cb7e574b6444a3f47bd95ae78c5e6bf8, type: 2}
       propertyPath: m_Name
-      value: BossTrigger
+      value: BossTrigger2
       objectReference: {fileID: 0}
     - target: {fileID: 1614689836832504, guid: cb7e574b6444a3f47bd95ae78c5e6bf8, type: 2}
       propertyPath: m_TagString
