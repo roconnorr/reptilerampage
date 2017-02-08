@@ -23,11 +23,11 @@ public class PickupPrefab : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "Player"){
-			if (other.GetComponent<Player>().slot1.GetComponent<Weapon>().type == type) {
-				other.GetComponent<Player>().slot1.GetComponent<Weapon>().AddAmmo (ammo);
+			if (other.GetComponent<Player>().slot[0] != null && other.GetComponent<Player>().slot[0].GetComponent<Weapon>().type == type) {
+				other.GetComponent<Player>().slot[0].GetComponent<Weapon>().AddAmmo (ammo);
 				Destroy (gameObject);
-			} else if (other.GetComponent<Player>().slot2 != null && other.GetComponent<Player>().slot2.GetComponent<Weapon>().type == type) {
-				other.GetComponent<Player>().slot2.GetComponent<Weapon>().AddAmmo (ammo);
+			} else if (other.GetComponent<Player>().slot[1] != null && other.GetComponent<Player>().slot[1].GetComponent<Weapon>().type == type) {
+				other.GetComponent<Player>().slot[1].GetComponent<Weapon>().AddAmmo (ammo);
 				Destroy (gameObject);
 			}
 		}
