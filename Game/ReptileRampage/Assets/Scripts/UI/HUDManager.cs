@@ -14,6 +14,10 @@ public class HUDManager : MonoBehaviour {
 
    public Text GrenadeCount;
 
+   public Image PistolImage;
+
+   public Text PistolName;
+
    public Image[] Slot1Stars;
    
    public Image[] Slot2Stars;
@@ -72,6 +76,8 @@ public class HUDManager : MonoBehaviour {
                   Slot2Stars[i].enabled = true;
             }  
 	   }
+         //PistolImage.sprite = player.pistolSlot whatever
+         //PistolName.text = player.pistolslod.text
          GrenadeCount.text = playerScript.grenadeCount.ToString();
 
          if(playerScript.slot1active){
