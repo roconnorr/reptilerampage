@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!114 &114849833835891678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -108,6 +110,8 @@ MonoBehaviour:
   pickup: {fileID: 1154394682787550, guid: 373700b94b63144c2821298b2e9a3f95, type: 2}
   healthPack: {fileID: 1057376695768274, guid: fa65a589947ab419f9cab4ec030f3e65, type: 2}
   ammoPack: {fileID: 1770400769561766, guid: 54dd1310cec8a564385ca8fa592112a4, type: 2}
+  grenadePickup: {fileID: 1286666581406840, guid: fb7b4df0bf80ce94c9abbb56043a296c,
+    type: 2}
 --- !u!212 &212649946666315566
 SpriteRenderer:
   m_ObjectHideFlags: 1

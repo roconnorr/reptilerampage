@@ -13,8 +13,8 @@ public class Player : MonoBehaviour
     public float speed;
     public static int playerMaxHP = 100;
 
-    private AudioSource soundSource;
-    public AudioClip[] footstepSounds;
+	private AudioSource soundSource;
+	public AudioClip[] footstepSounds;
 
 
     [HideInInspector]
@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
 
     //public ParticleSystem dustParticles;
     public ParticleSystem bloodParticles;
+	public Transform grenadePrefab;
     public Transform crossHairPrefab;
     private Transform crossHair;
     private Rigidbody2D rb;
@@ -50,7 +51,8 @@ public class Player : MonoBehaviour
     public GameObject slot2 = null;
     public WeaponType slot1type;
     public WeaponType slot2type;
-    private bool slot1active = true;
+	public int grenadeCount;
+    public bool slot1active = true;
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
     private bool isInvulnerable;
@@ -81,6 +83,7 @@ public class Player : MonoBehaviour
         }//else gavin
         startWeapon1Type = GameMaster.slot1type;
 		startWeapon2Type = GameMaster.slot2type;
+		grenadeCount = GameMaster.grenadeCount;
 		GameMaster.levelStartSlot1Type = startWeapon1Type;
 		GameMaster.levelStartSlot2Type = startWeapon2Type;
         if(startWeapon1Type != WeaponType.empty){
@@ -163,6 +166,17 @@ public class Player : MonoBehaviour
 //            slot1type = defaultWeaponType;
 //            slot1.GetComponent<Weapon>().ammo = 200;
 //        }
+		if (Input.GetButtonDown ("ThrowGrenade")) {
+			Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
+			difference.Normalize ();
+			float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+			if (grenadeCount > 0) {
+				GameMaster.CreateGrenade (grenadePrefab, transform.position, rotZ - 90, 100, 20, 70, false, true);
+				grenadeCount--;
+			} else {
+				//play no bullet sound
+			}
+		}
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
         crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 
