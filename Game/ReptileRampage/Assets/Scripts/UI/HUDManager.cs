@@ -9,6 +9,9 @@ public class HUDManager : MonoBehaviour {
    public Image Slot1Image;
    public Image Slot2Image;
 
+   public Image Slot1Active;
+   public Image Slot2Active;
+
    public Image[] Slot1Stars;
    
    public Image[] Slot2Stars;
@@ -41,6 +44,7 @@ public class HUDManager : MonoBehaviour {
             pauseMenu.Hide(); 
             gameOver = gameOverPanel.GetComponent<GameOverManager>();
             gameOver.Hide(); 
+            Slot2Active.enabled = false;
             BossHealthObject.SetActive(false);
             for(int i=0; i<Slot1Stars.Length; i++){
                   Slot1Stars[i].enabled = false;
@@ -66,6 +70,14 @@ public class HUDManager : MonoBehaviour {
                   Slot2Stars[i].enabled = true;
             }  
 	   }
+
+         if(playerScript.slot1active){
+               Slot1Active.enabled = true;
+               Slot2Active.enabled = false;
+         }else{
+               Slot2Active.enabled = true;
+               Slot1Active.enabled = false;
+         }
          if(inBossFight){
             bossScript = levelBoss.GetComponent<Enemy>();
             bossHealth = bossScript.health;
