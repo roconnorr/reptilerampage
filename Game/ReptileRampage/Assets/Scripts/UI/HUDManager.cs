@@ -44,7 +44,7 @@ public class HUDManager : MonoBehaviour {
             pauseMenu.Hide(); 
             gameOver = gameOverPanel.GetComponent<GameOverManager>();
             gameOver.Hide(); 
-            Slot2Active.enabled = false;
+//            Slot2Active.enabled = false;
             BossHealthObject.SetActive(false);
             for(int i=0; i<Slot1Stars.Length; i++){
                   Slot1Stars[i].enabled = false;
@@ -53,31 +53,31 @@ public class HUDManager : MonoBehaviour {
    }
    
       void Update () {
-	   if(playerScript.slot1 != null){
-            Slot1Text.text = playerScript.slot1.name.Substring(0, playerScript.slot1.name.Length - 7).ToUpper();
+	   if(playerScript.slot[0] != null){
+			Slot1Text.text = playerScript.slot[0].name.Substring(0, playerScript.slot[0].name.Length - 7).ToUpper();
 	   	Slot1Image.sprite = WeaponSprites[(int) playerScript.slot1type];
-            Slot1Ammo.text = playerScript.slot1.GetComponent<Weapon>().ammo + "/" +playerScript.slot1.GetComponent<Weapon>().maxAmmo;
-            for(int i=0; i < playerScript.slot1.GetComponent<Weapon>().stars; i++){
+			Slot1Ammo.text = playerScript.slot[0].GetComponent<Weapon>().ammo + "/" +playerScript.slot[0].GetComponent<Weapon>().maxAmmo;
+			for(int i=0; i < playerScript.slot[0].GetComponent<Weapon>().stars; i++){
                   Slot1Stars[i].enabled = true;
             }  
 	   }
 
-	   if(playerScript.slot2 != null){
-		Slot2Text.text = playerScript.slot2.name.Substring(0, playerScript.slot2.name.Length - 7).ToUpper();
-		Slot2Image.sprite = WeaponSprites[(int) playerScript.slot2type];
-            Slot2Ammo.text = playerScript.slot2.GetComponent<Weapon>().ammo + "/" +playerScript.slot2.GetComponent<Weapon>().maxAmmo;
-            for(int i=0; i < playerScript.slot2.GetComponent<Weapon>().stars; i++){
+		if(playerScript.slot[1] != null){
+			Slot2Text.text = playerScript.slot[1].name.Substring(0, playerScript.slot[1].name.Length - 7).ToUpper();
+			Slot2Image.sprite = WeaponSprites[(int) playerScript.slot2type];
+			Slot2Ammo.text = playerScript.slot[1].GetComponent<Weapon>().ammo + "/" +playerScript.slot[1].GetComponent<Weapon>().maxAmmo;
+			for(int i=0; i < playerScript.slot[1].GetComponent<Weapon>().stars; i++){
                   Slot2Stars[i].enabled = true;
             }  
 	   }
 
-         if(playerScript.slot1active){
-               Slot1Active.enabled = true;
-               Slot2Active.enabled = false;
-         }else{
-               Slot2Active.enabled = true;
-               Slot1Active.enabled = false;
-         }
+//         if(playerScript.slot1active){
+//               Slot1Active.enabled = true;
+//               Slot2Active.enabled = false;
+//         }else{
+//               Slot2Active.enabled = true;
+//               Slot1Active.enabled = false;
+//         }
          if(inBossFight){
             bossScript = levelBoss.GetComponent<Enemy>();
             bossHealth = bossScript.health;
