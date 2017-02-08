@@ -10,6 +10,8 @@ public class Crate : MonoBehaviour {
 	public bool isTier2;
 	public bool isTier3;
 
+	public bool isWeapon;
+
 	public GameObject pickup;
 	public GameObject healthPack;
 	public GameObject ammoPack;
@@ -54,19 +56,23 @@ public class Crate : MonoBehaviour {
 	}
 
 	void SpawnStuff(){
-		float chance = Random.value;
+		if (isWeapon) {
+			pickAGun ();
+		} else {
+			float chance = Random.value;
 
-		if(chance <= 0.25){
-			pickAGun();
-		}
-		if (chance > 0.25 && chance <= 0.35) {
-			Instantiate(grenadePickup, transform.position, transform.rotation);
-		}
-		if(chance > 0.35 && chance <= 0.75){
-			Instantiate(ammoPack, transform.position, transform.rotation);
-		}
-		if(chance > 0.75 && chance <= 1.0){
-			Instantiate(healthPack, transform.position, transform.rotation);
+			if (chance <= 0.25) {
+				pickAGun ();
+			}
+			if (chance > 0.25 && chance <= 0.35) {
+				Instantiate (grenadePickup, transform.position, transform.rotation);
+			}
+			if (chance > 0.35 && chance <= 0.75) {
+				Instantiate (ammoPack, transform.position, transform.rotation);
+			}
+			if (chance > 0.75 && chance <= 1.0) {
+				Instantiate (healthPack, transform.position, transform.rotation);
+			}
 		}
 	}
 

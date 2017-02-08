@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour {
 					GameMaster.level2Checkpoint = false;
 					SceneManager.LoadScene("Level3");
 				}else if(isGavin){
-					//you win
+					SceneManager.LoadScene("WinScreen");
 				}
 				Destroy (gameObject);
 			}
