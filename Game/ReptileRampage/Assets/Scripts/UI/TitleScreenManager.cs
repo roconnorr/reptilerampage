@@ -9,6 +9,7 @@ public class TitleScreenManager : MonoBehaviour {
 	void Start(){
 		ButtonStart.SetActive(false);
 		ButtonQuit.SetActive(false);
+		Cursor.visible = true;
 	}
 
 	public void EnableButtons(){
