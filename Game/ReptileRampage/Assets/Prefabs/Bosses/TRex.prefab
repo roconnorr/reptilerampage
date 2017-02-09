@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  health: 2000
+  health: 1500
   isTrike: 0
   isTRex: 1
   isGavin: 0
