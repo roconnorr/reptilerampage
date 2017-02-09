@@ -17,7 +17,9 @@ public class Trike : MonoBehaviour {
 	private float xPrev;
 	private Vector3 targetLocation;
 	private Animator animator;
-	private bool playOnce;
+	private int stomps;
+	private bool isStomping;
+
 	void Start () {
 		state = State.Idle;
 		vFirePoint = transform.FindChild ("VFirePoint");
@@ -58,7 +60,7 @@ public class Trike : MonoBehaviour {
 			if (rand < 1) {
 				GrenadeWave ();
 			} else if (rand < 2) {
-				playOnce = true;
+				stomps = 1;
 				animator.Play("TrikeStomp");
 			}
 		}
@@ -106,8 +108,10 @@ public class Trike : MonoBehaviour {
 			Invoke("SetStateIdle", 5f);
 		}
 		//Stomp Attack
-		else if (state == State.StompAttack && !IsInvoking("StompWave")) {
+		else if (state == State.StompAttack && !isStomping) {
+			isStomping = true;
 			animator.Play("TrikeStomp");
+			stomps = 3;
 		}
 	}
 
@@ -136,15 +140,13 @@ public class Trike : MonoBehaviour {
 		}
 	}
 
-	void CallStompWave(){
-		if(playOnce){
-			StompWave();
-			playOnce = false;
-		}else{
-			for(float i = 0f; i <= 2f; i+=1f){
-				Invoke("StompWave", i);
-			}
-			Invoke("SetStateIdle", 2f);
+	void StompAgain() {
+		stomps--;
+		if (stomps > 0) {
+			animator.Play ("TrikeStomp");
+		} else {
+			isStomping = false;
+			state = State.Idle;
 		}
 	}
 
