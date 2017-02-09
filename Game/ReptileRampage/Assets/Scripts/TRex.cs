@@ -107,8 +107,8 @@ public class TRex : MonoBehaviour {
 	}
 
 	void ShootRocket(){
-		GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
-		GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (315, 405), 10, 12, 300, true, true, target, transform);
+		GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (315, 405), 100, 12, 300, true, true, target, transform);
+		GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (315, 405), 100, 12, 300, true, true, target, transform);
 	}
 
 	void CallShootWave(){
