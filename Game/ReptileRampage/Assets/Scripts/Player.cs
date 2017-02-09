@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
 			GameMaster.slot2ammo = slot[1].GetComponent<Weapon>().ammo;
 			GameMaster.slot2MaxAmmo = slot[1].GetComponent<Weapon>().maxAmmo;
 		}
-		if (Input.GetButtonDown ("ThrowGrenade")) {
+		if (Input.GetButtonDown ("Grenade")) {
 			Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
 			difference.Normalize ();
 			float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
@@ -205,12 +205,19 @@ public class Player : MonoBehaviour
             }
         }
 
-		if (Input.GetButtonDown ("SwapSlot")) {
+		if (Input.GetButtonDown ("SwapSlot") || Input.GetAxis("Mouse ScrollWheel") < 0) {
 			slotActive = (slotActive + 1) % 3;
 			while (slot [slotActive] == null) {
 				slotActive = (slotActive + 1) % 3;
 			}
 		}
+		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+			slotActive = (slotActive + 2) % 3;
+			while (slot [slotActive] == null) {
+				slotActive = (slotActive + 2) % 3;
+			}
+		}
+
 		if (Input.GetButtonDown ("Slot1") && slot[0] != null) {
 			slotActive = 0;
 		}
