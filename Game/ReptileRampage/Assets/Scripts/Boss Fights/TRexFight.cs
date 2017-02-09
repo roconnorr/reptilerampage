@@ -11,6 +11,8 @@ public class TRexFight : MonoBehaviour {
 
 	public void StartFight(){
 		DialogBox.GetComponentInParent<TextBoxManager>().dialogActive = true;
+		DialogBox.GetComponentInParent<TextBoxManager>().inBossFight = true;
+		DialogBox.GetComponentInParent<TextBoxManager>().SetDialogNumber(5);
 	}
 
 	public void SpawnTRex(){
