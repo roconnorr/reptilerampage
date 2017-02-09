@@ -135,7 +135,7 @@ AnimationClip:
   m_IsEmpty: 0
   m_Events:
   - time: 0.6363636
-    functionName: CallStompWave
+    functionName: StompWave
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -146,5 +146,12 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 2
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.90909094
+    functionName: StompAgain
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
     intParameter: 0
     messageOptions: 0
