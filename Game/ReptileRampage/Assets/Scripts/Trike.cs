@@ -142,7 +142,6 @@ public class Trike : MonoBehaviour {
 
 	void StompAgain() {
 		stomps--;
-		Debug.Log (stomps);
 		if (stomps > 0) {
 			animator.Play ("TrikeStomp");
 		} else {
