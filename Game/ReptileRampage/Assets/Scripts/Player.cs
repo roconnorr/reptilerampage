@@ -182,6 +182,7 @@ public class Player : MonoBehaviour
 				grenadeCount--;
 			} else {
 				//play no bullet sound
+				PickUpLog.noGrenadeLog = true;
 			}
 		}
         weaponslist = GameObject.FindGameObjectsWithTag("Pickup");

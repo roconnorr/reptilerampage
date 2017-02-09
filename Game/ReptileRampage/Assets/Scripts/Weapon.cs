@@ -96,6 +96,11 @@ public class Weapon : MonoBehaviour {
 					}
 				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !noBulletSound.isPlaying){
 					noBulletSound.Play();
+					if(gameObject.GetComponentInParent<Player>().slotActive == 0){
+						PickUpLog.noAmmoLog1 = true;
+					} else if(gameObject.GetComponentInParent<Player>().slotActive == 1){
+						PickUpLog.noAmmoLog2 = true;
+					}
 				}
 			}
 		}

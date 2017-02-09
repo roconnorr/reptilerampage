@@ -13,6 +13,8 @@ public class PickupPrefab : MonoBehaviour {
 	private SpriteRenderer spriteRenderer; 
 
 	public int ammo = -1;
+	public static int addedAmmo;
+	public static Player.WeaponType weaponLog;
 
 	void Start(){
 		spriteRenderer = GetComponent<SpriteRenderer>();
@@ -41,10 +43,19 @@ public class PickupPrefab : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.gameObject.tag == "Player"){
 			if (other.GetComponent<Player>().slot[0] != null && other.GetComponent<Player>().slot[0].GetComponent<Weapon>().type == type) {
+				PickUpLog.giveAmmoLog1 = true;
+				int originalAmmo = other.GetComponent<Player>().slot[0].GetComponent<Weapon>().ammo;
 				other.GetComponent<Player>().slot[0].GetComponent<Weapon>().AddAmmo (ammo);
+				int newAmmo = other.GetComponent<Player>().slot[0].GetComponent<Weapon>().ammo;
+				addedAmmo = newAmmo - originalAmmo;
 				Destroy (gameObject);
 			} else if (other.GetComponent<Player>().slot[1] != null && other.GetComponent<Player>().slot[1].GetComponent<Weapon>().type == type) {
+				PickUpLog.giveAmmoLog2 = true;
+				int originalAmmo = other.GetComponent<Player>().slot[1].GetComponent<Weapon>().ammo;
 				other.GetComponent<Player>().slot[1].GetComponent<Weapon>().AddAmmo (ammo);
+				int newAmmo = other.GetComponent<Player>().slot[1].GetComponent<Weapon>().ammo;
+				addedAmmo = newAmmo - originalAmmo;
+				weaponLog = other.GetComponent<Player>().slot[1].GetComponent<Weapon>().type;
 				Destroy (gameObject);
 			}
 		}

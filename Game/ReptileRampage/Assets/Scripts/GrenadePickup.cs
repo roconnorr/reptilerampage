@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GrenadePickup : MonoBehaviour {
 
@@ -8,7 +6,10 @@ public class GrenadePickup : MonoBehaviour {
 		if(other.gameObject.tag == "Player"){
 			if (other.GetComponent<Player> ().grenadeCount < 5) {
 				other.GetComponent<Player> ().grenadeCount++;
+				PickUpLog.giveGrenadeLog = true;
 				Destroy (gameObject);
+			} else if(other.GetComponent<Player> ().grenadeCount >= 5){
+				PickUpLog.maxGrenadeLog = true;
 			}
 		}
 	}
