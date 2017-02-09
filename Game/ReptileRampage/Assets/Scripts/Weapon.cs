@@ -86,7 +86,7 @@ public class Weapon : MonoBehaviour {
 			}
 		}
 
-		if (automaticFire && Input.GetButton ("Fire1") || !automaticFire && Input.GetButtonDown ("Fire1")) {
+		if (automaticFire && Input.GetButton ("Fire") || !automaticFire && Input.GetButtonDown ("Fire")) {
 			if (Time.time > timeToFire) {
 				if (player.canShoot && ammo > 0 && Time.timeScale != 0) {
 					timeToFire = Time.time + 1 / fireRate;
