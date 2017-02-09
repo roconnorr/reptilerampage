@@ -32,7 +32,7 @@ public class Gate : MonoBehaviour {
 			}
 		} else if(isLevel2){
 			//Debug.Log(dist);
-			if(dist > 6f && player.position.y > transform.position.y && hudManager.inBossFight){
+			if(dist > 5.5f && player.position.y > transform.position.y && hudManager.inBossFight){
 				gameObject.GetComponent<Collider2D>().enabled = true;
 				gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			}

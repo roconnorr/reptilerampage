@@ -4356,11 +4356,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -61.1
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -54.2
+      value: -40.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
@@ -17079,12 +17079,12 @@ Prefab:
     - target: {fileID: 61891442154548134, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
         type: 2}
       propertyPath: m_Size.x
-      value: 4.82
+      value: 4.955716
       objectReference: {fileID: 0}
     - target: {fileID: 61891442154548134, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
         type: 2}
       propertyPath: m_Size.y
-      value: 4.09
+      value: 0.9206406
       objectReference: {fileID: 0}
     - target: {fileID: 1965177890864440, guid: cb7e574b6444a3f47bd95ae78c5e6bf8, type: 2}
       propertyPath: m_IsActive
@@ -17093,6 +17093,16 @@ Prefab:
     - target: {fileID: 4886348877604082, guid: cb7e574b6444a3f47bd95ae78c5e6bf8, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 61891442154548134, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
+        type: 2}
+      propertyPath: m_Offset.x
+      value: -0.067854285
+      objectReference: {fileID: 0}
+    - target: {fileID: 61891442154548134, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 0.16571808
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114423149201904860, guid: cb7e574b6444a3f47bd95ae78c5e6bf8, type: 2}
@@ -18088,7 +18098,6 @@ GameObject:
   - component: {fileID: 2105888266}
   - component: {fileID: 2105888265}
   - component: {fileID: 2105888264}
-  - component: {fileID: 2105888263}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Wall
@@ -18096,23 +18105,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &2105888263
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2105888262}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 834ebe47affea4d0faabcb6e84bae765, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &2105888264
 MonoBehaviour:
   m_ObjectHideFlags: 0
