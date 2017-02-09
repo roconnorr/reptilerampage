@@ -57,6 +57,10 @@ public class PickupPrefab : MonoBehaviour {
 				addedAmmo = newAmmo - originalAmmo;
 				weaponLog = other.GetComponent<Player>().slot[1].GetComponent<Weapon>().type;
 				Destroy (gameObject);
+			} else if(other.GetComponent<Player>().slot[0] != null && other.GetComponent<Player>().slot[0].GetComponent<Weapon>().type == type && other.GetComponent<Player>().slot[0].GetComponent<Weapon>().ammo == other.GetComponent<Player>().slot[0].GetComponent<Weapon>().maxAmmo){
+				PickUpLog.maxAmmoLog1 = true;
+			} else if(other.GetComponent<Player>().slot[0] != null && other.GetComponent<Player>().slot[0].GetComponent<Weapon>().type == type && other.GetComponent<Player>().slot[0].GetComponent<Weapon>().ammo == other.GetComponent<Player>().slot[0].GetComponent<Weapon>().maxAmmo){
+				PickUpLog.maxAmmoLog2 = true;
 			}
 		}
 	}
