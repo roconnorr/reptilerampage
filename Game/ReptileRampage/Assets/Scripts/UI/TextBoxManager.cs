@@ -12,20 +12,17 @@ public class TextBoxManager : MonoBehaviour {
 	public CurrentLevelBoss levelBoss;
 	public Text text;
 	public bool dialogActive = false;
+	public bool inBossFight = false;
 
-	public TextAsset textFile;
+	public TextAsset[] textFiles;
+	private int dialogTextNumber;
 	public string[] textLines;
 
 	public int currentLine;
-	public int endAtLine;
 
 	void Start () {
-		if(textFile != null){
-			textLines = (textFile.text.Split('\n'));
-		}
-
-		if(endAtLine == 0){
-			endAtLine = textLines.Length -1;
+		if(textFiles[dialogTextNumber] != null){
+			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
 		}
 		dialogBox.SetActive(false);
 	}
@@ -39,28 +36,36 @@ public class TextBoxManager : MonoBehaviour {
 			dialogBox.SetActive(true);
 
 			if(Input.GetButtonDown("Fire")){
-				currentLine += 1;
+				currentLine++;
 			}
 
-			if(currentLine > endAtLine){
+			if(currentLine == textLines.Length){
 				dialogBox.SetActive(false);
-
-				if(levelBoss == CurrentLevelBoss.trike){
-					BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
-				}else if(levelBoss == CurrentLevelBoss.trex){
-					BossTrigger.GetComponent<TRexFight>().SpawnTRex();
-				}else{
-					//gavin
-					//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+				if(inBossFight){
+					if(levelBoss == CurrentLevelBoss.trike){
+						BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+					}else if(levelBoss == CurrentLevelBoss.trex){
+						BossTrigger.GetComponent<TRexFight>().SpawnTRex();
+					}else{
+						//gavin
+						//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+					}
 				}
 
 				dialogActive = false;
 				player.GetComponent<Player>().canMove = true;
 				player.GetComponent<Player>().canShoot = true;
 			}else{
-
 				text.text = textLines[currentLine].ToUpper();
 			}
 		}
+	}
+
+	public void SetDialogNumber(int num){
+		dialogTextNumber = num;
+		if(textFiles[dialogTextNumber] != null){
+			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
+		}
+		currentLine = 0;
 	}
 }
