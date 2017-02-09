@@ -1131,10 +1131,19 @@ MonoBehaviour:
   levelBoss: 0
   text: {fileID: 114846021886171006}
   dialogActive: 0
-  textFile: {fileID: 4900000, guid: 8263bd2fa7c9275468d317991211f034, type: 3}
+  inBossFight: 0
+  textFiles:
+  - {fileID: 4900000, guid: 211c3d42dbb4e453d8115e68964ecac2, type: 3}
+  - {fileID: 4900000, guid: 976fec0fa27ee428f954cb0425e0825b, type: 3}
+  - {fileID: 4900000, guid: b1d51e8e200bd4d6dbb87be210af9b9b, type: 3}
+  - {fileID: 4900000, guid: 62de9cabf436f4752ac2a5f5c57ba64d, type: 3}
+  - {fileID: 4900000, guid: ed0e779ee3b32427ca770a8715ceab97, type: 3}
+  - {fileID: 4900000, guid: ee3d3ca9a8b7a43cd8cfc868f708cacf, type: 3}
+  - {fileID: 4900000, guid: 0bcb3c458ff524abb9677e3d2fb56acf, type: 3}
+  - {fileID: 4900000, guid: e4e09eec54ba840f5b9a19477cd6accb, type: 3}
+  - {fileID: 4900000, guid: 02cc807e3ff5f4202a8d083d1b16a7bf, type: 3}
   textLines: []
   currentLine: 0
-  endAtLine: 1
 --- !u!114 &114021775693248584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2930,7 +2939,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5af5d96a82d46834a9cf547da2bbe343, type: 3}
-    m_FontSize: 35
+    m_FontSize: 23
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -2941,7 +2950,13 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: BLANK
+  m_Text: 'FOUR
+
+    LINES
+
+    OF
+
+    TEXT'
 --- !u!114 &114891268990271336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3890,7 +3905,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000067171, y: 46}
+  m_AnchoredPosition: {x: 0.000067171, y: 47}
   m_SizeDelta: {x: 380, y: 92}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224195817426645924
