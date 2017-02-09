@@ -33,11 +33,11 @@ public class PickUpLog : MonoBehaviour {
 		//Health
 		if(healthLog){
 			if(giveHealthLog){
-				log.text = "You  gained  " + HealthPack.addedHealth + "  HP";
+				log.text = "+ " + HealthPack.addedHealth + " HP";
 				StartCoroutine(ShowMessage(1));
 				giveHealthLog = false;
 			} else if(maxHealthLog){
-				log.text = "Maximum  health  already!";
+				log.text = "Maximum";
 				StartCoroutine(ShowMessage(1));
 				maxHealthLog = false;
 			}	
