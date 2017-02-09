@@ -23,5 +23,9 @@ public class PlayDialog : MonoBehaviour {
 			textBoxManager.SetDialogNumber(1);
 			textBoxManager.dialogActive = true;
 		}
+		if(other.tag == "Dialog4"){
+			textBoxManager.SetDialogNumber(4);
+			textBoxManager.dialogActive = true;
+		}
 	}
 }
