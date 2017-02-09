@@ -1128,7 +1128,7 @@ MonoBehaviour:
   player: {fileID: 0}
   BossTrigger: {fileID: 0}
   dialogBox: {fileID: 1445876794807768}
-  levelBoss: 0
+  levelBoss: 1
   text: {fileID: 114846021886171006}
   dialogActive: 0
   inBossFight: 0
@@ -1138,6 +1138,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: b1d51e8e200bd4d6dbb87be210af9b9b, type: 3}
   - {fileID: 4900000, guid: 62de9cabf436f4752ac2a5f5c57ba64d, type: 3}
   - {fileID: 4900000, guid: ed0e779ee3b32427ca770a8715ceab97, type: 3}
+  - {fileID: 4900000, guid: 6c5118d4475034a91a2642673861c57c, type: 3}
   - {fileID: 4900000, guid: ee3d3ca9a8b7a43cd8cfc868f708cacf, type: 3}
   - {fileID: 4900000, guid: 0bcb3c458ff524abb9677e3d2fb56acf, type: 3}
   - {fileID: 4900000, guid: e4e09eec54ba840f5b9a19477cd6accb, type: 3}
