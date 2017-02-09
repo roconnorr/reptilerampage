@@ -22,10 +22,11 @@ public class PlayDialog : MonoBehaviour {
 		if(other.tag == "Dialog1"){
 			textBoxManager.SetDialogNumber(1);
 			textBoxManager.dialogActive = true;
-		}
-		if(other.tag == "Dialog4"){
+			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog4"){
 			textBoxManager.SetDialogNumber(4);
 			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
 		}
 	}
 }

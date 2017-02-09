@@ -58,6 +58,7 @@ GameObject:
   - component: {fileID: 50840775816555752}
   - component: {fileID: 61175196810442448}
   - component: {fileID: 82896973283620554}
+  - component: {fileID: 114409045537735140}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -133,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1458198072493816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.1, y: -45.2, z: -1}
+  m_LocalPosition: {x: -61.68, y: -59.24, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4968110394401718}
@@ -317,6 +318,18 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114409045537735140
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1458198072493816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 276549d0692cf4700b386fdde6123cae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
 --- !u!114 &114600853744094610
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,11 +396,16 @@ MonoBehaviour:
   - {fileID: 1843147178011080, guid: f824d2ce96eee14429ee33dd76d3c88e, type: 2}
   startWeapon1Type: 11
   startWeapon2Type: 10
-  slot1: {fileID: 0}
-  slot2: {fileID: 0}
+  startWeapon3Type: 0
+  slot:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   slot1type: 0
   slot2type: 0
+  slot3type: 0
   grenadeCount: 0
+  slotActive: 2
   invulnerableTime: 1
 --- !u!114 &114898318133762376
 MonoBehaviour:
