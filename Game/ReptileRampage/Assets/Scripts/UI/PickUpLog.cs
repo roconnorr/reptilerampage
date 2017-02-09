@@ -46,8 +46,10 @@ public class PickUpLog : MonoBehaviour {
 			if(giveAmmoLog1){
 				if(PickupPrefab.addedAmmo != 0){
 					log.text = "+ " + PickupPrefab.addedAmmo + " Ammo";
+					PickupPrefab.addedAmmo = 0;
 				}else if(AmmoPack.addedAmmo != 0){
 					log.text = "+ " + AmmoPack.addedAmmo + " Ammo";
+					AmmoPack.addedAmmo = 0;
 				}
 				StartCoroutine(ShowMessage(1));
 				giveAmmoLog1 = false;
@@ -64,8 +66,10 @@ public class PickUpLog : MonoBehaviour {
 			if(giveAmmoLog2){
 				if(PickupPrefab.addedAmmo != 0){
 					log.text = "+ " + PickupPrefab.addedAmmo + " Ammo";
+					PickupPrefab.addedAmmo = 0;
 				}else if(AmmoPack.addedAmmo != 0){
 					log.text = "+ " + AmmoPack.addedAmmo + " Ammo";
+					AmmoPack.addedAmmo = 0;
 				}
 				StartCoroutine(ShowMessage(1));
 				giveAmmoLog2 = false;
