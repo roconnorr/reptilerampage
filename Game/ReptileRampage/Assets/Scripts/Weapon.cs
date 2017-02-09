@@ -137,6 +137,6 @@ public class Weapon : MonoBehaviour {
 			ammo = Mathf.Min (maxAmmo, ammo + startingAmmo);
 		} else {
 			ammo = Mathf.Min (maxAmmo, ammo + amount);
-	}
+		}
 	}
 }
