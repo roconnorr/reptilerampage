@@ -227,12 +227,13 @@ MonoBehaviour:
   bulletCount: 1
   bulletSpread: 0
   knockBackForce: 50
-  stars: 2
+  stars: 1
   maxAmmo: 500
   startingAmmo: 200
   ammo: 200
   ammoPickup: 30
   automaticFire: 1
+  infiniteAmmo: 0
   type: 20
   sprite1: {fileID: 21300002, guid: 07e682bb51b39724eb4f9d377bb3b102, type: 3}
   sprite2: {fileID: 21300004, guid: 07e682bb51b39724eb4f9d377bb3b102, type: 3}

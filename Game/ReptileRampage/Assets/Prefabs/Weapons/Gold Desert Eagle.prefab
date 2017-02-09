@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 16
   fireRate: 3
   shotSpeed: 20
   range: 50
@@ -233,6 +233,7 @@ MonoBehaviour:
   ammo: 70
   ammoPickup: 20
   automaticFire: 0
+  infiniteAmmo: 0
   type: 7
   sprite1: {fileID: 21300002, guid: eca7bd475d237c143b1e7cf3e7d954c0, type: 3}
   sprite2: {fileID: 21300004, guid: eca7bd475d237c143b1e7cf3e7d954c0, type: 3}
