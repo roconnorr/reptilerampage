@@ -38,7 +38,7 @@ public class TextBoxManager : MonoBehaviour {
 			player.GetComponent<Player>().canShoot = false;
 			dialogBox.SetActive(true);
 
-			if(Input.GetButtonDown("Fire1")){
+			if(Input.GetButtonDown("Fire")){
 				currentLine += 1;
 			}
 

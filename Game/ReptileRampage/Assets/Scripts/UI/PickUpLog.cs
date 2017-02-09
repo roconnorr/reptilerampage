@@ -37,7 +37,7 @@ public class PickUpLog : MonoBehaviour {
 				StartCoroutine(ShowMessage(1));
 				giveHealthLog = false;
 			} else if(maxHealthLog){
-				log.text = "Maximum";
+				log.text = "MAXIMUM";
 				StartCoroutine(ShowMessage(1));
 				maxHealthLog = false;
 			}	
@@ -45,55 +45,55 @@ public class PickUpLog : MonoBehaviour {
 		}else if(ammoLog1){
 			if(giveAmmoLog1){
 				if(PickupPrefab.addedAmmo != 0){
-					log.text = "+ " + PickupPrefab.addedAmmo + " Ammo";
+					log.text = "+ " + PickupPrefab.addedAmmo + " AMMO";
 					PickupPrefab.addedAmmo = 0;
 				}else if(AmmoPack.addedAmmo != 0){
-					log.text = "+ " + AmmoPack.addedAmmo + " Ammo";
+					log.text = "+ " + AmmoPack.addedAmmo + " AMMO";
 					AmmoPack.addedAmmo = 0;
 				}
 				StartCoroutine(ShowMessage(1));
 				giveAmmoLog1 = false;
 			}else if(maxAmmoLog1){
-				log.text = "Maximum";
+				log.text = "MAXIMUM";
 				StartCoroutine(ShowMessage(1));
 				maxAmmoLog1 = false;
 			}else if(noAmmoLog1){
-				log.text = "Empty";
+				log.text = "EMPTY";
 				StartCoroutine(ShowMessage(1));
 				noAmmoLog1 = false;
 			}
 		}else if(ammoLog2){
 			if(giveAmmoLog2){
 				if(PickupPrefab.addedAmmo != 0){
-					log.text = "+ " + PickupPrefab.addedAmmo + " Ammo";
+					log.text = "+ " + PickupPrefab.addedAmmo + " AMMO";
 					PickupPrefab.addedAmmo = 0;
 				}else if(AmmoPack.addedAmmo != 0){
-					log.text = "+ " + AmmoPack.addedAmmo + " Ammo";
+					log.text = "+ " + AmmoPack.addedAmmo + " AMMO";
 					AmmoPack.addedAmmo = 0;
 				}
 				StartCoroutine(ShowMessage(1));
 				giveAmmoLog2 = false;
 			}else if(maxAmmoLog2){
-				log.text = "Maximum";
+				log.text = "MAXIMUM";
 				StartCoroutine(ShowMessage(1));
 				maxAmmoLog2 = false;
 			}else if(noAmmoLog2){
-				log.text = "Empty";
+				log.text = "EMPTY";
 				StartCoroutine(ShowMessage(1));
 				noAmmoLog2 = false;
 			}
 		//Grenade
 		}else if(ammoLog3){
 			if(giveGrenadeLog){
-				log.text = "+ 1 grenade";
+				log.text = "+ 1 GRENADE";
 				StartCoroutine(ShowMessage(1));
 				giveGrenadeLog = false;
 			}else if(maxGrenadeLog){
-				log.text = "Maximum";
+				log.text = "MAXIMUM";
 				StartCoroutine(ShowMessage(1));
 				maxGrenadeLog = false;
 			}else if(noGrenadeLog){
-				log.text = "Empty";
+				log.text = "EMPTY";
 				StartCoroutine(ShowMessage(1));
 				noGrenadeLog = false;
 			}
