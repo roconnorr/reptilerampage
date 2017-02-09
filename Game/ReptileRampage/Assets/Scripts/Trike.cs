@@ -3,34 +3,27 @@
 public class Trike : MonoBehaviour {
 	
 	private enum State {Idle, Walking, VAttack, GrenadeAttack, StompAttack};
-
 	private State state;
-
 	public Transform target;
 	public Transform bulletPrefab;
 	public Transform grenadePrefab;
-
 	public float bulletKnockbackForce;
-
 	private Transform vFirePoint;
 	private Transform grenadeFirePoint;
 	private Transform stompFirePoint;
-
 	public float speed;
-
 	private int timeSinceLastAction = 0;
-
-
 	private bool flipped;
 	private float xPrev;
-
 	private Vector3 targetLocation;
+	private Animator animator;
 	
 	void Start () {
 		state = State.Idle;
 		vFirePoint = transform.FindChild ("VFirePoint");
 		grenadeFirePoint = transform.FindChild ("GrenadeFirePoint");
 		stompFirePoint = transform.FindChild ("StompFirePoint");
+		animator = GetComponent<Animator>();
 	}
 	
 	void Update () {
@@ -70,9 +63,11 @@ public class Trike : MonoBehaviour {
 		}
 		//Walking Behaviour
 		else if (state == State.Walking) {
+			animator.Play("TrikeWalk");
 			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
 				state = State.Idle;
+				animator.Play("TrikeIdle");
 			}
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
@@ -101,10 +96,7 @@ public class Trike : MonoBehaviour {
 		}
 		//Stomp Attack
 		else if (state == State.StompAttack && !IsInvoking("StompWave")) {
-			for(float i = 1f; i <= 3f; i+=1f){
-				Invoke("StompWave", i);
-			}
-			Invoke("SetStateIdle", 3f);
+			animator.Play("TrikeStomp");
 		}
 	}
 
@@ -122,6 +114,13 @@ public class Trike : MonoBehaviour {
 		for(int i=0; i<=360; i+=20){
 			GameMaster.CreateBullet (bulletPrefab, stompFirePoint.position, bulletKnockbackForce, i, 10, 5, 200, true, false, transform);
 		}
+	}
+
+	void CallStompWave(){
+		for(float i = 0f; i <= 2f; i+=1f){
+			Invoke("StompWave", i);
+		}
+		Invoke("SetStateIdle", 2f);
 	}
 
 	void GrenadeWave(){
