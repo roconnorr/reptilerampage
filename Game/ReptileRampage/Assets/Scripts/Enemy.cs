@@ -67,7 +67,7 @@ public class Enemy : MonoBehaviour {
 					canvas.GetComponent<HUDManager>().inBossFight = false;
 					GameMaster.currentLevel = 2;
 					GameMaster.level1Checkpoint = false;
-         			SceneManager.LoadScene("Level2");
+         			//SceneManager.LoadScene("Level2");
 				}else if(isTRex){
 					//possibly some more dialogue
 					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);

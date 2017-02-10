@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gate : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public class Gate : MonoBehaviour {
 	private Animator animator;
 	public bool isLevel1;
 	public bool isLevel2;
+	public bool gateway1;
 
 	void Start () {
 		hudManager = canvas.GetComponent<HUDManager>();
@@ -35,6 +37,19 @@ public class Gate : MonoBehaviour {
 			if(dist > 5.5f && player.position.y > transform.position.y && hudManager.inBossFight){
 				gameObject.GetComponent<Collider2D>().enabled = true;
 				gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			}
+		} else if(gateway1){
+			if(GameMaster.currentLevel == 2){
+				gameObject.GetComponent<Collider2D>().enabled = true;
+				gameObject.GetComponent<SpriteRenderer>().enabled = true;
+			}
+		}
+	}
+
+	void OnTriggerEnter2D(Collider2D other){
+		if(gateway1 && gameObject.GetComponent<Collider2D>().enabled){
+			if(other.tag == "Player"){
+				SceneManager.LoadScene("Level2");
 			}
 		}
 	}
