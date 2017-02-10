@@ -27,8 +27,32 @@ public class PlayDialog : MonoBehaviour {
 			textBoxManager.SetDialogNumber(1, 1);
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog2"){
+			textBoxManager.SetDialogNumber(4, 1);
+			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog3"){
+			textBoxManager.SetDialogNumber(4, 1);
+			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog4"){
 			textBoxManager.SetDialogNumber(4, 1);
+			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog5"){
+			textBoxManager.SetDialogNumber(5, 1);
+			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog6"){
+			textBoxManager.SetDialogNumber(6, 1);
+			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog7"){
+			textBoxManager.SetDialogNumber(7, 1);
+			textBoxManager.dialogActive = true;
+			other.gameObject.SetActive(false);
+		}else if(other.tag == "Dialog8"){
+			textBoxManager.SetDialogNumber(8, 1);
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
 		}
