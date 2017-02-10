@@ -24,6 +24,7 @@ public class Enemy : MonoBehaviour {
 	private int knockbackTimer = 0;
 
 	private GameObject player;
+	public GameObject deadEnemyPrefab;
 
 	//public ParticleSystem dustParticles;
 	//private Quaternion dustRotation;
@@ -34,7 +35,7 @@ public class Enemy : MonoBehaviour {
 		//localDustParticles.Play();
 		rb = GetComponent<Rigidbody2D>();
 		canvas = GameObject.Find("Canvas");
-		player = GameObject.Find ("Player");
+		player = GameObject.FindWithTag("Player");
 	}
 
 	void FixedUpdate() {
@@ -78,6 +79,7 @@ public class Enemy : MonoBehaviour {
 				}else if(isGavin){
 					SceneManager.LoadScene("WinScreen");
 				}
+				Instantiate(deadEnemyPrefab, transform.position, transform.rotation);
 				Destroy (gameObject);
 			}
 		}

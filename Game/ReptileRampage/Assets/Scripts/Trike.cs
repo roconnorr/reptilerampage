@@ -22,9 +22,9 @@ public class Trike : MonoBehaviour {
 
 	void Start () {
 		state = State.Idle;
-		vFirePoint = transform.FindChild ("VFirePoint");
-		grenadeFirePoint = transform.FindChild ("GrenadeFirePoint");
-		stompFirePoint = transform.FindChild ("StompFirePoint");
+		vFirePoint = transform.Find ("VFirePoint");
+		grenadeFirePoint = transform.Find ("GrenadeFirePoint");
+		stompFirePoint = transform.Find ("StompFirePoint");
 		animator = GetComponent<Animator>();
 	}
 	

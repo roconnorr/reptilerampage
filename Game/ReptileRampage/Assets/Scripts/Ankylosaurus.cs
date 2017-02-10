@@ -53,7 +53,7 @@ public class Ankylosaurus : MonoBehaviour {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
 		//animator = GetComponent<Animator>();
 		patrolLocation = transform.position;
-		firePoint = transform.FindChild ("FirePoint");
+		firePoint = transform.Find ("FirePoint");
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D> ();
 		modifierOriginal = gameObject.GetComponent<Enemy>().knockbackModifier;
