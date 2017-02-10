@@ -41,6 +41,7 @@ public class Stegosaurus : MonoBehaviour {
 		sr = GetComponent<SpriteRenderer>();
 		rb = GetComponent<Rigidbody2D> ();
 		patrolLocation = transform.position;
+		GetComponent<Enemy>().noFlip = true;
 	}
 
 	void FixedUpdate() {
@@ -122,10 +123,12 @@ public class Stegosaurus : MonoBehaviour {
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
 				sr.flipX = true;
 				flipped = true;
+				GetComponent<Enemy>().noFlip = false;
 			}
 			if ((transform.position.x < xPrev - 0.02) && flipped) {
 				sr.flipX = false;
 				flipped = false;
+				GetComponent<Enemy>().noFlip = true;
 			}
 			xPrev = transform.position.x;
 		}

@@ -57,6 +57,7 @@ public class Ankylosaurus : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D> ();
 		modifierOriginal = gameObject.GetComponent<Enemy>().knockbackModifier;
+		GetComponent<Enemy>().noFlip = false;
 	}
 
 	void FixedUpdate() {
@@ -157,20 +158,24 @@ public class Ankylosaurus : MonoBehaviour {
 				if ((transform.position.x > xPrev) && !flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = true;
+					GetComponent<Enemy>().noFlip = true;
 				}
 				if ((transform.position.x < xPrev) && flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = false;
+					GetComponent<Enemy>().noFlip = false;
 				}
 				//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
 			} else {
 				if ((transform.position.x > xPrev + 0.02) && !flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = true;
+					GetComponent<Enemy>().noFlip = true;
 				}
 				if ((transform.position.x < xPrev - 0.02) && flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = false;
+					GetComponent<Enemy>().noFlip = false;
 				}
 			}
 			xPrev = transform.position.x;

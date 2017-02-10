@@ -26,6 +26,7 @@ public class Trike : MonoBehaviour {
 		grenadeFirePoint = transform.Find ("GrenadeFirePoint");
 		stompFirePoint = transform.Find ("StompFirePoint");
 		animator = GetComponent<Animator>();
+		GetComponent<Enemy>().noFlip = false;
 	}
 	
 	void Update () {
@@ -75,10 +76,12 @@ public class Trike : MonoBehaviour {
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = true;
+				GetComponent<Enemy>().noFlip = true;
 			}
 			if ((transform.position.x < xPrev - 0.02) && flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = false;
+				GetComponent<Enemy>().noFlip = false;
 			}
 			xPrev = transform.position.x;
 		}
@@ -87,10 +90,12 @@ public class Trike : MonoBehaviour {
 			if ((target.position.x > transform.position.x) && !flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = true;
+				GetComponent<Enemy>().noFlip = true;
 			}
 			if ((target.position.x < transform.position.x) && flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = false;
+				GetComponent<Enemy>().noFlip = false;
 			}
 			
 			for(float i = 1f; i <= 3f; i+=1f){
@@ -129,10 +134,12 @@ public class Trike : MonoBehaviour {
 		if ((target.position.x > transform.position.x) && !flipped) {
 			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 			flipped = true;
+			GetComponent<Enemy>().noFlip = true;
 		}
 		if ((target.position.x < transform.position.x) && flipped) {
 			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 			flipped = false;
+			GetComponent<Enemy>().noFlip = false;
 		}
 
 		for(int i=0; i<=360; i+=20){

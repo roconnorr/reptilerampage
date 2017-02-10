@@ -34,6 +34,7 @@ public class TRex : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		firePoint = transform.Find ("FirePoint");
 		rocketFirePoint = transform.Find ("RocketFirePoint");
+		GetComponent<Enemy>().noFlip = true;
 	}
 	
 	// Update is called once per frame
@@ -75,10 +76,12 @@ public class TRex : MonoBehaviour {
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = true;
+				GetComponent<Enemy>().noFlip = false;
 			}
 			if ((transform.position.x < xPrev - 0.02) && flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = false;
+				GetComponent<Enemy>().noFlip = true;
 			}
 			xPrev = transform.position.x;
 		}
@@ -115,10 +118,12 @@ public class TRex : MonoBehaviour {
 		if ((target.position.x > transform.position.x) && !flipped) {
 			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 			flipped = true;
+			GetComponent<Enemy>().noFlip = false;
 		}
 		if ((target.position.x < transform.position.x) && flipped) {
 			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 			flipped = false;
+			GetComponent<Enemy>().noFlip = true;
 		}
 		targetLocation = new Vector3 (target.position.x, target.position.y, -1);
 		ShootWave ();

@@ -37,6 +37,7 @@ public class Velociraptor : MonoBehaviour {
 		animator = GetComponent<Animator>();
 		rb = GetComponent<Rigidbody2D> ();
 		patrolLocation = transform.position;
+		GetComponent<Enemy>().noFlip = false;
 	}
 
 	//Run every tick
@@ -116,20 +117,24 @@ public class Velociraptor : MonoBehaviour {
 				if ((transform.position.x > xPrev) && !flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = true;
+					GetComponent<Enemy>().noFlip = true;
 				}
 				if ((transform.position.x < xPrev) && flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = false;
+					GetComponent<Enemy>().noFlip = false;
 				}
 				//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
 			} else {
 				if ((transform.position.x > xPrev + 0.05) && !flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = true;
+					GetComponent<Enemy>().noFlip = true;
 				}
 				if ((transform.position.x < xPrev - 0.05) && flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = false;
+					GetComponent<Enemy>().noFlip = false;
 				}
 			}
 			xPrev = transform.position.x;
