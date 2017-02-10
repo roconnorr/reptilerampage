@@ -26,6 +26,7 @@ TagManager:
   - Dialog6
   - Dialog7
   - Dialog8
+  - Dialog0
   layers:
   - Default
   - TransparentFX
