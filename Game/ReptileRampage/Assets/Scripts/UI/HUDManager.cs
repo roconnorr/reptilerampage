@@ -44,6 +44,10 @@ public class HUDManager : MonoBehaviour {
 
    public GameObject gameOverPanel;
    private GameOverManager gameOver;
+
+   public GameObject HudGunPanel;
+
+   public GameObject HudPistolPanel;
    void Start () {
 		playerScript = player.GetComponent<Player>();
       	health = playerScript.health;
@@ -133,6 +137,16 @@ public class HUDManager : MonoBehaviour {
                BossHealthObject.SetActive(true);  
          }else{
                BossHealthObject.SetActive(false); 
+         }
+   }
+
+   public void HideBottomHUD(bool active){
+         if(!active){
+            HudGunPanel.SetActive(true);
+            HudPistolPanel.SetActive(true);
+         }else{
+            HudGunPanel.SetActive(false);
+            HudPistolPanel.SetActive(false);
          }
    }
 }

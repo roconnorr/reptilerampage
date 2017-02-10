@@ -1128,7 +1128,7 @@ MonoBehaviour:
   player: {fileID: 0}
   BossTrigger: {fileID: 0}
   dialogBox: {fileID: 1445876794807768}
-  levelBoss: 1
+  levelBoss: 0
   text: {fileID: 114846021886171006}
   dialogActive: 0
   inBossFight: 0
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1500
+  m_MaxValue: 2000
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -2664,6 +2664,8 @@ MonoBehaviour:
   player: {fileID: 0}
   pauseMenuPanel: {fileID: 1175236259911114}
   gameOverPanel: {fileID: 1361005048127202}
+  HudGunPanel: {fileID: 1044372102274530}
+  HudPistolPanel: {fileID: 1412399470654002}
 --- !u!114 &114708080867134090
 MonoBehaviour:
   m_ObjectHideFlags: 1

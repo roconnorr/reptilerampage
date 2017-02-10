@@ -14,6 +14,8 @@ public class TextBoxManager : MonoBehaviour {
 	public bool dialogActive = false;
 	public bool inBossFight = false;
 
+	private HUDManager hudManager;
+
 	public TextAsset[] textFiles;
 	private int dialogTextNumber;
 	public string[] textLines;
@@ -21,6 +23,7 @@ public class TextBoxManager : MonoBehaviour {
 	public int currentLine;
 
 	void Start () {
+		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
 		if(textFiles[dialogTextNumber] != null){
 			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
 		}
@@ -33,6 +36,7 @@ public class TextBoxManager : MonoBehaviour {
 		if(dialogActive){
 			player.GetComponent<Player>().canMove = false;
 			player.GetComponent<Player>().canShoot = false;
+			hudManager.HideBottomHUD(true);
 			dialogBox.SetActive(true);
 
 			if(Input.GetButtonDown("Fire")){
@@ -58,6 +62,8 @@ public class TextBoxManager : MonoBehaviour {
 			}else{
 				text.text = textLines[currentLine].ToUpper();
 			}
+		}else{
+			hudManager.HideBottomHUD(false);
 		}
 	}
 
