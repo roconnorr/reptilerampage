@@ -27,7 +27,7 @@ public class StegoTurret : MonoBehaviour {
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		firePoint = transform.FindChild ("FirePoint");
+		firePoint = transform.Find ("FirePoint");
 	}
 
 	void Update () {

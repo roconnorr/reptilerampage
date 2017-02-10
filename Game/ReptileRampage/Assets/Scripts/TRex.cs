@@ -32,8 +32,8 @@ public class TRex : MonoBehaviour {
 		defencesDown = false;
 		sr = GetComponent<SpriteRenderer> ();
 		animator = GetComponent<Animator>();
-		firePoint = transform.FindChild ("FirePoint");
-		rocketFirePoint = transform.FindChild ("RocketFirePoint");
+		firePoint = transform.Find ("FirePoint");
+		rocketFirePoint = transform.Find ("RocketFirePoint");
 	}
 	
 	// Update is called once per frame

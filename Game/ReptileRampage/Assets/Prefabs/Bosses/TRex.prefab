@@ -227,6 +227,8 @@ MonoBehaviour:
   hasSeen: 0
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
+  deadEnemyPrefab: {fileID: 1896898922649070, guid: 86a43544e18b94081ba8b08c9e33a528,
+    type: 2}
 --- !u!114 &114834681339041374
 MonoBehaviour:
   m_ObjectHideFlags: 1
