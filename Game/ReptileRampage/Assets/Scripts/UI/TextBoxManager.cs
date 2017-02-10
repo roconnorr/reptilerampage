@@ -7,6 +7,8 @@ public class TextBoxManager : MonoBehaviour {
 
 	public GameObject BossTrigger;
 	public GameObject dialogBox;
+	public Image speakingCharacter;
+	public Sprite[] characterPortraits;
 
 	public enum CurrentLevelBoss {trike, trex, gavin};
 	public CurrentLevelBoss levelBoss;
@@ -67,7 +69,8 @@ public class TextBoxManager : MonoBehaviour {
 		}
 	}
 
-	public void SetDialogNumber(int num){
+	public void SetDialogNumber(int num, int charIndex){
+		speakingCharacter.sprite = characterPortraits[charIndex];
 		dialogTextNumber = num;
 		if(textFiles[dialogTextNumber] != null){
 			textLines = (textFiles[dialogTextNumber].text.Split('\n'));

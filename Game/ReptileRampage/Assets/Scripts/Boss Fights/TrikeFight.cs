@@ -12,7 +12,7 @@ public class TrikeFight : MonoBehaviour {
 	public void StartFight(){
 		DialogBox.GetComponentInParent<TextBoxManager>().dialogActive = true;
 		DialogBox.GetComponentInParent<TextBoxManager>().inBossFight = true;
-		DialogBox.GetComponentInParent<TextBoxManager>().SetDialogNumber(2);
+		DialogBox.GetComponentInParent<TextBoxManager>().SetDialogNumber(2, 1);
 	}
 
 	public void SpawnTrike(){
