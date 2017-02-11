@@ -8,6 +8,8 @@ public class PickupPrefab : MonoBehaviour {
 
 	public GameObject[] Stars;
 
+	public GameObject EIcon;
+
 	private Player playerScript;
 
 	private SpriteRenderer spriteRenderer; 
@@ -23,6 +25,7 @@ public class PickupPrefab : MonoBehaviour {
 		for(int i=0; i<Stars.Length; i++){
             Stars[i].SetActive(false);
         }
+		EIcon.SetActive(false);
 	}
 
 	public void ChangeType(Player.WeaponType newType, int ammoCount){
@@ -62,11 +65,13 @@ public class PickupPrefab : MonoBehaviour {
 		for(int i=0; i<playerScript.weaponsprefabs[(int)type].GetComponent<Weapon>().stars; i++){
             Stars[i].SetActive(true);
         }
+		EIcon.SetActive(true);
 	}
 
 	public void HideStars(){
 		for(int i=0; i<Stars.Length; i++){
             Stars[i].SetActive(false);
         }
+		EIcon.SetActive(false);
 	}
 }
