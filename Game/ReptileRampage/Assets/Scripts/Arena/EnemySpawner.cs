@@ -54,6 +54,7 @@ public class EnemySpawner : MonoBehaviour {
 				stegoArray[i].GetComponent<Enemy>().hasSeen = true;
 				stegoArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
 				stegoArray[i].GetComponent<Stegosaurus>().target = player;
+				stegoArray[i].GetComponentInChildren<StegoTurret>().target = player;
 				waveMaster.enemiesAlive += 1;
 			}
 		}else if(type == "Velociraptor"){

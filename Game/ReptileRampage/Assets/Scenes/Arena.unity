@@ -758,7 +758,8 @@ MonoBehaviour:
   - {fileID: 511167981}
   - {fileID: 2035387826}
   - {fileID: 1877920492}
-  currentWave: 0
+  currentWave: 1
+  waveIndex: 1
   timer: 0
   timeToNewWave: 10
   betweenWaves: 0
