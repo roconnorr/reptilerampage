@@ -232,7 +232,7 @@ public class Player : MonoBehaviour
 			if(closestWeapon != null){
 				PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
 			
-				if (minDist < 4) {
+				if (minDist < 3) {
 					pk.DisplayStars();
 					if (Input.GetButtonDown ("Pickup") && minDist < 2) {
 						ChangeWeapon (pk.type, pk, closestWeapon);
