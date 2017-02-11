@@ -8,8 +8,9 @@ public class WaveMaster : MonoBehaviour {
 	public GameObject[] spawners;
 
 	public int currentWave = 1;
+	private int waveIndex = 1;
 
-	public int waveIndex = 1;
+	public int cratesPerLevel;
 
 	public float timer = 0.0f;
 	public float timeToNewWave = 10.0f;
@@ -27,14 +28,14 @@ public class WaveMaster : MonoBehaviour {
 		//waveIndex = 1;
 		SpawnWave();
 		betweenWaves = false;
-		SpawnCrates();
+		SpawnCrates(cratesPerLevel);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(enemiesAlive == 0){
 			if(!cratesPlaced){
-				SpawnCrates();
+				SpawnCrates(cratesPerLevel);
 				cratesPlaced = true;
 			}
 			timer += Time.deltaTime;
@@ -50,22 +51,19 @@ public class WaveMaster : MonoBehaviour {
 		}
 	}
 
-	public void SpawnCrates(){
+	public void SpawnCrates(int amount){
 		if(currentWave < 10){
-			Instantiate(tier1crate, new Vector3(-10, 10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier1crate, new Vector3(10, 10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier1crate, new Vector3(10, -10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier1crate, new Vector3(-10, -10, -2), new Quaternion(0,0,0,0));
+			for(int i = 0; i<amount; i++){
+				Instantiate(tier1crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
+			}
 		}else if(currentWave < 20){
-			Instantiate(tier2crate, new Vector3(-10, 10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier2crate, new Vector3(10, 10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier2crate, new Vector3(10, -10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier2crate, new Vector3(-10, -10, -2), new Quaternion(0,0,0,0));
+			for(int i = 0; i<amount; i++){
+				Instantiate(tier2crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
+			}
 		}else if(currentWave < 30){
-			Instantiate(tier3crate, new Vector3(-10, 10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier3crate, new Vector3(10, 10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier3crate, new Vector3(10, -10, -2), new Quaternion(0,0,0,0));
-			Instantiate(tier3crate, new Vector3(-10, -10, -2), new Quaternion(0,0,0,0));
+			for(int i = 0; i<amount; i++){
+				Instantiate(tier3crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
+			}
 		}
 	}
 
