@@ -79,7 +79,6 @@ public class Enemy : MonoBehaviour {
 					canvas.GetComponent<HUDManager>().inBossFight = false;
 					GameMaster.currentLevel = 3;
 					GameMaster.level2Checkpoint = false;
-					SceneManager.LoadScene("Level3");
 				}else if(isGavin){
 					SceneManager.LoadScene("WinScreen");
 				}
@@ -87,7 +86,7 @@ public class Enemy : MonoBehaviour {
 				if(!noFlip){
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}else if(noFlip){
-					//deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}
 				if(arenaMode){
 					GameObject.Find("WaveMaster").GetComponent<WaveMaster>().enemiesAlive--;
