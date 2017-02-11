@@ -12,8 +12,7 @@ public class Player : MonoBehaviour
     public bool gameOver;
     public float speed;
 	public Sprite deadSprite;
-	[HideInInspector]
-	public bool isDead;
+	private bool isDead;
 	private SpriteRenderer sr;
     public static int playerMaxHP = 100;
 
