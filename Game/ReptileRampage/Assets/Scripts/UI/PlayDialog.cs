@@ -18,7 +18,7 @@ public class PlayDialog : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Dialog0"){
-			textBoxManager.SetDialogNumber(0, 4);
+			textBoxManager.SetDialogNumber(0, 3);
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog1"){
