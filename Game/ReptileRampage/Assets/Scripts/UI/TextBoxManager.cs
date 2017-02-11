@@ -5,6 +5,8 @@ public class TextBoxManager : MonoBehaviour {
 
 	public GameObject player;
 
+	private Player playerScript;
+
 	public GameObject BossTrigger;
 	public GameObject dialogBox;
 	public Image speakingCharacter;
@@ -26,6 +28,7 @@ public class TextBoxManager : MonoBehaviour {
 
 	void Start () {
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
+		playerScript = player.GetComponent<Player>();
 		if(textFiles[dialogTextNumber] != null){
 			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
 		}
@@ -36,8 +39,8 @@ public class TextBoxManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(dialogActive){
-			player.GetComponent<Player>().canMove = false;
-			player.GetComponent<Player>().canShoot = false;
+			playerScript.canMove = false;
+			playerScript.slot[playerScript.slotActive].SetActive(false);
 			hudManager.HideBottomHUD(true);
 			dialogBox.SetActive(true);
 
