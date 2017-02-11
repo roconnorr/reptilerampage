@@ -25,6 +25,7 @@ public class TRex : MonoBehaviour {
 	private Vector3 targetLocation;
 	private SpriteRenderer sr;
 	private Animator animator;
+	private int walkTimer = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -39,6 +40,9 @@ public class TRex : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (walkTimer > 0) {
+			walkTimer--;
+		}
 		if(target == null){
 			Destroy(gameObject);
 			return;
@@ -56,6 +60,7 @@ public class TRex : MonoBehaviour {
 				} else if (rand < 2) {
 					state = State.Walking;
 					timeSinceLastAction = 0;
+					walkTimer = 5;
 					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
 					actions++;
 				} else if (rand < 4) {
@@ -144,6 +149,12 @@ public class TRex : MonoBehaviour {
 	void OnCollisionEnter2D (Collision2D other) {
 		if(other.gameObject.GetComponent<Bullet>() && !defencesDown) {
 			blocked = 3;
+		}
+	}
+
+	void OnTriggerStay2D (Collider2D other) {
+		if (other.tag == "BossCollider" && state == State.Walking && walkTimer == 0) {
+			state = State.Idle;
 		}
 	}
 }

@@ -3512,6 +3512,73 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2dc292e4eb80f4eee993c35d762988f0, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &379031513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 379031515}
+  - component: {fileID: 379031514}
+  m_Layer: 0
+  m_Name: Boss Collider
+  m_TagString: BossCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!60 &379031514
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 379031513}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -6.4407306, y: 7.7106595}
+      - {x: -6.9012547, y: -6.4333186}
+      - {x: 4.567504, y: -6.5478635}
+      - {x: 3.4916134, y: -1.0912137}
+      - {x: 3.433897, y: -2.9543543}
+      - {x: -0.4050207, y: -5.511702}
+      - {x: -2.93087, y: -5.7283216}
+      - {x: -4.938111, y: -5.1175017}
+      - {x: -6.0244555, y: -4.423394}
+      - {x: -6.124325, y: -3.6148105}
+      - {x: -3.0129642, y: -0.5551183}
+      - {x: -2.9573622, y: 0.3361094}
+      - {x: -2.7106905, y: 1.2560973}
+      - {x: -2.7555819, y: 2.459444}
+      - {x: -1.7104568, y: 3.7493515}
+      - {x: -0.3765583, y: 5.099509}
+      - {x: 2.5487719, y: 6.484232}
+      - {x: 3.3057728, y: 5.682022}
+      - {x: 3.4066916, y: 1.3925397}
+      - {x: 3.7314177, y: 1.0848608}
+      - {x: 3.770131, y: -0.786438}
+      - {x: 3.432149, y: -1.0928426}
+      - {x: 4.644904, y: -6.2308955}
+      - {x: 4.532897, y: 7.8145194}
+--- !u!4 &379031515
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 379031513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 44.7, y: -13.1, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &380282241
 Prefab:
   m_ObjectHideFlags: 0
@@ -4385,11 +4452,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 40.8
+      value: 39.2
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -43.5
+      value: -39.8
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.z
