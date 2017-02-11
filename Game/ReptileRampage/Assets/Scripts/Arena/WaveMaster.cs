@@ -8,8 +8,9 @@ public class WaveMaster : MonoBehaviour {
 	public GameObject[] spawners;
 
 	public int currentWave = 1;
+	private int waveIndex = 1;
 
-	public int waveIndex = 1;
+	public int cratesPerLevel;
 
 	public float timer = 0.0f;
 	public float timeToNewWave = 10.0f;
@@ -27,14 +28,14 @@ public class WaveMaster : MonoBehaviour {
 		//waveIndex = 1;
 		SpawnWave();
 		betweenWaves = false;
-		SpawnCrates(10);
+		SpawnCrates(cratesPerLevel);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(enemiesAlive == 0){
 			if(!cratesPlaced){
-				SpawnCrates(10);
+				SpawnCrates(cratesPerLevel);
 				cratesPlaced = true;
 			}
 			timer += Time.deltaTime;

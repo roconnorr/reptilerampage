@@ -759,7 +759,7 @@ MonoBehaviour:
   - {fileID: 2035387826}
   - {fileID: 1877920492}
   currentWave: 1
-  waveIndex: 1
+  cratesPerLevel: 8
   timer: 0
   timeToNewWave: 10
   betweenWaves: 0
