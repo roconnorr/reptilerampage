@@ -219,7 +219,30 @@ public class Player : MonoBehaviour
 			}
 			weaponslist = GameObject.FindGameObjectsWithTag ("Pickup");
 
-			//when the pickup button is pressed it gets the closest gun, if close enough its picked up
+			float minDist = Mathf.Infinity;
+			GameObject closestWeapon = null;
+			foreach (GameObject weapon in weaponslist) {
+				float dist = Vector3.Distance (transform.position, weapon.transform.position);
+				if (dist < minDist) {
+					minDist = dist;
+					closestWeapon = weapon;
+					
+				}
+			}
+			if(closestWeapon != null){
+				PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
+			
+				if (minDist < 4) {
+					pk.DisplayStars();
+					if (Input.GetButtonDown ("Pickup") && minDist < 2) {
+						ChangeWeapon (pk.type, pk, closestWeapon);
+					}
+				}else{
+					pk.HideStars();
+				}
+			}
+		
+			/*when the pickup button is pressed it gets the closest gun, if close enough its picked up (old code without star draw)
 			if (Input.GetButtonDown ("Pickup")) {
 				float minDist = Mathf.Infinity;
 				GameObject closestWeapon = null;
@@ -233,8 +256,8 @@ public class Player : MonoBehaviour
 				if (minDist < 2) {
 					PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab> ();
 					ChangeWeapon (pk.type, pk, closestWeapon);
-				}
-			}
+				}*/
+			
 
 			if (Input.GetButtonDown ("SwapSlot") || Input.GetAxis ("Mouse ScrollWheel") < 0) {
 				slotActive = (slotActive + 1) % 3;
