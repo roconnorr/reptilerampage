@@ -11190,11 +11190,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1019736887}
     - target: {fileID: 114018706801973214, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: player
@@ -11205,6 +11200,11 @@ Prefab:
       propertyPath: BossTrigger
       value: 
       objectReference: {fileID: 756008265}
+    - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1019736887}
     - target: {fileID: 223866127056531330, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_Camera

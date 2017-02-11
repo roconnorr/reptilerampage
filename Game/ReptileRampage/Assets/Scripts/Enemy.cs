@@ -27,6 +27,8 @@ public class Enemy : MonoBehaviour {
 	public GameObject deadEnemyPrefab;
 	public bool noFlip;
 
+	public bool arenaMode;
+
 
 	//public ParticleSystem dustParticles;
 	//private Quaternion dustRotation;
@@ -85,6 +87,9 @@ public class Enemy : MonoBehaviour {
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}else if(noFlip){
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				}
+				if(arenaMode){
+					GameObject.Find("WaveMaster").GetComponent<WaveMaster>().enemiesAlive--;
 				}
 				Destroy (gameObject);
 			}
