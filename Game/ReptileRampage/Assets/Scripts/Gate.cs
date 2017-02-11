@@ -7,13 +7,16 @@ public class Gate : MonoBehaviour {
 	public GameObject canvas;
 	private HUDManager hudManager;
 	private Animator animator;
+	private SpriteRenderer sr;
 	public bool isLevel1;
 	public bool isLevel2;
 	public bool gateway1;
+	public Sprite sprite2;
 
 	void Start () {
 		hudManager = canvas.GetComponent<HUDManager>();
 		animator = gameObject.GetComponent<Animator>();
+		sr = gameObject.GetComponent<SpriteRenderer> ();
 	}
 	
 	void Update () {
@@ -41,7 +44,7 @@ public class Gate : MonoBehaviour {
 		} else if(gateway1){
 			if(GameMaster.currentLevel == 2){
 				gameObject.GetComponent<Collider2D>().enabled = true;
-				gameObject.GetComponent<SpriteRenderer>().enabled = true;
+				sr.sprite = sprite2;
 			}
 		}
 	}

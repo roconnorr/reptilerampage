@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour {
 				if(!noFlip){
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}else if(noFlip){
-					//deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}
 				Destroy (gameObject);
 			}
