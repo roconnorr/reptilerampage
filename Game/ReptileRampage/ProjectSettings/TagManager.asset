@@ -27,6 +27,7 @@ TagManager:
   - Dialog7
   - Dialog8
   - Dialog0
+  - BossCollider
   layers:
   - Default
   - TransparentFX

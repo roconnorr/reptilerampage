@@ -19,6 +19,7 @@ public class Trike : MonoBehaviour {
 	private Animator animator;
 	private int stomps;
 	private bool isStomping;
+	private int walkTimer = 0;
 
 	void Start () {
 		state = State.Idle;
@@ -30,6 +31,9 @@ public class Trike : MonoBehaviour {
 	}
 	
 	void Update () {
+		if (walkTimer > 0) {
+			walkTimer--;
+		}
 		if(target == null){
 			Destroy(gameObject);
 			return;
@@ -43,6 +47,7 @@ public class Trike : MonoBehaviour {
 				if (rand < 6) {
 					state = State.Walking;
 					timeSinceLastAction = 0;
+					walkTimer = 5;
 					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
 				} else if (rand < 8) {
 					state = State.VAttack;
@@ -167,7 +172,10 @@ public class Trike : MonoBehaviour {
 		state = State.Idle;
 	}
 
-	void OnCollisionEnter2D (Collision2D other) {
+	void OnTriggerStay2D (Collider2D other) {
+		if (other.tag == "BossCollider" && state == State.Walking && walkTimer == 0) {
+			state = State.Idle;
+		}
 	}
 }
 
