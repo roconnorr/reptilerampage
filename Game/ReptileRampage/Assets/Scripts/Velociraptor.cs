@@ -42,10 +42,6 @@ public class Velociraptor : MonoBehaviour {
 
 	//Run every tick
 	void FixedUpdate() {
-		if(target == null){
-			Destroy(gameObject);
-			return;
-		}
 		if (!disabled) {
 			//Get vision booleans
 			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);

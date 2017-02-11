@@ -356,6 +356,7 @@ MonoBehaviour:
   canShoot: 0
   gameOver: 0
   speed: 5
+  deadSprite: {fileID: 21300000, guid: aab4a902c430e7c4fb1d84095916588a, type: 3}
   footstepSounds:
   - {fileID: 8300000, guid: 4c328c85b1fe54f61bcc2bca8bb1b87c, type: 3}
   - {fileID: 8300000, guid: fba396bb953df4ebeac315fd071b60b2, type: 3}

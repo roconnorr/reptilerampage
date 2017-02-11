@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
 
     public bool gameOver;
     public float speed;
+	public Sprite deadSprite;
+	private bool isDead;
+	private SpriteRenderer sr;
     public static int playerMaxHP = 100;
 
 	private AudioSource soundSource;
 	public AudioClip[] footstepSounds;
 
-
-    [HideInInspector]
     public int health;
 
     //public ParticleSystem dustParticles;
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
     private float vertical;
 
     void Start(){
+		sr = GetComponent<SpriteRenderer> ();
         if(GameMaster.level1Checkpoint){
             transform.position = new Vector3(45, 46, -1);
         } else if(GameMaster.level2Checkpoint){
@@ -132,7 +134,6 @@ public class Player : MonoBehaviour
     }
 
     void FixedUpdate(){
-
         if (canMove){
 
             horizontal = Input.GetAxis("Horizontal");
@@ -161,142 +162,155 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
-        GameMaster.slot1type = slot1type;
-		GameMaster.slot2type = slot2type;
-		GameMaster.slot3type = slot3type;
-		GameMaster.grenadeCount = grenadeCount;
-		if(slot[0] != null){
-			GameMaster.slot1ammo = slot[0].GetComponent<Weapon>().ammo;
-			GameMaster.slot1MaxAmmo = slot[0].GetComponent<Weapon>().maxAmmo;
-        }
-		if(slot[1] != null){
-			GameMaster.slot2ammo = slot[1].GetComponent<Weapon>().ammo;
-			GameMaster.slot2MaxAmmo = slot[1].GetComponent<Weapon>().maxAmmo;
-		}
-		if (Input.GetButtonDown ("Grenade")) {
-			Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
-			difference.Normalize ();
-			float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
-			if (grenadeCount > 0) {
-				GameMaster.CreateGrenade (grenadePrefab, transform.position, rotZ - 90, 100, 20, 70, false, true);
-				grenadeCount--;
-			} else {
-				//play no bullet sound
-				PickUpLog.noGrenadeLog = true;
+		if (!isDead) {
+			GameMaster.slot1type = slot1type;
+			GameMaster.slot2type = slot2type;
+			GameMaster.slot3type = slot3type;
+			GameMaster.grenadeCount = grenadeCount;
+			if (slot [0] != null) {
+				GameMaster.slot1ammo = slot [0].GetComponent<Weapon> ().ammo;
+				GameMaster.slot1MaxAmmo = slot [0].GetComponent<Weapon> ().maxAmmo;
 			}
-		}
-        weaponslist = GameObject.FindGameObjectsWithTag("Pickup");
-        crossHair.position = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+			if (slot [1] != null) {
+				GameMaster.slot2ammo = slot [1].GetComponent<Weapon> ().ammo;
+				GameMaster.slot2MaxAmmo = slot [1].GetComponent<Weapon> ().maxAmmo;
+			}
+			if (Input.GetButtonDown ("Grenade")) {
+				Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
+				difference.Normalize ();
+				float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
+				if (grenadeCount > 0) {
+					GameMaster.CreateGrenade (grenadePrefab, transform.position, rotZ - 90, 100, 20, 70, false, true);
+					grenadeCount--;
+				} else {
+					//play no bullet sound
+					PickUpLog.noGrenadeLog = true;
+				}
+			}
+			weaponslist = GameObject.FindGameObjectsWithTag ("Pickup");
 
-        //when the pickup button is pressed it gets the closest gun, if close enough its picked up
-        if (Input.GetButtonDown("Pickup")){
-            float minDist = Mathf.Infinity;
-            GameObject closestWeapon = null;
-            foreach (GameObject weapon in weaponslist){
-                float dist = Vector3.Distance(transform.position, weapon.transform.position);
-                if (dist < minDist){
-                    minDist = dist;
-                    closestWeapon = weapon;
-                }
-            }
-			if (minDist < 2){
-                PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
-                ChangeWeapon(pk.type, pk, closestWeapon);
-            }
-        }
+			//when the pickup button is pressed it gets the closest gun, if close enough its picked up
+			if (Input.GetButtonDown ("Pickup")) {
+				float minDist = Mathf.Infinity;
+				GameObject closestWeapon = null;
+				foreach (GameObject weapon in weaponslist) {
+					float dist = Vector3.Distance (transform.position, weapon.transform.position);
+					if (dist < minDist) {
+						minDist = dist;
+						closestWeapon = weapon;
+					}
+				}
+				if (minDist < 2) {
+					PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab> ();
+					ChangeWeapon (pk.type, pk, closestWeapon);
+				}
+			}
 
-		if (Input.GetButtonDown ("SwapSlot") || Input.GetAxis("Mouse ScrollWheel") < 0) {
-			slotActive = (slotActive + 1) % 3;
-			while (slot [slotActive] == null) {
+			if (Input.GetButtonDown ("SwapSlot") || Input.GetAxis ("Mouse ScrollWheel") < 0) {
 				slotActive = (slotActive + 1) % 3;
+				while (slot [slotActive] == null) {
+					slotActive = (slotActive + 1) % 3;
+				}
 			}
-		}
-		if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
-			slotActive = (slotActive + 2) % 3;
-			while (slot [slotActive] == null) {
+			if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
 				slotActive = (slotActive + 2) % 3;
+				while (slot [slotActive] == null) {
+					slotActive = (slotActive + 2) % 3;
+				}
+			}
+
+			if (Input.GetButtonDown ("Slot1") && slot [0] != null) {
+				slotActive = 0;
+			}
+			if (Input.GetButtonDown ("Slot2") && slot [1] != null) {
+				slotActive = 1;
+			}
+			if (Input.GetButtonDown ("Slot3")) {
+				slotActive = 2;
+			}
+
+			slot [slotActive].SetActive (true);
+			if (slot [(slotActive + 1) % 3] != null) {
+				slot [(slotActive + 1) % 3].SetActive (false);
+			}
+			if (slot [(slotActive + 2) % 3] != null) {
+				slot [(slotActive + 2) % 3].SetActive (false);
+			}
+
+			if (Time.timeScale != 0) {
+				Cursor.visible = false;
+			} else if (Time.timeScale == 0) {
+				Cursor.visible = true;
+			}
+
+			if (!isInvulnerable) {
+				foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
+					if (r.gameObject.tag != "MuzzelFlash") {
+						Color c = r.material.color;
+						c.a = 1f;
+						r.material.color = c;
+					}
+				}
+			} else {
+				foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
+					if (r.gameObject.tag != "MuzzelFlash") {
+						Color c = r.material.color;
+						c.a = 0.3f;
+						r.material.color = c;
+					}
+				}
 			}
 		}
-
-		if (Input.GetButtonDown ("Slot1") && slot[0] != null) {
-			slotActive = 0;
-		}
-		if (Input.GetButtonDown ("Slot2") && slot[1] != null) {
-			slotActive = 1;
-		}
-		if (Input.GetButtonDown ("Slot3")) {
-			slotActive = 2;
-		}
-
-		slot [slotActive].SetActive (true);
-		if (slot [(slotActive + 1) % 3] != null) {
-			slot [(slotActive + 1) % 3].SetActive (false);
-		}
-		if (slot [(slotActive + 2) % 3] != null) {
-			slot [(slotActive + 2) % 3].SetActive (false);
-		}
-
-        if(Time.timeScale!=0){
-            Cursor.visible = false;
-        } else if(Time.timeScale == 0){
-            Cursor.visible = true;
-        }
-
-        if(!isInvulnerable){
-            foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                if(r.gameObject.tag != "MuzzelFlash"){
-                    Color c = r.material.color;
-                    c.a = 1f;
-                    r.material.color = c;
-                }
-            }
-        }else{
-            foreach (Renderer r in GetComponentsInChildren<Renderer>()){
-                 if(r.gameObject.tag != "MuzzelFlash"){
-                     Color c = r.material.color;
-                     c.a = 0.3f;
-                     r.material.color = c;
-                 }
-             }
-        }
+		crossHair.position = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
     }
 
     private IEnumerator cycleFootsteps(){
-        while(true){
-            soundSource.clip = footstepSounds[Random.Range(0,4)];
-            if (Input.GetButton("Horizontal") || Input.GetButton("Vertical")){
-                if (!soundSource.isPlaying){
-                    soundSource.Play();
-                }
-            }else{
-                soundSource.Stop();
-            }
-            yield return new WaitForSeconds(soundSource.clip.length);
+		if (!isDead) {
+			while (true) {
+				soundSource.clip = footstepSounds [Random.Range (0, 4)];
+				if (Input.GetButton ("Horizontal") || Input.GetButton ("Vertical")) {
+					if (!soundSource.isPlaying) {
+						soundSource.Play ();
+					}
+				} else {
+					soundSource.Stop ();
+				}
+				yield return new WaitForSeconds (soundSource.clip.length);
 
-        }
+			}
+		}
     }
 
 	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
-        
-        if(!isInvulnerable){
-            health -= amount;
-            FireBloodParticles(dir);
+		if (!isDead) {
+			if (!isInvulnerable) {
+				health -= amount;
+				FireBloodParticles (dir);
 
-            StartCoroutine(becomeInvulnerable());
-        }
+				StartCoroutine (becomeInvulnerable ());
+			}
 
-        //Knockback
-		knockback = dir * Vector2.up;
-		knockback *= force;
-		knockbackTimer = 10;
+			//Knockback
+			knockback = dir * Vector2.up;
+			knockback *= force;
+			knockbackTimer = 10;
 
-        if (health <= 0){
-            //AudioSource.PlayClipAtPoint (deathRoar, transform.position);
-            GameObject.Find("Canvas").GetComponent<HUDManager>().inBossFight = false;
-            Destroy (gameObject);
-            //Debug.Log("you should be dead");
-            gameOver = true;
-        }
+			if (health <= 0) {
+				//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
+				GameObject.Find ("Canvas").GetComponent<HUDManager> ().inBossFight = false;
+				sr.enabled = true;
+				GetComponentInChildren<UpperBodyAnim> ().GetComponent<SpriteRenderer> ().enabled = false;
+				GetComponentInChildren<LowerBodyAnim> ().GetComponent<SpriteRenderer> ().enabled = false;
+				sr.sprite = deadSprite;
+				isDead = true;
+				canMove = false;
+				canShoot = false;
+				isInvulnerable = false;
+				GetComponent<Rigidbody2D> ().isKinematic = true;
+				slot [slotActive].SetActive (false);
+				gameOver = true;
+			}
+		}
     }
 
     IEnumerator becomeInvulnerable() {

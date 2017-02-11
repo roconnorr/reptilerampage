@@ -60,10 +60,6 @@ public class Gavin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(target == null){
-			Destroy(gameObject);
-			return;
-		}
 		transform.Translate (new Vector3 (0, speed * 0.02f * dir));
 		float angle =Mathf.Atan2(target.transform.position.y-transform.position.y, target.transform.position.x-transform.position.x)*180 / Mathf.PI;
 		angle += 180;

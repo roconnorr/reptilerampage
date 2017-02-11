@@ -1687,6 +1687,11 @@ Prefab:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 863452690}
+    - target: {fileID: 114784221453289200, guid: bdfb391d80d689b4db2843af3b8a880c,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
   m_IsPrefabParent: 0
@@ -5819,6 +5824,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1458198072493816, guid: bdfb391d80d689b4db2843af3b8a880c,
     type: 2}
   m_PrefabInternal: {fileID: 375609483}
+--- !u!114 &1019736894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1019736887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371984294bd194dc183eee2636e2ddb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!4 &1019736895 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c,

@@ -31,10 +31,6 @@ public class StegoTurret : MonoBehaviour {
 	}
 
 	void Update () {
-		if(target == null){
-			Destroy(gameObject);
-			return;
-		}
 		targetInShootRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < shootRange;
 
 		if(targetInShootRange && GetComponentInParent<Stegosaurus>().isChasing){

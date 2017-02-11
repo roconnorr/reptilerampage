@@ -45,10 +45,6 @@ public class Stegosaurus : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		if(target == null){
-			Destroy(gameObject);
-			return;
-		}
 		if (!disabled) {
 			//Get vision booleans
 			targetViewBlocked = PositionHiddenByObstacles (target.transform.position);

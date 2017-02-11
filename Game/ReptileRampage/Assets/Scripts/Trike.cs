@@ -34,10 +34,6 @@ public class Trike : MonoBehaviour {
 		if (walkTimer > 0) {
 			walkTimer--;
 		}
-		if(target == null){
-			Destroy(gameObject);
-			return;
-		}
 		//Idle Behaviour
 		if (state == State.Idle) {
 			if (timeSinceLastAction < 100) {
