@@ -9,18 +9,40 @@ public class WaveMaster : MonoBehaviour {
 
 	public int currentWave;
 
+	public float timer = 0.0f;
+	public float timeToNewWave = 10.0f;
+	public bool betweenWaves;
+
+	private bool cratesPlaced;
+
+	public GameObject tier1crate;
+	public GameObject tier2crate;
+	public GameObject tier3crate;
 
 	// Use this for initialization
 	void Start () {
 		currentWave = 1;
 		SpawnWave();
+		betweenWaves = false;
+		SpawnCrates(1);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(enemiesAlive == 0){
-			IncrementWave();
-			SpawnWave();
+			if(!cratesPlaced){
+				SpawnCrates(1);
+				cratesPlaced = true;
+			}
+			timer += Time.deltaTime;
+			betweenWaves = true;
+			if(timer > timeToNewWave){
+				currentWave++;
+				betweenWaves = false;
+				cratesPlaced = false;
+				timer = 0;
+				SpawnWave();
+			}
 		}
 	}
 
@@ -42,9 +64,11 @@ public class WaveMaster : MonoBehaviour {
 		}else if(currentWave == 10){
 		}
 	}
-	public void IncrementWave(){
-		currentWave++;
-		//wait 10, drop new supplies
+	public void SpawnCrates(int level){
+		Instantiate(tier1crate, new Vector3(-10, 10, -2), new Quaternion(0,0,0,0));
+		Instantiate(tier1crate, new Vector3(10, 10, -2), new Quaternion(0,0,0,0));
+		Instantiate(tier1crate, new Vector3(10, -10, -2), new Quaternion(0,0,0,0));
+		Instantiate(tier1crate, new Vector3(-10, -10, -2), new Quaternion(0,0,0,0));
 	}
 
 }

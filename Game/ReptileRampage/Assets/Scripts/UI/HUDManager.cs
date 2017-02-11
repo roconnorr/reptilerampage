@@ -48,6 +48,14 @@ public class HUDManager : MonoBehaviour {
    public GameObject HudGunPanel;
 
    public GameObject HudPistolPanel;
+
+   public bool arenaMode;
+
+   public Text waveNumberText;
+   
+   public Text betweenWaveText;
+   private WaveMaster waveMaster;
+
    void Start () {
 		playerScript = player.GetComponent<Player>();
       	health = playerScript.health;
@@ -60,6 +68,13 @@ public class HUDManager : MonoBehaviour {
                   Slot1Stars[i].enabled = false;
                   Slot2Stars[i].enabled = false;
             }
+            if(arenaMode){
+                  waveNumberText.enabled = true;
+                  waveMaster = GameObject.Find("WaveMaster").GetComponent<WaveMaster>();
+            }else{
+                  waveNumberText.enabled = false;
+            }
+            betweenWaveText.enabled = false;
    }
    
       void Update () {
@@ -104,6 +119,16 @@ public class HUDManager : MonoBehaviour {
             bossHealth = bossScript.health;
             bossHealth = Mathf.MoveTowards(bossHealth, bossScript.health, 60*Time.deltaTime);
             HUDBossHealth.value = bossHealth;
+         }
+         if(arenaMode){
+               waveNumberText.text = "WAVE: " + waveMaster.currentWave;
+               if(waveMaster.betweenWaves){
+                  float timeLeft =  waveMaster.timeToNewWave - waveMaster.timer;
+                  betweenWaveText.enabled = true;
+                  betweenWaveText.text = "NEXT WAVE IN: " + timeLeft.ToString("0.0");
+               }else{
+                  betweenWaveText.enabled = false;
+               }
          }
       
       // Display health - but rather than doing it in one go, change the value

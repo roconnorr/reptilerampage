@@ -54,7 +54,8 @@ MonoBehaviour:
   spawnerID: 0
   Anklyosaurus: {fileID: 1774569827148862, guid: 7e9eaf520bdd36341b4451657f54436b,
     type: 2}
-  Pteradactyl: {fileID: 0}
+  Pteradactyl: {fileID: 1483292693711106, guid: 5de1035d4dd3735458575200cd785686,
+    type: 2}
   Stegosaurus: {fileID: 1206414884232998, guid: 17b104d19900c1749a7813c7bd3938c3,
     type: 2}
   Velociraptor: {fileID: 1800107685393502, guid: fa807147f420fa44ea1b845c54dcb454,
