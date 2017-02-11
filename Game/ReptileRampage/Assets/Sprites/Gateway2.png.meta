@@ -1,9 +1,12 @@
 fileFormatVersion: 2
 guid: 311f0808f1583f54ea544fde4bbef720
-timeCreated: 1486777462
+timeCreated: 1486778991
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Gateway2_0
+    21300002: Gateway2_1
+    21300004: Gateway2_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -76,7 +79,46 @@ TextureImporter:
     overridden: 1
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Gateway2_0
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 10
+        width: 128
+        height: 86
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gateway2_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1
+        width: 36
+        height: 115
+      alignment: 9
+      pivot: {x: 0.12174931, y: 0.37348434}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gateway2_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 11
+        width: 4
+        height: 84
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 

@@ -77,7 +77,6 @@ public class Enemy : MonoBehaviour {
 					canvas.GetComponent<HUDManager>().inBossFight = false;
 					GameMaster.currentLevel = 3;
 					GameMaster.level2Checkpoint = false;
-					SceneManager.LoadScene("Level3");
 				}else if(isGavin){
 					SceneManager.LoadScene("WinScreen");
 				}
