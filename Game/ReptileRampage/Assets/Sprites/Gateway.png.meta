@@ -1,12 +1,14 @@
 fileFormatVersion: 2
 guid: 81aa1ef3cba80804eb915287a8e9185f
-timeCreated: 1486777739
+timeCreated: 1486787983
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Gateway_0
     21300002: Gateway_1
     21300004: Gateway_2
+    21300006: Gateway_3
+    21300008: Gateway_4
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -116,6 +118,32 @@ TextureImporter:
         height: 67
       alignment: 9
       pivot: {x: 0.49560663, y: 0.37017378}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gateway_3
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 12
+        width: 9
+        height: 67
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Gateway_4
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 47
+        width: 9
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
