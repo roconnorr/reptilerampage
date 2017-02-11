@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
 
 	private AudioSource soundSource;
 	public AudioClip[] footstepSounds;
-
+	private bool footstepSoundEnabled;
     public int health;
 
     //public ParticleSystem dustParticles;
@@ -30,7 +30,6 @@ public class Player : MonoBehaviour
 	private bool crossHairEnabled;
     private Rigidbody2D rb;
     private TrikeFight trikefightscript = null;
-
     private TRexFight trexfightscript = null;
 
     //private GavinFight gavinFightScript;
@@ -80,7 +79,6 @@ public class Player : MonoBehaviour
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
         //weapon = GetComponentInChildren<Weapon>();
-        StartCoroutine(cycleFootsteps());
 
         startWeapon1Type = GameMaster.slot1type;
 		startWeapon2Type = GameMaster.slot2type;
@@ -191,6 +189,10 @@ public class Player : MonoBehaviour
 			crossHairEnabled = true;
 		}
 		if (!isDead) {
+			if(!footstepSoundEnabled){
+				StartCoroutine(cycleFootsteps());
+				footstepSoundEnabled = true;
+			}
 			GameMaster.slot1type = slot1type;
 			GameMaster.slot2type = slot2type;
 			GameMaster.slot3type = slot3type;
@@ -294,19 +296,16 @@ public class Player : MonoBehaviour
     }
 
     private IEnumerator cycleFootsteps(){
-		if (!isDead) {
-			while (true) {
-				soundSource.clip = footstepSounds [Random.Range (0, 4)];
-				if (Input.GetButton ("Horizontal") || Input.GetButton ("Vertical")) {
-					if (!soundSource.isPlaying) {
-						soundSource.Play ();
-					}
-				} else {
-					soundSource.Stop ();
+		while (true) {
+			soundSource.clip = footstepSounds [Random.Range (0, 4)];
+			if (Input.GetButton ("Horizontal") || Input.GetButton ("Vertical")) {
+				if (!soundSource.isPlaying) {
+					soundSource.Play ();
 				}
-				yield return new WaitForSeconds (soundSource.clip.length);
-
+			} else {
+				soundSource.Stop ();
 			}
+			yield return new WaitForSeconds (soundSource.clip.length);
 		}
     }
 
