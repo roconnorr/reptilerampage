@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject[] anklyArray;
 			anklyArray = new GameObject[quantity];
 			for(int i = 0; i<quantity; i++){
-				anklyArray[i] = Instantiate(Anklyosaurus, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				anklyArray[i] = Instantiate(Anklyosaurus, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				anklyArray[i].GetComponent<Enemy>().arenaMode = true;
 				anklyArray[i].GetComponent<Enemy>().hasSeen = true;
 				anklyArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject[] pterArray;
 			pterArray = new GameObject[quantity];
 			for(int i = 0; i<quantity; i++){
-				pterArray[i] = Instantiate(Pteradactyl, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				pterArray[i] = Instantiate(Pteradactyl, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				pterArray[i].GetComponent<Enemy>().arenaMode = true;
 				pterArray[i].GetComponent<Enemy>().hasSeen = true;
 				pterArray[i].GetComponent<Pteradactyl>().target = player.transform;
@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject[] stegoArray;
 			stegoArray = new GameObject[quantity];
 			for(int i = 0; i<quantity; i++){
-				stegoArray[i] = Instantiate(Stegosaurus, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				stegoArray[i] = Instantiate(Stegosaurus, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				stegoArray[i].GetComponent<Enemy>().arenaMode = true;
 				stegoArray[i].GetComponent<Enemy>().hasSeen = true;
 				stegoArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
@@ -61,7 +61,7 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject[] raptorArray;
 			raptorArray = new GameObject[quantity];
 			for(int i = 0; i<quantity; i++){
-				raptorArray[i] = Instantiate(Velociraptor, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				raptorArray[i] = Instantiate(Velociraptor, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				raptorArray[i].GetComponent<Enemy>().arenaMode = true;
 				raptorArray[i].GetComponent<Enemy>().hasSeen = true;
 				raptorArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject[] trikeArray;
 			trikeArray = new GameObject[quantity];
 			for(int i = 0; i<quantity; i++){
-				trikeArray[i] = Instantiate(Trike, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				trikeArray[i] = Instantiate(Trike, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				trikeArray[i].GetComponent<Enemy>().arenaMode = true;
 				trikeArray[i].GetComponent<Trike>().target = player.transform;
 				waveMaster.enemiesAlive += 1;
@@ -81,7 +81,7 @@ public class EnemySpawner : MonoBehaviour {
 			GameObject[] trexArray;
 			trexArray = new GameObject[quantity];
 			for(int i = 0; i<quantity; i++){
-				trexArray[i] = Instantiate(Trex, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				trexArray[i] = Instantiate(Trex, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				trexArray[i].GetComponent<Enemy>().arenaMode = true;
 				trexArray[i].GetComponent<TRex>().target = player.transform;
 				waveMaster.enemiesAlive += 1;
