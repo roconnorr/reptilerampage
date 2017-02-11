@@ -1148,10 +1148,10 @@ MonoBehaviour:
   speakingCharacter: {fileID: 114253461355696780}
   characterPortraits:
   - {fileID: 21300000, guid: eb5d959b1b6584c4f8a2d6c73090558f, type: 3}
-  - {fileID: 21300000, guid: fb718bef5fa85874083531a71b3e9f2c, type: 3}
+  - {fileID: 21300000, guid: 6d32cb4b8e88b4849bbe7c0ff02c0f32, type: 3}
   - {fileID: 21300000, guid: d5dd8e518f3447a439e5959dd8f88562, type: 3}
   - {fileID: 21300000, guid: 0ed9c8a4ce7b9cb4f904e5213716ca72, type: 3}
-  - {fileID: 21300000, guid: 3c5d6d811511c434094b19352086c74f, type: 3}
+  - {fileID: 21300000, guid: 049d7bc98aafbfd46a237b37937ed408, type: 3}
   levelBoss: 0
   text: {fileID: 114846021886171006}
   dialogActive: 0

@@ -1,0 +1,86 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour {
+
+	public int spawnerID;
+	public GameObject Anklyosaurus;
+	public GameObject Pteradactyl;
+	public GameObject Stegosaurus;
+	public GameObject Velociraptor;
+	public GameObject Trike;
+	public GameObject Trex;
+
+	private WaveMaster waveMaster;
+	public GameObject grid;
+	public GameObject player;
+
+
+	// Use this for initialization
+	void Start () {
+		waveMaster = GameObject.Find("WaveMaster").GetComponent<WaveMaster>();
+	}
+
+	public void Spawn(string type, int quantity){
+		//array of gameobjects instantiate each index
+		if(type == "Anklyosaurus"){
+			GameObject[] anklyArray;
+			anklyArray = new GameObject[quantity];
+			for(int i = 0; i<quantity; i++){
+				anklyArray[i] = Instantiate(Anklyosaurus, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				anklyArray[i].GetComponent<Enemy>().arenaMode = true;
+				anklyArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
+				anklyArray[i].GetComponent<Ankylosaurus>().target = player;
+				waveMaster.enemiesAlive += 1;
+			}
+		}else if(type == "Pteradactyl"){
+			GameObject[] pterArray;
+			pterArray = new GameObject[quantity];
+			for(int i = 0; i<quantity; i++){
+				pterArray[i] = Instantiate(Pteradactyl, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				pterArray[i].GetComponent<Enemy>().arenaMode = true;
+				pterArray[i].GetComponent<Pteradactyl>().target = player.transform;
+				waveMaster.enemiesAlive += 1;
+			}
+		}else if(type == "Stegosaurus"){
+			GameObject[] stegoArray;
+			stegoArray = new GameObject[quantity];
+			for(int i = 0; i<quantity; i++){
+				stegoArray[i] = Instantiate(Stegosaurus, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				stegoArray[i].GetComponent<Enemy>().arenaMode = true;
+				stegoArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
+				stegoArray[i].GetComponent<Stegosaurus>().target = player;
+				waveMaster.enemiesAlive += 1;
+			}
+		}else if(type == "Velociraptor"){
+			GameObject[] raptorArray;
+			raptorArray = new GameObject[quantity];
+			for(int i = 0; i<quantity; i++){
+				raptorArray[i] = Instantiate(Velociraptor, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				raptorArray[i].GetComponent<Enemy>().arenaMode = true;
+				raptorArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
+				raptorArray[i].GetComponent<Velociraptor>().target = player;
+				waveMaster.enemiesAlive += 1;
+			}
+		}else if(type == "Trike"){
+			GameObject[] trikeArray;
+			trikeArray = new GameObject[quantity];
+			for(int i = 0; i<quantity; i++){
+				trikeArray[i] = Instantiate(Trike, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				trikeArray[i].GetComponent<Enemy>().arenaMode = true;
+				trikeArray[i].GetComponent<Trike>().target = player.transform;
+				waveMaster.enemiesAlive += 1;
+			}
+		}else if(type == "Trex"){
+			GameObject[] trexArray;
+			trexArray = new GameObject[quantity];
+			for(int i = 0; i<quantity; i++){
+				trexArray[i] = Instantiate(Trex, this.transform.position, new Quaternion(0,0,0,0), this.transform);
+				trexArray[i].GetComponent<Enemy>().arenaMode = true;
+				trexArray[i].GetComponent<TRex>().target = player.transform;
+				waveMaster.enemiesAlive += 1;
+			}
+		}
+	}
+}
