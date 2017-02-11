@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     public bool gameOver;
     public float speed;
 	public Sprite deadSprite;
-	private bool isDead;
+	[HideInInspector]
+	public bool isDead;
 	private SpriteRenderer sr;
     public static int playerMaxHP = 100;
 
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
 	public Transform grenadePrefab;
     public Transform crossHairPrefab;
     private Transform crossHair;
+	private bool crossHairEnabled;
     private Rigidbody2D rb;
     private TrikeFight trikefightscript = null;
 
@@ -59,9 +61,15 @@ public class Player : MonoBehaviour
     public int invulnerableTime = 1;
     private float horizontal;
     private float vertical;
+	private Transform shadow;
+	private Scene scene;
 
     void Start(){
+		canShoot = true;
+		canMove = true;
 		sr = GetComponent<SpriteRenderer> ();
+		shadow = transform.Find ("Shadow");
+		shadow.GetComponent<SpriteRenderer>().enabled = true;
         if(GameMaster.level1Checkpoint){
             transform.position = new Vector3(45, 46, -1);
         } else if(GameMaster.level2Checkpoint){
@@ -69,20 +77,11 @@ public class Player : MonoBehaviour
         }
         isInvulnerable = false;  
         rb = GetComponent<Rigidbody2D>();
-        canMove = true;
-        canShoot = true;
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
         //weapon = GetComponentInChildren<Weapon>();
-        crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
         StartCoroutine(cycleFootsteps());
-        //need to get current level and load relevant script
-        Scene scene = SceneManager.GetActiveScene();
-        if(scene.name == "Level1"){
-            trikefightscript = GameObject.Find("BossTrigger1").GetComponent<TrikeFight>();
-        }else if (scene.name == "Level2"){
-            trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
-        }//else gavin
+
         startWeapon1Type = GameMaster.slot1type;
 		startWeapon2Type = GameMaster.slot2type;
 		if(GameMaster.currentLevel == 1) {
@@ -115,6 +114,22 @@ public class Player : MonoBehaviour
 			slot[1].GetComponent<Weapon>().ammo = GameMaster.slot2ammo;
 			GameMaster.levelStartSlot2Ammo = slot[1].GetComponent<Weapon>().ammo;
         }
+
+		//need to get current level and load relevant script
+		scene = SceneManager.GetActiveScene();
+        if(scene.name == "Level1"){
+            trikefightscript = GameObject.Find("BossTrigger1").GetComponent<TrikeFight>();
+			if(!WayPoints.arrived){
+				isDead = true;
+				canMove = false;
+            	canShoot = false;
+				foreach (Renderer r in GetComponentsInChildren<Renderer>()){
+					r.enabled = false;
+				}
+			}
+        }else if (scene.name == "Level2"){
+            trexfightscript = GameObject.Find("BossTrigger2").GetComponent<TRexFight>();
+        }//else gavin
     }
 
     void OnCollisionEnter2D(Collision2D other){
@@ -162,6 +177,19 @@ public class Player : MonoBehaviour
     }
 
     void Update(){
+		if(scene.name == "Level1"){
+			if(WayPoints.arrived && !crossHairEnabled){
+				crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
+				foreach (Renderer r in GetComponentsInChildren<Renderer>()){
+					r.enabled = true;
+				}
+				isDead = false;
+				crossHairEnabled = true;
+			}
+		} else if(!crossHairEnabled){
+			crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
+			crossHairEnabled = true;
+		}
 		if (!isDead) {
 			GameMaster.slot1type = slot1type;
 			GameMaster.slot2type = slot2type;
@@ -237,12 +265,6 @@ public class Player : MonoBehaviour
 				slot [(slotActive + 2) % 3].SetActive (false);
 			}
 
-			if (Time.timeScale != 0) {
-				Cursor.visible = false;
-			} else if (Time.timeScale == 0) {
-				Cursor.visible = true;
-			}
-
 			if (!isInvulnerable) {
 				foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
 					if (r.gameObject.tag != "MuzzelFlash") {
@@ -261,7 +283,14 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
-		crossHair.position = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
+		if(crossHairEnabled){
+			crossHair.position = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
+		}
+		if (Time.timeScale != 0) {
+			Cursor.visible = false;
+		} else if (Time.timeScale == 0) {
+			Cursor.visible = true;
+		}
     }
 
     private IEnumerator cycleFootsteps(){
@@ -308,7 +337,7 @@ public class Player : MonoBehaviour
 				isInvulnerable = false;
 				GetComponent<Rigidbody2D> ().isKinematic = true;
 				slot [slotActive].SetActive (false);
-				gameOver = true;
+				//gameOver = true;
 			}
 		}
     }

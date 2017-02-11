@@ -357,6 +357,7 @@ MonoBehaviour:
   gameOver: 0
   speed: 5
   deadSprite: {fileID: 21300000, guid: aab4a902c430e7c4fb1d84095916588a, type: 3}
+  isDead: 0
   footstepSounds:
   - {fileID: 8300000, guid: 4c328c85b1fe54f61bcc2bca8bb1b87c, type: 3}
   - {fileID: 8300000, guid: fba396bb953df4ebeac315fd071b60b2, type: 3}
@@ -3124,7 +3125,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e894a4950e1ff4b808e97f1a2926b546, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
