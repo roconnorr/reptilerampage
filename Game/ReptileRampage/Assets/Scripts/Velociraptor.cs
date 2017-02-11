@@ -95,8 +95,9 @@ public class Velociraptor : MonoBehaviour {
 	}
 
 	void Update() {
-		if (GetComponent<Enemy> ().hasSeen) {
+		if (GetComponent<Enemy> ().hasSeen && !isChasing) {
 			isChasing = true;
+			animator.Play ("velociraptor_run");
 		}
 		if (!isChasing) {
 			GetComponent<Enemy> ().hasSeen = false;
