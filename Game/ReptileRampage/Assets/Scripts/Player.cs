@@ -188,6 +188,7 @@ public class Player : MonoBehaviour
 			crossHair = Instantiate(crossHairPrefab, new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y), transform.rotation) as Transform;
 			crossHairEnabled = true;
 		}
+
 		if (!isDead) {
 			if(!footstepSoundEnabled){
 				StartCoroutine(cycleFootsteps());
@@ -329,6 +330,12 @@ public class Player : MonoBehaviour
 				sr.enabled = true;
 				GetComponentInChildren<UpperBodyAnim> ().GetComponent<SpriteRenderer> ().enabled = false;
 				GetComponentInChildren<LowerBodyAnim> ().GetComponent<SpriteRenderer> ().enabled = false;
+				foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
+					Color c = r.material.color;
+					c.a = 1f;
+					r.material.color = c;
+				}
+				shadow.GetComponent<SpriteRenderer>().enabled = false;
 				sr.sprite = deadSprite;
 				isDead = true;
 				canMove = false;
@@ -336,7 +343,7 @@ public class Player : MonoBehaviour
 				isInvulnerable = false;
 				GetComponent<Rigidbody2D> ().isKinematic = true;
 				slot [slotActive].SetActive (false);
-				//gameOver = true;
+				gameOver = true;
 			}
 		}
     }
