@@ -12901,9 +12901,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc79ba2acb23a4756983e7fa865ca761, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level1: 1
+  level2: 0
   wayPointList:
-  - {fileID: 4698198337930748, guid: f9e3a3b6fdce94f75ac6f09c86b8e30f, type: 2}
-  - {fileID: 4471853616721788, guid: 29089f36528f44ff5a9577b65718cb3b, type: 2}
+  - {fileID: 4496075009954166, guid: 95e3f39af15014532bcb081ab5b072f9, type: 2}
+  - {fileID: 4522673378805308, guid: 967a4ba2487e340cf96bf8c3d39b70ba, type: 2}
   currentWayPoint: 0
   player: {fileID: 1019736887}
   speed: 4
@@ -12950,7 +12952,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2104780499}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -15.8, y: -13.235001, z: 0}
+  m_LocalPosition: {x: -19.45, y: -13.46, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 265590193}

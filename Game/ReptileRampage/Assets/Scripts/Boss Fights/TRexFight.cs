@@ -8,11 +8,14 @@ public class TRexFight : MonoBehaviour {
 	public GameObject DialogBox;
 	private GameObject canvas;
 	private HUDManager hudManager;
+	public static bool atTrexDialog;
 
 	public void StartFight(){
+		atTrexDialog = true;
 		DialogBox.GetComponentInParent<TextBoxManager>().dialogActive = true;
 		DialogBox.GetComponentInParent<TextBoxManager>().inBossFight = true;
 		DialogBox.GetComponentInParent<TextBoxManager>().SetDialogNumber(5, 1);
+		GetComponent<Collider2D>().enabled = false;
 	}
 
 	public void SpawnTRex(){

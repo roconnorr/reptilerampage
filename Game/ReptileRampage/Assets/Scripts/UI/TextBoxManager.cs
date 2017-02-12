@@ -40,7 +40,8 @@ public class TextBoxManager : MonoBehaviour {
 	void Update () {
 		if(dialogActive){
 			playerScript.canMove = false;
-			playerScript.slot[playerScript.slotActive].SetActive(false);
+			playerScript.canShoot = false;
+			//playerScript.slot[playerScript.slotActive].SetActive(false);
 			hudManager.HideBottomHUD(true);
 			dialogBox.SetActive(true);
 
@@ -54,7 +55,7 @@ public class TextBoxManager : MonoBehaviour {
 					if(levelBoss == CurrentLevelBoss.trike){
 						BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
 					}else if(levelBoss == CurrentLevelBoss.trex){
-						BossTrigger.GetComponent<TRexFight>().SpawnTRex();
+						//BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 					}else{
 						//gavin
 						//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
@@ -65,9 +66,12 @@ public class TextBoxManager : MonoBehaviour {
 				if(Player.scene.name == "Level1" && PlayDialog.atDialog0){
 					dialogFinished = true;
 					PlayDialog.atDialog0 = false;
+				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
+					dialogFinished = true;
+					TRexFight.atTrexDialog = false;
 				}else{
-					player.GetComponent<Player>().canMove = true;
-					player.GetComponent<Player>().canShoot = true;
+					playerScript.canMove = true;
+					playerScript.canShoot = true;
 				}
 			}else{
 				text.text = textLines[currentLine].ToUpper();
