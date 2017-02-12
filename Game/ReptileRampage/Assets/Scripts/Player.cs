@@ -207,7 +207,7 @@ public class Player : MonoBehaviour
 				GameMaster.slot2ammo = slot [1].GetComponent<Weapon> ().ammo;
 				GameMaster.slot2MaxAmmo = slot [1].GetComponent<Weapon> ().maxAmmo;
 			}
-			if (Input.GetButtonDown ("Grenade")) {
+			if (Input.GetButtonDown ("Grenade") || Input.GetButtonDown("AltGrenade")) {
 				Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
 				difference.Normalize ();
 				float rotZ = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
