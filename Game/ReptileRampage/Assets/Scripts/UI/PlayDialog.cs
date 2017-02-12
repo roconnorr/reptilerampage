@@ -5,6 +5,7 @@ public class PlayDialog : MonoBehaviour {
 	public GameObject canvas;
 
 	private TextBoxManager textBoxManager;
+	public static bool atDialog0;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class PlayDialog : MonoBehaviour {
 		if(other.tag == "Dialog0"){
 			textBoxManager.SetDialogNumber(0, 3);
 			textBoxManager.dialogActive = true;
+			atDialog0 = true;
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog1"){
 			textBoxManager.SetDialogNumber(1, 1);

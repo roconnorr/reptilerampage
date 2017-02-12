@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
     private float horizontal;
     private float vertical;
 	private Transform shadow;
-	private Scene scene;
+	public static Scene scene;
 
     void Start(){
 		canShoot = true;
@@ -181,6 +181,8 @@ public class Player : MonoBehaviour
 					r.enabled = true;
 				}
 				isDead = false;
+				canMove = true;
+				canShoot = true;
 				crossHairEnabled = true;
 			}
 		} else if(!crossHairEnabled){

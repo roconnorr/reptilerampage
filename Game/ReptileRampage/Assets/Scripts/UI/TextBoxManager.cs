@@ -23,8 +23,8 @@ public class TextBoxManager : MonoBehaviour {
 	public TextAsset[] textFiles;
 	private int dialogTextNumber;
 	public string[] textLines;
-
 	public int currentLine;
+	public static bool dialogFinished;
 
 	void Start () {
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -62,8 +62,13 @@ public class TextBoxManager : MonoBehaviour {
 				}
 
 				dialogActive = false;
-				player.GetComponent<Player>().canMove = true;
-				player.GetComponent<Player>().canShoot = true;
+				if(Player.scene.name == "Level1" && PlayDialog.atDialog0){
+					dialogFinished = true;
+					PlayDialog.atDialog0 = false;
+				}else{
+					player.GetComponent<Player>().canMove = true;
+					player.GetComponent<Player>().canShoot = true;
+				}
 			}else{
 				text.text = textLines[currentLine].ToUpper();
 			}

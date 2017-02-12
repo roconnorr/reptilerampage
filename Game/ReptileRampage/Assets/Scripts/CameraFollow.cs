@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class CameraFollow : MonoBehaviour {
 	
@@ -7,14 +7,14 @@ public class CameraFollow : MonoBehaviour {
 	public GameObject cutSceneObject;
 	public float followDistance;
   	public static Vector3 cameraPosition;
-	private Scene scene;
+	//private Scene scene;
 
 	void Start(){
-		scene = SceneManager.GetActiveScene();
+		//scene = SceneManager.GetActiveScene();
 	}
     
 	void LateUpdate () {
-		if(scene.name == "Level1" && !WayPoints.arrived){
+		if(Player.scene.name == "Level1" && !WayPoints.arrived){
 			if(cutSceneObject != null){
 				float x = cutSceneObject.transform.position.x;
 				float y = cutSceneObject.transform.position.y;
