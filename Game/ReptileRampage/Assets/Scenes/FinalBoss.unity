@@ -607,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1415890795}
+  cutSceneObject: {fileID: 0}
   followDistance: 4
 --- !u!81 &592273987
 AudioListener:
@@ -854,6 +855,18 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114097584935440080, guid: f3bd370666fcf8f46bee7ce2463a9af7,
+        type: 2}
+      propertyPath: spriteIdle
+      value: 
+      objectReference: {fileID: 21300000, guid: c60b9961b05a70e4e85f4c267f576582,
+        type: 3}
+    - target: {fileID: 114097584935440080, guid: f3bd370666fcf8f46bee7ce2463a9af7,
+        type: 2}
+      propertyPath: spriteFire
+      value: 
+      objectReference: {fileID: 21300004, guid: c60b9961b05a70e4e85f4c267f576582,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3bd370666fcf8f46bee7ce2463a9af7, type: 2}
   m_IsPrefabParent: 0
@@ -2070,6 +2083,23 @@ Transform:
   m_PrefabParentObject: {fileID: 4212227753415362, guid: f3bd370666fcf8f46bee7ce2463a9af7,
     type: 2}
   m_PrefabInternal: {fileID: 598131507}
+--- !u!95 &1710283536
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1710283529}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e8d9cd8aff43bc48973383babf2dd01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!4 &1722450762 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4814176822279364, guid: af553eccb8a124caf8b3c5f3f36720d8,
