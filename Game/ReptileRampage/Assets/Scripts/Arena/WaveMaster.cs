@@ -8,7 +8,7 @@ public class WaveMaster : MonoBehaviour {
 	public GameObject[] spawners;
 
 	public int currentWave = 1;
-	private int waveIndex = 1;
+	public int waveIndex = 1;
 
 	public int cratesPerLevel;
 
@@ -24,10 +24,12 @@ public class WaveMaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//currentWave = 1;
-		//waveIndex = 1;
-		SpawnWave();
+		currentWave = 1;
+		waveIndex = 1;
+		timer = 0;
+		enemiesAlive = 0;
 		betweenWaves = false;
+		SpawnWave();
 		SpawnCrates(cratesPerLevel);
 	}
 	

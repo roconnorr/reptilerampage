@@ -56,6 +56,21 @@ public class HUDManager : MonoBehaviour {
    public Text betweenWaveText;
    private WaveMaster waveMaster;
 
+   public GameObject arenaTrikeHealthObject;
+
+   public GameObject arenaTrexHealthObject;
+   public Slider arenaTrikeHealth;
+
+   public Slider arenaTrexHealth;
+
+   public bool arenaTrikeAlive;
+   public bool arenaTrexAlive;
+
+   public GameObject arenaTrikeInstance;
+   public GameObject arenaTrexInstance;
+   
+
+
    void Start () {
 		playerScript = player.GetComponent<Player>();
       	health = playerScript.health;
@@ -75,6 +90,8 @@ public class HUDManager : MonoBehaviour {
                   waveNumberText.enabled = false;
             }
             betweenWaveText.enabled = false;
+            arenaTrikeHealthObject.SetActive(false);
+            arenaTrexHealthObject.SetActive(false);
    }
    
       void Update () {
@@ -129,6 +146,19 @@ public class HUDManager : MonoBehaviour {
                }else{
                   betweenWaveText.enabled = false;
                }
+               if(arenaTrikeAlive){
+                  arenaTrikeHealthObject.SetActive(true);
+                  arenaTrikeHealth.value = arenaTrikeInstance.GetComponent<Enemy>().health;
+               }else{
+                   arenaTrikeHealthObject.SetActive(false);
+               }
+               if(arenaTrexAlive){
+                  arenaTrexHealthObject.SetActive(true);
+                  arenaTrexHealth.value = arenaTrexInstance.GetComponent<Enemy>().health;
+               }else{
+                  arenaTrexHealthObject.SetActive(false);
+               }
+               
          }
       
       // Display health - but rather than doing it in one go, change the value
