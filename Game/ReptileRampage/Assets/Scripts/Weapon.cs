@@ -42,7 +42,7 @@ public class Weapon : MonoBehaviour {
 		firePoint1 = transform.FindChild ("FirePoint1");
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
-		player = GameObject.FindWithTag("Player").GetComponent<Player>();
+		player = GetComponentInParent<Player>();
 		noBulletSound = gameObject.GetComponent<AudioSource>();
 	}
 
