@@ -82,6 +82,7 @@ public class TextBoxManager : MonoBehaviour {
 		if(inBossFight && levelBoss == CurrentLevelBoss.trex && WayPoints.triggerdTrex && !trexSpawned){
 			BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 			trexSpawned = true;
+			WayPoints.triggerdTrex = false;
 		}
 	}
 
