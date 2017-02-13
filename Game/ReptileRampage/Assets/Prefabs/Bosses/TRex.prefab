@@ -125,7 +125,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1725395205753084}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.22, y: -22.77, z: -1}
+  m_LocalPosition: {x: 46, y: -15, z: -1}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4651568480888330}
@@ -229,6 +229,8 @@ MonoBehaviour:
     type: 2}
   deadEnemyPrefab: {fileID: 1896898922649070, guid: 86a43544e18b94081ba8b08c9e33a528,
     type: 2}
+  noFlip: 0
+  arenaMode: 0
 --- !u!114 &114834681339041374
 MonoBehaviour:
   m_ObjectHideFlags: 1

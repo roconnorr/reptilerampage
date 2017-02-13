@@ -11,17 +11,24 @@ public class WayPoints : MonoBehaviour {
 	 public GameObject player;
 	 private Player playerScript;
      public float speed = 4f;
+	 [HideInInspector]
 	 public static bool arrived;
 	 private bool wait;
 	 private bool firstRun0;
 	 private bool firstRun1;
+	 [HideInInspector]
 	 public static bool respawned;
 	 public Sprite secondBoat;
+	 [HideInInspector]
 	 public static bool triggerdTrex;
 	 public Transform rocketPrefab;
 	 private Transform rocketFirePoint;
 	 public Transform target;
 	 private Animator animator;
+	 [HideInInspector]
+	 public static bool trexSpawnAnimationPlaying;
+	 [HideInInspector]
+	 public static bool trexSpawnAnimationFinished;
 
      void Start () {
 		playerScript = player.GetComponent<Player>();
@@ -83,21 +90,26 @@ public class WayPoints : MonoBehaviour {
 					TextBoxManager.dialogFinished = false;
 					wait = true;
 					rocketFirePoint = transform.Find ("RocketFirePoint");
-					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 30, false, false, target, transform);
-					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 30, false, false, target, transform);
+					float dist = Vector3.Distance(rocketFirePoint.position, target.position) + 18;
+					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, dist, false, false, target, transform);
+					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, dist, false, false, target, transform);
 					firstRun0 = false;
 				 }
 			 }
 			 if(BulletHoming.bridgeExploded){
 					target.GetComponent<SpriteRenderer>().enabled = true;
-					playerScript.canMove = true;
-				 	playerScript.canShoot = true;
-					//triggerdTrex = true;
+					triggerdTrex = true;
 					arrived = false;
-					//wait = false;
 					BulletHoming.bridgeExploded = false;
 			 }
-	
+			 if(trexSpawnAnimationFinished){
+				 trexSpawnAnimationPlaying = false;
+				 playerScript.canMove = true;
+				 playerScript.canShoot = true;
+				 wait = false;
+				 trexSpawnAnimationFinished = false;
+				 Debug.Log("Trex animation finished");
+			 }
 			 if(Mathf.Abs(transform.position.x - wayPointList[1].position.x) < 0.1f){
 				 Destroy(gameObject);
 		 	 }
@@ -109,6 +121,7 @@ public class WayPoints : MonoBehaviour {
 				 Move1();
 			 }
 		}
+		
      }
 	 
 	 void Move0(){

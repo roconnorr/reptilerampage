@@ -81,6 +81,7 @@ public class TextBoxManager : MonoBehaviour {
 		//Spawn Trex after dialog and cut scene is finished
 		if(inBossFight && levelBoss == CurrentLevelBoss.trex && WayPoints.triggerdTrex && !trexSpawned){
 			BossTrigger.GetComponent<TRexFight>().SpawnTRex();
+			WayPoints.trexSpawnAnimationPlaying = true;
 			trexSpawned = true;
 			WayPoints.triggerdTrex = false;
 		}
