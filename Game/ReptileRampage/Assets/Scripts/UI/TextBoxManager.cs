@@ -70,8 +70,7 @@ public class TextBoxManager : MonoBehaviour {
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
 				}else{
-					playerScript.canMove = true;
-					playerScript.canShoot = true;
+					Invoke ("unFreeze", 0.1f);
 				}
 			}else{
 				text.text = textLines[currentLine].ToUpper();
@@ -88,5 +87,10 @@ public class TextBoxManager : MonoBehaviour {
 			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
 		}
 		currentLine = 0;
+	}
+
+	private void unFreeze() {
+		playerScript.canMove = true;
+		playerScript.canShoot = true;
 	}
 }
