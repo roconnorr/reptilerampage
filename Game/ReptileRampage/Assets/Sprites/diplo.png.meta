@@ -1,11 +1,12 @@
 fileFormatVersion: 2
-guid: a066d60838bf64c00989b9f77c53850b
-timeCreated: 1486866468
+guid: c60b9961b05a70e4e85f4c267f576582
+timeCreated: 1486951418
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: boat_0
-    21300002: boat_1
+    21300000: diplo_0
+    21300002: diplo_1
+    21300004: diplo_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -80,26 +81,39 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boat_0
+      name: diplo_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 55
-        width: 136
-        height: 49
+        x: 1
+        y: 239
+        width: 286
+        height: 111
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: boat_1
+      name: diplo_1
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 120
+        width: 286
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: diplo_2
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 136
-        height: 49
+        y: 2
+        width: 287
+        height: 112
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

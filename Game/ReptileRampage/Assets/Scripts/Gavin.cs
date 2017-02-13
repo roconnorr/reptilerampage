@@ -7,6 +7,7 @@ public class Gavin : MonoBehaviour {
 	private State state;
 
 	private SpriteRenderer sr;
+	private Animator animator;
 	private Transform laser;
 	private Transform firePoint;
 	private Transform arm1;
@@ -45,6 +46,7 @@ public class Gavin : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		animator = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer> ();
 		laser = transform.FindChild ("Laser");
 		arm1 = transform.FindChild ("Arm1");
@@ -80,8 +82,7 @@ public class Gavin : MonoBehaviour {
 		}
 		if (state == State.Laser && !isLaser) {
 			isLaser = true;
-			sr.color = Color.blue;
-			Invoke ("FireLaser", 1f);
+			animator.Play("Fire");
 		}
 		if (state == State.Shooting && Time.time > timeToFire) {
 			bulletAttack2 = true;
@@ -131,13 +132,13 @@ public class Gavin : MonoBehaviour {
 	void FireLaser() {
 		laser.gameObject.SetActive (true);
 		Invoke ("CancelLaser", 3f);
-		sr.color = Color.white;
 	}
 
 	void CancelLaser() {
 		laser.gameObject.SetActive (false);
 		isLaser = false;
 		state = State.Idle;
+		animator.Play ("Idle");
 	}
 
 	void OnTriggerEnter2D (Collider2D other) {
