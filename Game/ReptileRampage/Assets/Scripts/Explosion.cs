@@ -13,11 +13,16 @@ public class Explosion : MonoBehaviour {
 	[HideInInspector]
 	public bool playerSource;
 
+	public Sprite[] scorchMarks;
+	public GameObject scorchPrefab;
+
 	public AudioClip explosionSound;
 
 	private Transform source = null;
 
 	void Start() {
+		GameObject scorch = Instantiate (scorchPrefab, transform.position, transform.localRotation);
+		scorch.GetComponent<SpriteRenderer> ().sprite = scorchMarks [Random.Range (0, 8)];
 		if (playerSource) {
 			source = GameObject.Find ("Player").transform;
 		}
