@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour {
 	private GameObject canvas;
 	
 	public ParticleSystem bloodParticles;
+	public ParticleSystem deathParticles;
 
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
@@ -62,45 +63,47 @@ public class Enemy : MonoBehaviour {
 			GetComponent<TRex> ().defencesDown = true;
 			GetComponent<TRex> ().defenceTimer = 200;
 		}
+		FireBloodParticles (dir);
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
 			health -= amount;
-			FireBloodParticles(dir);
 			if (health <= 0) {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
-				if(isTrike){
+				if (isTrike) {
 					//possibly some more dialogue
-					hudManager.SetBossHealthActive(false);
+					hudManager.SetBossHealthActive (false);
 					hudManager.inBossFight = false;
-					if(arenaMode){
+					if (arenaMode) {
 						hudManager.arenaTrikeAlive = false;
 					}
 					GameMaster.currentLevel = 2;
 					GameMaster.level1Checkpoint = false;
 
-         			//SceneManager.LoadScene("Level2");
-				}else if(isTRex){
+					//SceneManager.LoadScene("Level2");
+				} else if (isTRex) {
 					//possibly some more dialogue
-					hudManager.SetBossHealthActive(false);
+					hudManager.SetBossHealthActive (false);
 					hudManager.inBossFight = false;
-					if(arenaMode){
+					if (arenaMode) {
 						hudManager.arenaTrexAlive = false;
 					}
 					GameMaster.currentLevel = 3;
 					GameMaster.level2Checkpoint = false;
-				}else if(isGavin){
-					SceneManager.LoadScene("WinScreen");
+				} else if (isGavin) {
+					SceneManager.LoadScene ("WinScreen");
 				}
-				Instantiate(deadEnemyPrefab, transform.position, transform.rotation);
-				if(!noFlip){
+				Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
+				if (!noFlip) {
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				}else if(noFlip){
+				} else if (noFlip) {
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}
-				if(arenaMode){
-					GameObject.Find("WaveMaster").GetComponent<WaveMaster>().enemiesAlive--;
+				if (arenaMode) {
+					GameObject.Find ("WaveMaster").GetComponent<WaveMaster> ().enemiesAlive--;
 				}
+				ParticleSystem localDeathParticles = Instantiate (deathParticles, this.transform.position, transform.localRotation) as ParticleSystem;
+				localDeathParticles.Play ();
 				Destroy (gameObject);
 			}
 		}
