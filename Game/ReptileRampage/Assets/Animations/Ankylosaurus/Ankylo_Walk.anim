@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: StegoWalk
+  m_Name: Ankylo_Walk
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -19,13 +19,13 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: 031d7d5228e08446c902089909b367a7, type: 3}
+      value: {fileID: 21300000, guid: 9872823cfd3262742a683e1e3484c8a5, type: 3}
     - time: 0.125
-      value: {fileID: 21300000, guid: 5fc6813726fd7426187cc7e6c51f3e2e, type: 3}
+      value: {fileID: 21300000, guid: c870822342c71a44c85266a928970237, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: d2f2207ad65a74f7db21c84df4b5b70c, type: 3}
+      value: {fileID: 21300000, guid: c94e0b0125f6ed645b5f86fff018bb4e, type: 3}
     - time: 0.375
-      value: {fileID: 21300000, guid: 60d547b5b511345e6b6dec999b65982c, type: 3}
+      value: {fileID: 21300000, guid: c9f353f761c35ba449acba3f86e8ee12, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,10 +44,10 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 031d7d5228e08446c902089909b367a7, type: 3}
-    - {fileID: 21300000, guid: 5fc6813726fd7426187cc7e6c51f3e2e, type: 3}
-    - {fileID: 21300000, guid: d2f2207ad65a74f7db21c84df4b5b70c, type: 3}
-    - {fileID: 21300000, guid: 60d547b5b511345e6b6dec999b65982c, type: 3}
+    - {fileID: 21300000, guid: 9872823cfd3262742a683e1e3484c8a5, type: 3}
+    - {fileID: 21300000, guid: c870822342c71a44c85266a928970237, type: 3}
+    - {fileID: 21300000, guid: c94e0b0125f6ed645b5f86fff018bb4e, type: 3}
+    - {fileID: 21300000, guid: c9f353f761c35ba449acba3f86e8ee12, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

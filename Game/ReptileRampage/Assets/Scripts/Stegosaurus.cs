@@ -23,6 +23,7 @@ public class Stegosaurus : MonoBehaviour {
 	private bool avoiding = false;
 	private bool flipped = false;
 	private bool disabled = true;
+	private bool stopped;
 
 	//private Animator animator;
 	private float xPrev = 0;
@@ -61,26 +62,35 @@ public class Stegosaurus : MonoBehaviour {
 			}
 
 			//If chasing player
-			if (isChasing && targetInChaseRange) {
-				if (!targetInStopRange) {
+			if (targetInChaseRange) {
+				if (isChasing) {
 					if (!targetObstructed) {
-						//Find nearest enemy and avoid if they're too close
-						Transform nearestEnemy = GetNearestSameDino ();
-						if (nearestEnemy != null) {
-							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-							if (avoiding) {
-								if (dist > 2) {
-									avoiding = false;
-								}
-								Avoid (nearestEnemy);
-							} else if (dist < 1.5) {
-								avoiding = true;
-								Avoid (nearestEnemy);
+						if (!targetInStopRange) {
+							if (stopped) {
+								stopped = false;
+								animator.Play ("StegoWalk");
 							}
+							//Find nearest enemy and avoid if they're too close
+							Transform nearestEnemy = GetNearestSameDino ();
+							if (nearestEnemy != null) {
+								float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+								if (avoiding) {
+									if (dist > 2) {
+										avoiding = false;
+									}
+									Avoid (nearestEnemy);
+								} else if (dist < 1.5) {
+									avoiding = true;
+									Avoid (nearestEnemy);
+								}
+							}
+							//Move directly towards player
+							MoveDirect ();
+							//If in chase range but player is obstructed, pathfind to him
+						} else if (!stopped) {
+							animator.Play ("StegoIdle");
+							stopped = true;
 						}
-						//Move directly towards player
-						MoveDirect ();
-						//If in chase range but player is obstructed, pathfind to him
 					} else {
 						if (isChasing) {
 							MovePathFind ();
@@ -91,6 +101,7 @@ public class Stegosaurus : MonoBehaviour {
 				if (isChasing) {
 					isChasing = false;
 					patrolLocation = transform.position;
+					animator.Play ("StegoIdle");
 				}
 				MovePatrol ();
 			}
