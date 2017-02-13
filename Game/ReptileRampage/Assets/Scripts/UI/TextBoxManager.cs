@@ -25,6 +25,7 @@ public class TextBoxManager : MonoBehaviour {
 	public string[] textLines;
 	public int currentLine;
 	public static bool dialogFinished;
+	private bool trexSpawned;
 
 	void Start () {
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -54,8 +55,6 @@ public class TextBoxManager : MonoBehaviour {
 				if(inBossFight){
 					if(levelBoss == CurrentLevelBoss.trike){
 						BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
-					}else if(levelBoss == CurrentLevelBoss.trex){
-						//BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 					}else{
 						//gavin
 						//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
@@ -77,6 +76,13 @@ public class TextBoxManager : MonoBehaviour {
 			}
 		}else{
 			hudManager.HideBottomHUD(false);
+		}
+
+		//Spawn Trex after dialog and cut scene is finished
+		if(inBossFight && levelBoss == CurrentLevelBoss.trex && WayPoints.triggerdTrex && !trexSpawned){
+			BossTrigger.GetComponent<TRexFight>().SpawnTRex();
+			trexSpawned = true;
+			WayPoints.triggerdTrex = false;
 		}
 	}
 

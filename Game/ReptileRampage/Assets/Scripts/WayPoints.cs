@@ -40,8 +40,8 @@ public class WayPoints : MonoBehaviour {
 				 	if(firstRun1){
 				 		StartCoroutine(Wait());
 				 		firstRun1 = false;
+						TextBoxManager.dialogFinished = false;
 			 	 	}
-					TextBoxManager.dialogFinished = false;
 			 	}
 		 	 }
 			 if(transform.position == wayPointList[1].position){
@@ -57,32 +57,41 @@ public class WayPoints : MonoBehaviour {
 
 		//Level 2 cutscene
 		}else if(level2){
+			if(firstRun1 && arrived){
+				arrived = false;
+				firstRun1 = false;
+			}
 			if(TextBoxManager.dialogFinished && currentWayPoint == 0){
 				GetComponent<SpriteRenderer>().enabled = true;
-				triggerdTrex = true;
-
-					  if(targetWayPoint == null){
-						  targetWayPoint = wayPointList[currentWayPoint];
-					  }
-					  Move();
-				 	  /*if(firstRun1){
-						   StartCoroutine(Wait());
-				 		   firstRun1 = false;
-			 	 	  }*/
+				if(targetWayPoint == null){
+					targetWayPoint = wayPointList[currentWayPoint];
+				}
+				Move();
+				/*if(firstRun1){
+					StartCoroutine(Wait());
+				 	firstRun1 = false;
+			 	}*/
 		 	 }
 
 			 if(transform.position == wayPointList[0].position){
 				 arrived = true;
 				 if(firstRun0){
+					TextBoxManager.dialogFinished = false;
 					wait = true;
 					rocketFirePoint = transform.Find ("RocketFirePoint");
-					target.GetComponent<Collider2D>().enabled = true;
-					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 300, false, false, target, transform);
-					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 300, false, false, target, transform);
+					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 30, false, false, target, transform);
+					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 30, false, false, target, transform);
 					firstRun0 = false;
 				 }
-				 playerScript.canMove = true;
-				 playerScript.canShoot = true;
+			 }
+			 if(BulletHoming.bridgeExploded){
+					target.GetComponent<SpriteRenderer>().enabled = true;
+					playerScript.canMove = true;
+				 	playerScript.canShoot = true;
+					triggerdTrex = true;
+					arrived = false;
+					wait = false;
+					BulletHoming.bridgeExploded = false;
 			 }
 	
 			 if(transform.position == wayPointList[1].position){
