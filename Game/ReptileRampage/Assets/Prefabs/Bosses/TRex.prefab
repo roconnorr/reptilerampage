@@ -236,7 +236,8 @@ MonoBehaviour:
     type: 2}
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
-  deathParticles: {fileID: 0}
+  deathParticles: {fileID: 198260909177043204, guid: e29391ca573a18b4ba7bdd3169d9a2b6,
+    type: 2}
   deadEnemyPrefab: {fileID: 1896898922649070, guid: 86a43544e18b94081ba8b08c9e33a528,
     type: 2}
   noFlip: 0
