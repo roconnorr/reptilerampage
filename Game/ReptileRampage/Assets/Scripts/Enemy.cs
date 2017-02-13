@@ -15,6 +15,8 @@ public class Enemy : MonoBehaviour {
 	public AudioClip deathRoar;
 	[HideInInspector]
 	public bool hasSeen = false;
+	public Sprite[] bloodSplatters;
+	public GameObject bloodPrefab;
 
 	private GameObject canvas;
 	
@@ -64,6 +66,7 @@ public class Enemy : MonoBehaviour {
 			GetComponent<TRex> ().defenceTimer = 200;
 		}
 		FireBloodParticles (dir);
+		SplatterBlood (1);
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
@@ -104,6 +107,7 @@ public class Enemy : MonoBehaviour {
 				}
 				ParticleSystem localDeathParticles = Instantiate (deathParticles, this.transform.position, transform.localRotation) as ParticleSystem;
 				localDeathParticles.Play ();
+				SplatterBlood (4);
 				Destroy (gameObject);
 			}
 		}
@@ -122,6 +126,14 @@ public class Enemy : MonoBehaviour {
 		localBloodParticles.Play();
 	}
 
+	public void SplatterBlood(int amount) {
+		for (int i = 0; i < amount; i++) {
+			float randX = Random.Range (-0.5f, 0.5f);
+			float randY = Random.Range (-0.5f, 0.5f);
+			GameObject blood = Instantiate (bloodPrefab, new Vector3(transform.position.x + randX, transform.position.y + randY), transform.localRotation);
+			blood.GetComponent<SpriteRenderer> ().sprite = bloodSplatters [Random.Range (0, 6)];
+		}
+	}
 
 	void OnCollisionStay2D(Collision2D other){
 		if(other.gameObject.tag == "Player"){
