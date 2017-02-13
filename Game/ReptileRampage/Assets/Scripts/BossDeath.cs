@@ -31,7 +31,7 @@ public class BossDeath : MonoBehaviour {
 			GameMaster.CreateExplosion (explosionPrefab, explosionScriptPrefab, new Vector3 (transform.position.x + randX, transform.position.y + randY), 0, 0, 0, false);
 		}
 		if (num == 2) {
-			ParticleSystem localDeathParticles = Instantiate (deathParticles, this.transform.position, transform.localRotation) as ParticleSystem;
+			ParticleSystem localDeathParticles = Instantiate (deathParticles, new Vector3 (transform.position.x + randX, transform.position.y + randY), transform.localRotation) as ParticleSystem;
 			localDeathParticles.Play ();
 		}
 		if (num == 3) { 
@@ -50,8 +50,10 @@ public class BossDeath : MonoBehaviour {
 	}
 
 	public void FireBloodParticles(Quaternion dir){
+		int randX = Random.Range (-2, 2);
+		int randY = Random.Range (-2, 2);
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
-		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, new Vector3 (transform.position.x + randX, transform.position.y + randY), particleDir) as ParticleSystem;
 		localBloodParticles.Play();
 	}
 }
