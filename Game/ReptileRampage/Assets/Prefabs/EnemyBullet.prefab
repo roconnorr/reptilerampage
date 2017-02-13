@@ -95,12 +95,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 1453132568796580, guid: a116b3dc443e642d9a7ffaf5c9c29af0,
     type: 2}
+  animationPrefab: {fileID: 0}
+  explosionScriptPrefab: {fileID: 0}
   moveSpeed: 20
   damage: 10
   range: 0
   dmgPlayer: 0
   dmgEnemy: 0
-  wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
+  knockBackForce: 0
+  source: {fileID: 0}
+  isExplosive: 0
+  isRPG: 0
+  wallHitSound: {fileID: 8300000, guid: d50b9b497c5dc094280ea224bf4ec816, type: 3}
 --- !u!114 &114616018047340960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +119,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!212 &212099968056553104
 SpriteRenderer:
   m_ObjectHideFlags: 1
