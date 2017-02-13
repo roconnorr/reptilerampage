@@ -67,11 +67,11 @@ public class Enemy : MonoBehaviour {
 			GetComponent<TRex> ().defencesDown = true;
 			GetComponent<TRex> ().defenceTimer = 200;
 		}
-		FireBloodParticles (dir);
 		SplatterBlood (1);
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
+			FireBloodParticles (dir);
 			health -= amount;
 			if (health <= 0) {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
