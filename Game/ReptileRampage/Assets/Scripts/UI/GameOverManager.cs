@@ -9,7 +9,6 @@ public class GameOverManager : MonoBehaviour {
 
 	public void GameOver(){
 		gameObject.SetActive(true);
-        Cursor.visible = true;
 	}
 
 	public void Restart(){

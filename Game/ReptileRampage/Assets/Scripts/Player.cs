@@ -313,9 +313,9 @@ public class Player : MonoBehaviour
 		if(crossHairEnabled){
 			crossHair.position = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
 		}
-		if (Time.timeScale != 0) {
+		if (Time.timeScale != 0 && !gameOver) {
 			Cursor.visible = false;
-		} else if (Time.timeScale == 0) {
+		} else if (Time.timeScale == 0 || gameOver) {
 			Cursor.visible = true;
 		}
     }
