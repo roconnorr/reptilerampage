@@ -343,9 +343,11 @@ public class Player : MonoBehaviour
 		//AudioSource.PlayClipAtPoint(playerHitClip, gameObject.transform.position, 1.0f);
 		if (!isDead) {
 			if (!isInvulnerable) {
+				PlayHitSound(playerHitClip, this.transform.position);
+				//AudioSource.PlayClipAtPoint(playerHitClip, Camera.main.transform.position);
 				//soundSource2.clip = playerHitClip;
 				//if(!soundSource2.isPlaying){
-				//soundSource2.PlayOneShot(playerHitClip);
+					//soundSource2.Play();
 				//}
 				health -= amount;
 				FireBloodParticles (dir);
@@ -391,6 +393,16 @@ public class Player : MonoBehaviour
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
 		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
 		localBloodParticles.Play();
+	}
+
+	public static void PlayHitSound(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.15f;
+		tempSource.Play();
+		Destroy(temp, clip.length);
 	}
 	
 
