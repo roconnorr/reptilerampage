@@ -231,16 +231,16 @@ public class Player : MonoBehaviour
 					
 				}
 			}
+			foreach (GameObject weapon in weaponslist) {
+				weapon.GetComponent<PickupPrefab>().HideStars ();
+			}
 			if(closestWeapon != null){
 				PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
-			
-				if (minDist < 3) {
+				if (minDist < 2) {
 					pk.DisplayStars();
-					if (Input.GetButtonDown ("Pickup") && minDist < 2) {
+					if (Input.GetButtonDown ("Pickup")) {
 						ChangeWeapon (pk.type, pk, closestWeapon);
 					}
-				}else{
-					pk.HideStars();
 				}
 			}
 		
