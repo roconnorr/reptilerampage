@@ -64,12 +64,12 @@ public class Stegosaurus : MonoBehaviour {
 			//If chasing player
 			if (targetInChaseRange) {
 				if (isChasing) {
-					if (!targetInStopRange) {
-						if (stopped) {
-							stopped = false;
-							animator.Play ("StegoWalk");
-						}
-						if (!targetObstructed) {
+					if (!targetObstructed) {
+						if (!targetInStopRange) {
+							if (stopped) {
+								stopped = false;
+								animator.Play ("StegoWalk");
+							}
 							//Find nearest enemy and avoid if they're too close
 							Transform nearestEnemy = GetNearestSameDino ();
 							if (nearestEnemy != null) {
@@ -87,14 +87,14 @@ public class Stegosaurus : MonoBehaviour {
 							//Move directly towards player
 							MoveDirect ();
 							//If in chase range but player is obstructed, pathfind to him
-						} else {
-							if (isChasing) {
-								MovePathFind ();
-							}
+						} else if (!stopped) {
+							animator.Play ("StegoIdle");
+							stopped = true;
 						}
-					} else if (!stopped) {
-						animator.Play ("StegoIdle");
-						stopped = true;
+					} else {
+						if (isChasing) {
+							MovePathFind ();
+						}
 					}
 				}
 			} else {
