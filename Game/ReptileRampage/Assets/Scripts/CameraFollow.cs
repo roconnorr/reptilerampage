@@ -17,7 +17,7 @@ public class CameraFollow : MonoBehaviour {
 				transform.position = new Vector3(x, y, -10);
 			}
 		}else if(Player.scene.name == "Level2" && WayPoints.trexSpawnAnimationPlaying){
-			transform.position = new Vector3(46, -15, -10);
+			transform.position = new Vector3(39, -22, -10);
 		}
 		
 		if(player.GetComponent<Player>().canMove && Time.timeScale != 0){

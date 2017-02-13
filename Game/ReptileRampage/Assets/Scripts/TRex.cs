@@ -38,12 +38,15 @@ public class TRex : MonoBehaviour {
 		rocketFirePoint = transform.Find ("RocketFirePoint");
 		GetComponent<Enemy>().noFlip = true;
 		animator.Play("TrexSpawn");
-		Invoke("setSpawnAnimationToFinished", 1.8f);
+		animator.speed = 0.5f;
+		Invoke("setSpawnAnimationToFinished", 4f);
 	}
 
 	void setSpawnAnimationToFinished(){
 		WayPoints.trexSpawnAnimationFinished = true;
+		transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
 		spawned = true;
+		animator.speed = 1;
 	}
 	
 	// Update is called once per frame
