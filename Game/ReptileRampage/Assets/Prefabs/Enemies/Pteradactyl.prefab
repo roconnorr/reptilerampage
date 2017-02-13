@@ -160,8 +160,12 @@ MonoBehaviour:
   hasSeen: 0
   bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
     type: 2}
+  deathParticles: {fileID: 198260909177043204, guid: e29391ca573a18b4ba7bdd3169d9a2b6,
+    type: 2}
   deadEnemyPrefab: {fileID: 1476808941059958, guid: 12e7dc3979f5b4eca8e472266a2b9065,
     type: 2}
+  noFlip: 0
+  arenaMode: 0
 --- !u!114 &114876664693485766
 MonoBehaviour:
   m_ObjectHideFlags: 1
