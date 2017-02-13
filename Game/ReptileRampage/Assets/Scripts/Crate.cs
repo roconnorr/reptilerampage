@@ -48,7 +48,8 @@ public class Crate : MonoBehaviour {
 	public void TakeDamage(int amount) {
 		health -= amount;
 		if (health <= 0) {
-			AudioSource.PlayClipAtPoint(crateBreakSound, this.transform.position, 1.0f);
+			//AudioSource.PlayClipAtPoint(crateBreakSound, this.transform.position, 1.0f);
+			PlayHitSound(crateBreakSound, this.transform.position);
 			ParticleSystem localCrateParticles = Instantiate(crateParticles, this.transform.position, new Quaternion(0,0,0,0)) as ParticleSystem;
 			localCrateParticles.Play();
 			Destroy (gameObject);
@@ -136,5 +137,17 @@ public class Crate : MonoBehaviour {
 		}
 		int pick = Random.Range(0, array.Length);
 		pickupPrefab.type = (Player.WeaponType) array[pick];
+	}
+
+	public static void PlayHitSound(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.12f;
+		if(!tempSource.isPlaying){
+			tempSource.Play();
+		}
+		Destroy(temp, clip.length);
 	}
 }
