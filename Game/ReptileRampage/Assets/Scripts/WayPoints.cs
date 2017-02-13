@@ -29,6 +29,7 @@ public class WayPoints : MonoBehaviour {
 	 public static bool trexSpawnAnimationPlaying;
 	 [HideInInspector]
 	 public static bool trexSpawnAnimationFinished;
+	public static bool trexCam = false;
 
      void Start () {
 		playerScript = player.GetComponent<Player>();
@@ -97,10 +98,11 @@ public class WayPoints : MonoBehaviour {
 				 }
 			 }
 			 if(BulletHoming.bridgeExploded){
-					target.GetComponent<SpriteRenderer>().enabled = true;
-					triggerdTrex = true;
-					arrived = false;
-					BulletHoming.bridgeExploded = false;
+				target.GetComponent<SpriteRenderer>().enabled = true;
+				trexCam = true;
+				Invoke ("TriggerTRex", 2);
+				arrived = false;
+				BulletHoming.bridgeExploded = false;
 			 }
 			 if(trexSpawnAnimationFinished){
 				 trexSpawnAnimationPlaying = false;
@@ -147,4 +149,8 @@ public class WayPoints : MonoBehaviour {
     	yield return new WaitForSeconds(3f);
 		wait = false;
  	}
+
+	void TriggerTRex() {
+		triggerdTrex = true;
+	}
  }
