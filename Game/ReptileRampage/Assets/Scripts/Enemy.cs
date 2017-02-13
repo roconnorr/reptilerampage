@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour {
 	public ParticleSystem bloodParticles;
 	public ParticleSystem deathParticles;
 
+	public GameObject bossDeathPrefab;
+
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
 
@@ -65,11 +67,11 @@ public class Enemy : MonoBehaviour {
 			GetComponent<TRex> ().defencesDown = true;
 			GetComponent<TRex> ().defenceTimer = 200;
 		}
-		FireBloodParticles (dir);
 		SplatterBlood (1);
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
 			//don't take damage
 		} else {
+			FireBloodParticles (dir);
 			health -= amount;
 			if (health <= 0) {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
@@ -108,6 +110,9 @@ public class Enemy : MonoBehaviour {
 				ParticleSystem localDeathParticles = Instantiate (deathParticles, this.transform.position, transform.localRotation) as ParticleSystem;
 				localDeathParticles.Play ();
 				SplatterBlood (4);
+				if (bossDeathPrefab != null) {
+					Instantiate (bossDeathPrefab, transform.position, Quaternion.Euler (0, 0, 0));
+				}
 				Destroy (gameObject);
 			}
 		}
@@ -121,8 +126,10 @@ public class Enemy : MonoBehaviour {
 	}*/
 
 	public void FireBloodParticles(Quaternion dir){
+		float randX = Random.Range (-0.5f, 0.5f);
+		float randY = Random.Range (-0.5f, 0.5f);
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
-		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, new Vector3(transform.position.x + randX, transform.position.y + randY), particleDir) as ParticleSystem;
 		localBloodParticles.Play();
 	}
 

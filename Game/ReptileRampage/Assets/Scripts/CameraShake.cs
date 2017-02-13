@@ -27,7 +27,7 @@ public class CameraShake : MonoBehaviour {
 
 	void StopShaking() {
 		CancelInvoke("ShakeCamera");
-		if (mainCamera.GetComponent<CameraFollow>() == null) {
+		if (mainCamera.GetComponent<CameraFollow> () == null) {
 			mainCamera.transform.position = new Vector3 (0, 0, -10);
 		} else {
 			mainCamera.transform.position = CameraFollow.cameraPosition;

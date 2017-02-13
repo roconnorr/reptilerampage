@@ -27,9 +27,6 @@ public class Explosion : MonoBehaviour {
 			source = GameObject.Find ("Player").transform;
 		}
 		gameObject.GetComponent<CameraShake>().StartShaking(power/50);
-	}
-
-	void FixedUpdate () {
 		AudioSource.PlayClipAtPoint (explosionSound, transform.position);
 		Collider2D[] colliders = Physics2D.OverlapCircleAll (transform.position, radius);
 		foreach(Collider2D col in colliders){
@@ -57,16 +54,10 @@ public class Explosion : MonoBehaviour {
 				}
 			}
 		}
-		Destroy (gameObject);
+		Invoke ("Destroy", 1);
 	}
 
-//	void AddExplosionForce (Rigidbody2D body, float expForce, Vector3 expPosition, float expRadius){
-//		var dir = (body.transform.position - expPosition);
-//		float calc = 1 - (dir.magnitude / expRadius);
-//		if (calc <= 0) {
-//			calc = 0;		
-//		}
-//		body.AddForce (dir.normalized * expForce * calc);
-//		//body.velocity = Vector3.Lerp(body.velocity, dir*200 , 1000 * Time.deltaTime);
-//	}
+	void Destroy() {
+		Destroy (gameObject);
+	}
 }

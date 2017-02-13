@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridObject: {fileID: 0}
-  updateFrequency: 5
+  updateFrequency: 1
   DrawPathInEditor: 1
   PathColor: {r: 1, g: 0.015686274, b: 0.015686274, a: 1}
 --- !u!114 &114579641245174706
@@ -358,10 +358,11 @@ MonoBehaviour:
   - {fileID: 21300010, guid: 783e9b950b6d1174fab1fbdfdc8b19b0, type: 3}
   bloodPrefab: {fileID: 1631254704174028, guid: 407cff1a9a1941848a69b01695b152a7,
     type: 2}
-  bloodParticles: {fileID: 198260909177043204, guid: 0603e88ce9af23349a960ef66d1900cc,
+  bloodParticles: {fileID: 198674254562912080, guid: 726fe78c112c52947b214ffb30c02e56,
     type: 2}
-  deathParticles: {fileID: 198260909177043204, guid: e29391ca573a18b4ba7bdd3169d9a2b6,
+  deathParticles: {fileID: 198316632928369340, guid: 76ed2aa924c3f47489eddcd4168da5b0,
     type: 2}
+  bossDeathPrefab: {fileID: 0}
   deadEnemyPrefab: {fileID: 1579056665543184, guid: f2e8d4522c3e14473a8538474a314da1,
     type: 2}
   noFlip: 0
