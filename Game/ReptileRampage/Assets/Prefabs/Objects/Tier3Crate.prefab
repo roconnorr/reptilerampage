@@ -113,7 +113,7 @@ MonoBehaviour:
   ammoPack: {fileID: 1770400769561766, guid: 54dd1310cec8a564385ca8fa592112a4, type: 2}
   grenadePickup: {fileID: 1286666581406840, guid: fb7b4df0bf80ce94c9abbb56043a296c,
     type: 2}
-  crateBreakSound: {fileID: 8300000, guid: 65a49c290ccfdf649a4c5515bcded95c, type: 3}
+  crateBreakSound: {fileID: 8300000, guid: e4e956681b67e3d4c85dc89e71be9ad5, type: 3}
 --- !u!212 &212649946666315566
 SpriteRenderer:
   m_ObjectHideFlags: 1

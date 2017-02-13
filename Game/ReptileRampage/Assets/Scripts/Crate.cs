@@ -15,7 +15,6 @@ public class Crate : MonoBehaviour {
 	public GameObject grenadePickup;
 
 	public AudioClip crateBreakSound;
-
 	private int[] tier1rare1 = new int[2] {1, 9};
 	private int[] tier1rare2 = new int[2] {12, 20};
 	private int[] tier1rare3 = new int[1] {13};
