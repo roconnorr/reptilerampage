@@ -126,8 +126,10 @@ public class Enemy : MonoBehaviour {
 	}*/
 
 	public void FireBloodParticles(Quaternion dir){
+		float randX = Random.Range (-0.5f, 0.5f);
+		float randY = Random.Range (-0.5f, 0.5f);
 		Quaternion particleDir = Quaternion.Euler(dir.eulerAngles.z - 90, -90, -5);
-		ParticleSystem localBloodParticles = Instantiate(bloodParticles, this.transform.position, particleDir) as ParticleSystem;
+		ParticleSystem localBloodParticles = Instantiate(bloodParticles, new Vector3(transform.position.x + randX, transform.position.y + randY), particleDir) as ParticleSystem;
 		localBloodParticles.Play();
 	}
 
