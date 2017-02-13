@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
 public class Crate : MonoBehaviour {
-
-	//private AudioSource soundSource;
-
 	public int health = 30;
 
 	public bool isTier1;
@@ -16,6 +13,8 @@ public class Crate : MonoBehaviour {
 	public GameObject healthPack;
 	public GameObject ammoPack;
 	public GameObject grenadePickup;
+
+	public AudioClip crateBreakSound;
 
 	private int[] tier1rare1 = new int[2] {1, 9};
 	private int[] tier1rare2 = new int[2] {12, 20};
@@ -37,7 +36,6 @@ public class Crate : MonoBehaviour {
  
     
     void Start() {
-		//soundSource = gameObject.GetComponent<AudioSource>();
     }
 
 //	void OnCollisionEnter2D(Collision2D other){
@@ -50,6 +48,7 @@ public class Crate : MonoBehaviour {
 	public void TakeDamage(int amount) {
 		health -= amount;
 		if (health <= 0) {
+			AudioSource.PlayClipAtPoint(crateBreakSound, this.transform.position, 1.0f);
 			Destroy (gameObject);
 			SpawnStuff();
 		}

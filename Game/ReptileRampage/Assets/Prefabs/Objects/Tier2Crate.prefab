@@ -107,11 +107,13 @@ MonoBehaviour:
   isTier1: 0
   isTier2: 1
   isTier3: 0
+  isWeapon: 0
   pickup: {fileID: 1154394682787550, guid: 373700b94b63144c2821298b2e9a3f95, type: 2}
   healthPack: {fileID: 1057376695768274, guid: fa65a589947ab419f9cab4ec030f3e65, type: 2}
   ammoPack: {fileID: 1770400769561766, guid: 54dd1310cec8a564385ca8fa592112a4, type: 2}
   grenadePickup: {fileID: 1286666581406840, guid: fb7b4df0bf80ce94c9abbb56043a296c,
     type: 2}
+  crateBreakSound: {fileID: 8300000, guid: 65a49c290ccfdf649a4c5515bcded95c, type: 3}
 --- !u!212 &212828775971137030
 SpriteRenderer:
   m_ObjectHideFlags: 1
