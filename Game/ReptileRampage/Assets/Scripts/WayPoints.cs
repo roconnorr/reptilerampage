@@ -108,7 +108,6 @@ public class WayPoints : MonoBehaviour {
 				 playerScript.canShoot = true;
 				 wait = false;
 				 trexSpawnAnimationFinished = false;
-				 Debug.Log("Trex animation finished");
 			 }
 			 if(Mathf.Abs(transform.position.x - wayPointList[1].position.x) < 0.1f){
 				 Destroy(gameObject);
