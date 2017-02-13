@@ -23,6 +23,8 @@ public class Bullet : MonoBehaviour {
 	public bool isRPG;
 	public AudioClip wallHitSound = null;
 
+	public AudioClip[] wallHitSounds;
+
 	//private static float timer = 0.0f;
 	//private static float timeBetweenSounds = 0.1f;
 
@@ -45,10 +47,7 @@ public class Bullet : MonoBehaviour {
 	//Collide with wall and player
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Wall" || other.gameObject.tag == "DestructibleWall"){
-			if (wallHitSound != null){
-				//AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
-				PlayHitSound(wallHitSound, this.transform.position);
-			}
+			PlayHitSound(wallHitSounds[Random.Range(0,3)], this.transform.position);
 			Explode();
 		}
 		if(other.gameObject.tag == "Player" && dmgPlayer){
@@ -96,11 +95,12 @@ public class Bullet : MonoBehaviour {
 	}
 
 	public static void PlayHitSound(AudioClip clip, Vector3 pos){
+		print(clip.name);
 		GameObject temp = new GameObject("TempAudio");
 		temp.transform.position = pos;
 		AudioSource tempSource = temp.AddComponent<AudioSource>();
 		tempSource.clip = clip;
-		tempSource.volume = 0.05f;
+		tempSource.volume = 0.1f;
 		if(!tempSource.isPlaying){
 			tempSource.Play();
 		}
