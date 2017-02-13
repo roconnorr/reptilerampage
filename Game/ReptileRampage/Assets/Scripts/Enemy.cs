@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour {
 
 	public bool arenaMode;
 
+	private HUDManager hudManager;
+
 
 	//public ParticleSystem dustParticles;
 	//private Quaternion dustRotation;
@@ -39,6 +41,7 @@ public class Enemy : MonoBehaviour {
 		//localDustParticles.Play();
 		rb = GetComponent<Rigidbody2D>();
 		canvas = GameObject.Find("Canvas");
+		hudManager = canvas.GetComponent<HUDManager>();
 		player = GameObject.FindWithTag("Player");
 	}
 
@@ -68,15 +71,22 @@ public class Enemy : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 				if(isTrike){
 					//possibly some more dialogue
-					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
-					canvas.GetComponent<HUDManager>().inBossFight = false;
+					hudManager.SetBossHealthActive(false);
+					hudManager.inBossFight = false;
+					if(arenaMode){
+						hudManager.arenaTrikeAlive = false;
+					}
 					GameMaster.currentLevel = 2;
 					GameMaster.level1Checkpoint = false;
+
          			//SceneManager.LoadScene("Level2");
 				}else if(isTRex){
 					//possibly some more dialogue
-					canvas.GetComponent<HUDManager>().SetBossHealthActive(false);
-					canvas.GetComponent<HUDManager>().inBossFight = false;
+					hudManager.SetBossHealthActive(false);
+					hudManager.inBossFight = false;
+					if(arenaMode){
+						hudManager.arenaTrexAlive = false;
+					}
 					GameMaster.currentLevel = 3;
 					GameMaster.level2Checkpoint = false;
 				}else if(isGavin){

@@ -12,14 +12,21 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject Trike;
 	public GameObject Trex;
 
+	public GameObject waveMasterObject;
+
+	public GameObject canvas;
 	private WaveMaster waveMaster;
 	public GameObject grid;
 	public GameObject player;
 
 
+	private HUDManager hudManager;
+
+
 	// Use this for initialization
 	void Start () {
-		waveMaster = GameObject.Find("WaveMaster").GetComponent<WaveMaster>();
+		waveMaster = waveMasterObject.GetComponent<WaveMaster>();
+		hudManager =  canvas.GetComponent<HUDManager>();
 	}
 
 	public void Spawn(string type, int quantity){
@@ -75,6 +82,9 @@ public class EnemySpawner : MonoBehaviour {
 				trikeArray[i] = Instantiate(Trike, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				trikeArray[i].GetComponent<Enemy>().arenaMode = true;
 				trikeArray[i].GetComponent<Trike>().target = player.transform;
+				hudManager.arenaTrikeInstance = trikeArray[i];
+				hudManager.arenaTrikeAlive = true;
+				hudManager.arenaTrikeAlive = true;
 				waveMaster.enemiesAlive += 1;
 			}
 		}else if(type == "Trex"){
@@ -84,6 +94,9 @@ public class EnemySpawner : MonoBehaviour {
 				trexArray[i] = Instantiate(Trex, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				trexArray[i].GetComponent<Enemy>().arenaMode = true;
 				trexArray[i].GetComponent<TRex>().target = player.transform;
+				hudManager.arenaTrexInstance = trexArray[i];
+				hudManager.arenaTrexAlive = true;
+				hudManager.arenaTrexAlive = true;
 				waveMaster.enemiesAlive += 1;
 			}
 		}
