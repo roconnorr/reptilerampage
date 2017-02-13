@@ -6,7 +6,7 @@ public class Gavin : MonoBehaviour {
 
 	private State state;
 
-	private SpriteRenderer sr;
+	//private SpriteRenderer sr;
 	private Animator animator;
 	private Transform laser;
 	private Transform firePoint;
@@ -47,7 +47,7 @@ public class Gavin : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		animator = GetComponent<Animator>();
-		sr = GetComponent<SpriteRenderer> ();
+		//sr = GetComponent<SpriteRenderer> ();
 		laser = transform.FindChild ("Laser");
 		arm1 = transform.FindChild ("Arm1");
 		arm2 = transform.FindChild ("Arm2");

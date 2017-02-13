@@ -15,7 +15,7 @@ public class Crate : MonoBehaviour {
 	public GameObject grenadePickup;
 
 	public AudioClip crateBreakSound;
-
+	public ParticleSystem crateParticles;
 	private int[] tier1rare1 = new int[2] {1, 9};
 	private int[] tier1rare2 = new int[2] {12, 20};
 	private int[] tier1rare3 = new int[1] {13};
@@ -49,6 +49,8 @@ public class Crate : MonoBehaviour {
 		health -= amount;
 		if (health <= 0) {
 			AudioSource.PlayClipAtPoint(crateBreakSound, this.transform.position, 1.0f);
+			ParticleSystem localCrateParticles = Instantiate(crateParticles, this.transform.position, new Quaternion(0,0,0,0)) as ParticleSystem;
+			localCrateParticles.Play();
 			Destroy (gameObject);
 			SpawnStuff();
 		}
