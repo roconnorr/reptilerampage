@@ -23,17 +23,9 @@ public class Bullet : MonoBehaviour {
 	public bool isRPG;
 	public AudioClip wallHitSound = null;
 
-	private AudioSource audioSource;
-
-	private static bool clipPlaying;
-
-	private float timer = 0.0f;
-	private float timeBetweenSounds = 0.01f;
-
 	void Start(){
-		audioSource = gameObject.GetComponent<AudioSource>();
 		if(isRPG){
-			audioSource.Play();
+			gameObject.GetComponent<AudioSource>().Play();
 		}
 	}
 	
@@ -43,7 +35,7 @@ public class Bullet : MonoBehaviour {
 		if (range > 0) {
 			range--;
 		} else {
-			Explode();
+			Explode ();
 		}
 	}
 
@@ -52,11 +44,7 @@ public class Bullet : MonoBehaviour {
 		if(other.gameObject.tag == "Wall" || other.gameObject.tag == "DestructibleWall"){
 			if (wallHitSound != null){
 				//AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
-				//audioSource.clip = wallHitSound;
-				//audioSource.Play();
-				if(!clipPlaying){
-					PlayClipAt();
-				}	
+			}
 			Explode();
 		}
 		if(other.gameObject.tag == "Player" && dmgPlayer){
@@ -80,7 +68,6 @@ public class Bullet : MonoBehaviour {
 			Explode ();
 		}
 	}
-}
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
@@ -102,19 +89,5 @@ public class Bullet : MonoBehaviour {
 			}
 		}
 		Destroy (gameObject);
-	}
-
-	bool PlayClipAt(){
-		GameObject temp = new GameObject("TempAudio");
-		temp.transform.position = gameObject.transform.position;
-		temp.AddComponent<AudioSource>();
-		AudioSource tempSource = temp.GetComponent<AudioSource>();
-		tempSource.clip = wallHitSound;
-		tempSource.volume = 0.04f;
-		tempSource.Play();
-		clipPlaying = true;
-		Destroy(temp, tempSource.clip.length);
-		clipPlaying = false;
-		return temp;
 	}
 }
