@@ -1101,6 +1101,7 @@ GameObject:
   - component: {fileID: 155528186}
   - component: {fileID: 155528185}
   - component: {fileID: 155528188}
+  - component: {fileID: 155528189}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -1162,9 +1163,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 32767
-  m_Sprite: {fileID: 21300000, guid: 0a875ed233f3342fcb9995e49903efae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65210c59928a04f3291fec6d91f81b0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
 --- !u!4 &155528187
 Transform:
@@ -1174,7 +1175,7 @@ Transform:
   m_GameObject: {fileID: 155528184}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 4.4, y: -8.85, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1936922312}
   m_Father: {fileID: 1841821935}
@@ -1186,11 +1187,28 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 155528184}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ab12afd6966964174b3466e27b890aba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &155528189
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155528184}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b6e4ce3a678d04f6fa70e6d07726b466, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1001 &161006158
 Prefab:
   m_ObjectHideFlags: 0
@@ -17877,7 +17895,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1936922311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.21, y: -0.21, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 155528187}

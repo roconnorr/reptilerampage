@@ -21,6 +21,7 @@ public class WayPoints : MonoBehaviour {
 	 public Transform rocketPrefab;
 	 private Transform rocketFirePoint;
 	 public Transform target;
+	 private Animator animator;
 
      void Start () {
 		playerScript = player.GetComponent<Player>();
@@ -55,29 +56,27 @@ public class WayPoints : MonoBehaviour {
 				 if(targetWayPoint == null){
 					 targetWayPoint = wayPointList[currentWayPoint];
 				 }
-				 Move();
+				 Move0();
 			 }
 
 		//Level 2 cutscene
 		}else if(level2){
-			Debug.Log(transform.position.x);
 			if(firstRun1 && arrived){
 				arrived = false;
 				firstRun1 = false;
 			}
 			if(TextBoxManager.dialogFinished && currentWayPoint == 0){
+				GetComponent<HeliMovement>().enabled = true;
+				animator = GetComponent<Animator>();
+				animator.enabled = true;
+				animator.Play("Helicopter");
 				GetComponent<SpriteRenderer>().enabled = true;
 				if(targetWayPoint == null){
 					targetWayPoint = wayPointList[currentWayPoint];
 				}
-				Move();
-				/*if(firstRun1){
-					StartCoroutine(Wait());
-				 	firstRun1 = false;
-			 	}*/
+				Move1();
 		 	 }
 
-			 /*if(transform.position == wayPointList[0].position){*/
 			 if(Mathf.Abs(transform.position.x - wayPointList[0].position.x) < 0.1f){
 				 arrived = true;
 				 if(firstRun0){
@@ -93,13 +92,13 @@ public class WayPoints : MonoBehaviour {
 					target.GetComponent<SpriteRenderer>().enabled = true;
 					playerScript.canMove = true;
 				 	playerScript.canShoot = true;
-					triggerdTrex = true;
+					//triggerdTrex = true;
 					arrived = false;
-					wait = false;
+					//wait = false;
 					BulletHoming.bridgeExploded = false;
 			 }
 	
-			 if(transform.position == wayPointList[1].position){
+			 if(Mathf.Abs(transform.position.x - wayPointList[1].position.x) < 0.1f){
 				 Destroy(gameObject);
 		 	 }
 
@@ -107,17 +106,25 @@ public class WayPoints : MonoBehaviour {
 				 if(targetWayPoint == null){
 					 targetWayPoint = wayPointList[currentWayPoint];
 				 }
-				 Move();
+				 Move1();
 			 }
 		}
      }
- 
-     void Move(){
+	 
+	 void Move0(){
          // move towards the target
          transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed*Time.deltaTime);
  
-         //if(transform.position == targetWayPoint.position && (currentWayPoint+1 < this.wayPointList.Length)){
-		 if(Mathf.Abs(transform.position.x - targetWayPoint.position.x) < 0.1f && (currentWayPoint+1 < this.wayPointList.Length)){
+         if(transform.position == targetWayPoint.position && (currentWayPoint+1 < this.wayPointList.Length)){
+             currentWayPoint++;
+             targetWayPoint = wayPointList[currentWayPoint];
+         }
+     }
+     void Move1(){
+         // move towards the target
+         transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed*Time.deltaTime);
+ 
+		 if((Mathf.Abs(transform.position.x - targetWayPoint.position.x)) < 0.1f && (currentWayPoint+1 < this.wayPointList.Length)){
              currentWayPoint++;
              targetWayPoint = wayPointList[currentWayPoint];
          }

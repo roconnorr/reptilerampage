@@ -10,8 +10,8 @@ public class HeliMovement : MonoBehaviour {
 	void Start() {
 		yBase = transform.position.y;
 		count = 0;
-		bobSpeed = 0.1f;
-		bobHeight = 0.3f;
+		bobSpeed = 0.06f;
+		bobHeight = 0.2f;
 	}
 
 	void Update() {
