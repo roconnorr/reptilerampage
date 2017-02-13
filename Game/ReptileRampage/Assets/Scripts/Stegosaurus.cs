@@ -62,38 +62,40 @@ public class Stegosaurus : MonoBehaviour {
 			}
 
 			//If chasing player
-			if (isChasing && targetInChaseRange) {
-				if (!targetInStopRange) {
-					if (stopped) {
-						stopped = false;
-						animator.Play ("StegoWalk");
-					}
-					if (!targetObstructed) {
-						//Find nearest enemy and avoid if they're too close
-						Transform nearestEnemy = GetNearestSameDino ();
-						if (nearestEnemy != null) {
-							float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-							if (avoiding) {
-								if (dist > 2) {
-									avoiding = false;
+			if (targetInChaseRange) {
+				if (isChasing) {
+					if (!targetInStopRange) {
+						if (stopped) {
+							stopped = false;
+							animator.Play ("StegoWalk");
+						}
+						if (!targetObstructed) {
+							//Find nearest enemy and avoid if they're too close
+							Transform nearestEnemy = GetNearestSameDino ();
+							if (nearestEnemy != null) {
+								float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+								if (avoiding) {
+									if (dist > 2) {
+										avoiding = false;
+									}
+									Avoid (nearestEnemy);
+								} else if (dist < 1.5) {
+									avoiding = true;
+									Avoid (nearestEnemy);
 								}
-								Avoid (nearestEnemy);
-							} else if (dist < 1.5) {
-								avoiding = true;
-								Avoid (nearestEnemy);
+							}
+							//Move directly towards player
+							MoveDirect ();
+							//If in chase range but player is obstructed, pathfind to him
+						} else {
+							if (isChasing) {
+								MovePathFind ();
 							}
 						}
-						//Move directly towards player
-						MoveDirect ();
-						//If in chase range but player is obstructed, pathfind to him
-					} else {
-						if (isChasing) {
-							MovePathFind ();
-						}
+					} else if (!stopped) {
+						animator.Play ("StegoIdle");
+						stopped = true;
 					}
-				} else if (!stopped) {
-					animator.Play ("StegoIdle");
-					stopped = true;
 				}
 			} else {
 				if (isChasing) {
