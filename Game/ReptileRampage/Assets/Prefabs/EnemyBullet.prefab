@@ -188,6 +188,10 @@ MonoBehaviour:
   isExplosive: 0
   isRPG: 0
   wallHitSound: {fileID: 8300000, guid: d50b9b497c5dc094280ea224bf4ec816, type: 3}
+  wallHitSounds:
+  - {fileID: 8300000, guid: 64ba683edb7b8d243b2622a7db591341, type: 3}
+  - {fileID: 8300000, guid: 849d1107d52c24b44a6d539688dd64a2, type: 3}
+  - {fileID: 8300000, guid: 93edd35410d07af43a1245fbe8d3b583, type: 3}
 --- !u!114 &114616018047340960
 MonoBehaviour:
   m_ObjectHideFlags: 1
