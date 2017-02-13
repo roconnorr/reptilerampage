@@ -100,6 +100,8 @@ MonoBehaviour:
   grenadePickup: {fileID: 1286666581406840, guid: fb7b4df0bf80ce94c9abbb56043a296c,
     type: 2}
   crateBreakSound: {fileID: 8300000, guid: e4e956681b67e3d4c85dc89e71be9ad5, type: 3}
+  crateParticles: {fileID: 198260909177043204, guid: 91dbfbea652a24e4cad3ddb8680f07fb,
+    type: 2}
 --- !u!114 &114892905279989414
 MonoBehaviour:
   m_ObjectHideFlags: 1
