@@ -23,6 +23,7 @@ public class Stegosaurus : MonoBehaviour {
 	private bool avoiding = false;
 	private bool flipped = false;
 	private bool disabled = true;
+	private bool stopped;
 
 	//private Animator animator;
 	private float xPrev = 0;
@@ -63,6 +64,10 @@ public class Stegosaurus : MonoBehaviour {
 			//If chasing player
 			if (isChasing && targetInChaseRange) {
 				if (!targetInStopRange) {
+					if (stopped) {
+						stopped = false;
+						animator.Play ("StegoWalk");
+					}
 					if (!targetObstructed) {
 						//Find nearest enemy and avoid if they're too close
 						Transform nearestEnemy = GetNearestSameDino ();
@@ -86,11 +91,15 @@ public class Stegosaurus : MonoBehaviour {
 							MovePathFind ();
 						}
 					}
+				} else if (!stopped) {
+					animator.Play ("StegoIdle");
+					stopped = true;
 				}
 			} else {
 				if (isChasing) {
 					isChasing = false;
 					patrolLocation = transform.position;
+					animator.Play ("StegoIdle");
 				}
 				MovePatrol ();
 			}
