@@ -95,7 +95,6 @@ public class Bullet : MonoBehaviour {
 	}
 
 	public static void PlayHitSound(AudioClip clip, Vector3 pos){
-		print(clip.name);
 		GameObject temp = new GameObject("TempAudio");
 		temp.transform.position = pos;
 		AudioSource tempSource = temp.AddComponent<AudioSource>();
