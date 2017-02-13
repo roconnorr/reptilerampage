@@ -60,6 +60,7 @@ public class WayPoints : MonoBehaviour {
 
 		//Level 2 cutscene
 		}else if(level2){
+			Debug.Log(transform.position.x);
 			if(firstRun1 && arrived){
 				arrived = false;
 				firstRun1 = false;
@@ -76,7 +77,8 @@ public class WayPoints : MonoBehaviour {
 			 	}*/
 		 	 }
 
-			 if(transform.position == wayPointList[0].position){
+			 /*if(transform.position == wayPointList[0].position){*/
+			 if(Mathf.Abs(transform.position.x - wayPointList[0].position.x) < 0.1f){
 				 arrived = true;
 				 if(firstRun0){
 					TextBoxManager.dialogFinished = false;
@@ -114,7 +116,8 @@ public class WayPoints : MonoBehaviour {
          // move towards the target
          transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed*Time.deltaTime);
  
-         if(transform.position == targetWayPoint.position && (currentWayPoint+1 < this.wayPointList.Length)){
+         //if(transform.position == targetWayPoint.position && (currentWayPoint+1 < this.wayPointList.Length)){
+		 if(Mathf.Abs(transform.position.x - targetWayPoint.position.x) < 0.1f && (currentWayPoint+1 < this.wayPointList.Length)){
              currentWayPoint++;
              targetWayPoint = wayPointList[currentWayPoint];
          }

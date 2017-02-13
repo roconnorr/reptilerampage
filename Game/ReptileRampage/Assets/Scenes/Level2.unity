@@ -1100,6 +1100,7 @@ GameObject:
   - component: {fileID: 155528187}
   - component: {fileID: 155528186}
   - component: {fileID: 155528185}
+  - component: {fileID: 155528188}
   m_Layer: 0
   m_Name: Helicopter
   m_TagString: Untagged
@@ -1179,6 +1180,17 @@ Transform:
   m_Father: {fileID: 1841821935}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &155528188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 155528184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab12afd6966964174b3466e27b890aba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &161006158
 Prefab:
   m_ObjectHideFlags: 0
@@ -8824,6 +8836,16 @@ Prefab:
         type: 2}
       propertyPath: arenaMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224725259698457952, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224538813132698698, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
