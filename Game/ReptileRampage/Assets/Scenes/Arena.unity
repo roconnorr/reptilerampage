@@ -1282,13 +1282,14 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 01293ac9619205c4b8ac7f290cc4e3b0, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 114784221453289200, guid: bdfb391d80d689b4db2843af3b8a880c,
         type: 2}
       propertyPath: playerHitClip
       value: 
-      objectReference: {fileID: 8300000, guid: 01293ac9619205c4b8ac7f290cc4e3b0, type: 3}
-    m_RemovedComponents: []
+      objectReference: {fileID: 8300000, guid: 1e2050ab7c00e0d48914b025f9aaa0b6, type: 3}
+    m_RemovedComponents:
+    - {fileID: 82460005988654344, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1375127275
