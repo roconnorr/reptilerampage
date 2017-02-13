@@ -23,10 +23,12 @@ public class Bullet : MonoBehaviour {
 	public bool isRPG;
 	public AudioClip wallHitSound = null;
 
-	void Start(){
+	private AudioSource audioSource;
 
+	void Start(){
+		audioSource = gameObject.GetComponent<AudioSource>();
 		if(isRPG){
-			gameObject.GetComponent<AudioSource>().Play();
+			audioSource.Play();
 		}
 	}
 	
@@ -45,6 +47,8 @@ public class Bullet : MonoBehaviour {
 		if(other.gameObject.tag == "Wall" || other.gameObject.tag == "DestructibleWall"){
 			if (wallHitSound != null){
 				AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
+				//audioSource.clip = wallHitSound;
+				//audioSource.Play();
 			}
 			Explode();
 		}
