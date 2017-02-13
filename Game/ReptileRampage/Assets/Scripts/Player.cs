@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     public static int playerMaxHP = 100;
 
 	private AudioSource soundSource;
+
+	private AudioSource soundSource2;
 	public AudioClip[] footstepSounds;
 	private bool footstepSoundEnabled;
     public int health;
@@ -60,6 +62,8 @@ public class Player : MonoBehaviour
     private float horizontal;
     private float vertical;
 	private Transform shadow;
+	
+	public AudioClip playerHitClip;
 	public static Scene scene;
 
     void Start(){
@@ -77,6 +81,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
+		soundSource2 = gameObject.GetComponent<AudioSource>();
         //weapon = GetComponentInChildren<Weapon>();
 
         startWeapon1Type = GameMaster.slot1type;
@@ -335,11 +340,15 @@ public class Player : MonoBehaviour
     }
 
 	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
+		//AudioSource.PlayClipAtPoint(playerHitClip, gameObject.transform.position, 1.0f);
 		if (!isDead) {
 			if (!isInvulnerable) {
+				//soundSource2.clip = playerHitClip;
+				//if(!soundSource2.isPlaying){
+				//soundSource2.PlayOneShot(playerHitClip);
+				//}
 				health -= amount;
 				FireBloodParticles (dir);
-
 				StartCoroutine (becomeInvulnerable ());
 			}
 

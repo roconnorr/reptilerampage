@@ -1278,6 +1278,16 @@ Prefab:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 104539970}
+    - target: {fileID: 82460005988654344, guid: bdfb391d80d689b4db2843af3b8a880c,
+        type: 2}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 01293ac9619205c4b8ac7f290cc4e3b0, type: 3}
+    - target: {fileID: 114784221453289200, guid: bdfb391d80d689b4db2843af3b8a880c,
+        type: 2}
+      propertyPath: playerHitClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 01293ac9619205c4b8ac7f290cc4e3b0, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
   m_IsPrefabParent: 0

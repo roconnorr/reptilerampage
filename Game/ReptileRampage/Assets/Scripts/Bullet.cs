@@ -24,6 +24,7 @@ public class Bullet : MonoBehaviour {
 	public AudioClip wallHitSound = null;
 
 	void Start(){
+
 		if(isRPG){
 			gameObject.GetComponent<AudioSource>().Play();
 		}
