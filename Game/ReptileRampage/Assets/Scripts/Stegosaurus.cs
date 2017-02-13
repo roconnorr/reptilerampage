@@ -32,12 +32,12 @@ public class Stegosaurus : MonoBehaviour {
 	//Pathfinder variables
 	private AStarPathfinder pathfinder = null;
 	private Rigidbody2D rb;
-//	private Animator animator;
+	private Animator animator;
 	private SpriteRenderer sr;
 
 	void Start() {
 		pathfinder = transform.GetComponent<AStarPathfinder> ();
-		//animator = GetComponent<Animator>();
+		animator = GetComponent<Animator>();
 		sr = GetComponent<SpriteRenderer>();
 		rb = GetComponent<Rigidbody2D> ();
 		patrolLocation = transform.position;
@@ -57,7 +57,7 @@ public class Stegosaurus : MonoBehaviour {
 			if (!isChasing && targetInSightRange && !targetViewBlocked) {
 				isChasing = true;
 				isWandering = false;
-				//animator.Play ("velociraptor_run");
+				animator.Play ("StegoWalk");
 			}
 
 			//If chasing player
@@ -103,8 +103,9 @@ public class Stegosaurus : MonoBehaviour {
 	}
 
 	void Update() {
-		if (GetComponent<Enemy> ().hasSeen) {
+		if (GetComponent<Enemy> ().hasSeen && !isChasing) {
 			isChasing = true;
+			animator.Play ("StegoWalk");
 		}
 		if (!isChasing) {
 			GetComponent<Enemy> ().hasSeen = false;
@@ -189,17 +190,18 @@ public class Stegosaurus : MonoBehaviour {
 				}
 				if (tries < 5) {
 					isWandering = true;
-					//animator.Play ("velociraptor_run");
+					animator.Play ("StegoWalk");
 				}
 			} else {
 				isWandering = false;
-				//animator.Play ("velociraptor_idle");
+				animator.Play ("StegoIdle");
 			}
 		}
 		if (isWandering) {
 			rb.AddForce(Vector3.Normalize (wanderLocation - transform.position) * speed);
 			if (Vector3.Distance (transform.position, wanderLocation) < 0.1) {
 				isWandering = false;
+				animator.Play ("StegoIdle");
 			}
 			if(rb.velocity.magnitude > maxSpeed/4) {
 				rb.velocity = rb.velocity.normalized * maxSpeed/4;

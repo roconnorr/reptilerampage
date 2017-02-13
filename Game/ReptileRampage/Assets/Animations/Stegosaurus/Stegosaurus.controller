@@ -5,13 +5,13 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Velociraptor
+  m_Name: Stegosaurus
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
-    m_StateMachine: {fileID: 1107223663152630298}
+    m_StateMachine: {fileID: 1107610282360756680}
     m_Mask: {fileID: 0}
     m_Motions: []
     m_Behaviours: []
@@ -21,13 +21,13 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &1102253018822092038
+--- !u!1102 &1102571713474520222
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: velociraptor_run
+  m_Name: StegoWalk
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -39,18 +39,18 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 567768c9add425c48873b49f7dacf313, type: 2}
+  m_Motion: {fileID: 7400000, guid: dc55137b9033841b3bc3c8dbcc4dfe55, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1102 &1102446709285291468
+--- !u!1102 &1102979936376280796
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: velociraptor_idle
+  m_Name: StegoIdle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -62,12 +62,12 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 70e67d074e4163342811dc1854bc27db, type: 2}
+  m_Motion: {fileID: 7400000, guid: b06e784cb46c04cd08ca7f218de0fb5a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
---- !u!1107 &1107223663152630298
+--- !u!1107 &1107610282360756680
 AnimatorStateMachine:
   serializedVersion: 5
   m_ObjectHideFlags: 1
@@ -76,11 +76,11 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: 1102253018822092038}
-    m_Position: {x: 348, y: 60, z: 0}
+    m_State: {fileID: 1102571713474520222}
+    m_Position: {x: 312, y: 72, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102446709285291468}
-    m_Position: {x: 348, y: 120, z: 0}
+    m_State: {fileID: 1102979936376280796}
+    m_Position: {x: 312, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -90,4 +90,4 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: 1102446709285291468}
+  m_DefaultState: {fileID: 1102979936376280796}

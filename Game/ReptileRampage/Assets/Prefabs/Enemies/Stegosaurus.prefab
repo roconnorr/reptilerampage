@@ -146,7 +146,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1206414884232998}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalPosition: {x: -48.56544, y: -55.877857, z: -2}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 4459495119627586}
@@ -232,9 +232,9 @@ Animator:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1206414884232998}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 446e4f0102c164edfbeb1b9835ac8ba7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -353,6 +353,8 @@ MonoBehaviour:
     type: 2}
   deadEnemyPrefab: {fileID: 1579056665543184, guid: f2e8d4522c3e14473a8538474a314da1,
     type: 2}
+  noFlip: 0
+  arenaMode: 0
 --- !u!212 &212624939415596542
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -384,7 +386,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4a3f750bf6ebf49a3ab8428a0af79377, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 164c239092467432393d24f3b7e0dbc3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
