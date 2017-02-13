@@ -69,6 +69,17 @@ MonoBehaviour:
   explodeDamage: 0
   position: {x: 0, y: 0, z: 0}
   playerSource: 0
+  scorchMarks:
+  - {fileID: 21300000, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300002, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300004, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300006, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300008, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300010, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300012, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  - {fileID: 21300014, guid: 07f8fd635a6d48041927d9357694acbc, type: 3}
+  scorchPrefab: {fileID: 1974242373275406, guid: 4d29d06dd9e3c1f4290f386264b9b993,
+    type: 2}
   explosionSound: {fileID: 8300000, guid: 27c402640cd9f4a4f972cb01770791cc, type: 3}
 --- !u!212 &212103431469429198
 SpriteRenderer:
