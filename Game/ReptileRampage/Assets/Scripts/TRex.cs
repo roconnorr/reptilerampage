@@ -26,6 +26,7 @@ public class TRex : MonoBehaviour {
 	private SpriteRenderer sr;
 	private Animator animator;
 	private int walkTimer = 0;
+	private bool spawned;
 
 	// Use this for initialization
 	void Start () {
@@ -37,11 +38,12 @@ public class TRex : MonoBehaviour {
 		rocketFirePoint = transform.Find ("RocketFirePoint");
 		GetComponent<Enemy>().noFlip = true;
 		animator.Play("TrexSpawn");
+		Invoke("setSpawnAnimationToFinished", 1.8f);
 	}
 
 	void setSpawnAnimationToFinished(){
-		Debug.Log("WHYYYYYYYYY");
 		WayPoints.trexSpawnAnimationFinished = true;
+		spawned = true;
 	}
 	
 	// Update is called once per frame
@@ -73,7 +75,7 @@ public class TRex : MonoBehaviour {
 			}
 		}
 		//Walking Behaviour
-		else if (state == State.Walking) {
+		else if (state == State.Walking && spawned) {
 			animator.Play("TrexWalk");
 			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
@@ -93,13 +95,13 @@ public class TRex : MonoBehaviour {
 			xPrev = transform.position.x;
 		}
 		//Fire Rockets
-		else if (state == State.Shooting) {
+		else if (state == State.Shooting && spawned) {
 			//ShootRocket();
 			animator.Play("TrexShoot");
 			state = State.Idle;
 		}
 		//Roar
-		else if (state == State.Roaring) {
+		else if (state == State.Roaring && spawned) {
 			animator.Play("TrexRoar");
 			state = State.Idle;
 		}
