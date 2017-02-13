@@ -23,6 +23,8 @@ public class Enemy : MonoBehaviour {
 	public ParticleSystem bloodParticles;
 	public ParticleSystem deathParticles;
 
+	public GameObject bossDeathPrefab;
+
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
 
@@ -108,6 +110,9 @@ public class Enemy : MonoBehaviour {
 				ParticleSystem localDeathParticles = Instantiate (deathParticles, this.transform.position, transform.localRotation) as ParticleSystem;
 				localDeathParticles.Play ();
 				SplatterBlood (4);
+				if (bossDeathPrefab != null) {
+					Instantiate (bossDeathPrefab, transform.position, Quaternion.Euler (0, 0, 0));
+				}
 				Destroy (gameObject);
 			}
 		}
