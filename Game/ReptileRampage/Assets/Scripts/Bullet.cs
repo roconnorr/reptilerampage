@@ -23,6 +23,9 @@ public class Bullet : MonoBehaviour {
 	public bool isRPG;
 	public AudioClip wallHitSound = null;
 
+	//private static float timer = 0.0f;
+	//private static float timeBetweenSounds = 0.1f;
+
 	void Start(){
 		if(isRPG){
 			gameObject.GetComponent<AudioSource>().Play();
@@ -44,6 +47,7 @@ public class Bullet : MonoBehaviour {
 		if(other.gameObject.tag == "Wall" || other.gameObject.tag == "DestructibleWall"){
 			if (wallHitSound != null){
 				//AudioSource.PlayClipAtPoint(wallHitSound, transform.position);
+				PlayHitSound(wallHitSound, this.transform.position);
 			}
 			Explode();
 		}
@@ -89,5 +93,17 @@ public class Bullet : MonoBehaviour {
 			}
 		}
 		Destroy (gameObject);
+	}
+
+	public static void PlayHitSound(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.05f;
+		if(!tempSource.isPlaying){
+			tempSource.Play();
+		}
+		Destroy(temp, clip.length);
 	}
 }
