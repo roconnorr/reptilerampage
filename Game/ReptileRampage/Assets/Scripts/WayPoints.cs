@@ -15,12 +15,13 @@ public class WayPoints : MonoBehaviour {
 	 private bool wait;
 	 private bool firstRun0;
 	 private bool firstRun1;
+	 public static bool respawned;
 	 public Sprite secondBoat;
 	 public static bool triggerdTrex;
 	 public Transform rocketPrefab;
 	 private Transform rocketFirePoint;
 	 public Transform target;
- 
+
      void Start () {
 		playerScript = player.GetComponent<Player>();
 		firstRun0 = true;
@@ -28,7 +29,10 @@ public class WayPoints : MonoBehaviour {
      }
      
 	 void Update () {
-		 if(level1){
+		 if(level1 && arrived && respawned){
+			 Destroy(gameObject);
+		 }else if(level1){
+
 			 if(transform.position == wayPointList[0].position){
 				 if(firstRun0){
 					wait = true;
@@ -42,7 +46,7 @@ public class WayPoints : MonoBehaviour {
 				 		firstRun1 = false;
 						TextBoxManager.dialogFinished = false;
 			 	 	}
-			 	}
+			 	 }
 		 	 }
 			 if(transform.position == wayPointList[1].position){
 				 Destroy(gameObject);
@@ -53,7 +57,6 @@ public class WayPoints : MonoBehaviour {
 				 }
 				 Move();
 			 }
-
 
 		//Level 2 cutscene
 		}else if(level2){

@@ -5219,6 +5219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 916643659}
   - component: {fileID: 916643660}
+  - component: {fileID: 916643661}
   m_Layer: 0
   m_Name: DialogTrigger0
   m_TagString: Dialog0
@@ -5255,6 +5256,17 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 5.96, y: 3.75}
+--- !u!114 &916643661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 916643658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ab6aaa3193b436cb17f14e4b2b746f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &921060504
 Prefab:
   m_ObjectHideFlags: 0

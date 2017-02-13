@@ -22,6 +22,10 @@ public class GameOverManager : MonoBehaviour {
 			GameMaster.slot1ammo = GameMaster.levelStartSlot1Ammo;
 			GameMaster.slot2ammo = GameMaster.levelStartSlot2Ammo;
 		}
+
+		if(Player.scene.name == "Level1"){
+			WayPoints.respawned = true;
+		}
 	    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 
