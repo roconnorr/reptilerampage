@@ -24,8 +24,8 @@ public class BulletHoming : MonoBehaviour {
 	public int iFrames;
 	[HideInInspector]
 	public Transform source;
-
 	public AudioClip wallHitSound = null;
+	public static bool bridgeExploded;
 
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
@@ -37,7 +37,12 @@ public class BulletHoming : MonoBehaviour {
 		if (range > 0) {
 			range--;
 		} else {
-			Explode ();
+			if(Player.scene.name == "Level2" && WayPoints.arrived){
+				Explode ();
+				bridgeExploded = true;
+			}else{
+				Explode ();
+			}
 		}
 		if (iFrames > 0) {
 			iFrames--;

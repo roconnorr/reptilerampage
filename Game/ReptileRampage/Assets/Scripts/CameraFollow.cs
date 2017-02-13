@@ -20,13 +20,13 @@ public class CameraFollow : MonoBehaviour {
 				float y = cutSceneObject.transform.position.y;
 				transform.position = new Vector3(x, y, -10);
 			}
-		}else if(Player.scene.name == "Level2" && WayPoints.triggerdTrex && !WayPoints.arrived){
+		}/*else if(Player.scene.name == "Level2" && WayPoints.arrived){
 			if(cutSceneObject != null){
 				float x = cutSceneObject.transform.position.x;
 				float y = cutSceneObject.transform.position.y;
 				transform.position = new Vector3(x, y, -10);
 			}
-		}
+		}*/
 		if(player.GetComponent<Player>().canMove && Time.timeScale != 0){
 			float x = player.transform.position.x + ((Camera.main.ScreenToWorldPoint (Input.mousePosition).x - player.transform.position.x) / followDistance);
 			float y = player.transform.position.y + ((Camera.main.ScreenToWorldPoint (Input.mousePosition).y - player.transform.position.y) / followDistance);

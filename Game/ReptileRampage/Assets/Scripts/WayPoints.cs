@@ -59,8 +59,7 @@ public class WayPoints : MonoBehaviour {
 		}else if(level2){
 			if(TextBoxManager.dialogFinished && currentWayPoint == 0){
 				GetComponent<SpriteRenderer>().enabled = true;
-				triggerdTrex = true;
-
+				//triggerdTrex = true;
 					  if(targetWayPoint == null){
 						  targetWayPoint = wayPointList[currentWayPoint];
 					  }
@@ -76,13 +75,18 @@ public class WayPoints : MonoBehaviour {
 				 if(firstRun0){
 					wait = true;
 					rocketFirePoint = transform.Find ("RocketFirePoint");
-					target.GetComponent<Collider2D>().enabled = true;
-					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 300, false, false, target, transform);
-					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 300, false, false, target, transform);
+					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 30, false, false, target, transform);
+					GameMaster.CreateHomingBullet (rocketPrefab, rocketFirePoint.position, Random.Range (240, 260), 0, 12, 30, false, false, target, transform);
 					firstRun0 = false;
 				 }
-				 playerScript.canMove = true;
-				 playerScript.canShoot = true;
+			 }
+			 if(BulletHoming.bridgeExploded){
+					target.GetComponent<SpriteRenderer>().enabled = true;
+					playerScript.canMove = true;
+				 	playerScript.canShoot = true;
+					triggerdTrex = true;
+					arrived = false;
+					wait = false;
 			 }
 	
 			 if(transform.position == wayPointList[1].position){

@@ -37,10 +37,8 @@ public class Gate : MonoBehaviour {
 				animator.Play ("GateIdle");
 			}
 		} else if (isLevel2) {
-			//Debug.Log(dist);
-			if (dist > 5.5f && player.position.y > transform.position.y && hudManager.inBossFight) {
+			if (BulletHoming.bridgeExploded && player.position.y > transform.position.y) {
 				gameObject.GetComponent<Collider2D> ().enabled = true;
-				gameObject.GetComponent<SpriteRenderer> ().enabled = true;
 			}
 		} else if (gateway1) {
 			if (GameMaster.currentLevel == 2) {
