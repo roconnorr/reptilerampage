@@ -41,7 +41,7 @@ public class TextBoxManager : MonoBehaviour {
 		if(dialogActive){
 			playerScript.canMove = false;
 			playerScript.canShoot = false;
-			playerScript.slot[playerScript.slotActive].SetActive(false);
+			//playerScript.slot[playerScript.slotActive].SetActive(false);
 			hudManager.HideBottomHUD(true);
 			dialogBox.SetActive(true);
 
