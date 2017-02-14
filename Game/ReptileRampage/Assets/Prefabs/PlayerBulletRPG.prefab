@@ -186,9 +186,13 @@ MonoBehaviour:
   dmgPlayer: 0
   dmgEnemy: 0
   knockBackForce: 0
+  source: {fileID: 0}
   isExplosive: 1
   isRPG: 1
-  wallHitSound: {fileID: 8300000, guid: fffb1ee00f0a2f94095cf3d4dfb6308e, type: 3}
+  wallHitSounds:
+  - {fileID: 8300000, guid: 64ba683edb7b8d243b2622a7db591341, type: 3}
+  - {fileID: 8300000, guid: 849d1107d52c24b44a6d539688dd64a2, type: 3}
+  - {fileID: 8300000, guid: 93edd35410d07af43a1245fbe8d3b583, type: 3}
 --- !u!114 &114889797003370110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -201,6 +205,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onUpdate: 1
+  isStego: 0
+  isParticles: 0
 --- !u!212 &212360821569839572
 SpriteRenderer:
   m_ObjectHideFlags: 1
