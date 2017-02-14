@@ -118,8 +118,9 @@ public class WayPoints : MonoBehaviour {
 				 fakeTrike.GetComponent<SpriteRenderer>().enabled = false;
 				 rb.velocity = Vector3.zero;
 				 triggerdTrike = true;
+				 gameObject.GetComponent<CameraShake>().StartShaking(1);
 				 //arrived = false;
-				 Invoke("cameraBackToplayer", 1);
+				 Invoke("cameraBackToplayer", 2f);
 				 firstRun2 = false;
 			 }
 			 if(Mathf.Abs(transform.position.x - wayPointList[1].position.x) < 0.1f){

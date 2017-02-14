@@ -20,7 +20,6 @@ public class Trike : MonoBehaviour {
 	private int stomps;
 	private bool isStomping;
 	private int walkTimer = 0;
-	private SpriteRenderer sr;
 	private bool spawned;
 
 	void Start () {
@@ -30,8 +29,7 @@ public class Trike : MonoBehaviour {
 		stompFirePoint = transform.Find ("StompFirePoint");
 		animator = GetComponent<Animator>();
 		GetComponent<Enemy>().noFlip = false;
-		sr = GetComponent<SpriteRenderer>();
-		Invoke("SpawnWait", 1f);
+		Invoke("SpawnWait", 2f);
 	}
 
 	void SpawnWait() {
@@ -140,15 +138,15 @@ public class Trike : MonoBehaviour {
 	}
 
 	void StompWave(){
-		if ((target.position.x > transform.position.x) && !flipped) {
-			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-			flipped = true;
-			GetComponent<Enemy>().noFlip = true;
-		}
-		if ((target.position.x < transform.position.x) && flipped) {
+		if ((target.position.x > transform.position.x) && flipped) {
 			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 			flipped = false;
 			GetComponent<Enemy>().noFlip = false;
+		}
+		if ((target.position.x < transform.position.x) && !flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = true;
+			GetComponent<Enemy>().noFlip = true;
 		}
 
 		for(int i=0; i<=360; i+=20){
