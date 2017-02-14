@@ -10,6 +10,7 @@ public class CameraFollow : MonoBehaviour {
 	private bool gotPosition;
 	private Transform trex;
 	private float originalOrthographicSize;
+	private bool stop;
 
 	void Start(){
 		originalOrthographicSize = Camera.main.orthographicSize;
@@ -22,16 +23,17 @@ public class CameraFollow : MonoBehaviour {
 				float y = cutSceneObject.transform.position.y;
 				transform.position = new Vector3(x, y, -10);
 			}
-		}else if(Player.scene.name == "Level1" && WayPoints.heliMoving){
+		}else if(Player.scene.name == "Level1" && WayPoints.heliMoving && !stop){
 				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (12, 50, -15), 4*Time.deltaTime);
 				StartCoroutine(ZoomOut());
+				if(transform.position == new Vector3 (12, 50, -15)){
+					stop = true;
+				}
 		}else if(Player.scene.name == "Level2" && WayPoints.trexSpawnAnimationPlaying){
 			if(WayPoints.trexCam && transform.position != new Vector3(39, -22, -10)) {
 				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (39, -22, -10), 6*Time.deltaTime);
 			}
-		}
-		
-		if(player.GetComponent<Player>().canMove && Time.timeScale != 0){
+		}else if(player.GetComponent<Player>().canMove && Time.timeScale != 0){
 			if(Camera.main.orthographicSize != originalOrthographicSize && !WayPoints.heliMoving){
 				StartCoroutine(ZoomIn());
 			}
@@ -61,7 +63,7 @@ public class CameraFollow : MonoBehaviour {
 	IEnumerator ZoomIn (){
         while (Camera.main.orthographicSize > originalOrthographicSize) {
             yield return new WaitForSeconds (0.005f);
-            Camera.main.orthographicSize -= 0.001f;
+            Camera.main.orthographicSize -= 0.002f;
         }
 		Camera.main.orthographicSize = originalOrthographicSize;
     }

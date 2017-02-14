@@ -29,7 +29,7 @@ public class CameraShake : MonoBehaviour {
 		CancelInvoke("ShakeCamera");
 		if (mainCamera.GetComponent<CameraFollow> () == null) {
 			mainCamera.transform.position = new Vector3 (0, 0, -10);
-		} else {
+		} else if(!WayPoints.heliMoving){
 			mainCamera.transform.position = CameraFollow.cameraPosition;
 		}
 	}
