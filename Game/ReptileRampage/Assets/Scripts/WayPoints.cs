@@ -102,7 +102,6 @@ public class WayPoints : MonoBehaviour {
 				trexCam = true;
 				Invoke ("TriggerTRex", 2);
 				arrived = false;
-				BulletHoming.bridgeExploded = false;
 			 }
 			 if(trexSpawnAnimationFinished){
 				 trexSpawnAnimationPlaying = false;
