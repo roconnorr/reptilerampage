@@ -33,7 +33,7 @@ public class Gate : MonoBehaviour {
 					animator.Play ("GateClosed");
 				}
 				gameObject.GetComponent<Collider2D> ().enabled = true;
-			} else if (!hudManager.inBossFight) {
+			} else if (!hudManager.inBossFight && GameMaster.currentLevel == 1) {
 				animator.Play ("GateIdle");
 			}
 		} else if (isLevel2) {
