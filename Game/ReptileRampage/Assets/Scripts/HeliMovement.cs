@@ -7,6 +7,7 @@ public class HeliMovement : MonoBehaviour {
 	private float bobSpeed;
 	private float bobHeight;
 	private float bobAmount;
+	
 	void Start() {
 		yBase = transform.position.y;
 		count = 0;
