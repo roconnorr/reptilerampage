@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 114876664693485766}
   - component: {fileID: 114586794129179644}
   - component: {fileID: 50542823447059614}
+  - component: {fileID: 95993227973779430}
   m_Layer: 13
   m_Name: Pteradactyl
   m_TagString: Enemy
@@ -138,6 +139,23 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.15
+--- !u!95 &95993227973779430
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1483292693711106}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 18dcb2ffa9bfe9445b1e0bd43801f16b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114586794129179644
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -171,6 +189,7 @@ MonoBehaviour:
     type: 2}
   deathParticles: {fileID: 198260909177043204, guid: e29391ca573a18b4ba7bdd3169d9a2b6,
     type: 2}
+  bossDeathPrefab: {fileID: 0}
   deadEnemyPrefab: {fileID: 1476808941059958, guid: 12e7dc3979f5b4eca8e472266a2b9065,
     type: 2}
   noFlip: 0

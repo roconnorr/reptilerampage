@@ -17,6 +17,8 @@ public class Pteradactyl : MonoBehaviour {
 	private float angle = 0;
 	private bool seen = false;
 	private float timeToFire = 0;
+	private float xPrev;
+	private bool flipped = false;
 
 	private Rigidbody2D rb;
 
@@ -62,5 +64,16 @@ public class Pteradactyl : MonoBehaviour {
 		if (!seen) {
 			GetComponent<Enemy> ().hasSeen = false;
 		}
+		if ((transform.position.x > xPrev + 0.05) && !flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = true;
+			GetComponent<Enemy>().noFlip = true;
+		}
+		if ((transform.position.x < xPrev - 0.05) && flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = false;
+			GetComponent<Enemy>().noFlip = false;
+		}
+		xPrev = transform.position.x;
 	}
 }
