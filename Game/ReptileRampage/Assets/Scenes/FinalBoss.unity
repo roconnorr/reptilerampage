@@ -1438,7 +1438,6 @@ MonoBehaviour:
   bossMusic: {fileID: 8300000, guid: f50d075c4d9e48f49b1d6b4c6c4cf6bb, type: 3}
   canvas: {fileID: 549481404}
   titleScreen: 0
-  player: {fileID: 1415890795}
 --- !u!82 &1195738530
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2172,7 +2171,7 @@ Prefab:
     - target: {fileID: 114349796956564976, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_MaxValue
-      value: 7000
+      value: 5000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
