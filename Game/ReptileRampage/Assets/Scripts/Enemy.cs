@@ -98,7 +98,9 @@ public class Enemy : MonoBehaviour {
 				} else if (isGavin) {
 					SceneManager.LoadScene("WinScreen");
 				}
-				Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
+				if(deadEnemyPrefab != null){
+					Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
+				}
 				if (!noFlip) {
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				} else if (noFlip) {
