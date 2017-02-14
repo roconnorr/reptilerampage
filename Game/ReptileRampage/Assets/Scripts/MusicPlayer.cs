@@ -10,9 +10,15 @@ public class MusicPlayer : MonoBehaviour {
 	private bool levelMusicPlayed;
 	private bool bossMusicPlayed;
 	public bool titleScreen;
+	private Player playerScript;
+	public GameObject player;
 	void Start () {
 		musicPlayer = GetComponent<AudioSource>();
 		hudManager = canvas.GetComponent<HUDManager>();
+		musicPlayer.loop = true;
+		if(player != null){	
+			playerScript = player.GetComponent<Player>();
+		}
 		if(titleScreen){
 			musicPlayer.clip = levelMusic;
 			musicPlayer.Play();
@@ -21,6 +27,9 @@ public class MusicPlayer : MonoBehaviour {
 	
 	void Update () {
 		if(!titleScreen){
+			if(playerScript.gameOver){
+				musicPlayer.loop = false;
+			}
 			if(hudManager.inBossFight && !bossMusicPlayed){
 				musicPlayer.clip = bossMusic;
 				musicPlayer.Play();

@@ -5212,6 +5212,8 @@ MonoBehaviour:
   levelMusic: {fileID: 8300000, guid: fd098449d4588124e9722aee9579e8b5, type: 3}
   bossMusic: {fileID: 8300000, guid: d3f3fcd6799494d43bf5e34f3fcfc875, type: 3}
   canvas: {fileID: 863452690}
+  titleScreen: 0
+  player: {fileID: 1019736887}
 --- !u!82 &897666447
 AudioSource:
   m_ObjectHideFlags: 0
