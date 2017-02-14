@@ -1438,6 +1438,7 @@ MonoBehaviour:
   bossMusic: {fileID: 8300000, guid: f50d075c4d9e48f49b1d6b4c6c4cf6bb, type: 3}
   canvas: {fileID: 549481404}
   titleScreen: 0
+  player: {fileID: 1415890795}
 --- !u!82 &1195738530
 AudioSource:
   m_ObjectHideFlags: 0
