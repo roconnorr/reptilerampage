@@ -17,8 +17,6 @@ public class Player : MonoBehaviour
     public static int playerMaxHP = 100;
 
 	private AudioSource soundSource;
-
-	private AudioSource soundSource2;
 	public AudioClip[] footstepSounds;
 	private bool footstepSoundEnabled;
     public int health;
@@ -81,7 +79,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
-		soundSource2 = gameObject.GetComponent<AudioSource>();
         //weapon = GetComponentInChildren<Weapon>();
 
         startWeapon1Type = GameMaster.slot1type;

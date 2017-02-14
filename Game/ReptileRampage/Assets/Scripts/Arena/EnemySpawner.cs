@@ -25,11 +25,12 @@ public class EnemySpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		waveMaster = waveMasterObject.GetComponent<WaveMaster>();
+		//waveMaster = waveMasterObject.GetComponent<WaveMaster>();
 		hudManager =  canvas.GetComponent<HUDManager>();
 	}
 
 	public void Spawn(string type, int quantity){
+		waveMaster = waveMasterObject.GetComponent<WaveMaster>();
 		//array of gameobjects instantiate each index
 		if(type == "Anklyosaurus"){
 			GameObject[] anklyArray;
@@ -40,7 +41,7 @@ public class EnemySpawner : MonoBehaviour {
 				anklyArray[i].GetComponent<Enemy>().hasSeen = true;
 				anklyArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
 				anklyArray[i].GetComponent<Ankylosaurus>().target = player;
-				waveMaster.enemiesAlive += 1;
+				waveMaster.enemiesAlive++;
 			}
 		}else if(type == "Pteradactyl"){
 			GameObject[] pterArray;
@@ -50,7 +51,7 @@ public class EnemySpawner : MonoBehaviour {
 				pterArray[i].GetComponent<Enemy>().arenaMode = true;
 				pterArray[i].GetComponent<Enemy>().hasSeen = true;
 				pterArray[i].GetComponent<Pteradactyl>().target = player.transform;
-				waveMaster.enemiesAlive += 1;
+				waveMaster.enemiesAlive++;
 			}
 		}else if(type == "Stegosaurus"){
 			GameObject[] stegoArray;
@@ -62,7 +63,7 @@ public class EnemySpawner : MonoBehaviour {
 				stegoArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
 				stegoArray[i].GetComponent<Stegosaurus>().target = player;
 				stegoArray[i].GetComponentInChildren<StegoTurret>().target = player;
-				waveMaster.enemiesAlive += 1;
+				waveMaster.enemiesAlive++;
 			}
 		}else if(type == "Velociraptor"){
 			GameObject[] raptorArray;
@@ -73,7 +74,7 @@ public class EnemySpawner : MonoBehaviour {
 				raptorArray[i].GetComponent<Enemy>().hasSeen = true;
 				raptorArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
 				raptorArray[i].GetComponent<Velociraptor>().target = player;
-				waveMaster.enemiesAlive += 1;
+				waveMaster.enemiesAlive++;
 			}
 		}else if(type == "Trike"){
 			GameObject[] trikeArray;
@@ -85,7 +86,7 @@ public class EnemySpawner : MonoBehaviour {
 				hudManager.arenaTrikeInstance = trikeArray[i];
 				hudManager.arenaTrikeAlive = true;
 				hudManager.arenaTrikeAlive = true;
-				waveMaster.enemiesAlive += 1;
+				waveMaster.enemiesAlive++;
 			}
 		}else if(type == "Trex"){
 			GameObject[] trexArray;
@@ -97,7 +98,7 @@ public class EnemySpawner : MonoBehaviour {
 				hudManager.arenaTrexInstance = trexArray[i];
 				hudManager.arenaTrexAlive = true;
 				hudManager.arenaTrexAlive = true;
-				waveMaster.enemiesAlive += 1;
+				waveMaster.enemiesAlive++;
 			}
 		}
 	}

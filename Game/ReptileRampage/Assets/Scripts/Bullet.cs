@@ -21,7 +21,6 @@ public class Bullet : MonoBehaviour {
 	public Transform source;
 	public bool isExplosive;
 	public bool isRPG;
-	public AudioClip wallHitSound = null;
 
 	public AudioClip[] wallHitSounds;
 

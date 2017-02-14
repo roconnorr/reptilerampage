@@ -96,7 +96,7 @@ public class Enemy : MonoBehaviour {
 					GameMaster.currentLevel = 3;
 					GameMaster.level2Checkpoint = false;
 				} else if (isGavin) {
-					SceneManager.LoadScene ("WinScreen");
+					SceneManager.LoadScene("WinScreen");
 				}
 				Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
 				if (!noFlip) {
@@ -105,7 +105,7 @@ public class Enemy : MonoBehaviour {
 					deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				}
 				if (arenaMode) {
-					GameObject.Find ("WaveMaster").GetComponent<WaveMaster> ().enemiesAlive--;
+					GameObject.Find("WaveMaster").GetComponent<WaveMaster>().enemiesAlive--;
 				}
 				ParticleSystem localDeathParticles = Instantiate (deathParticles, this.transform.position, transform.localRotation) as ParticleSystem;
 				localDeathParticles.Play ();
