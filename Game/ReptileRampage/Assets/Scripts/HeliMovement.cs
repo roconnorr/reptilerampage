@@ -16,8 +16,10 @@ public class HeliMovement : MonoBehaviour {
 	}
 
 	void Update() {
-		bobAmount = bobHeight*Mathf.Sin(count);
-		transform.position = new Vector3(transform.position.x, yBase + bobAmount);
-		count += bobSpeed;
+		if(Time.timeScale != 0){
+			bobAmount = bobHeight*Mathf.Sin(count);
+			transform.position = new Vector3(transform.position.x, yBase + bobAmount);
+			count += bobSpeed;
+		}
 	}
 }

@@ -36,10 +36,12 @@ public class Bullet : MonoBehaviour {
 	void Update () {
 		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
 
-		if (range > 0) {
-			range--;
-		} else {
-			Explode ();
+		if(Time.timeScale != 0){
+			if (range > 0) {
+				range--;
+			} else {
+				Explode ();
+			}
 		}
 	}
 

@@ -34,19 +34,22 @@ public class BulletHoming : MonoBehaviour {
 	}
 
 	void Update () {
-		if (range > 0) {
-			range--;
-		} else {
-			if(Player.scene.name == "Level2" && WayPoints.arrived){
-				Explode ();
-				bridgeExploded = true;
-			}else{
-				Explode ();
+		if(Time.timeScale != 0){
+			if (range > 0) {
+				range--;
+			} else {
+				if(Player.scene.name == "Level2" && WayPoints.arrived){
+					Explode ();
+					bridgeExploded = true;
+				}else{
+					Explode ();
+				}
+			}
+			if (iFrames > 0) {
+				iFrames--;
 			}
 		}
-		if (iFrames > 0) {
-			iFrames--;
-		}
+
 		if(rb.velocity.magnitude > moveSpeed) {
 			rb.velocity = rb.velocity.normalized * moveSpeed;
 		}
