@@ -349,6 +349,8 @@ MonoBehaviour:
   target: {fileID: 0}
   bulletPrefab: {fileID: 4468996414422982, guid: b74ebb4e99f27a54597ad408c850307d,
     type: 2}
+  grenadePrefab: {fileID: 4645237254359424, guid: aa28b7723530847cf93cd61de518f769,
+    type: 2}
   spawnPrefab: {fileID: 4434586094764538, guid: fa807147f420fa44ea1b845c54dcb454,
     type: 2}
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
@@ -376,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  health: 3000
+  health: 7000
   isTrike: 0
   isTRex: 0
   isGavin: 1

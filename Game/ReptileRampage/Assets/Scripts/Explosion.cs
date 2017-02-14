@@ -43,7 +43,11 @@ public class Explosion : MonoBehaviour {
 				}
 				if(rb.tag == "Enemy"){
 					if (rb.GetComponent<Enemy> ()) {
-						rb.GetComponent<Enemy> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power, source, true);
+						if (rb.GetComponent<Enemy> ().isGavin && !playerSource) {
+							//Don't take damage
+						} else {
+							rb.GetComponent<Enemy> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power, source, true);
+						}
 					}
 				}
 				if(rb.tag == "Crate"){

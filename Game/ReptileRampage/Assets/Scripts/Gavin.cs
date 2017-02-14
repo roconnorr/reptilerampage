@@ -2,7 +2,7 @@
 
 public class Gavin : MonoBehaviour {
 
-	private enum State {Idle, Shooting, Laser, Spawning};
+	private enum State {Idle, Shooting, Laser, Spawning, Grenades};
 
 	private State state;
 
@@ -17,6 +17,7 @@ public class Gavin : MonoBehaviour {
 
 	public Transform target;
 	public Transform bulletPrefab;
+	public Transform grenadePrefab;
 	public Transform spawnPrefab;
 	public Transform muzzleFlashPrefab;
 	public Transform grid;
@@ -36,6 +37,7 @@ public class Gavin : MonoBehaviour {
 	private bool isLaser = false;
 	private bool bulletAttack1 = false;
 	private bool bulletAttack2 = false;
+	private bool firedGrenades = false;
 	private float timeToFire = 0;
 	private float timeToSpawn = 0;
 	private int bullet1Count = 0;
@@ -78,6 +80,8 @@ public class Gavin : MonoBehaviour {
 				bullet1Count = 0;
 			} else if (random == 8) {
 				state = State.Spawning;
+			} else if (random < 12) {
+				state = State.Grenades;
 			}
 		}
 		if (state == State.Laser && !isLaser) {
@@ -89,7 +93,7 @@ public class Gavin : MonoBehaviour {
 			timeToFire = Time.time + 1/(fireRate);
 			CreateBullet();
 			bullet2Count++;
-			if (bullet2Count > 50) {
+			if (bullet2Count > 25) {
 				bullet2Count = 0;
 				bulletAttack2 = false;
 				state = State.Idle;
@@ -113,6 +117,13 @@ public class Gavin : MonoBehaviour {
 				state = State.Idle;
 			}
 		}
+		if (state == State.Grenades && !firedGrenades) {
+			firedGrenades = true;
+			FireGrenade ();
+			Invoke ("FireGrenade", 1f);
+			Invoke ("FireGrenade", 2f);
+			Invoke ("SetIdle", 2f);
+		}
 		//Fire bullets
 		if (!bulletAttack1 && !bulletAttack2 && Random.Range (0, 400) == 1) {
 			bulletAttack1 = true;
@@ -132,6 +143,17 @@ public class Gavin : MonoBehaviour {
 	void FireLaser() {
 		laser.gameObject.SetActive (true);
 		Invoke ("CancelLaser", 3f);
+	}
+
+	void SetIdle() {
+		state = State.Idle;
+		firedGrenades = false;
+	}
+
+	void FireGrenade() {
+		float angle = Mathf.Atan2(target.position.y-firePoint.position.y, target.position.x-firePoint.position.x)*180 / Mathf.PI;
+		angle -= 90;
+		GameMaster.CreateGrenade (grenadePrefab, firePoint.position, angle, 20, Random.Range(30, 40), 100, true, false);
 	}
 
 	void CancelLaser() {
