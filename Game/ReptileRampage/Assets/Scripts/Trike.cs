@@ -44,7 +44,6 @@ public class Trike : MonoBehaviour {
 		}
 		//Idle Behaviour
 		if (state == State.Idle && spawned) {
-			sr.flipX = true;
 			if (timeSinceLastAction < 100) {
 				timeSinceLastAction++;
 			} else {
@@ -83,29 +82,29 @@ public class Trike : MonoBehaviour {
 				state = State.Idle;
 				animator.Play("TrikeIdle");
 			}
-			if ((transform.position.x > xPrev + 0.02) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
-				GetComponent<Enemy>().noFlip = true;
-			}
-			if ((transform.position.x < xPrev - 0.02) && flipped) {
+			if ((transform.position.x > xPrev + 0.02) && flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = false;
 				GetComponent<Enemy>().noFlip = false;
+			}
+			if ((transform.position.x < xPrev - 0.02) && !flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = true;
+				GetComponent<Enemy>().noFlip = true;
 			}
 			xPrev = transform.position.x;
 		}
 		//Fire Grenades
 		else if (state == State.GrenadeAttack && !IsInvoking("GrenadeWave") && spawned) {
-			if ((target.position.x > transform.position.x) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
-				GetComponent<Enemy>().noFlip = true;
-			}
-			if ((target.position.x < transform.position.x) && flipped) {
+			if ((target.position.x > transform.position.x) && flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = false;
 				GetComponent<Enemy>().noFlip = false;
+			}
+			if ((target.position.x < transform.position.x) && !flipped) {
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+				flipped = true;
+				GetComponent<Enemy>().noFlip = true;
 			}
 			
 			for(float i = 1f; i <= 3f; i+=1f){
