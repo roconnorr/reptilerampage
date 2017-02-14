@@ -28,22 +28,24 @@ public class Grenade : MonoBehaviour {
 	public AudioClip wallHitSound = null;
 
 	void Update () {
-		amplitude *= 0.93f; //Lower = faster bounce height diminished
-		time += 0.1f; //Lower = slower overall
-		period += 0.08f; //Higher = faster bounce length diminish
-		moveSpeed *= 0.95f; //Lower = faster speed diminish
-		oldHeight = height;
+		if(Time.timeScale != 0){
+			amplitude *= 0.93f; //Lower = faster bounce height diminished
+			time += 0.1f; //Lower = slower overall
+			period += 0.08f; //Higher = faster bounce length diminish
+			moveSpeed *= 0.95f; //Lower = faster speed diminish
+			oldHeight = height;
 
-		//Bounce
-		height = Mathf.Abs(Mathf.Sin(time * period)) * -amplitude;
-		transform.position = new Vector3 (transform.position.x, transform.position.y + oldHeight, transform.position.z);
-		transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
-		transform.position = new Vector3 (transform.position.x, transform.position.y - height, transform.position.z);
-
-		if (range > 0) {
-			range--;
-		} else {
-			Explode ();
+			//Bounce
+			height = Mathf.Abs(Mathf.Sin(time * period)) * -amplitude;
+			transform.position = new Vector3 (transform.position.x, transform.position.y + oldHeight, transform.position.z);
+			transform.Translate (Vector3.up * Time.deltaTime * moveSpeed);
+			transform.position = new Vector3 (transform.position.x, transform.position.y - height, transform.position.z);
+			
+			if (range > 0) {
+				range--;
+			} else {
+				Explode ();
+			}
 		}
 	}
 

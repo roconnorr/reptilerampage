@@ -83,7 +83,7 @@ public class TRex : MonoBehaviour {
 				}
 			}
 		//Walking Behaviour
-		else if (state == State.Walking && spawned) {
+		else if (state == State.Walking && spawned && Time.timeScale != 0) {
 				animator.Play ("TrexWalk");
 				transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
 				if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
