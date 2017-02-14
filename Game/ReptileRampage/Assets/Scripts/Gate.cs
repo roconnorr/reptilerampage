@@ -39,6 +39,7 @@ public class Gate : MonoBehaviour {
 		} else if (isLevel2) {
 			if (BulletHoming.bridgeExploded && player.position.y > transform.position.y) {
 				gameObject.GetComponent<Collider2D> ().enabled = true;
+				BulletHoming.bridgeExploded = false;
 			}
 		} else if (gateway1) {
 			if (GameMaster.currentLevel == 2) {
