@@ -27,7 +27,7 @@ public class CameraFollow : MonoBehaviour {
 				StartCoroutine(ZoomOut());
 		}else if(Player.scene.name == "Level2" && WayPoints.trexSpawnAnimationPlaying){
 			if(WayPoints.trexCam && transform.position != new Vector3(39, -22, -10)) {
-				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (39, -22, -10), 0.1f);
+				transform.position = Vector3.MoveTowards (transform.position, new Vector3 (39, -22, -10), 6*Time.deltaTime);
 			}
 		}
 		
