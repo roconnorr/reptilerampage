@@ -96,6 +96,7 @@ public class Enemy : MonoBehaviour {
 					GameMaster.currentLevel = 3;
 					GameMaster.level2Checkpoint = false;
 				} else if (isGavin) {
+					MusicPlayer.won = true;
 					SceneManager.LoadScene("WinScreen");
 				}
 				if(deadEnemyPrefab != null){

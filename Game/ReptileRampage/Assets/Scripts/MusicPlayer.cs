@@ -12,6 +12,7 @@ public class MusicPlayer : MonoBehaviour {
 	public bool titleScreen;
 	private Player playerScript;
 	public GameObject player;
+	public static bool won;
 	void Start () {
 		musicPlayer = GetComponent<AudioSource>();
 		hudManager = canvas.GetComponent<HUDManager>();
@@ -27,7 +28,7 @@ public class MusicPlayer : MonoBehaviour {
 	
 	void Update () {
 		if(!titleScreen){
-			if(playerScript.gameOver){
+			if(playerScript.gameOver || won){
 				musicPlayer.loop = false;
 			}
 			if(hudManager.inBossFight && !bossMusicPlayed){
