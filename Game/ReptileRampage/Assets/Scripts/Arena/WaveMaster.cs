@@ -35,7 +35,6 @@ public class WaveMaster : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Debug.Log(enemiesAlive);
 		if(enemiesAlive == 0){
 			if(!cratesPlaced){
 				SpawnCrates(cratesPerLevel);
