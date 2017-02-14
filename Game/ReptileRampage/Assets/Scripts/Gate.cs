@@ -27,7 +27,7 @@ public class Gate : MonoBehaviour {
 		float dist = Vector3.Distance(player.position, transform.position);
 
 		if (isLevel1) {
-			if (dist > 2f && player.position.x < transform.position.x && hudManager.inBossFight) {
+			if (dist > 2f && player.position.x < transform.position.x && WayPoints.heliMoving) {
 				animator.Play ("GateClosing");
 				if (this.animator.GetCurrentAnimatorStateInfo (0).IsName ("GateClosed")) {
 					animator.Play ("GateClosed");

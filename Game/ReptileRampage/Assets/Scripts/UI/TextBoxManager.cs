@@ -26,6 +26,7 @@ public class TextBoxManager : MonoBehaviour {
 	public int currentLine;
 	public static bool dialogFinished;
 	private bool trexSpawned;
+	private bool trikeSpawned;
 
 	void Start () {
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -53,18 +54,17 @@ public class TextBoxManager : MonoBehaviour {
 			if(currentLine == textLines.Length){
 				dialogBox.SetActive(false);
 				if(inBossFight){
-					if(levelBoss == CurrentLevelBoss.trike){
-						BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
-					}else{
-						//gavin
-						//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
-					}
+					//gavin
+					//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
 				}
 
 				dialogActive = false;
 				if(Player.scene.name == "Level1" && PlayDialog.atDialog0){
 					dialogFinished = true;
 					PlayDialog.atDialog0 = false;
+				}else if(Player.scene.name == "Level1" && TrikeFight.atTrikeDialog){
+					dialogFinished = true;
+					TrikeFight.atTrikeDialog = false;
 				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
@@ -78,6 +78,11 @@ public class TextBoxManager : MonoBehaviour {
 			hudManager.HideBottomHUD(false);
 		}
 
+		if(inBossFight && levelBoss == CurrentLevelBoss.trike && WayPoints.triggerdTrike && !trikeSpawned){
+			BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
+			trikeSpawned = true;
+			WayPoints.triggerdTrike = false;
+		}
 		//Spawn Trex after dialog and cut scene is finished
 		if(inBossFight && levelBoss == CurrentLevelBoss.trex && WayPoints.triggerdTrex && !trexSpawned){
 			BossTrigger.GetComponent<TRexFight>().SpawnTRex();

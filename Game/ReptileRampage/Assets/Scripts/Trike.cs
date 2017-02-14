@@ -20,6 +20,8 @@ public class Trike : MonoBehaviour {
 	private int stomps;
 	private bool isStomping;
 	private int walkTimer = 0;
+	private SpriteRenderer sr;
+	private bool spawned;
 
 	void Start () {
 		state = State.Idle;
@@ -28,6 +30,12 @@ public class Trike : MonoBehaviour {
 		stompFirePoint = transform.Find ("StompFirePoint");
 		animator = GetComponent<Animator>();
 		GetComponent<Enemy>().noFlip = false;
+		sr = GetComponent<SpriteRenderer>();
+		Invoke("SpawnWait", 1f);
+	}
+
+	void SpawnWait() {
+		spawned = true;
 	}
 	
 	void Update () {
@@ -35,7 +43,8 @@ public class Trike : MonoBehaviour {
 			walkTimer--;
 		}
 		//Idle Behaviour
-		if (state == State.Idle) {
+		if (state == State.Idle && spawned) {
+			sr.flipX = true;
 			if (timeSinceLastAction < 100) {
 				timeSinceLastAction++;
 			} else {
@@ -67,7 +76,7 @@ public class Trike : MonoBehaviour {
 			}
 		}
 		//Walking Behaviour
-		else if (state == State.Walking) {
+		else if (state == State.Walking && spawned) {
 			animator.Play("TrikeWalk");
 			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
 			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
@@ -87,7 +96,7 @@ public class Trike : MonoBehaviour {
 			xPrev = transform.position.x;
 		}
 		//Fire Grenades
-		else if (state == State.GrenadeAttack && !IsInvoking("GrenadeWave")) {
+		else if (state == State.GrenadeAttack && !IsInvoking("GrenadeWave") && spawned) {
 			if ((target.position.x > transform.position.x) && !flipped) {
 				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = true;
@@ -105,7 +114,7 @@ public class Trike : MonoBehaviour {
 			Invoke("SetStateIdle", 3f);
 		}
 		//V attack
-		else if (state == State.VAttack && !IsInvoking("VWave")) {
+		else if (state == State.VAttack && !IsInvoking("VWave") && spawned) {
 			targetLocation = new Vector3 (target.position.x, target.position.y, -1);
 
 			for(float i = 0f; i <= 5f; i+=.1f){
@@ -114,7 +123,7 @@ public class Trike : MonoBehaviour {
 			Invoke("SetStateIdle", 5f);
 		}
 		//Stomp Attack
-		else if (state == State.StompAttack && !isStomping) {
+		else if (state == State.StompAttack && !isStomping && spawned) {
 			isStomping = true;
 			animator.Play("TrikeStomp");
 			stomps = 3;
