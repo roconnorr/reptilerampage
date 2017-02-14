@@ -882,6 +882,11 @@ Prefab:
       propertyPath: range
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 114104835019130982, guid: f3bd370666fcf8f46bee7ce2463a9af7,
+        type: 2}
+      propertyPath: health
+      value: 5000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3bd370666fcf8f46bee7ce2463a9af7, type: 2}
   m_IsPrefabParent: 0
@@ -1451,7 +1456,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fd098449d4588124e9722aee9579e8b5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0

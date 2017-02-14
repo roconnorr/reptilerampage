@@ -1398,6 +1398,7 @@ MonoBehaviour:
   bossMusic: {fileID: 8300000, guid: d3f3fcd6799494d43bf5e34f3fcfc875, type: 3}
   canvas: {fileID: 738024112}
   titleScreen: 1
+  player: {fileID: 0}
 --- !u!82 &1858232450
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1409,7 +1410,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: fd098449d4588124e9722aee9579e8b5, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 1
   Mute: 0
