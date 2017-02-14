@@ -27,6 +27,7 @@ public class TRex : MonoBehaviour {
 	private Animator animator;
 	private int walkTimer = 0;
 	private bool spawned;
+	private int spawnIdle;
 
 	// Use this for initialization
 	void Start () {
@@ -43,6 +44,7 @@ public class TRex : MonoBehaviour {
 	}
 
 	void setSpawnAnimationToFinished(){
+		spawnIdle = 150;
 		WayPoints.trexSpawnAnimationFinished = true;
 		transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
 		spawned = true;
@@ -51,73 +53,77 @@ public class TRex : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (walkTimer > 0) {
-			walkTimer--;
-		}
-		//Idle Behaviour
-		if (state == State.Idle) {
-			if (timeSinceLastAction < 50) {
-				timeSinceLastAction++;
-			} else {
-				int rand = Random.Range (0, 100);
-				if (actions > 4) {
-					state = State.Shooting;
-					timeSinceLastAction = 0;
-					actions = 0;
-				} else if (rand < 2) {
-					state = State.Walking;
-					timeSinceLastAction = 0;
-					walkTimer = 5;
-					targetLocation = new Vector3 (target.position.x, target.position.y, -1);
-					actions++;
-				} else if (rand < 4) {
-					state = State.Roaring;
-					timeSinceLastAction = 0;
-					actions++;
+		if (spawnIdle > 0) {
+			spawnIdle--;
+		} else {
+			if (walkTimer > 0) {
+				walkTimer--;
+			}
+			//Idle Behaviour
+			if (state == State.Idle) {
+				if (timeSinceLastAction < 50) {
+					timeSinceLastAction++;
+				} else {
+					int rand = Random.Range (0, 100);
+					if (actions > 4) {
+						state = State.Shooting;
+						timeSinceLastAction = 0;
+						actions = 0;
+					} else if (rand < 2) {
+						state = State.Walking;
+						timeSinceLastAction = 0;
+						walkTimer = 5;
+						targetLocation = new Vector3 (target.position.x, target.position.y, -1);
+						actions++;
+					} else if (rand < 4) {
+						state = State.Roaring;
+						timeSinceLastAction = 0;
+						actions++;
+					}
 				}
 			}
-		}
 		//Walking Behaviour
 		else if (state == State.Walking && spawned) {
-			animator.Play("TrexWalk");
-			transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
-			if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
-				state = State.Idle;
-				animator.Play("TrexIdle");
+				animator.Play ("TrexWalk");
+				transform.position = Vector3.MoveTowards (transform.position, targetLocation, speed / 40);
+				if (Vector3.Distance (targetLocation, transform.position) < 0.01) {
+					state = State.Idle;
+					animator.Play ("TrexIdle");
+				}
+				if ((transform.position.x > xPrev + 0.02) && !flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = true;
+					GetComponent<Enemy> ().noFlip = false;
+				}
+				if ((transform.position.x < xPrev - 0.02) && flipped) {
+					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					flipped = false;
+					GetComponent<Enemy> ().noFlip = true;
+				}
+				xPrev = transform.position.x;
 			}
-			if ((transform.position.x > xPrev + 0.02) && !flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = true;
-				GetComponent<Enemy>().noFlip = false;
-			}
-			if ((transform.position.x < xPrev - 0.02) && flipped) {
-				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-				flipped = false;
-				GetComponent<Enemy>().noFlip = true;
-			}
-			xPrev = transform.position.x;
-		}
 		//Fire Rockets
 		else if (state == State.Shooting && spawned) {
-			//ShootRocket();
-			animator.Play("TrexShoot");
-			state = State.Idle;
-		}
+				//ShootRocket();
+				animator.Play ("TrexShoot");
+				state = State.Idle;
+			}
 		//Roar
 		else if (state == State.Roaring && spawned) {
-			animator.Play("TrexRoar");
-			state = State.Idle;
-		}
-		//Sprites
-		if (blocked > 0) {
-			sr.color = new Color(0.8f, 0.8f, 0.8f);
-			blocked--;
-		} else if (defenceTimer > 0) {
-			defenceTimer--;
-			sr.color = Color.red;
-		} else {
-			defencesDown = false;
-			sr.color = Color.white;
+				animator.Play ("TrexRoar");
+				state = State.Idle;
+			}
+			//Sprites
+			if (blocked > 0) {
+				sr.color = new Color (0.8f, 0.8f, 0.8f);
+				blocked--;
+			} else if (defenceTimer > 0) {
+				defenceTimer--;
+				sr.color = Color.red;
+			} else {
+				defencesDown = false;
+				sr.color = Color.white;
+			}
 		}
 	}
 
