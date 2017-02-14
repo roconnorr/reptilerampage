@@ -1,27 +1,17 @@
 fileFormatVersion: 2
-guid: 7c9226b2e3a68439489a710621e2cece
-timeCreated: 1486450011
+guid: fe29d8a4a744b4a499090303093d1d27
+timeCreated: 1487041129
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: gate_0
-    21300002: gate_1
-    21300004: gate_2
-    21300006: gate_3
-    21300008: gate_4
-    21300010: gate_5
-    21300012: gate_6
-    21300014: gate_7
-    21300016: gate_8
-    21300018: gate_9
-    21300020: gate_10
-    21300022: gate_11
-    21300024: gate_12
-    21300026: gate_13
-    21300028: gate_14
-    21300030: gate_15
-    21300032: gate_16
-    21300034: gate_17
+    21300000: lab_decorations_0
+    21300002: lab_decorations_1
+    21300004: lab_decorations_2
+    21300006: lab_decorations_3
+    21300008: lab_decorations_4
+    21300010: lab_decorations_5
+    21300012: lab_decorations_6
+    21300014: lab_decorations_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -96,132 +86,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: gate_0
+      name: lab_decorations_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 89
+        width: 28
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5094722, y: 0.6428105}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lab_decorations_1
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 88
+        width: 28
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lab_decorations_2
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 84
+        width: 24
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lab_decorations_3
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 89
+        width: 28
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: lab_decorations_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 15
-        height: 178
+        width: 43
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: gate_1
+      name: lab_decorations_5
       rect:
         serializedVersion: 2
-        x: 16
+        x: 45
         y: 0
-        width: 15
-        height: 178
+        width: 44
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: gate_2
+      name: lab_decorations_6
       rect:
         serializedVersion: 2
-        x: 32
+        x: 91
         y: 0
-        width: 15
-        height: 178
+        width: 43
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: gate_3
+      name: lab_decorations_7
       rect:
         serializedVersion: 2
-        x: 48
+        x: 136
         y: 0
-        width: 15
-        height: 178
+        width: 44
+        height: 79
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: gate_4
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 15
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: gate_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 0
-        width: 15
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: gate_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 15
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: gate_7
-      rect:
-        serializedVersion: 2
-        x: 112
-        y: 0
-        width: 15
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: gate_8
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 0
-        width: 15
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: gate_9
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 15
-        height: 178
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
