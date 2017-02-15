@@ -887,6 +887,11 @@ Prefab:
       propertyPath: health
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 114097584935440080, guid: f3bd370666fcf8f46bee7ce2463a9af7,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1415890795}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f3bd370666fcf8f46bee7ce2463a9af7, type: 2}
   m_IsPrefabParent: 0
@@ -2141,16 +2146,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 223866127056531330, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 592273990}
-    - target: {fileID: 114018706801973214, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1415890795}
     - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: levelBoss
@@ -2161,22 +2156,17 @@ Prefab:
       propertyPath: player
       value: 
       objectReference: {fileID: 1415890795}
-    - target: {fileID: 224227104452302666, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+    - target: {fileID: 114018706801973214, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1415890795}
+    - target: {fileID: 223866127056531330, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 592273990}
     - target: {fileID: 224266233009725062, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: arenaMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224538813132698698, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -2186,10 +2176,15 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114349796956564976, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+    - target: {fileID: 224227104452302666, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
-      propertyPath: m_MaxValue
-      value: 5000
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224538813132698698, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}

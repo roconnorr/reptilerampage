@@ -10,8 +10,10 @@ public class PlayDialog : MonoBehaviour {
 	public GameObject AfterTrikeDialog;
 
 	// Use this for initialization
-	void Start () {
+	void Awake(){
 		textBoxManager = canvas.GetComponent<TextBoxManager>();
+	}
+	void Start () {
 		if(AfterTrikeDialog != null){		
 			AfterTrikeDialog.SetActive(false);
 		}
@@ -71,6 +73,12 @@ public class PlayDialog : MonoBehaviour {
 
 	public void PlayTrexDialog(){
 		textBoxManager.SetDialogNumber(6, 5);
+		textBoxManager.dialogActive = true;
+	}
+
+	public void PlayGavinStartDialog(){
+		//invoke?
+		textBoxManager.SetDialogNumber(8, 2);
 		textBoxManager.dialogActive = true;
 	}
 }

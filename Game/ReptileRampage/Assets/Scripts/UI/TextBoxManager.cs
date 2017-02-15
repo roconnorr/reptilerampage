@@ -73,7 +73,10 @@ public class TextBoxManager : MonoBehaviour {
 				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
+					
 				}else{
+					//tentative
+					dialogFinished = true;
 					Invoke ("unFreeze", 0.1f);
 				}
 			}else{
