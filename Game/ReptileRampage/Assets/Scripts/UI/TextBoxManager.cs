@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 
 public class TextBoxManager : MonoBehaviour {
@@ -27,6 +28,7 @@ public class TextBoxManager : MonoBehaviour {
 	public static bool dialogFinished;
 	private bool trexSpawned;
 	private bool trikeSpawned;
+	private float letterPause = 0.01f;
 
 	void Start () {
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
@@ -34,6 +36,7 @@ public class TextBoxManager : MonoBehaviour {
 		if(textFiles[dialogTextNumber] != null){
 			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
 		}
+		text.text = "";
 		dialogBox.SetActive(false);
 	}
 
@@ -49,6 +52,8 @@ public class TextBoxManager : MonoBehaviour {
 
 			if(Input.GetButtonDown("Fire")){
 				currentLine++;
+				text.text = "";
+				StopAllCoroutines();
 			}
 
 			if(currentLine == textLines.Length){
@@ -72,7 +77,34 @@ public class TextBoxManager : MonoBehaviour {
 					Invoke ("unFreeze", 0.1f);
 				}
 			}else{
-				text.text = textLines[currentLine].ToUpper();
+				//string stringPart = "";
+				//text.text = "";
+				//int numberOfLettersToShow = (int)(textLines[currentLine].Length * textPercentage);
+				//text.text = textLines[currentLine].Substring(0, numberOfLettersToShow);
+				//textPercentage += Time.deltaTime / timeToChar;
+				//textPercentage = Mathf.Min(1.0f, textPercentage);
+				/*foreach(char c in textLines[currentLine]){
+					timer += Time.deltaTime;
+					if(timer > timeToChar){	
+						text.text += c;
+						timer = 0;
+					}
+				}*/
+				//text.text = textLines[currentLine].ToUpper();
+				/*int i=0;
+				text.text = "";
+				while(i < textLines[currentLine].Length){
+					timer += Time.deltaTime;
+					if(timer > timeToChar){	
+						text.text += textLines[currentLine][i];
+						timer = 0;
+						i++;
+					}
+				}*/
+				//timeElapsed += Time.deltaTime;
+				//text.text = GetWords(textLines[currentLine], timeElapsed * lettersPerSecond);
+				text.text = "";
+				StartCoroutine(TypeText());
 			}
 		}else{
 			hudManager.HideBottomHUD(false);
@@ -104,5 +136,11 @@ public class TextBoxManager : MonoBehaviour {
 	private void unFreeze() {
 		playerScript.canMove = true;
 		playerScript.canShoot = true;
+	}
+	IEnumerator TypeText (){
+		foreach (char c in textLines[currentLine].ToCharArray()) {
+			text.text += c;
+			yield return new WaitForSeconds (letterPause);
+		}      
 	}
 }
