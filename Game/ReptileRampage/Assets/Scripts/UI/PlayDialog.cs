@@ -26,9 +26,7 @@ public class PlayDialog : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other){
 		if(other.tag == "Dialog0"){
-			textBoxManager.SetDialogNumber(0, 3);
-			textBoxManager.dialogActive = true;
-			atDialog0 = true;
+			Invoke("PlayStartDialog", 0.1f);
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog1"){
 			textBoxManager.SetDialogNumber(1, 1);
@@ -65,6 +63,11 @@ public class PlayDialog : MonoBehaviour {
 		}
 	}
 
+	void PlayStartDialog(){
+		textBoxManager.SetDialogNumber(0, 3);
+		textBoxManager.dialogActive = true;
+		atDialog0 = true;
+	}
 	public void ActivateAfterTrikeDialog(){
 		if(AfterTrikeDialog != null){
 			AfterTrikeDialog.SetActive(true);
@@ -77,6 +80,10 @@ public class PlayDialog : MonoBehaviour {
 	}
 
 	public void PlayGavinStartDialog(){
+		textBoxManager.SetDialogNumber(8, 2);
+		textBoxManager.dialogActive = true;
+	}
+	public void PlayAfterGavinDialog(){
 		//invoke?
 		textBoxManager.SetDialogNumber(8, 2);
 		textBoxManager.dialogActive = true;

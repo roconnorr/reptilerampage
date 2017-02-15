@@ -100,6 +100,7 @@ public class Enemy : MonoBehaviour {
 					GameMaster.level2Checkpoint = false;
 				} else if (isGavin) {
 					MusicPlayer.won = true;
+					player.GetComponent<PlayDialog>().PlayAfterGavinDialog();
 					SceneManager.LoadScene("WinScreen");
 				}
 				if(deadEnemyPrefab != null){
