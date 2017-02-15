@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a066d60838bf64c00989b9f77c53850b
-timeCreated: 1486866468
+timeCreated: 1487142028
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -70,7 +70,7 @@ TextureImporter:
     overridden: 1
   - buildTarget: WebGL
     maxTextureSize: 2048
-    textureFormat: 4
+    textureFormat: 29
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
@@ -84,9 +84,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 55
+        y: 57
         width: 136
-        height: 49
+        height: 51
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -99,7 +99,7 @@ TextureImporter:
         x: 0
         y: 0
         width: 136
-        height: 49
+        height: 53
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
