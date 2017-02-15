@@ -40,6 +40,7 @@ public class TRex : MonoBehaviour {
 		GetComponent<Enemy>().noFlip = true;
 		animator.Play("TrexSpawn");
 		animator.speed = 0.5f;
+		GameObject.Find("Player").GetComponent<PlayDialog>().PlayTrexDialog();
 		Invoke("setSpawnAnimationToFinished", 4f);
 	}
 

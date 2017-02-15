@@ -68,4 +68,9 @@ public class PlayDialog : MonoBehaviour {
 			AfterTrikeDialog.SetActive(true);
 		}
 	}
+
+	public void PlayTrexDialog(){
+		textBoxManager.SetDialogNumber(6, 5);
+		textBoxManager.dialogActive = true;
+	}
 }

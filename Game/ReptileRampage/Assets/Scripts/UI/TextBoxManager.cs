@@ -28,7 +28,7 @@ public class TextBoxManager : MonoBehaviour {
 	public static bool dialogFinished;
 	private bool trexSpawned;
 	private bool trikeSpawned;
-	private float letterPause = 0.01f;
+	public float letterPause = 0.01f;
 
 	void Start () {
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();

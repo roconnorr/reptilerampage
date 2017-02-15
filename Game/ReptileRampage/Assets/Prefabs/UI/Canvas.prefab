@@ -1384,7 +1384,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d5dd8e518f3447a439e5959dd8f88562, type: 3}
   - {fileID: 21300000, guid: 0ed9c8a4ce7b9cb4f904e5213716ca72, type: 3}
   - {fileID: 21300000, guid: 049d7bc98aafbfd46a237b37937ed408, type: 3}
-  levelBoss: 0
+  - {fileID: 21300000, guid: f56128c812d0ced45aeb678d2a5927c1, type: 3}
+  levelBoss: 1
   text: {fileID: 114846021886171006}
   dialogActive: 0
   inBossFight: 0
@@ -1401,6 +1402,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 02cc807e3ff5f4202a8d083d1b16a7bf, type: 3}
   textLines: []
   currentLine: 0
+  letterPause: 0.03
 --- !u!114 &114021775693248584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2265,7 +2267,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 2000
+  m_MaxValue: 1500
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3225,7 +3227,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 1361005048127202}
   HudGunPanel: {fileID: 1044372102274530}
   HudPistolPanel: {fileID: 1412399470654002}
-  arenaMode: 1
+  arenaMode: 0
   waveNumberText: {fileID: 114361602372290842}
   betweenWaveText: {fileID: 114592863543118572}
   arenaTrikeHealthObject: {fileID: 1464609624637906}
