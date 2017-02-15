@@ -16,6 +16,16 @@ public class SlidingDoor : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 		if (isRight) {
 			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			animator.Play ("ClosedLeft");
+		}
+		if (isLeft) {
+			animator.Play ("ClosedLeft");
+		}
+		if (isUp) {
+			animator.Play ("ClosedUp");
+		}
+		if (isDown) {
+			animator.Play ("ClosedDown");
 		}
 	}
 
@@ -30,6 +40,21 @@ public class SlidingDoor : MonoBehaviour {
 			}
 			if (isDown) {
 				animator.Play ("OpenDown");
+			}
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D other) {
+		if (other.GetComponent<Player> ()) {
+			open = false;
+			if (isLeft || isRight) {
+				animator.Play ("CloseLeft");
+			}
+			if (isUp) {
+				animator.Play ("CloseUp");
+			}
+			if (isDown) {
+				animator.Play ("CloseDown");
 			}
 		}
 	}
