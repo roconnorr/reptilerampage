@@ -21,7 +21,6 @@ public class Player : MonoBehaviour
 	private bool footstepSoundEnabled;
     public int health;
 
-    //public ParticleSystem dustParticles;
     public ParticleSystem bloodParticles;
 	public Transform grenadePrefab;
     public Transform crossHairPrefab;
@@ -30,11 +29,6 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private TrikeFight trikefightscript = null;
     private TRexFight trexfightscript = null;
-
-    //private GavinFight gavinFightScript;
-
-
-    //private Weapon weapon;
 
 	public enum WeaponType {acr, ak47, aug, barret50cal, crossbow, deserteagle, g18, 
                             golddeserteagle, grenade, m1, m16, m1911, miniuzi, 
@@ -79,7 +73,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
-        //weapon = GetComponentInChildren<Weapon>();
 
         startWeapon1Type = GameMaster.slot1type;
 		startWeapon2Type = GameMaster.slot2type;
@@ -166,12 +159,9 @@ public class Player : MonoBehaviour
 				rb.AddForce (knockback);
 				knockbackTimer -= 1;
 			}
-            //Quaternion rotation = Quaternion.LookRotation(movement);
-            //dustParticles.transform.rotation = Quaternion.Lerp(dustParticles.transform.rotation, Quaternion.Inverse(rotation), 0.1f);
         }
         else{
             rb.velocity = Vector3.zero;
-            //rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
         }
     }
 
@@ -244,24 +234,7 @@ public class Player : MonoBehaviour
 						ChangeWeapon (pk.type, pk, closestWeapon);
 					}
 				}
-			}
-		
-			/*when the pickup button is pressed it gets the closest gun, if close enough its picked up (old code without star draw)
-			if (Input.GetButtonDown ("Pickup")) {
-				float minDist = Mathf.Infinity;
-				GameObject closestWeapon = null;
-				foreach (GameObject weapon in weaponslist) {
-					float dist = Vector3.Distance (transform.position, weapon.transform.position);
-					if (dist < minDist) {
-						minDist = dist;
-						closestWeapon = weapon;
-					}
-				}
-				if (minDist < 2) {
-					PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab> ();
-					ChangeWeapon (pk.type, pk, closestWeapon);
-				}*/
-			
+			}			
 
 			if (Input.GetButtonDown ("SwapSlot") || Input.GetAxis ("Mouse ScrollWheel") < 0) {
 				slotActive = (slotActive + 1) % 3;
@@ -337,15 +310,9 @@ public class Player : MonoBehaviour
     }
 
 	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
-		//AudioSource.PlayClipAtPoint(playerHitClip, gameObject.transform.position, 1.0f);
 		if (!isDead) {
 			if (!isInvulnerable) {
 				PlayHitSound(playerHitClip, this.transform.position);
-				//AudioSource.PlayClipAtPoint(playerHitClip, Camera.main.transform.position);
-				//soundSource2.clip = playerHitClip;
-				//if(!soundSource2.isPlaying){
-					//soundSource2.Play();
-				//}
 				health -= amount;
 				FireBloodParticles (dir);
 				StartCoroutine (becomeInvulnerable ());
@@ -357,7 +324,6 @@ public class Player : MonoBehaviour
 			knockbackTimer = 10;
 
 			if (health <= 0) {
-				//AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 				GameObject.Find ("Canvas").GetComponent<HUDManager> ().inBossFight = false;
 				sr.enabled = true;
 				GetComponentInChildren<UpperBodyAnim> ().GetComponent<SpriteRenderer> ().enabled = false;
