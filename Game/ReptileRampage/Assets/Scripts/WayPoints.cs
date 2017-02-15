@@ -37,9 +37,11 @@ public class WayPoints : MonoBehaviour {
 	 [HideInInspector]
 	 public static bool trexSpawnAnimationFinished;
 	 public static bool trexCam = false;
+	 private AudioSource soundPlayer;
 
      void Start () {
 		playerScript = player.GetComponent<Player>();
+		soundPlayer = GetComponent<AudioSource>();
 		fakeTrike = transform.Find ("FakeTrike");
 		firstRun0 = true;
 		firstRun1 = true;
@@ -54,6 +56,7 @@ public class WayPoints : MonoBehaviour {
 
 			 if(transform.position == wayPointList[0].position){
 				 if(firstRun0){
+					soundPlayer.enabled = false;
 					wait = true;
 					firstRun0 = false;
 				 }
@@ -194,6 +197,7 @@ public class WayPoints : MonoBehaviour {
 	 
 	 void MoveBoat(){
          // move towards the target
+		 soundPlayer.enabled = true;
          transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed*Time.deltaTime);
  
          if(transform.position == targetWayPoint.position && (currentWayPoint+1 < this.wayPointList.Length)){
@@ -203,6 +207,7 @@ public class WayPoints : MonoBehaviour {
      }
      void MoveHeli(){
          // move towards the target
+		 soundPlayer.enabled = true;
          transform.position = Vector3.MoveTowards(transform.position, targetWayPoint.position, speed*Time.deltaTime);
  
 		 if((Mathf.Abs(transform.position.x - targetWayPoint.position.x)) < 0.1f && (currentWayPoint+1 < this.wayPointList.Length)){
