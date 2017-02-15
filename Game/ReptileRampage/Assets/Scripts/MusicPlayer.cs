@@ -33,11 +33,13 @@ public class MusicPlayer : MonoBehaviour {
 			}
 			if(hudManager.inBossFight && !bossMusicPlayed){
 				musicPlayer.clip = bossMusic;
+				musicPlayer.volume = 0.5f;
 				musicPlayer.Play();
 				bossMusicPlayed = true;
 				levelMusicPlayed = false;
 			}else if(!hudManager.inBossFight && !levelMusicPlayed){
 				musicPlayer.clip = levelMusic;
+				musicPlayer.volume = 0.2f;
 				musicPlayer.Play();
 				levelMusicPlayed = true;
 				bossMusicPlayed = false;
