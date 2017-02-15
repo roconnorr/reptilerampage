@@ -84,8 +84,12 @@ public class PlayDialog : MonoBehaviour {
 		textBoxManager.dialogActive = true;
 	}
 	public void PlayAfterGavinDialog(){
-		//invoke?
-		textBoxManager.SetDialogNumber(8, 2);
+		textBoxManager.SetDialogNumber(9, 2);
+		textBoxManager.dialogActive = true;
+	}
+
+	public void PlayAfterGavinChadDialog(){
+		textBoxManager.SetDialogNumber(10, 0);
 		textBoxManager.dialogActive = true;
 	}
 }

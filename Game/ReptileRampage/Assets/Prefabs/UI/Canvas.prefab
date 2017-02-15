@@ -1400,6 +1400,7 @@ MonoBehaviour:
   - {fileID: 4900000, guid: 0bcb3c458ff524abb9677e3d2fb56acf, type: 3}
   - {fileID: 4900000, guid: e4e09eec54ba840f5b9a19477cd6accb, type: 3}
   - {fileID: 4900000, guid: 02cc807e3ff5f4202a8d083d1b16a7bf, type: 3}
+  - {fileID: 4900000, guid: ee2dc0851934c05488c33b0a501fd187, type: 3}
   textLines: []
   currentLine: 0
   letterPause: 0.03

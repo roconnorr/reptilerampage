@@ -57,12 +57,8 @@ public class TextBoxManager : MonoBehaviour {
 			}
 
 			if(currentLine == textLines.Length){
+				print("memes");
 				dialogBox.SetActive(false);
-				if(inBossFight){
-					//gavin
-					//BossTrigger.GetComponent<TrikeFight>().SpawnTrike();
-				}
-
 				dialogActive = false;
 				if(Player.scene.name == "Level1" && PlayDialog.atDialog0){
 					dialogFinished = true;
@@ -76,6 +72,8 @@ public class TextBoxManager : MonoBehaviour {
 					
 				}else{
 					//tentative
+					
+					print("memes2");
 					dialogFinished = true;
 					Invoke ("unFreeze", 0.1f);
 				}
