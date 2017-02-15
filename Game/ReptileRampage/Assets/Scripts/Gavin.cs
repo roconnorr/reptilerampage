@@ -62,6 +62,7 @@ public class Gavin : MonoBehaviour {
 		hudManager.inBossFight = true;
 		hudManager.SetBossHealthActive(true);
 		target.GetComponent<PlayDialog>().Invoke("PlayGavinStartDialog", 0.1f);
+		GameObject.Find("Canvas").GetComponent<TextBoxManager>().inBossFight = true;
 	}
 	
 	// Update is called once per frame

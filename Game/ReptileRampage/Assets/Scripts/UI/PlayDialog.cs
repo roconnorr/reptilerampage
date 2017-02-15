@@ -41,8 +41,7 @@ public class PlayDialog : MonoBehaviour {
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog4"){
-			textBoxManager.SetDialogNumber(4, 1);
-			textBoxManager.dialogActive = true;
+			Invoke("PlayL2Dialog", 0.1f);
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog5"){
 			textBoxManager.SetDialogNumber(5, 1);
@@ -72,6 +71,10 @@ public class PlayDialog : MonoBehaviour {
 		if(AfterTrikeDialog != null){
 			AfterTrikeDialog.SetActive(true);
 		}
+	}
+
+	void PlayL2Dialog(){
+
 	}
 
 	public void PlayTrexDialog(){
