@@ -45,7 +45,7 @@ public class Gavin : MonoBehaviour {
 	private int spawnCount = 0;
 
 	private HUDManager hudManager;
-	private bool isActive = false;
+	public bool isActive = false;
 
 	// Use this for initialization
 	void Start () {
@@ -66,9 +66,6 @@ public class Gavin : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(TextBoxManager.dialogFinished){
-			isActive = true;
-		}
 		if(isActive){
 			if (Time.timeScale != 0) {
 				transform.Translate (new Vector3 (0, speed * 0.02f * dir));

@@ -18,8 +18,6 @@ public class TextBoxManager : MonoBehaviour {
 	public CurrentLevelBoss levelBoss;
 	public Text text;
 	public bool dialogActive = false;
-
-	public static bool staticDialogActive;
 	public bool inBossFight = false;
 
 	private HUDManager hudManager;
@@ -83,9 +81,11 @@ public class TextBoxManager : MonoBehaviour {
 				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
+				}else if(Player.scene.name == "FinalBoss"){
+					GameObject.Find("Diplo").GetComponent<Gavin>().isActive = true;
+					Invoke ("unFreeze", 0.1f);
 				}else{
 					Invoke ("unFreeze", 0.1f);
-					dialogFinished = true;
 				}
 			}else{
 				text.text = "";
@@ -110,7 +110,6 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	public void SetDialogNumber(int num, int charIndex){
-		dialogFinished = false;
 		speakingCharacter.sprite = characterPortraits[charIndex];
 		dialogTextNumber = num;
 		if(textFiles[dialogTextNumber] != null){
