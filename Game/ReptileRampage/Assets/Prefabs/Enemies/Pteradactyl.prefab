@@ -210,7 +210,7 @@ MonoBehaviour:
   maxSpeed: 5
   circleSpeed: 1
   sightRange: 10
-  damage: 10
+  damage: 50
   fireRate: 0.2
   target: {fileID: 0}
   grenadePrefab: {fileID: 4645237254359424, guid: aa28b7723530847cf93cd61de518f769,
