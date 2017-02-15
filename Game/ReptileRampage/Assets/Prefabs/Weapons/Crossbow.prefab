@@ -111,7 +111,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: d7394790fda9fa84ea7be2e78cd8c8d5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 84fad85595e387441a3414f307df0ddf, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.108
   m_Pitch: 1
@@ -241,7 +241,6 @@ MonoBehaviour:
     type: 2}
   muzzleFlashPrefab: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 84fad85595e387441a3414f307df0ddf, type: 3}
-  noBulletSound: {fileID: 8300000, guid: d7394790fda9fa84ea7be2e78cd8c8d5, type: 3}
   rotationOffset: 0
   noRotation: 0
 --- !u!212 &212451364392588822
