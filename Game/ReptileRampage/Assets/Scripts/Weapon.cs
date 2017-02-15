@@ -129,9 +129,9 @@ public class Weapon : MonoBehaviour {
 		if (muzzleFlashPrefab != null) {
 			Transform flash = Instantiate (muzzleFlashPrefab, firePoint.position, firePoint.rotation) as Transform;
 			flash.parent = firePoint;
-			float size = Random.Range (0.1f, 0.13f);
-			flash.localScale = new Vector3 (size, size, size);
-			Destroy (flash.gameObject, 0.02f);
+//			float size = Random.Range (0.1f, 0.13f);
+//			flash.localScale = new Vector3 (size, size, size);
+			Destroy (flash.gameObject, 0.1f);
 		}
 	}
 
