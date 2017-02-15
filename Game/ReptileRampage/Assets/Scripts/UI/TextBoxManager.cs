@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TextBoxManager : MonoBehaviour {
 
@@ -17,6 +18,8 @@ public class TextBoxManager : MonoBehaviour {
 	public CurrentLevelBoss levelBoss;
 	public Text text;
 	public bool dialogActive = false;
+
+	public static bool staticDialogActive;
 	public bool inBossFight = false;
 
 	private HUDManager hudManager;
@@ -26,6 +29,10 @@ public class TextBoxManager : MonoBehaviour {
 	public string[] textLines;
 	public int currentLine;
 	public static bool dialogFinished;
+
+	public static bool lastDialog = false;
+
+	private bool lastDialogChanged = false;
 	private bool trexSpawned;
 	private bool trikeSpawned;
 	public float letterPause = 0.01f;
@@ -52,12 +59,19 @@ public class TextBoxManager : MonoBehaviour {
 
 			if(Input.GetButtonDown("Fire")){
 				currentLine++;
+				if(lastDialogChanged){
+					//nasti hackk
+					SceneManager.LoadScene("WinScreen");
+				}
+				if(lastDialog && !lastDialogChanged){
+					SetDialogNumber(10, 0);
+					lastDialogChanged = true;
+				}
 				text.text = "";
 				StopAllCoroutines();
 			}
 
 			if(currentLine == textLines.Length){
-				print("memes");
 				dialogBox.SetActive(false);
 				dialogActive = false;
 				if(Player.scene.name == "Level1" && PlayDialog.atDialog0){
@@ -69,13 +83,9 @@ public class TextBoxManager : MonoBehaviour {
 				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
-					
 				}else{
-					//tentative
-					
-					print("memes2");
-					dialogFinished = true;
 					Invoke ("unFreeze", 0.1f);
+					dialogFinished = true;
 				}
 			}else{
 				text.text = "";
@@ -100,6 +110,7 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	public void SetDialogNumber(int num, int charIndex){
+		dialogFinished = false;
 		speakingCharacter.sprite = characterPortraits[charIndex];
 		dialogTextNumber = num;
 		if(textFiles[dialogTextNumber] != null){

@@ -101,11 +101,10 @@ public class Enemy : MonoBehaviour {
 					GameMaster.level2Checkpoint = false;
 				} else if (isGavin) {
 					MusicPlayer.won = true;
-					TextBoxManager.dialogFinished = false;
-					//StartCoroutine(FinalSequence());
-					//if(TextBoxManager.dialogFinished){
-					SceneManager.LoadScene("WinScreen");
-					//}
+					hudManager.inBossFight = false;
+					TextBoxManager.lastDialog = true;
+					//also loads last scene ehe
+					player.GetComponent<PlayDialog>().PlayAfterGavinDialog();
 				}
 				if(deadEnemyPrefab != null){
 					Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
@@ -159,14 +158,5 @@ public class Enemy : MonoBehaviour {
 			angle -= 90;
 			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle), 500, transform);
 		}
-	}
-
-	IEnumerator FinalSequence(){
-		player.GetComponent<PlayDialog>().PlayAfterGavinDialog();
-		yield return new WaitUntil(() => TextBoxManager.dialogFinished == true);
-
-		player.GetComponent<PlayDialog>().PlayAfterGavinChadDialog();
-
-		yield return new WaitUntil(() => TextBoxManager.dialogFinished == true);
 	}
 }
