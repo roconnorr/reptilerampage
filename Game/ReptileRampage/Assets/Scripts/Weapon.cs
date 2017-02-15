@@ -24,7 +24,7 @@ public class Weapon : MonoBehaviour {
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
 	public AudioClip shotSound = null;
-	public AudioSource noBulletSound;
+	private AudioSource noBulletSound;
 	float timeToFire = 0;
 	public int rotationOffset = 0;
 	public bool noRotation;
