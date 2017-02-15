@@ -39,15 +39,15 @@ Subshader {
       #pragma fragment fragCompareFast
       #pragma target 3.0
 	  #pragma fragmentoption ARB_precision_hint_fastest      
-#pragma multi_compile __ BEAUTIFY_DALTONIZE BEAUTIFY_SEPIA BEAUTIFY_NIGHT_VISION BEAUTIFY_THERMAL_VISION
-#pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
-#pragma multi_compile __ BEAUTIFY_OUTLINE
-#pragma multi_compile __ BEAUTIFY_DIRT
-#pragma multi_compile __ BEAUTIFY_BLOOM
-#pragma multi_compile __ BEAUTIFY_EYE_ADAPTATION
-#pragma multi_compile __ BEAUTIFY_PURKINJE
-#pragma multi_compile __ BEAUTIFY_VIGNETTING BEAUTIFY_VIGNETTING_MASK
-#pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DALTONIZE BEAUTIFY_SEPIA BEAUTIFY_NIGHT_VISION BEAUTIFY_THERMAL_VISION
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_OUTLINE
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DIRT
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_BLOOM
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_EYE_ADAPTATION
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_PURKINJE
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_VIGNETTING BEAUTIFY_VIGNETTING_MASK
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
 #pragma multi_compile __ UNITY_COLORSPACE_GAMMA
       #include "BeautifyMobile.cginc"
       ENDCG
@@ -62,15 +62,15 @@ Subshader {
       #pragma fragment fragBeautifyFast
       #pragma target 3.0
 	  #pragma fragmentoption ARB_precision_hint_fastest      
-#pragma multi_compile __ BEAUTIFY_DALTONIZE BEAUTIFY_SEPIA BEAUTIFY_NIGHT_VISION BEAUTIFY_THERMAL_VISION
-#pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
-#pragma multi_compile __ BEAUTIFY_OUTLINE
-#pragma multi_compile __ BEAUTIFY_DIRT
-#pragma multi_compile __ BEAUTIFY_BLOOM
-#pragma multi_compile __ BEAUTIFY_EYE_ADAPTATION
-#pragma multi_compile __ BEAUTIFY_PURKINJE
-#pragma multi_compile __ BEAUTIFY_VIGNETTING BEAUTIFY_VIGNETTING_MASK
-#pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DALTONIZE BEAUTIFY_SEPIA BEAUTIFY_NIGHT_VISION BEAUTIFY_THERMAL_VISION
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_OUTLINE
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DIRT
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_BLOOM
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_EYE_ADAPTATION
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_PURKINJE
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_VIGNETTING BEAUTIFY_VIGNETTING_MASK
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
 #pragma multi_compile __ UNITY_COLORSPACE_GAMMA
       #include "BeautifyMobile.cginc"
       ENDCG
@@ -138,7 +138,7 @@ Subshader {
       #pragma fragment fragCoC
       #pragma fragmentoption ARB_precision_hint_fastest
 #pragma multi_compile __ UNITY_COLORSPACE_GAMMA
-#pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
       #include "BeautifyDoF.cginc"
       ENDCG
   } 
@@ -151,7 +151,7 @@ Subshader {
       #pragma vertex vert
       #pragma fragment fragCoCDebug
       #pragma fragmentoption ARB_precision_hint_fastest
-#pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
+// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
       #include "BeautifyDoF.cginc"
       ENDCG
   } 
