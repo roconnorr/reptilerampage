@@ -77,11 +77,14 @@ public class Enemy : MonoBehaviour {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
 				if (isTrike) {
 					//possibly some more dialogue
+					
+					player.GetComponent<PlayDialog>().ActivateAfterTrikeDialog();
 					hudManager.SetBossHealthActive (false);
 					hudManager.inBossFight = false;
 					if (arenaMode) {
 						hudManager.arenaTrikeAlive = false;
 					}
+					
 					GameMaster.currentLevel = 2;
 					GameMaster.level1Checkpoint = false;
 

@@ -1144,6 +1144,52 @@ Transform:
   m_PrefabParentObject: {fileID: 4980076246064736, guid: 2dc292e4eb80f4eee993c35d762988f0,
     type: 2}
   m_PrefabInternal: {fileID: 218253408}
+--- !u!1 &242836239
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1614689836832504, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 242836240}
+  - component: {fileID: 242836241}
+  m_Layer: 0
+  m_Name: DialogTrigger3
+  m_TagString: Dialog3
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &242836240
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 4596635154754652, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 242836239}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -18.91, y: 11.51, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1272171788}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &242836241
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 61891442154548134, guid: cb7e574b6444a3f47bd95ae78c5e6bf8,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 242836239}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 8.86, y: 1.4}
 --- !u!1 &265590191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1536,7 +1582,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 356946307}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -86.2, y: -30.5, z: 0}
+  m_LocalPosition: {x: -86.91, y: -25.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1272171788}
@@ -1798,6 +1844,11 @@ Prefab:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114409045537735140, guid: bdfb391d80d689b4db2843af3b8a880c,
+        type: 2}
+      propertyPath: AfterTrikeDialog
+      value: 
+      objectReference: {fileID: 242836239}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
   m_IsPrefabParent: 0

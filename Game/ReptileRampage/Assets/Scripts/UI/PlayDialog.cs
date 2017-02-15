@@ -7,9 +7,14 @@ public class PlayDialog : MonoBehaviour {
 	private TextBoxManager textBoxManager;
 	public static bool atDialog0;
 
+	public GameObject AfterTrikeDialog;
+
 	// Use this for initialization
 	void Start () {
 		textBoxManager = canvas.GetComponent<TextBoxManager>();
+		if(AfterTrikeDialog != null){		
+			AfterTrikeDialog.SetActive(false);
+		}
 	}
 	
 	// Update is called once per frame
@@ -32,7 +37,7 @@ public class PlayDialog : MonoBehaviour {
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog3"){
-			textBoxManager.SetDialogNumber(4, 1);
+			textBoxManager.SetDialogNumber(3, 1);
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
 		}else if(other.tag == "Dialog4"){
@@ -55,6 +60,12 @@ public class PlayDialog : MonoBehaviour {
 			textBoxManager.SetDialogNumber(8, 1);
 			textBoxManager.dialogActive = true;
 			other.gameObject.SetActive(false);
+		}
+	}
+
+	public void ActivateAfterTrikeDialog(){
+		if(AfterTrikeDialog != null){
+			AfterTrikeDialog.SetActive(true);
 		}
 	}
 }

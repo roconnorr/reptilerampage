@@ -77,32 +77,6 @@ public class TextBoxManager : MonoBehaviour {
 					Invoke ("unFreeze", 0.1f);
 				}
 			}else{
-				//string stringPart = "";
-				//text.text = "";
-				//int numberOfLettersToShow = (int)(textLines[currentLine].Length * textPercentage);
-				//text.text = textLines[currentLine].Substring(0, numberOfLettersToShow);
-				//textPercentage += Time.deltaTime / timeToChar;
-				//textPercentage = Mathf.Min(1.0f, textPercentage);
-				/*foreach(char c in textLines[currentLine]){
-					timer += Time.deltaTime;
-					if(timer > timeToChar){	
-						text.text += c;
-						timer = 0;
-					}
-				}*/
-				//text.text = textLines[currentLine].ToUpper();
-				/*int i=0;
-				text.text = "";
-				while(i < textLines[currentLine].Length){
-					timer += Time.deltaTime;
-					if(timer > timeToChar){	
-						text.text += textLines[currentLine][i];
-						timer = 0;
-						i++;
-					}
-				}*/
-				//timeElapsed += Time.deltaTime;
-				//text.text = GetWords(textLines[currentLine], timeElapsed * lettersPerSecond);
 				text.text = "";
 				StartCoroutine(TypeText());
 			}
@@ -132,7 +106,6 @@ public class TextBoxManager : MonoBehaviour {
 		}
 		currentLine = 0;
 	}
-
 	private void unFreeze() {
 		playerScript.canMove = true;
 		playerScript.canShoot = true;
