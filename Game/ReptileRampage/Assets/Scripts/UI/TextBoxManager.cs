@@ -107,6 +107,9 @@ public class TextBoxManager : MonoBehaviour {
 			trexSpawned = true;
 			WayPoints.triggerdTrex = false;
 		}
+		if(inBossFight && levelBoss == CurrentLevelBoss.gavin){
+
+		}
 	}
 
 	public void SetDialogNumber(int num, int charIndex){
