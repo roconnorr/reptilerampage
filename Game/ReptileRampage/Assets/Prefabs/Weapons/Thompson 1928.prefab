@@ -233,6 +233,7 @@ MonoBehaviour:
   ammo: 200
   ammoPickup: 50
   automaticFire: 1
+  infiniteAmmo: 0
   type: 19
   sprite1: {fileID: 21300002, guid: ebfa1893bb4df574b893b7b8db139882, type: 3}
   sprite2: {fileID: 21300004, guid: ebfa1893bb4df574b893b7b8db139882, type: 3}
