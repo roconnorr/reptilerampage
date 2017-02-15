@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a952db01a7a2049419dbcc234b816a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelMusic: {fileID: 8300000, guid: fd098449d4588124e9722aee9579e8b5, type: 3}
+  levelMusic: {fileID: 8300000, guid: b514324c641f747ddaac3d144cb266c5, type: 3}
   bossMusic: {fileID: 8300000, guid: d3f3fcd6799494d43bf5e34f3fcfc875, type: 3}
   canvas: {fileID: 738024112}
   titleScreen: 1
@@ -1408,7 +1408,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fd098449d4588124e9722aee9579e8b5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b514324c641f747ddaac3d144cb266c5, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
