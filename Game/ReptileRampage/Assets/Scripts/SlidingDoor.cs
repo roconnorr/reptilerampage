@@ -30,7 +30,7 @@ public class SlidingDoor : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		if (other.GetComponent<Player> ()) {
+		if (other.GetComponent<Player> () || other.GetComponent<Enemy> ()) {
 			open = true;
 			if (isLeft || isRight) {
 				animator.Play ("OpenLeft");
@@ -45,7 +45,7 @@ public class SlidingDoor : MonoBehaviour {
 	}
 
 	void OnTriggerExit2D(Collider2D other) {
-		if (other.GetComponent<Player> ()) {
+		if (other.GetComponent<Player> () || other.GetComponent<Enemy> ()) {
 			open = false;
 			if (isLeft || isRight) {
 				animator.Play ("CloseLeft");
