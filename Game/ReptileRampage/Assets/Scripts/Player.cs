@@ -85,7 +85,11 @@ public class Player : MonoBehaviour
 			startWeapon3Type = WeaponType.usp45;
 		}
 		if(GameMaster.currentLevel == 3) {
-			startWeapon3Type = WeaponType.deserteagle;
+			if (GameMaster.levelStartSlot3Type == WeaponType.golddeserteagle) {
+				startWeapon3Type = GameMaster.levelStartSlot3Type;
+			} else {
+				startWeapon3Type = WeaponType.deserteagle;
+			}
 		}
 		grenadeCount = GameMaster.grenadeCount;
 		GameMaster.levelStartSlot1Type = startWeapon1Type;
