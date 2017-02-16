@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class MusicPlayer : MonoBehaviour {
 
@@ -15,6 +16,8 @@ public class MusicPlayer : MonoBehaviour {
 	public static bool won;
 	public static bool fadeToBoss = false;
 	public static bool fadeToLevel = false;
+	public static float volume = 0.5f;
+	private float prefferedVolume = 0.5f;
 
 	void Start () {
 		musicPlayer = GetComponent<AudioSource>();
@@ -29,11 +32,15 @@ public class MusicPlayer : MonoBehaviour {
 		} else {
 			bossMusicPlayed = false;
 			levelMusicPlayed = true;
-			musicPlayer.volume = 0.5f;
+			musicPlayer.volume = volume;
 		}
 	}
 	
 	void Update () {
+		if(volume != musicPlayer.volume){
+			volume = musicPlayer.volume;
+		}
+
 		if (fadeToBoss) {
 			if (musicPlayer.volume > 0.05) { 
 				musicPlayer.volume *= 0.95f;
@@ -43,7 +50,7 @@ public class MusicPlayer : MonoBehaviour {
 				bossMusicPlayed = true;
 				levelMusicPlayed = false;
 				fadeToBoss = false;
-				musicPlayer.volume = 0.5f;
+				musicPlayer.volume = prefferedVolume;
 			}
 		}
 		if (fadeToLevel) {
@@ -55,7 +62,7 @@ public class MusicPlayer : MonoBehaviour {
 				bossMusicPlayed = false;
 				levelMusicPlayed = true;
 				fadeToLevel = false;
-				musicPlayer.volume = 0.5f;
+				musicPlayer.volume = prefferedVolume;
 			}
 		}
 		if(!titleScreen){
@@ -68,5 +75,10 @@ public class MusicPlayer : MonoBehaviour {
 				fadeToLevel = true;
 			}
 		}
+	}
+
+	public void VolumeControl(float volumeInput){
+		prefferedVolume = volumeInput;
+		musicPlayer.volume = volumeInput;
 	}
 }
