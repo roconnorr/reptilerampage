@@ -196,6 +196,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1458198072493816, guid: bdfb391d80d689b4db2843af3b8a880c,
     type: 2}
   m_PrefabInternal: {fileID: 1327101595}
+--- !u!114 &221903352 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114784221453289200, guid: bdfb391d80d689b4db2843af3b8a880c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1327101595}
+  m_Script: {fileID: 11500000, guid: 8721c87dffafa45d28313b2251268b13, type: 3}
 --- !u!1 &270579448
 GameObject:
   m_ObjectHideFlags: 0
@@ -793,6 +799,7 @@ MonoBehaviour:
   tier1crate: {fileID: 1736380644740156, guid: e604e98db21eb47a2bb8a162335f4552, type: 2}
   tier2crate: {fileID: 1083270886958856, guid: d48088aab7f6e4891a01fc5135cb418d, type: 2}
   tier3crate: {fileID: 1510625093004578, guid: af553eccb8a124caf8b3c5f3f36720d8, type: 2}
+  player: {fileID: 221903352}
 --- !u!4 &751368176
 Transform:
   m_ObjectHideFlags: 0
