@@ -193,12 +193,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b87ef7f75a2254a67869b9e6cc710681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 3
   fireRate: 15
   shotSpeed: 5
   range: 50
   strayFactor: 0
-  screenShake: 0.2
+  screenShake: 0
   bulletCount: 5
   bulletSpread: 5
   knockBackForce: 0
