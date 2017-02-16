@@ -3,21 +3,30 @@
 public class LowerBodyAnim : MonoBehaviour {
 
 	private Animator animator;
+	private float horizontal;
+	private float vertical;
 
 	void Start () {
 		animator = GetComponent<Animator>();
 	}
 	
 	void Update () {
+		horizontal = Input.GetAxis("Horizontal");
+		vertical = Input.GetAxis("Vertical");
+
 		if(gameObject.GetComponentInParent<Player>().canMove){
-			if(Input.GetKey("d")) {
-				animator.Play("lower_body_run_right");
-			} else if(Input.GetKey("a")) {
-				animator.Play("lower_body_run_left");
-			} else if(Input.GetKey("w")) {
-				animator.Play("lower_body_run_up");
-			} else if(Input.GetKey("s")) {
-				animator.Play("lower_body_run_down");
+			if (Mathf.Abs (horizontal) > Mathf.Abs (vertical)) {
+				if (horizontal > 0) {
+					animator.Play ("lower_body_run_right");
+				} else {
+					animator.Play ("lower_body_run_left");
+				}
+			} else if (Mathf.Abs (horizontal) < Mathf.Abs (vertical)){
+				if(vertical < 0) {
+					animator.Play("lower_body_run_up");
+				} else {
+					animator.Play("lower_body_run_down");
+				}
 			} else {
 				animator.Play("lower_body_idle");
 			}
