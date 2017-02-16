@@ -37,6 +37,7 @@ public class EnemySpawner : MonoBehaviour {
 				anklyArray[i] = Instantiate(Anklyosaurus, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				anklyArray[i].GetComponent<Enemy>().arenaMode = true;
 				anklyArray[i].GetComponent<Enemy>().hasSeen = true;
+				anklyArray[i].GetComponent<Ankylosaurus> ().chaseRange = 100;
 				anklyArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
 				anklyArray[i].GetComponent<Ankylosaurus>().target = player;
 				waveMaster.enemiesAlive++;
@@ -70,6 +71,7 @@ public class EnemySpawner : MonoBehaviour {
 				raptorArray[i] = Instantiate(Velociraptor, new Vector3(this.transform.position.x + Random.Range(0, 0.5f),this.transform.position.y + Random.Range(0, 0.5f), 0), new Quaternion(0,0,0,0), this.transform);
 				raptorArray[i].GetComponent<Enemy>().arenaMode = true;
 				raptorArray[i].GetComponent<Enemy>().hasSeen = true;
+				raptorArray[i].GetComponent<Velociraptor> ().chaseRange = 100;
 				raptorArray[i].GetComponent<AStarPathfinder>().gridObject = grid;
 				raptorArray[i].GetComponent<Velociraptor>().target = player;
 				waveMaster.enemiesAlive++;
