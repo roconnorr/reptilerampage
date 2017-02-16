@@ -28,6 +28,8 @@ public class TRex : MonoBehaviour {
 	private int walkTimer = 0;
 	private bool spawned;
 	private int spawnIdle;
+	private AudioSource roarSource;
+	public AudioClip roarSound;
 
 	// Use this for initialization
 	void Start () {
@@ -42,6 +44,7 @@ public class TRex : MonoBehaviour {
 		animator.speed = 0.5f;
 		GameObject.Find("Player").GetComponent<PlayDialog>().PlayTrexDialog();
 		Invoke("setSpawnAnimationToFinished", 4f);
+		roarSource = gameObject.GetComponent<AudioSource>();
 	}
 
 	void setSpawnAnimationToFinished(){
@@ -112,6 +115,11 @@ public class TRex : MonoBehaviour {
 		//Roar
 		else if (state == State.Roaring && spawned) {
 				animator.Play ("TrexRoar");
+				if(!roarSource.isPlaying){
+					roarSource.PlayOneShot(roarSound, 0.2f);
+				}
+				//PlayRoar(roarSound, this.transform.position);
+				//AudioSource.PlayClipAtPoint(roarSound, this.transform.position);
 				state = State.Idle;
 			}
 			//Sprites
@@ -170,5 +178,14 @@ public class TRex : MonoBehaviour {
 		if (other.tag == "BossCollider" && state == State.Walking && walkTimer == 0) {
 			state = State.Idle;
 		}
+	}
+	public static void PlayRoar(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.15f;
+		tempSource.Play();
+		Destroy(temp, clip.length);
 	}
 }

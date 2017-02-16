@@ -269,6 +269,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b6baee150a1b44f488d9286a415ed095, type: 3}
   - {fileID: 8300000, guid: c9e7c8cbb6104424ab815360bf56c6e1, type: 3}
   trexArmourSounds: []
+  randomSound: {fileID: 8300000, guid: 974cee8ff07db044c9e9e06ba98561b7, type: 3}
 --- !u!114 &114397031430288152
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -46,6 +46,7 @@ public class Gavin : MonoBehaviour {
 
 	private HUDManager hudManager;
 	public bool isActive = false;
+	private AudioSource laserSource;
 
 	// Use this for initialization
 	void Start () {
