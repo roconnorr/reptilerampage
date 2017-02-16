@@ -62,7 +62,7 @@ public class WaveMaster : MonoBehaviour {
 			for(int i = 0; i<amount; i++){
 				Instantiate(tier2crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
 			}
-		}else if(currentWave < 30){
+		}else if(currentWave >= 20){
 			for(int i = 0; i<amount; i++){
 				Instantiate(tier3crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
 			}
