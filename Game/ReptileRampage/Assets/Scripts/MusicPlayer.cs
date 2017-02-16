@@ -17,6 +17,7 @@ public class MusicPlayer : MonoBehaviour {
 	public static bool fadeToBoss = false;
 	public static bool fadeToLevel = false;
 	public static float volume = 0.5f;
+	public static float masterVolume = 1;
 	private float prefferedVolume = 0.5f;
 
 	void Start () {
@@ -33,12 +34,16 @@ public class MusicPlayer : MonoBehaviour {
 			bossMusicPlayed = false;
 			levelMusicPlayed = true;
 			musicPlayer.volume = volume;
+			AudioListener.volume = masterVolume;
 		}
 	}
 	
 	void Update () {
 		if(volume != musicPlayer.volume){
 			volume = musicPlayer.volume;
+		}
+		if(masterVolume != AudioListener.volume){
+			masterVolume = AudioListener.volume;
 		}
 
 		if (fadeToBoss) {
@@ -80,5 +85,9 @@ public class MusicPlayer : MonoBehaviour {
 	public void VolumeControl(float volumeInput){
 		prefferedVolume = volumeInput;
 		musicPlayer.volume = volumeInput;
+	}
+
+	public void MasterVolumeControl(float volumeInput){
+		AudioListener.volume = volumeInput;
 	}
 }
