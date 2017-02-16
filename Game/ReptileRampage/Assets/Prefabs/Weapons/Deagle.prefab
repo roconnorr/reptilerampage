@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114299139006355222}
   - component: {fileID: 82690572851874856}
   m_Layer: 0
-  m_Name: Desert Eagle
+  m_Name: Deagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

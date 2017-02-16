@@ -1746,7 +1746,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0ed9c8a4ce7b9cb4f904e5213716ca72, type: 3}
   - {fileID: 21300000, guid: 049d7bc98aafbfd46a237b37937ed408, type: 3}
   - {fileID: 21300000, guid: f56128c812d0ced45aeb678d2a5927c1, type: 3}
-  levelBoss: 0
+  levelBoss: 1
   text: {fileID: 114846021886171006}
   dialogActive: 0
   inBossFight: 0
@@ -2933,7 +2933,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 2000
+  m_MaxValue: 1500
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -3118,7 +3118,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5af5d96a82d46834a9cf547da2bbe343, type: 3}
-    m_FontSize: 17
+    m_FontSize: 12
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -3557,7 +3557,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: RESTART
+  m_Text: RESPAWN
 --- !u!114 &114546515545598856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3779,9 +3779,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Music
-
-'
+  m_Text: MUSIC
 --- !u!114 &114592863543118572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4642,10 +4640,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Master
-
-
-'
+  m_Text: MASTER
 --- !u!114 &114930245872643552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -6930,7 +6925,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 300, y: 284}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224723177425951792
@@ -7185,8 +7180,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 8.325, y: 10.2}
-  m_SizeDelta: {x: 72.45, y: 19}
+  m_AnchoredPosition: {x: 8.325, y: 9.825}
+  m_SizeDelta: {x: 72.45, y: 18.25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224926714776068850
 RectTransform:
