@@ -39,8 +39,6 @@ public class CameraShake : MonoBehaviour {
 			mainCamera.transform.position = new Vector3 (0, 0, -10);
 		} else if(!WayPoints.heliMoving){
 			mainCamera.transform.position = CameraFollow.cameraPosition;
-		} else if(!WayPoints.heliMoving){
-			mainCamera.transform.position = new Vector3 (12, 50, -15);
 		}
 	}
 	public static void PlayHitSound(AudioClip clip, Vector3 pos){
