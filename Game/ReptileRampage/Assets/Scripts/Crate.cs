@@ -24,15 +24,15 @@ public class Crate : MonoBehaviour {
 
 	private int[] tier2rare1 = new int[3] {1, 9, 10};
 	private int[] tier2rare2 = new int[3] {12, 14, 20};
-	private int[] tier2rare3 = new int[4] {13, 16, 17, 22};
-	private int[] tier2rare4 = new int[1] {0};
-	private int[] tier2rare5 = new int[4] {4, 24, 27, 26};
+	private int[] tier2rare3 = new int[3] {13, 16, 17};
+	private int[] tier2rare4 = new int[3] {4, 22, 26};
+	private int[] tier2rare5 = new int[2] {24, 27};
 
-	private int[] tier3rare1 = new int[1] {10};
-	private int[] tier3rare2 = new int[3] {2, 14, 15};
-	private int[] tier3rare3 = new int[4] {16, 17, 18, 22};
-	private int[] tier3rare4 = new int[1] {28};
-	private int[] tier3rare5 = new int[9] {3, 4, 6, 7, 19, 23, 24, 26, 29};
+	private int[] tier3rare1 = new int[2] {10, 14};
+	private int[] tier3rare2 = new int[4] {2, 15, 26, 22};
+	private int[] tier3rare3 = new int[3] {16, 17, 18};
+	private int[] tier3rare4 = new int[5] {28, 4, 7, 19, 24};
+	private int[] tier3rare5 = new int[4] {3, 6, 23, 29};
  
     
     void Start() {

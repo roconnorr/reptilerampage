@@ -49,7 +49,9 @@ public class Bullet : MonoBehaviour {
 	//Collide with wall and player
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "Wall" || other.gameObject.tag == "DestructibleWall"){
-			PlayHitSound(wallHitSounds[Random.Range(0,3)], this.transform.position);
+			if (wallHitSounds.Length != 0) {
+				PlayHitSound (wallHitSounds [Random.Range (0, 3)], this.transform.position);
+			}
 			Explode();
 		}
 		if(other.gameObject.tag == "Player" && dmgPlayer){
