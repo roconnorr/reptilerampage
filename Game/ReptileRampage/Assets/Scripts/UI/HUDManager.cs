@@ -68,6 +68,9 @@ public class HUDManager : MonoBehaviour {
 
    public GameObject arenaTrikeInstance;
    public GameObject arenaTrexInstance;
+
+   public Image slot1Inf;
+   public Image slot2Inf;
    
 
 
@@ -89,12 +92,15 @@ public class HUDManager : MonoBehaviour {
         }else{
               waveNumberText.enabled = false;
         }
+        slot1Inf.enabled = false;
+        slot2Inf.enabled = false;
         betweenWaveText.enabled = false;
         arenaTrikeHealthObject.SetActive(false);
         arenaTrexHealthObject.SetActive(false);
 		Slot1Image.preserveAspect = true;
 		Slot2Image.preserveAspect = true;
 		PistolImage.preserveAspect = true;
+            
    }
    
       void Update () {
@@ -180,6 +186,20 @@ public class HUDManager : MonoBehaviour {
          }else{
             pauseMenu.ShowPause();
          }
+      }
+      if(playerScript.slot1type == Player.WeaponType.minigun){
+            slot1Inf.enabled = true;
+            Slot1Ammo.enabled = false;
+      }else{
+            slot1Inf.enabled = false;
+            Slot1Ammo.enabled = true;
+      }
+      if(playerScript.slot2type == Player.WeaponType.minigun){
+            slot2Inf.enabled = true;
+            Slot2Ammo.enabled = false;
+      }else{
+            slot2Inf.enabled = false;
+            Slot2Ammo.enabled = true;
       }
    }
 

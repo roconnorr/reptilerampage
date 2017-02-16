@@ -415,6 +415,7 @@ MonoBehaviour:
   slotActive: 2
   invulnerableTime: 1
   playerHitClip: {fileID: 8300000, guid: 1e2050ab7c00e0d48914b025f9aaa0b6, type: 3}
+  noBulletSound: {fileID: 8300000, guid: d7394790fda9fa84ea7be2e78cd8c8d5, type: 3}
 --- !u!114 &114898318133762376
 MonoBehaviour:
   m_ObjectHideFlags: 1
