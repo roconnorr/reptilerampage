@@ -29,6 +29,22 @@ public class TitleScreenManager : MonoBehaviour {
 		WayPoints.trexSpawnAnimationPlaying = false;
 		WayPoints.trexSpawnAnimationFinished = false;
 		WayPoints.trexCam = false;
+		GameMaster.slot1type = Player.WeaponType.empty;
+		GameMaster.slot2type = Player.WeaponType.empty;
+		GameMaster.slot3type = Player.WeaponType.m1911;
+		GameMaster.levelStartSlot1Type = Player.WeaponType.empty;
+		GameMaster.levelStartSlot2Type = Player.WeaponType.empty;
+		GameMaster.levelStartSlot3Type = Player.WeaponType.m1911;
+		GameMaster.grenadeCount = 3;
+		GameMaster.slot1ammo = 0;
+		GameMaster.slot2ammo = 0;
+		GameMaster.slot1MaxAmmo = 0;
+		GameMaster.slot2MaxAmmo = 0;
+		GameMaster.levelStartSlot1Ammo = 0;
+		GameMaster.levelStartSlot2Ammo = 0;
+		GameMaster.level1Checkpoint = false;
+		GameMaster.level2Checkpoint = false;
+		GameMaster.currentLevel = 1;
 	}
 
 	public void EnableButtons(){
