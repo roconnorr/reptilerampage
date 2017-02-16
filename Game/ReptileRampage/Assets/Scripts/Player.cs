@@ -230,7 +230,7 @@ public class Player : MonoBehaviour
 				PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
 				if (minDist < 2) {
 					pk.DisplayStars();
-					if (Input.GetButtonDown ("Pickup")) {
+					if (Input.GetButtonDown ("Pickup") && pk.type != WeaponType.golddeserteagle) {
 						ChangeWeapon (pk.type, pk, closestWeapon);
 					}
 				}
