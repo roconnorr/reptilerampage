@@ -40,9 +40,10 @@ public class TRex : MonoBehaviour {
 		firePoint = transform.Find ("FirePoint");
 		rocketFirePoint = transform.Find ("RocketFirePoint");
 		GetComponent<Enemy>().noFlip = true;
-		animator.Play("TrexSpawn");
-		animator.speed = 0.5f;
-		GameObject.Find("Player").GetComponent<PlayDialog>().PlayTrexDialog();
+		if(Player.scene.name == "Level2"){
+			animator.Play("TrexSpawn");
+			GameObject.Find("Player").GetComponent<PlayDialog>().PlayTrexDialog();
+		}
 		Invoke("setSpawnAnimationToFinished", 4f);
 		roarSource = gameObject.GetComponent<AudioSource>();
 	}
