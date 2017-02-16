@@ -40,7 +40,9 @@ public class PickupPrefab : MonoBehaviour {
 				Destroy (player.slot [2]);  
 				player.slot [2] = Instantiate (player.weaponsprefabs [(int)type], player.transform.position + player.weaponsprefabs [(int)type].transform.position, new Quaternion (0, 0, 0, 0), player.transform);
 				player.slot3type = type;
-				GameMaster.levelStartSlot3Type = Player.WeaponType.golddeserteagle;
+				if (GameMaster.currentLevel == 2) {
+					GameMaster.levelStartSlot3Type = Player.WeaponType.golddeserteagle;
+				}
 				Destroy (gameObject);
 			} else {
 				if (other.GetComponent<Player> ().slot [0] != null && other.GetComponent<Player> ().slot [0].GetComponent<Weapon> ().type == type && other.GetComponent<Player> ().slot [0].GetComponent<Weapon> ().ammo != other.GetComponent<Player> ().slot [0].GetComponent<Weapon> ().maxAmmo) {
