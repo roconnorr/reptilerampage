@@ -2607,7 +2607,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 244117997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54415757aaddf4b8a9cd7122fd120cc6, type: 3}
   m_Name: 
@@ -2697,7 +2697,7 @@ MonoBehaviour:
   _purkinjeAmount: 1
   _purkinjeLuminanceThreshold: 0.15
   _tonemap: 0
-  isDirty: 1
+  isDirty: 0
   bMat: {fileID: 0}
 --- !u!1001 &247616057
 Prefab:
@@ -4545,7 +4545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -63
+      value: -61.9
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.z
