@@ -23,20 +23,22 @@ public class GameMaster : MonoBehaviour {
 
 	void Awake() {
 		DontDestroyOnLoad(gameObject);
-		slot1type = Player.WeaponType.empty;
-		slot2type = Player.WeaponType.empty;
-		slot3type = Player.WeaponType.m1911;
-		levelStartSlot1Type = Player.WeaponType.empty;
-		levelStartSlot2Type = Player.WeaponType.empty;
-		levelStartSlot3Type = Player.WeaponType.m1911;
-		grenadeCount = 3;
+		if (!level1Checkpoint) {
+			slot1type = Player.WeaponType.empty;
+			slot2type = Player.WeaponType.empty;
+			slot3type = Player.WeaponType.m1911;
+			levelStartSlot1Type = Player.WeaponType.empty;
+			levelStartSlot2Type = Player.WeaponType.empty;
+			levelStartSlot3Type = Player.WeaponType.m1911;
+			grenadeCount = 3;
 
-		slot1ammo = 0;
-		slot2ammo = 0;
-		slot1MaxAmmo = 0;
-		slot2MaxAmmo = 0;
-		levelStartSlot1Ammo = 0;
-		levelStartSlot2Ammo = 0;
+			slot1ammo = 0;
+			slot2ammo = 0;
+			slot1MaxAmmo = 0;
+			slot2MaxAmmo = 0;
+			levelStartSlot1Ammo = 0;
+			levelStartSlot2Ammo = 0;
+		}
     }
 
 	void Update() {
