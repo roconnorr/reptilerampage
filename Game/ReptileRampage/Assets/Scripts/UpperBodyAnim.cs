@@ -9,6 +9,7 @@ public class UpperBodyAnim : MonoBehaviour {
 	}
 	
 	void Update () {
+
 		Vector3 difference = Camera.main.ScreenToWorldPoint (Input.mousePosition) - transform.position;
 		float rotation = Mathf.Atan2 (difference.y, difference.x) * Mathf.Rad2Deg;
 		if(gameObject.GetComponentInParent<Player>().canMove){
