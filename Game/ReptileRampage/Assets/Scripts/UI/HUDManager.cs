@@ -74,24 +74,27 @@ public class HUDManager : MonoBehaviour {
    void Start () {
 		playerScript = player.GetComponent<Player>();
       	health = playerScript.health;
-            pauseMenu = pauseMenuPanel.GetComponent<PauseMenuManager>();
-            pauseMenu.Hide(); 
-            gameOver = gameOverPanel.GetComponent<GameOverManager>();
-            gameOver.Hide();
-            BossHealthObject.SetActive(false);
-            for(int i=0; i<Slot1Stars.Length; i++){
-                  Slot1Stars[i].enabled = false;
-                  Slot2Stars[i].enabled = false;
-            }
-            if(arenaMode){
-                  waveNumberText.enabled = true;
-                  waveMaster = GameObject.Find("WaveMaster").GetComponent<WaveMaster>();
-            }else{
-                  waveNumberText.enabled = false;
-            }
-            betweenWaveText.enabled = false;
-            arenaTrikeHealthObject.SetActive(false);
-            arenaTrexHealthObject.SetActive(false);
+        pauseMenu = pauseMenuPanel.GetComponent<PauseMenuManager>();
+        pauseMenu.Hide(); 
+        gameOver = gameOverPanel.GetComponent<GameOverManager>();
+        gameOver.Hide();
+        BossHealthObject.SetActive(false);
+        for(int i=0; i<Slot1Stars.Length; i++){
+              Slot1Stars[i].enabled = false;
+              Slot2Stars[i].enabled = false;
+        }
+        if(arenaMode){
+              waveNumberText.enabled = true;
+              waveMaster = GameObject.Find("WaveMaster").GetComponent<WaveMaster>();
+        }else{
+              waveNumberText.enabled = false;
+        }
+        betweenWaveText.enabled = false;
+        arenaTrikeHealthObject.SetActive(false);
+        arenaTrexHealthObject.SetActive(false);
+		Slot1Image.preserveAspect = true;
+		Slot2Image.preserveAspect = true;
+		PistolImage.preserveAspect = true;
    }
    
       void Update () {
