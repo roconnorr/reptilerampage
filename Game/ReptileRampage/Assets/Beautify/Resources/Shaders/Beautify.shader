@@ -40,17 +40,6 @@ Subshader {
       #pragma vertex vert
       #pragma fragment fragCompare
       #pragma target 3.0
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DALTONIZE BEAUTIFY_SEPIA BEAUTIFY_NIGHT_VISION BEAUTIFY_THERMAL_VISION
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DEPTH_OF_FIELD BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_OUTLINE
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_DIRT
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_BLOOM
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_EYE_ADAPTATION
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_TONEMAP_ACES
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_PURKINJE
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_VIGNETTING BEAUTIFY_VIGNETTING_MASK
-// Disabled by Shader Control: #pragma multi_compile __ BEAUTIFY_FRAME BEAUTIFY_FRAME_MASK
-#pragma multi_compile __ UNITY_COLORSPACE_GAMMA
       #include "Beautify.cginc"
       ENDCG
   }

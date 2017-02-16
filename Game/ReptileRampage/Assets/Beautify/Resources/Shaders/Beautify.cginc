@@ -56,7 +56,7 @@
 	struct v2f {
 	    float4 pos : SV_POSITION;
 	    float2 uv: TEXCOORD0;
-    	float2 depthUV : TEXCOORD1;	    
+    	float4 depthUV : TEXCOORD1;	    
     	#if BEAUTIFY_DIRT || BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT || BEAUTIFY_VIGNETTING_MASK || BEAUTIFY_FRAME_MASK
 	    float2 uvNonStereo: TEXCOORD2;
 	    #endif
@@ -66,7 +66,7 @@
     	v2f o;
     	o.pos = UnityObjectToClipPos(v.vertex);
    		o.uv = UnityStereoScreenSpaceUVAdjust(v.texcoord, _MainTex_ST);
-    	o.depthUV = o.uv;
+    	o.depthUV = float4(o.uv, 0, 0);
     	#if BEAUTIFY_DIRT || BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT || BEAUTIFY_VIGNETTING_MASK || BEAUTIFY_FRAME_MASK
    		o.uvNonStereo = v.texcoord;
    		#endif
@@ -101,7 +101,7 @@
 
 	float getCoc(v2f i) {
 	#if BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
-		float depth  = UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, float4(i.depthUV, 0, 0)));
+		float depth  = UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV));
 	    float depthTex = UNITY_SAMPLE_DEPTH(tex2Dlod(_DepthTexture, float4(i.uvNonStereo, 0, 0)));
 		#if defined(UNITY_REVERSED_Z)
 	    	depth = max(depth, depthTex);
@@ -110,7 +110,7 @@
 		#endif
 	    depth = LinearEyeDepth(depth);
 	#else
-		float depth  = LinearEyeDepth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, float4(i.depthUV, 0, 0))));
+		float depth  = LinearEyeDepth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV)));
 	#endif
 		float xd     = abs(depth - _BokehData.x) - _BokehData2.x * (depth < _BokehData.x);
 		return 0.5 * _BokehData.y * xd/depth;	// radius of CoC
@@ -131,11 +131,10 @@
 		const float4 ones = float4(1.0, 1.0, 1.0, 1.0);
 
 		float3 uvInc      = float3(_MainTex_TexelSize.x, _MainTex_TexelSize.y, 0);
-		float  depthS     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV - uvInc.zy)));
-		float  depthW     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV - uvInc.xz)));
-		float  depthE     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV + uvInc.xz)));		
-		float  depthN     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV + uvInc.zy)));
-
+		float  depthS     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV - uvInc.zyzz)));
+		float  depthW     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV - uvInc.xzzz)));
+		float  depthE     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV + uvInc.xzzz)));		
+		float  depthN     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV + uvInc.zyzz)));
 		float  lumaM      = getLuma(rgbM);
 
 		#if !BEAUTIFY_NIGHT_VISION && !BEAUTIFY_THERMAL_VISION
@@ -170,6 +169,7 @@
     	float  lumaE      = getLuma(rgbE);
     	float  lumaW      = getLuma(rgbW);
     	float  lumaS      = getLuma(rgbS);
+		
     	float  maxLuma    = max(lumaN,lumaS);
     	       maxLuma    = max(maxLuma, lumaW);
     	       maxLuma    = max(maxLuma, lumaE);
@@ -216,7 +216,7 @@
 
    	 	#if BEAUTIFY_NIGHT_VISION
    	 	       lumaM      = getLuma(rgbM);	// updates luma
-		float  depth      = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV)));
+		float  depth      = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV)));
    		float3 normalNW   = getNormal(depth, depthN, depthW, uvInc.zy, -uvInc.xz);
    		float  nvbase     = saturate(normalNW.z - 0.8); // minimum ambient self radiance (useful for pitch black)
    			   nvbase    += lumaM;						// adds current lighting
@@ -289,7 +289,7 @@
    		#if BEAUTIFY_OUTLINE
    		if (_OutlineMode) {
    			#if !BEAUTIFY_NIGHT_VISION
-   				float depth       = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV)));
+   				float depth       = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2Dlod(_CameraDepthTexture, i.depthUV)));
    				float3 normalNW   = getNormal(depth, depthN, depthW, uvInc.zy, -uvInc.xz);
    			#endif
    			float3 normalSE   = getNormal(depth, depthS, depthE, -uvInc.zy,  uvInc.xz);
@@ -351,9 +351,10 @@
 		float4 aa     = saturate( (_CompareParams.w - dist) / abs(_MainTex_TexelSize.y) );
 
 		float4 pixel  = tex2D(_MainTex, i.uv);
-
+		float4 pixelNice = tex2D(_OverlayTex, i.uv);
+		
 		// are we on the beautified side?
-		float s       = dot(dd, _CompareParams.yz);
-		if (s>0) beautifyPass(i, pixel.rgb);
+		float t       = dot(dd, _CompareParams.yz) > 0;
+		pixel         = lerp(pixel, pixelNice, t);
 		return pixel + aa;
 	}

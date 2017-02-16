@@ -2891,7 +2891,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54415757aaddf4b8a9cd7122fd120cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _preset: 10
+  _preset: 999
   _quality: 0
   _compareMode: 0
   _compareLineAngle: 1.4
@@ -2900,7 +2900,7 @@ MonoBehaviour:
   _ditherDepth: 0
   _sharpenMinDepth: 0
   _sharpenMaxDepth: 0.999
-  _sharpen: 2
+  _sharpen: 1
   _sharpenDepthThreshold: 0.035
   _tintColor: {r: 1, g: 1, b: 1, a: 0}
   _sharpenRelaxation: 0.065
@@ -2911,8 +2911,8 @@ MonoBehaviour:
   _brightness: 1.05
   _daltonize: 0
   _vignetting: 0
-  _vignettingColor: {r: 1, g: 0.0627451, b: 0.0627451, a: 0.07058824}
-  _vignettingCircularShape: 1
+  _vignettingColor: {r: 0.3, g: 0.3, b: 0.3, a: 0.05}
+  _vignettingCircularShape: 0
   _vignettingMask: {fileID: 0}
   _frame: 0
   _frameColor: {r: 1, g: 1, b: 1, a: 0.047}
@@ -2941,6 +2941,7 @@ MonoBehaviour:
   _bloomWeight3: 0.5
   _bloomWeight4: 0.5
   _bloomWeight5: 0.5
+  _bloomBlur: 1
   _anamorphicFlares: 0
   _anamorphicFlaresIntensity: 1
   _anamorphicFlaresAntiflicker: 0
@@ -2976,7 +2977,7 @@ MonoBehaviour:
   _purkinjeAmount: 1
   _purkinjeLuminanceThreshold: 0.15
   _tonemap: 0
-  isDirty: 1
+  isDirty: 0
   bMat: {fileID: 0}
 --- !u!1 &557880937
 GameObject:

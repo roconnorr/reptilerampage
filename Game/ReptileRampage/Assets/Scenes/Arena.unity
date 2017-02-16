@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54415757aaddf4b8a9cd7122fd120cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _preset: 10
+  _preset: 999
   _quality: 0
   _compareMode: 0
   _compareLineAngle: 1.4
@@ -874,7 +874,7 @@ MonoBehaviour:
   _ditherDepth: 0
   _sharpenMinDepth: 0
   _sharpenMaxDepth: 0.999
-  _sharpen: 2
+  _sharpen: 1
   _sharpenDepthThreshold: 0.035
   _tintColor: {r: 1, g: 1, b: 1, a: 0}
   _sharpenRelaxation: 0.065
@@ -915,6 +915,7 @@ MonoBehaviour:
   _bloomWeight3: 0.5
   _bloomWeight4: 0.5
   _bloomWeight5: 0.5
+  _bloomBlur: 1
   _anamorphicFlares: 0
   _anamorphicFlaresIntensity: 1
   _anamorphicFlaresAntiflicker: 0

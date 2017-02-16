@@ -54,8 +54,11 @@
 	    float4 pos : SV_POSITION;
 	    float2 uv: TEXCOORD0;
     	float2 depthUV : TEXCOORD1;	 
+	    float2 uvN: TEXCOORD2;
+	    float2 uvS: TEXCOORD3;
+	    float2 uvW: TEXCOORD4;
     	#if BEAUTIFY_DIRT || BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT || BEAUTIFY_VIGNETTING_MASK || BEAUTIFY_FRAME_MASK 
-	    float2 uvNonStereo: TEXCOORD2;
+	    float2 uvNonStereo: TEXCOORD5;
 	    #endif
 	};
 
@@ -64,6 +67,12 @@
     	o.pos = UnityObjectToClipPos(v.vertex);
    		o.uv = UnityStereoScreenSpaceUVAdjust(v.texcoord, _MainTex_ST);
     	o.depthUV = o.uv;
+
+    	float3 uvInc = float3(_MainTex_TexelSize.x, _MainTex_TexelSize.y, 0);
+    	o.uvN = o.uv + uvInc.zy;
+    	o.uvS = o.uv - uvInc.zy;
+    	o.uvW = o.uv - uvInc.xz;
+
     	#if BEAUTIFY_DIRT || BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT || BEAUTIFY_VIGNETTING_MASK || BEAUTIFY_FRAME_MASK
    		o.uvNonStereo = v.texcoord;
    		#endif
@@ -122,7 +131,10 @@
 	    const float4 ones   = float4(1.0,1.0,1.0,1.0);
 
 		float3 uvInc      = float3(_MainTex_TexelSize.x, _MainTex_TexelSize.y, 0);
+
+		#if BEAUTIFY_NIGHT_VISION || BEAUTIFY_OUTLINE
 		float  depthN     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV + uvInc.zy)));
+		#endif
 		float  depthW     = Linear01Depth(UNITY_SAMPLE_DEPTH(tex2D(_CameraDepthTexture, i.depthUV - uvInc.xz)));
 		float  lumaM      = getLuma(rgbM);
 		
@@ -140,13 +152,20 @@
 		#endif
 		
 		float  depthClamp = abs(depthW - _Dither.z) < _Dither.w;
-		float  maxDepth   = max(depthN, depthW);
-		float  minDepth   = min(depthN, depthW);
-		float  dDepth     = maxDepth - minDepth + 0.00001;
-		float  lumaDepth  = saturate(_Sharpen.y / dDepth);
-	    float3 rgbN       = tex2D(_MainTex, i.uv + uvInc.zy).rgb;
-		float3 rgbS       = tex2D(_MainTex, i.uv - uvInc.zy).rgb;
-	    float3 rgbW       = tex2D(_MainTex, i.uv - uvInc.xz).rgb;
+
+//		float  maxDepth   = max(depthN, depthW);
+//		float  minDepth   = min(depthN, depthW);
+//		float  dDepth     = maxDepth - minDepth + 0.00001;
+//		float  lumaDepth  = saturate(_Sharpen.y / dDepth);
+
+//	    float3 rgbN       = tex2D(_MainTex, i.uv + uvInc.zy).rgb;
+//		float3 rgbS       = tex2D(_MainTex, i.uv - uvInc.zy).rgb;
+//	    float3 rgbW       = tex2D(_MainTex, i.uv - uvInc.xz).rgb;
+
+   	    float3 rgbN       = tex2D(_MainTex, i.uvN).rgb;
+		float3 rgbS       = tex2D(_MainTex, i.uvS).rgb;
+	    float3 rgbW       = tex2D(_MainTex, i.uvW).rgb;
+
     	float  lumaN      = getLuma(rgbN);
     	float  lumaW      = getLuma(rgbW);
     	float  lumaS      = getLuma(rgbS);
@@ -156,7 +175,8 @@
 	           minLuma    = min(minLuma, lumaW) - 0.000001;
 	    float  lumaPower  = 2 * lumaM - minLuma - maxLuma;
 		float  lumaAtten  = saturate(_Sharpen.w / (maxLuma - minLuma));
-		       rgbM      *= 1.0 + clamp(lumaPower * lumaAtten * lumaDepth * _Sharpen.x, -_Sharpen.z, _Sharpen.z) * depthClamp;
+//		       rgbM      *= 1.0 + clamp(lumaPower * lumaAtten * lumaDepth * _Sharpen.x, -_Sharpen.z, _Sharpen.z) * depthClamp;
+		       rgbM      *= 1.0 + clamp(lumaPower * lumaAtten * _Sharpen.x, -_Sharpen.z, _Sharpen.z) * depthClamp;
 
 		#if BEAUTIFY_DEPTH_OF_FIELD || BEAUTIFY_DEPTH_OF_FIELD_TRANSPARENT
 		float4 dofPix     = tex2D(_DoFTex, i.uv);
@@ -301,11 +321,11 @@
 		float4 aa     = saturate( (_CompareParams.w - dist) / abs(_MainTex_TexelSize.y) );
 
 		float4 pixel  = tex2D(_MainTex, i.uv);
-
+		float4 pixelNice = tex2D(_OverlayTex, i.uv);
+		
 		// are we on the beautified side?
-		float s       = dot(dd, _CompareParams.yz);
-		if (s>0) beautifyPassFast(i, pixel.rgb);
-
+		float t       = dot(dd, _CompareParams.yz) > 0;
+		pixel         = lerp(pixel, pixelNice, t);
 		return pixel + aa;
 
 	}

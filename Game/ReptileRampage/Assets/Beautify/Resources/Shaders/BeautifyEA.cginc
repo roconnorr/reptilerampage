@@ -37,7 +37,7 @@
 	
    	v2fCross vertCross(appdata v) {
     	v2fCross o;
-    	o.pos = mul(UNITY_MATRIX_MVP, v.vertex);
+    	o.pos = UnityObjectToClipPos(v.vertex);
 		half3 offsets = _MainTex_TexelSize.xyy * half3(0.5,0.5,0);
 		o.uv1 = v.texcoord - offsets.xz;
 		o.uv2 = v.texcoord - offsets.zy;
