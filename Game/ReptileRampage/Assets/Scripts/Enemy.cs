@@ -116,6 +116,13 @@ public class Enemy : MonoBehaviour {
 					TextBoxManager.lastDialog = true;
 					//also loads last scene ehe
 					player.GetComponent<PlayDialog>().PlayAfterGavinDialog();
+					GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+					foreach (GameObject enemy in enemies) {
+						if (gameObject != enemy) {
+							Debug.Log (enemy.ToString());
+							Destroy (enemy);
+						}
+					}
 				}
 				if(deadEnemyPrefab != null){
 					Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
