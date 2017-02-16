@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour {
 	
 	public AudioClip[] enemyHitSounds;
 	public AudioClip[] trexArmourSounds;
+	public AudioClip[] randomSounds;
 
 
 	//public ParticleSystem dustParticles;
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour {
 		canvas = GameObject.Find("Canvas");
 		hudManager = canvas.GetComponent<HUDManager>();
 		player = GameObject.FindWithTag("Player");
+		StartCoroutine(PlayRandomSound());
 	}
 
 	void FixedUpdate() {
@@ -169,6 +171,14 @@ public class Enemy : MonoBehaviour {
 			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle), 500, transform);
 		}
 	}
+	
+	IEnumerator PlayRandomSound(){
+		if(hasSeen && randomSounds != null){
+			PlayHitSound(randomSounds[Random.Range(0,randomSounds.Length)], this.transform.position);
+			yield return new WaitForSeconds(Random.Range(3,5));
+			PlayHitSound(randomSounds[Random.Range(0,randomSounds.Length)], this.transform.position);
+		}
+	}
 	public static void PlayHitSound(AudioClip clip, Vector3 pos){
 		GameObject temp = new GameObject("TempAudio");
 		temp.transform.position = pos;
@@ -180,4 +190,5 @@ public class Enemy : MonoBehaviour {
 		}
 		Destroy(temp, clip.length);
 	}
+
 }
