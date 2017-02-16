@@ -2341,6 +2341,16 @@ Prefab:
       propertyPath: m_MaxValue
       value: 5000
       objectReference: {fileID: 0}
+    - target: {fileID: 114926076864837110, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_Text
+      value: MASTER
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588461215578308, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_Text
+      value: MUSIC
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
   m_IsPrefabParent: 0

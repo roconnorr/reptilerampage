@@ -6835,7 +6835,7 @@ MonoBehaviour:
   _purkinjeAmount: 1
   _purkinjeLuminanceThreshold: 0.15
   _tonemap: 0
-  isDirty: 0
+  isDirty: 1
   bMat: {fileID: 0}
 --- !u!1001 &595805767
 Prefab:
@@ -9051,6 +9051,16 @@ Prefab:
         type: 2}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: VolumeControl
+      objectReference: {fileID: 0}
+    - target: {fileID: 114926076864837110, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_Text
+      value: MASTER
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588461215578308, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_Text
+      value: MUSIC
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
