@@ -46,7 +46,7 @@ public class Explosion : MonoBehaviour {
 						if (rb.GetComponent<Enemy> ().isGavin && !playerSource) {
 							//Don't take damage
 						} else {
-							rb.GetComponent<Enemy> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power, source, true);
+							rb.GetComponent<Enemy> ().TakeDamage (explodeDamage, Quaternion.Euler (0, 0, angle), power, source, true, false);
 						}
 					}
 				}

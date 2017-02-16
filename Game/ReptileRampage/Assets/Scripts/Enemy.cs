@@ -61,27 +61,31 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage(int amount, Quaternion dir, float force, Transform source, bool isExplosion) {
+	public void TakeDamage(int amount, Quaternion dir, float force, Transform source, bool isExplosion, bool isFire) {
 		knockback = dir * Vector2.up;
 		knockback *= (force / 2);
 		knockback *= knockbackModifier;
 		knockbackTimer = 3;
-		if(!isTRex){
+		if(!isTRex && !isFire){
 			PlayHitSound(enemyHitSounds[Random.Range(0,enemyHitSounds.Length)], this.transform.position);
 		}
 		if (isTRex && isExplosion) {
 			GetComponent<TRex> ().defencesDown = true;
 			GetComponent<TRex> ().defenceTimer = 200;
 		}
-		SplatterBlood (1);
-		if (isTRex && !GetComponent<TRex>().defencesDown) {
+		if (!isFire) {
+			SplatterBlood (1);
+		}
+		if (isTRex && !GetComponent<TRex>().defencesDown && !isFire) {
 			//don't take damage and play an armor sound
-			PlayHitSound(trexArmourSounds[Random.Range(0,trexArmourSounds.Length)], this.transform.position);
+			PlayHitSound (trexArmourSounds [Random.Range (0, trexArmourSounds.Length)], this.transform.position);
 		} else {
-			if(isTRex){
+			if(isTRex && !isFire){
 				PlayHitSound(enemyHitSounds[Random.Range(0,enemyHitSounds.Length)], this.transform.position);
 			}
-			FireBloodParticles (dir);
+			if (!isFire) {
+				FireBloodParticles (dir);
+			}
 			health -= amount;
 			if (health <= 0) {
 				AudioSource.PlayClipAtPoint (deathRoar, transform.position);
