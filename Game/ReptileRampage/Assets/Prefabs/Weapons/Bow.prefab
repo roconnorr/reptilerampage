@@ -228,8 +228,10 @@ MonoBehaviour:
     type: 2}
   muzzleFlashPrefab: {fileID: 0}
   shotSound: {fileID: 8300000, guid: 84fad85595e387441a3414f307df0ddf, type: 3}
+  nobulletSound: {fileID: 8300000, guid: 84fad85595e387441a3414f307df0ddf, type: 3}
   rotationOffset: 0
   noRotation: 0
+  loopedShotSound: 0
 --- !u!114 &114601369523875834
 MonoBehaviour:
   m_ObjectHideFlags: 1

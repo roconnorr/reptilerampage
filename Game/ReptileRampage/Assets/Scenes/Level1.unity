@@ -1853,6 +1853,11 @@ Prefab:
       propertyPath: AfterTrikeDialog
       value: 
       objectReference: {fileID: 62340594}
+    - target: {fileID: 114784221453289200, guid: bdfb391d80d689b4db2843af3b8a880c,
+        type: 2}
+      propertyPath: noBulletSound
+      value: 
+      objectReference: {fileID: 8300000, guid: d7394790fda9fa84ea7be2e78cd8c8d5, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
   m_IsPrefabParent: 0
@@ -12089,22 +12094,22 @@ Prefab:
     - target: {fileID: 224725259698457952, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224266233009725062, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224227104452302666, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224538813132698698, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114546515545598856, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}

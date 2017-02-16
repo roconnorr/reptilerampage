@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
 	private Transform shadow;
 	
 	public AudioClip playerHitClip;
+	public AudioClip noBulletSound;
 	public static Scene scene;
 
 	void Start(){
@@ -232,18 +233,21 @@ public class Player : MonoBehaviour
 				if (minDist < 2) {
 					pk.DisplayStars();
 					if (Input.GetButtonDown ("Pickup") && pk.type != WeaponType.golddeserteagle) {
+						PlayHitSound(noBulletSound, this.transform.position);
 						ChangeWeapon (pk.type, pk, closestWeapon);
 					}
 				}
 			}			
 
 			if (Input.GetButtonDown ("SwapSlot") || Input.GetAxis ("Mouse ScrollWheel") < 0) {
+				PlayHitSound(noBulletSound, this.transform.position);
 				slotActive = (slotActive + 1) % 3;
 				while (slot [slotActive] == null) {
 					slotActive = (slotActive + 1) % 3;
 				}
 			}
 			if (Input.GetAxis ("Mouse ScrollWheel") > 0) {
+				PlayHitSound(noBulletSound, this.transform.position);
 				slotActive = (slotActive + 2) % 3;
 				while (slot [slotActive] == null) {
 					slotActive = (slotActive + 2) % 3;
@@ -251,12 +255,15 @@ public class Player : MonoBehaviour
 			}
 
 			if (Input.GetButtonDown ("Slot1") && slot [0] != null) {
+				PlayHitSound(noBulletSound, this.transform.position);
 				slotActive = 0;
 			}
 			if (Input.GetButtonDown ("Slot2") && slot [1] != null) {
+				PlayHitSound(noBulletSound, this.transform.position);
 				slotActive = 1;
 			}
 			if (Input.GetButtonDown ("Slot3")) {
+				PlayHitSound(noBulletSound, this.transform.position);
 				slotActive = 2;
 			}
 

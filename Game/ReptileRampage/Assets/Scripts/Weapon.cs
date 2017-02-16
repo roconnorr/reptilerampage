@@ -24,7 +24,8 @@ public class Weapon : MonoBehaviour {
 	public Transform bulletPrefab;
 	public Transform muzzleFlashPrefab;
 	public AudioClip shotSound = null;
-	private AudioSource noBulletSound;
+	public AudioClip nobulletSound;
+	private AudioSource loopedSoundSource;
 	float timeToFire = 0;
 	public int rotationOffset = 0;
 	public bool noRotation;
@@ -36,6 +37,7 @@ public class Weapon : MonoBehaviour {
 	private Transform firePoint2;
 	private bool flipped;
 	private Player player;
+	public bool loopedShotSound;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
@@ -43,7 +45,7 @@ public class Weapon : MonoBehaviour {
 		firePoint2 = transform.FindChild ("FirePoint2");
 		firePoint = firePoint1;
 		player = GetComponentInParent<Player>();
-		noBulletSound = gameObject.GetComponent<AudioSource>();
+		loopedSoundSource = gameObject.GetComponent<AudioSource>();
 	}
 
 	void Update () {
@@ -94,8 +96,13 @@ public class Weapon : MonoBehaviour {
 					if (!infiniteAmmo) {
 						ammo--;
 					}
-				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !noBulletSound.isPlaying){
-					noBulletSound.Play();
+				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !loopedSoundSource.isPlaying){
+					if(!loopedShotSound){
+						PlayEmptySound(nobulletSound, this.transform.position);
+					}else{
+						loopedSoundSource.clip = nobulletSound;
+						loopedSoundSource.Play();
+					}
 					if(gameObject.GetComponentInParent<Player>().slotActive == 0){
 						PickUpLog.noAmmoLog1 = true;
 					} else if(gameObject.GetComponentInParent<Player>().slotActive == 1){
@@ -103,6 +110,8 @@ public class Weapon : MonoBehaviour {
 					}
 				}
 			}
+		}else{
+			loopedSoundSource.Stop();
 		}
 	}
 
@@ -119,9 +128,11 @@ public class Weapon : MonoBehaviour {
 			angle += bulletSpread;
 		}
 		//Play sound
-		if(shotSound != null){
+		if(shotSound != null && !loopedShotSound){
 			AudioSource.PlayClipAtPoint(shotSound, transform.position);
-			
+		}else if(shotSound != null && loopedShotSound && !loopedSoundSource.isPlaying){
+			loopedSoundSource.clip = shotSound;
+			loopedSoundSource.Play();
 		}
 		//Shake screen
 		gameObject.GetComponent<CameraShake>().StartShaking(screenShake);
@@ -143,5 +154,16 @@ public class Weapon : MonoBehaviour {
 		} else {
 			ammo = Mathf.Min (maxAmmo, ammo + amount);
 		}
+	}
+	public static void PlayEmptySound(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.15f;
+		if(!tempSource.isPlaying){
+			tempSource.Play();
+		}
+		Destroy(temp, clip.length);
 	}
 }
