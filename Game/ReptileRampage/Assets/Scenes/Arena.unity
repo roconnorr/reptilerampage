@@ -680,6 +680,54 @@ Prefab:
       propertyPath: arenaMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1464609624637906, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1621059538035644, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536811174630552, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1532888582373178, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1427887137080444, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1361005048127202, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445876794807768, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1541423432921756, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412399470654002, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1689637503874048, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1479351507742852, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1166227004616886, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
   m_IsPrefabParent: 0
