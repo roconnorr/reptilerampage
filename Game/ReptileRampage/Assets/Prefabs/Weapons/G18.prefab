@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stomp: {fileID: 0}
 --- !u!114 &114299139006355222
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,9 +243,10 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 4652897480954686, guid: 239d4cd918a744032a07f234172accee,
     type: 2}
   shotSound: {fileID: 8300000, guid: 9bed96e635607d649abb9b8aca841bd8, type: 3}
-  noBulletSound: {fileID: 8300000, guid: d7394790fda9fa84ea7be2e78cd8c8d5, type: 3}
+  nobulletSound: {fileID: 8300000, guid: d7394790fda9fa84ea7be2e78cd8c8d5, type: 3}
   rotationOffset: 0
   noRotation: 0
+  loopedShotSound: 0
 --- !u!212 &212451364392588822
 SpriteRenderer:
   m_ObjectHideFlags: 1
