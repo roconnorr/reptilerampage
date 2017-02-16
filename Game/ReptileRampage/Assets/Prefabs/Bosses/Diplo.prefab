@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 114097584935440080}
   - component: {fileID: 50374438310154806}
   - component: {fileID: 114104835019130982}
+  - component: {fileID: 82005742044475026}
   m_Layer: 12
   m_Name: Diplo
   m_TagString: Enemy
@@ -335,6 +336,86 @@ BoxCollider2D:
   m_Offset: {x: -0.57912385, y: 0}
   serializedVersion: 2
   m_Size: {x: 1.1699998, y: 0.01}
+--- !u!82 &82005742044475026
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1325306542229694}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 707049a424402dc4490e40e5239660ad, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0.423
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114097584935440080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -367,6 +448,7 @@ MonoBehaviour:
   laserDamage: 10
   dir: 1
   isActive: 0
+  roar: {fileID: 8300000, guid: 73eac4ae9ac5d7844a2d515560738c1d, type: 3}
 --- !u!114 &114104835019130982
 MonoBehaviour:
   m_ObjectHideFlags: 1

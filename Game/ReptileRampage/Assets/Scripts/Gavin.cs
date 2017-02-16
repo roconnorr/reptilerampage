@@ -47,6 +47,7 @@ public class Gavin : MonoBehaviour {
 	private HUDManager hudManager;
 	public bool isActive = false;
 	private AudioSource laserSource;
+	public AudioClip roar;
 
 	// Use this for initialization
 	void Start () {
@@ -58,6 +59,7 @@ public class Gavin : MonoBehaviour {
 		firePoint = arm1.FindChild ("FirePoint");
 		spawnPoint1 = GameObject.Find ("SpawnPoint1").transform;
 		spawnPoint2 = GameObject.Find ("SpawnPoint2").transform;
+		laserSource = gameObject.GetComponent<AudioSource>();
 		hudManager = GameObject.Find("Canvas").GetComponent<HUDManager>();
 		hudManager.levelBoss = this.gameObject;
 		hudManager.inBossFight = true;
@@ -149,6 +151,8 @@ public class Gavin : MonoBehaviour {
 	}
 
 	void FireLaser() {
+		PlayRoar(roar, this.transform.position);
+		laserSource.Play();
 		laser.gameObject.SetActive (true);
 		Invoke ("CancelLaser", 3f);
 	}
@@ -166,6 +170,7 @@ public class Gavin : MonoBehaviour {
 
 	void CancelLaser() {
 		laser.gameObject.SetActive (false);
+		laserSource.Stop();
 		isLaser = false;
 		state = State.Idle;
 		animator.Play ("Idle");
@@ -196,5 +201,14 @@ public class Gavin : MonoBehaviour {
 		float size = Random.Range (0.1f, 0.15f);
 		flash.localScale = new Vector3 (size, size, size);
 		Destroy (flash.gameObject, 0.02f);
+	}
+	public static void PlayRoar(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.15f;
+		tempSource.Play();
+		Destroy(temp, clip.length);
 	}
 }

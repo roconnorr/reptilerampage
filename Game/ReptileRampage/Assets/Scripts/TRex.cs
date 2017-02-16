@@ -179,13 +179,4 @@ public class TRex : MonoBehaviour {
 			state = State.Idle;
 		}
 	}
-	public static void PlayRoar(AudioClip clip, Vector3 pos){
-		GameObject temp = new GameObject("TempAudio");
-		temp.transform.position = pos;
-		AudioSource tempSource = temp.AddComponent<AudioSource>();
-		tempSource.clip = clip;
-		tempSource.volume = 0.15f;
-		tempSource.Play();
-		Destroy(temp, clip.length);
-	}
 }
