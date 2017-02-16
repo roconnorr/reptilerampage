@@ -96,7 +96,7 @@ public class TextBoxManager : MonoBehaviour {
 				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
-				}else if(Player.scene.name == "FinalBoss"){
+				}else if(Player.scene.name == "FinalBoss" && !lastDialog){
 					GameObject.Find("Diplo").GetComponent<Gavin>().isActive = true;
 					Invoke ("unFreeze", 0.1f);
 				}else{
