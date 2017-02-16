@@ -57,7 +57,7 @@ public class MusicPlayer : MonoBehaviour {
 				musicPlayer.volume = prefferedVolume;
 			}
 		}
-		if (fadeToLevel) {
+		if (fadeToLevel && !won) {
 			if (musicPlayer.volume > 0.05) { 
 				musicPlayer.volume *= 0.95f;
 			} else {
