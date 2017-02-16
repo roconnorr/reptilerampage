@@ -330,6 +330,12 @@ MonoBehaviour:
     type: 2}
   noFlip: 0
   arenaMode: 0
+  enemyHitSounds:
+  - {fileID: 8300000, guid: 57d39dbc31b6f7e428ab5fdb30d29392, type: 3}
+  - {fileID: 8300000, guid: e62eb3bc998e1484598f3fcef283cf2d, type: 3}
+  - {fileID: 8300000, guid: b6baee150a1b44f488d9286a415ed095, type: 3}
+  - {fileID: 8300000, guid: c9e7c8cbb6104424ab815360bf56c6e1, type: 3}
+  trexArmourSounds: []
 --- !u!212 &212189186998649068
 SpriteRenderer:
   m_ObjectHideFlags: 1
