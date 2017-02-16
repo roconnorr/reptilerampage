@@ -15,9 +15,9 @@ public class MusicPlayer : MonoBehaviour {
 	public static bool won;
 	public static bool fadeToBoss = false;
 	public static bool fadeToLevel = false;
-	public static float volume = 0.5f;
+	public static float volume = 0.4f;
 	public static float masterVolume = 1;
-	private float prefferedVolume = 0.5f;
+	private float prefferedVolume = 0.4f;
 
 	void Start () {
 		musicPlayer = GetComponent<AudioSource>();
