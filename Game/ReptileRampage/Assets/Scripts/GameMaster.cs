@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameMaster : MonoBehaviour {
 	public static int currentLevel = 1;
@@ -21,8 +22,30 @@ public class GameMaster : MonoBehaviour {
 	public static bool level2Checkpoint;
 
 	void Awake() {
-        DontDestroyOnLoad(gameObject);
+		DontDestroyOnLoad(gameObject);
+		slot1type = Player.WeaponType.empty;
+		slot2type = Player.WeaponType.empty;
+		slot3type = Player.WeaponType.m1911;
+		levelStartSlot1Type = Player.WeaponType.empty;
+		levelStartSlot2Type = Player.WeaponType.empty;
+		levelStartSlot3Type = Player.WeaponType.m1911;
+		grenadeCount = 3;
+
+		slot1ammo = 0;
+		slot2ammo = 0;
+		slot1MaxAmmo = 0;
+		slot2MaxAmmo = 0;
+		levelStartSlot1Ammo = 0;
+		levelStartSlot2Ammo = 0;
+		level1Checkpoint = false;
+		level2Checkpoint = false;
     }
+
+	void Update() {
+		if (SceneManager.GetActiveScene ().name == "TitleScreen") {
+			Destroy (gameObject);
+		}
+	}
 
 	public static Transform CreateBullet(Transform prefab, Vector3 position, float knockBackForce, float angle, int damage, float speed, float range, bool dmgPlayer, bool dmgEnemy, Transform source) {
 		Transform bullet = Instantiate (prefab, position, Quaternion.Euler(0, 0, angle));

@@ -3897,6 +3897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stomp: {fileID: 0}
 --- !u!82 &673225481
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11912,11 +11913,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1019736887}
     - target: {fileID: 114018706801973214, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: player
@@ -11927,22 +11923,22 @@ Prefab:
       propertyPath: BossTrigger
       value: 
       objectReference: {fileID: 756008265}
+    - target: {fileID: 114702558174301420, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1019736887}
     - target: {fileID: 223866127056531330, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 524494568}
-    - target: {fileID: 224266233009725062, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
-        type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 224725259698457952, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224538813132698698, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+    - target: {fileID: 224266233009725062, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -11952,10 +11948,10 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114349796956564976, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+    - target: {fileID: 224538813132698698, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
         type: 2}
-      propertyPath: m_MaxValue
-      value: 2000
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}
@@ -13827,6 +13823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91845ef0c6b364cb0a58d159d464b0d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stomp: {fileID: 0}
 --- !u!1001 &2140999944
 Prefab:
   m_ObjectHideFlags: 0
