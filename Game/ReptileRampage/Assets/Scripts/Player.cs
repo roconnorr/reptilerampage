@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
 	public AudioClip playerHitClip;
 	public static Scene scene;
 
-    void Start(){
+	void Start(){
 		canShoot = true;
 		canMove = true;
 		sr = GetComponent<SpriteRenderer> ();

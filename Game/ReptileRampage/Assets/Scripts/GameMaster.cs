@@ -37,13 +37,13 @@ public class GameMaster : MonoBehaviour {
 		slot2MaxAmmo = 0;
 		levelStartSlot1Ammo = 0;
 		levelStartSlot2Ammo = 0;
-		level1Checkpoint = false;
-		level2Checkpoint = false;
     }
 
 	void Update() {
 		if (SceneManager.GetActiveScene ().name == "TitleScreen") {
 			Destroy (gameObject);
+			level1Checkpoint = false;
+			level2Checkpoint = false;
 		}
 	}
 
