@@ -1402,7 +1402,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0ed9c8a4ce7b9cb4f904e5213716ca72, type: 3}
   - {fileID: 21300000, guid: 049d7bc98aafbfd46a237b37937ed408, type: 3}
   - {fileID: 21300000, guid: f56128c812d0ced45aeb678d2a5927c1, type: 3}
-  levelBoss: 1
+  levelBoss: 0
   text: {fileID: 114846021886171006}
   dialogActive: 0
   inBossFight: 0
@@ -3619,7 +3619,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 5af5d96a82d46834a9cf547da2bbe343, type: 3}
-    m_FontSize: 26
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -4766,7 +4766,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 53, y: 51}
+  m_AnchoredPosition: {x: 55.8, y: 50.5}
   m_SizeDelta: {x: 439.3, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224195817426645924
@@ -5136,7 +5136,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 1, y: 54.215}
+  m_AnchoredPosition: {x: 1, y: 53.50003}
   m_SizeDelta: {x: 559, y: 107}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224478417642075036
