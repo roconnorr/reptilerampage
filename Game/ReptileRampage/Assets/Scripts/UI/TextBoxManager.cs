@@ -137,6 +137,9 @@ public class TextBoxManager : MonoBehaviour {
 			textLines = (textFiles[dialogTextNumber].text.Split('\n'));
 		}
 		currentLine = 0;
+		text.text = "";
+		currentChar = 0;
+		maxChar = textLines [0].Length;
 	}
 
 	private void unFreeze() {
