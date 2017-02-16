@@ -203,10 +203,10 @@ MonoBehaviour:
   bulletSpread: 5
   knockBackForce: 0
   stars: 5
-  maxAmmo: 500
-  startingAmmo: 200
-  ammo: 200
-  ammoPickup: 50
+  maxAmmo: 300
+  startingAmmo: 120
+  ammo: 120
+  ammoPickup: 30
   automaticFire: 1
   infiniteAmmo: 0
   type: 28
