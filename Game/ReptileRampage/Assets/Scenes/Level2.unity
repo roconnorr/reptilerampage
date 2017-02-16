@@ -4849,11 +4849,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 40.1
+      value: -62.3
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -39.4
+      value: -53.8
       objectReference: {fileID: 0}
     - target: {fileID: 4423391256532398, guid: bdfb391d80d689b4db2843af3b8a880c, type: 2}
       propertyPath: m_LocalPosition.z
@@ -6301,7 +6301,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 539604050}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -56.8, y: -57.2, z: 0}
+  m_LocalPosition: {x: 39.6, y: -40.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 594097502}
@@ -8981,6 +8981,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114018706801973214, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: levelBoss
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114349796956564976, guid: 6a3a835f8fe7bc44b9c1bf682fcff543,
+        type: 2}
+      propertyPath: m_MaxValue
+      value: 1500
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a3a835f8fe7bc44b9c1bf682fcff543, type: 2}

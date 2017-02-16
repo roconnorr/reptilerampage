@@ -230,7 +230,7 @@ public class Player : MonoBehaviour
 				PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
 				if (minDist < 2) {
 					pk.DisplayStars();
-					if (Input.GetButtonDown ("Pickup")) {
+					if (Input.GetButtonDown ("Pickup") && pk.type != WeaponType.golddeserteagle) {
 						ChangeWeapon (pk.type, pk, closestWeapon);
 					}
 				}
@@ -269,7 +269,7 @@ public class Player : MonoBehaviour
 
 			if (!isInvulnerable) {
 				foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
-					if (r.gameObject.tag != "MuzzleFlash") {
+					if (r.gameObject.tag != "MuzzelFlash") {
 						Color c = r.material.color;
 						c.a = 1f;
 						r.material.color = c;
@@ -277,7 +277,7 @@ public class Player : MonoBehaviour
 				}
 			} else {
 				foreach (Renderer r in GetComponentsInChildren<Renderer>()) {
-					if (r.gameObject.tag != "MuzzleFlash") {
+					if (r.gameObject.tag != "MuzzelFlash") {
 						Color c = r.material.color;
 						c.a = 0.3f;
 						r.material.color = c;
@@ -285,6 +285,7 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
+
 		if(crossHairEnabled){
 			crossHair.position = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
 		}
