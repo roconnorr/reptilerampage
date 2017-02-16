@@ -233,8 +233,8 @@ public class Player : MonoBehaviour
 				if (minDist < 2) {
 					pk.DisplayStars();
 					if (Input.GetButtonDown ("Pickup") && pk.type != WeaponType.golddeserteagle) {
-						PlayHitSound(noBulletSound, this.transform.position);
 						ChangeWeapon (pk.type, pk, closestWeapon);
+						PlayHitSound(noBulletSound, this.transform.position);
 					}
 				}
 			}			
