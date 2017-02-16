@@ -28,6 +28,9 @@ public class TextBoxManager : MonoBehaviour {
 	public int currentLine;
 	public static bool dialogFinished;
 
+	int currentChar = 0;
+	int maxChar = 0;
+
 	public static bool lastDialog = false;
 
 	private bool lastDialogChanged = false;
@@ -43,6 +46,8 @@ public class TextBoxManager : MonoBehaviour {
 		}
 		text.text = "";
 		dialogBox.SetActive(false);
+		currentChar = 0;
+		maxChar = textLines [0].Length;
 	}
 
 	
@@ -55,20 +60,30 @@ public class TextBoxManager : MonoBehaviour {
 			hudManager.HideBottomHUD(true);
 			dialogBox.SetActive(true);
 
+			//Next line
 			if(Input.GetButtonDown("Fire")){
-				currentLine++;
-				if(lastDialogChanged){
-					//nasti hackk
-					SceneManager.LoadScene("WinScreen");
+				if (currentChar < maxChar) {
+					text.text = textLines [currentLine];
+					currentChar = maxChar;
+				} else {
+					currentLine++;
+					if (lastDialogChanged) {
+						//nasti hackk
+						SceneManager.LoadScene ("WinScreen");
+					}
+					if (lastDialog && !lastDialogChanged) {
+						SetDialogNumber (10, 0);
+						lastDialogChanged = true;
+					}
+					if (currentLine < textLines.Length) {
+						text.text = "";
+						currentChar = 0;
+						maxChar = textLines [currentLine].Length;
+					}
 				}
-				if(lastDialog && !lastDialogChanged){
-					SetDialogNumber(10, 0);
-					lastDialogChanged = true;
-				}
-				text.text = "";
-				StopAllCoroutines();
 			}
 
+			//End of dialog
 			if(currentLine == textLines.Length){
 				dialogBox.SetActive(false);
 				dialogActive = false;
@@ -88,8 +103,10 @@ public class TextBoxManager : MonoBehaviour {
 					Invoke ("unFreeze", 0.1f);
 				}
 			}else{
-				text.text = "";
-				StartCoroutine(TypeText());
+				if (currentChar < maxChar) {
+					text.text += textLines [currentLine][currentChar];
+					currentChar++;
+				}
 			}
 		}else{
 			hudManager.HideBottomHUD(false);
@@ -121,14 +138,10 @@ public class TextBoxManager : MonoBehaviour {
 		}
 		currentLine = 0;
 	}
+
 	private void unFreeze() {
 		playerScript.canMove = true;
 		playerScript.canShoot = true;
 	}
-	IEnumerator TypeText (){
-		foreach (char c in textLines[currentLine].ToCharArray()) {
-			text.text += c;
-			yield return new WaitForSeconds (letterPause);
-		}      
-	}
+		  
 }
