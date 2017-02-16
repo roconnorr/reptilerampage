@@ -119,7 +119,6 @@ public class Enemy : MonoBehaviour {
 					GameObject[] enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 					foreach (GameObject enemy in enemies) {
 						if (gameObject != enemy) {
-							Debug.Log (enemy.ToString());
 							Destroy (enemy);
 						}
 					}
