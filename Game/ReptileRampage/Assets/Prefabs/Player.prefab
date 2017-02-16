@@ -408,9 +408,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  slot1type: 0
-  slot2type: 0
-  slot3type: 0
+  slot1type: 25
+  slot2type: 25
+  slot3type: 25
   grenadeCount: 0
   slotActive: 2
   invulnerableTime: 1
