@@ -60,7 +60,7 @@ public class Player : MonoBehaviour
 	public AudioClip noBulletSound;
 	public static Scene scene;
 
-    void Start(){
+	void Start(){
 		canShoot = true;
 		canMove = true;
 		sr = GetComponent<SpriteRenderer> ();

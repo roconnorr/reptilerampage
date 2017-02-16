@@ -25,7 +25,7 @@ public class Laser : MonoBehaviour {
 		if(other.gameObject.tag == "Enemy"){
 			float angle =Mathf.Atan2(other.transform.position.y-transform.position.y, transform.position.x-transform.position.x)*180 / Mathf.PI;
 			angle -= 90;
-			other.gameObject.GetComponent<Enemy>().TakeDamage (100, Quaternion.Euler(0, 0, angle), 500, GetComponentInParent<Gavin>().transform, false);
+			other.gameObject.GetComponent<Enemy>().TakeDamage (100, Quaternion.Euler(0, 0, angle), 500, GetComponentInParent<Gavin>().transform, false, false);
 		}
 	}
 }

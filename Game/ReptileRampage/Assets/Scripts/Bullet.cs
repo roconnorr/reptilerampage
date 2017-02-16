@@ -21,6 +21,7 @@ public class Bullet : MonoBehaviour {
 	public Transform source;
 	public bool isExplosive;
 	public bool isRPG;
+	public bool isFire;
 
 	public AudioClip[] wallHitSounds;
 
@@ -67,7 +68,7 @@ public class Bullet : MonoBehaviour {
 		}
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
 			if (!isExplosive) {
-				other.gameObject.GetComponent<Enemy> ().TakeDamage (damage, transform.rotation, knockBackForce, source, false);
+				other.gameObject.GetComponent<Enemy> ().TakeDamage (damage, transform.rotation, knockBackForce, source, false, isFire);
 			}
 			Explode ();
 		}
@@ -75,7 +76,7 @@ public class Bullet : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.gameObject.tag == "Enemy" && dmgEnemy) {
-			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce, source, false);
+			other.gameObject.GetComponent<EnemyBulletCollider>().TakeDamage (damage, transform.rotation, knockBackForce, source, false, isFire);
 			Explode ();
 		}
 	}
