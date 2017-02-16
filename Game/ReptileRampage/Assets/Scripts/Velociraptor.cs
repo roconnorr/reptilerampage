@@ -81,6 +81,8 @@ public class Velociraptor : MonoBehaviour {
 							MovePathFind ();
 						}
 					}
+				} else if (targetObstructed) {
+					MovePatrol ();
 				}
 			} else {
 				if (isChasing) {

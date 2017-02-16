@@ -96,6 +96,8 @@ public class Stegosaurus : MonoBehaviour {
 							MovePathFind ();
 						}
 					}
+				} else if (targetObstructed) {
+					MovePatrol ();
 				}
 			} else {
 				if (isChasing) {
