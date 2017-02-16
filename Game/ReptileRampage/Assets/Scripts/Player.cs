@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
 	public enum WeaponType {acr, ak47, aug, barret50cal, crossbow, deserteagle, g18, 
                             golddeserteagle, grenade, m1, m16, m1911, miniuzi, 
                             model1887, mp5, p90, remington870, skorpion, spas12, 
-                            thompson1928, ump45, usp45, rpg7, chinalake, plasmarifle, empty};
+                            thompson1928, ump45, usp45, rpg7, chinalake, plasmarifle, 
+							empty, bazooka, bow, flamethrower, minigun};
     public GameObject[] weaponsprefabs;
     private GameObject[] weaponslist;
 
