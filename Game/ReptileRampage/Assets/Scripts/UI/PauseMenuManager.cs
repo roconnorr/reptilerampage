@@ -29,9 +29,6 @@ public class PauseMenuManager : MonoBehaviour {
    }
 
    public void Volume(){
-         /*for(int i = 0; i < transform.childCount-1; i++){
-            transform.GetChild(i).gameObject.SetActive(false);
-         }*/
          transform.GetChild(0).gameObject.SetActive(false);
          transform.GetChild(1).gameObject.SetActive(false);
          transform.GetChild(2).gameObject.SetActive(false);
