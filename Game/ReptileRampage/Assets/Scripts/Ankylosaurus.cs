@@ -79,58 +79,62 @@ public class Ankylosaurus : MonoBehaviour {
 
 			//If chasing player
 			if (targetInChaseRange) {
-				if(isChasing && canMove) {
-					if (!targetObstructed) {
-						if (!targetInStopRange) {
-							if (stopped) {
-								stopped = false;
-								animator.Play ("Ankylo_Walk");
-							}
-							//Find nearest enemy and avoid if they're too close
-							Transform nearestEnemy = GetNearestSameDino ();
-							if (nearestEnemy != null) {
-								float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
-								if (avoiding) {
-									if (dist > 2) {
-										avoiding = false;
+				if (canMove) {
+					if (isChasing) {
+						if (!targetObstructed) {
+							if (!targetInStopRange) {
+								if (stopped) {
+									stopped = false;
+									animator.Play ("Ankylo_Walk");
+								}
+								//Find nearest enemy and avoid if they're too close
+								Transform nearestEnemy = GetNearestSameDino ();
+								if (nearestEnemy != null) {
+									float dist = Vector3.Distance (nearestEnemy.transform.position, transform.position);
+									if (avoiding) {
+										if (dist > 2) {
+											avoiding = false;
+										}
+										Avoid (nearestEnemy);
+									} else if (dist < 1.5) {
+										avoiding = true;
+										Avoid (nearestEnemy);
 									}
-									Avoid (nearestEnemy);
-								} else if (dist < 1.5) {
-									avoiding = true;
-									Avoid (nearestEnemy);
+								}
+								//Move directly towards player
+								MoveDirect ();
+								//If in chase range but player is obstructed, pathfind to him
+							} else {//If in stop range
+								if (!stopped && !isCharging) {
+									animator.Play ("Ankylo_Idle");
+									stopped = true;
+								}
+								if (!isCharging && Random.Range (0, 400) == 1 && canMove) {
+									isCharging = true;
+									animator.Play ("Ankylo_Walk");
+									chargePosition = new Vector3 (target.transform.position.x, target.transform.position.y, transform.position.z);
+								}
+								if (!isCharging && Time.time > timeToFire) {
+									canMove = false;
+									smashes = Random.Range (2, 5);
+									animator.Play ("Ankylo_Smash");
+									timeToFire = Time.time + 1 / fireRate;
+								}
+								if (isCharging) {
+									gameObject.GetComponent<Enemy> ().knockbackModifier = 0;
+									if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
+										rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed * 10);
+									} else {
+										isCharging = false;
+										gameObject.GetComponent<Enemy> ().knockbackModifier = modifierOriginal;
+									}
 								}
 							}
-							//Move directly towards player
-							MoveDirect ();
-							//If in chase range but player is obstructed, pathfind to him
-						} else {//If in stop range
-							if (!stopped && !isCharging) {
-								animator.Play ("Ankylo_Idle");
-								stopped = true;
-							}
-							if (!isCharging && Random.Range (0, 400) == 1 && canMove) {
-								isCharging = true;
-								animator.Play ("Ankylo_Walk");
-								chargePosition = new Vector3 (target.transform.position.x, target.transform.position.y, transform.position.z);
-							}
-							if (!isCharging && Time.time > timeToFire) {
-								canMove = false;
-								smashes = Random.Range (2, 5);
-								animator.Play ("Ankylo_Smash");
-								timeToFire = Time.time + 1 / fireRate;
-							}
-							if (isCharging) {
-								gameObject.GetComponent<Enemy> ().knockbackModifier = 0;
-								if (Vector3.Distance (transform.position, chargePosition) > 0.5f) {
-									rb.AddForce (Vector3.Normalize (chargePosition - transform.position) * speed * 10);
-								} else {
-									isCharging = false;
-									gameObject.GetComponent<Enemy> ().knockbackModifier = modifierOriginal;
-								}
-							}
+						} else {
+							MovePathFind ();
 						}
-					} else {
-						MovePathFind ();
+					} else if (targetObstructed) {
+						MovePatrol ();
 					}
 				}
 			} else {
