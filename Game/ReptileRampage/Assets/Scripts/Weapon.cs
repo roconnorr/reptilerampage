@@ -97,12 +97,8 @@ public class Weapon : MonoBehaviour {
 						ammo--;
 					}
 				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !loopedSoundSource.isPlaying){
-					if(!loopedShotSound){
-						PlayEmptySound(nobulletSound, this.transform.position);
-					}else{
-						loopedSoundSource.clip = nobulletSound;
-						loopedSoundSource.Play();
-					}
+					loopedSoundSource.clip = nobulletSound;
+					loopedSoundSource.Play();
 					if(gameObject.GetComponentInParent<Player>().slotActive == 0){
 						PickUpLog.noAmmoLog1 = true;
 					} else if(gameObject.GetComponentInParent<Player>().slotActive == 1){
