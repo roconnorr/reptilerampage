@@ -36,6 +36,9 @@ public class Enemy : MonoBehaviour {
 	public bool arenaMode;
 
 	private HUDManager hudManager;
+	
+	public AudioClip[] enemyHitSounds;
+	public AudioClip[] trexArmourSounds;
 
 
 	//public ParticleSystem dustParticles;
@@ -64,14 +67,21 @@ public class Enemy : MonoBehaviour {
 		knockback *= (force / 2);
 		knockback *= knockbackModifier;
 		knockbackTimer = 3;
+		if(!isTRex){
+			PlayHitSound(enemyHitSounds[Random.Range(0,enemyHitSounds.Length)], this.transform.position);
+		}
 		if (isTRex && isExplosion) {
 			GetComponent<TRex> ().defencesDown = true;
 			GetComponent<TRex> ().defenceTimer = 200;
 		}
 		SplatterBlood (1);
 		if (isTRex && !GetComponent<TRex>().defencesDown) {
-			//don't take damage
+			//don't take damage and play an armor sound
+			PlayHitSound(trexArmourSounds[Random.Range(0,trexArmourSounds.Length)], this.transform.position);
 		} else {
+			if(isTRex){
+				PlayHitSound(enemyHitSounds[Random.Range(0,enemyHitSounds.Length)], this.transform.position);
+			}
 			FireBloodParticles (dir);
 			health -= amount;
 			if (health <= 0) {
@@ -158,5 +168,16 @@ public class Enemy : MonoBehaviour {
 			angle -= 90;
 			other.gameObject.GetComponent<Player>().TakeDamage (meleeDamage, Quaternion.Euler(0, 0, angle), 500, transform);
 		}
+	}
+	public static void PlayHitSound(AudioClip clip, Vector3 pos){
+		GameObject temp = new GameObject("TempAudio");
+		temp.transform.position = pos;
+		AudioSource tempSource = temp.AddComponent<AudioSource>();
+		tempSource.clip = clip;
+		tempSource.volume = 0.15f;
+		if(!tempSource.isPlaying){
+			tempSource.Play();
+		}
+		Destroy(temp, clip.length);
 	}
 }

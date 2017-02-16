@@ -214,7 +214,7 @@ MonoBehaviour:
   isGavin: 0
   knockbackModifier: 1
   meleeDamage: 10
-  deathRoar: {fileID: 8300000, guid: 22730a8c839c05f48a38ff2ce8b0fa3d, type: 3}
+  deathRoar: {fileID: 8300000, guid: 67eed4bd70ad3bb4f9292b040431677e, type: 3}
   hasSeen: 0
   bloodSplatters:
   - {fileID: 21300000, guid: 783e9b950b6d1174fab1fbdfdc8b19b0, type: 3}
@@ -229,10 +229,17 @@ MonoBehaviour:
     type: 2}
   deathParticles: {fileID: 198260909177043204, guid: e29391ca573a18b4ba7bdd3169d9a2b6,
     type: 2}
+  bossDeathPrefab: {fileID: 0}
   deadEnemyPrefab: {fileID: 1683264818419056, guid: c65b5d21c3f114385bd85ebfe1c17eff,
     type: 2}
   noFlip: 0
   arenaMode: 0
+  enemyHitSounds:
+  - {fileID: 8300000, guid: 57d39dbc31b6f7e428ab5fdb30d29392, type: 3}
+  - {fileID: 8300000, guid: e62eb3bc998e1484598f3fcef283cf2d, type: 3}
+  - {fileID: 8300000, guid: b6baee150a1b44f488d9286a415ed095, type: 3}
+  - {fileID: 8300000, guid: c9e7c8cbb6104424ab815360bf56c6e1, type: 3}
+  trexArmourSounds: []
 --- !u!114 &114385978700950164
 MonoBehaviour:
   m_ObjectHideFlags: 1

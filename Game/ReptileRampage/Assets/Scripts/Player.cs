@@ -230,7 +230,7 @@ public class Player : MonoBehaviour
 				PickupPrefab pk = closestWeapon.GetComponent<PickupPrefab>();
 				if (minDist < 2) {
 					pk.DisplayStars();
-					if (Input.GetButtonDown ("Pickup")) {
+					if (Input.GetButtonDown ("Pickup") && pk.type != WeaponType.golddeserteagle) {
 						ChangeWeapon (pk.type, pk, closestWeapon);
 					}
 				}
@@ -285,6 +285,7 @@ public class Player : MonoBehaviour
 				}
 			}
 		}
+
 		if(crossHairEnabled){
 			crossHair.position = new Vector2 (Camera.main.ScreenToWorldPoint (Input.mousePosition).x, Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
 		}
