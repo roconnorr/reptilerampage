@@ -22,6 +22,8 @@ public class WaveMaster : MonoBehaviour {
 	public GameObject tier2crate;
 	public GameObject tier3crate;
 
+	public Player player;
+
 	// Use this for initialization
 	void Start () {
 		currentWave = 1;
@@ -143,6 +145,9 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Velociraptor", 1);
 				spawners[1].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
 				spawners[2].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
+				Destroy (player.slot [2]);  
+				player.slot [2] = Instantiate (player.weaponsprefabs [(int)Player.WeaponType.usp45], player.transform.position + player.weaponsprefabs [(int)Player.WeaponType.usp45].transform.position, new Quaternion (0, 0, 0, 0), player.transform);
+				player.slot3type = Player.WeaponType.usp45;
 				break;
 			case 12:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Velociraptor", 2);
@@ -201,10 +206,13 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Trex", 1);
 				break;
 			case 21:
-				spawners[0].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
-				spawners[1].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
-				spawners[2].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
-				spawners[3].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
+				spawners [0].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
+				spawners [1].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
+				spawners [2].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
+				spawners [3].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
+				Destroy (player.slot [2]);  
+				player.slot [2] = Instantiate (player.weaponsprefabs [(int)Player.WeaponType.deserteagle], player.transform.position + player.weaponsprefabs [(int)Player.WeaponType.deserteagle].transform.position, new Quaternion (0, 0, 0, 0), player.transform);
+				player.slot3type = Player.WeaponType.deserteagle;
 				break;
 			case 22:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Velociraptor", 2);
