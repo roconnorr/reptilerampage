@@ -21,6 +21,7 @@ public class TitleScreenManager : MonoBehaviour {
 		Cursor.visible = true;
 		WayPoints.level1IntroFinished = false;
 		TextBoxManager.dialogFinished = false;
+		MusicPlayer.won = false;
 		WayPoints.arrived = false;
 		WayPoints.respawned = false;
 		WayPoints.triggerdTrike = false;
