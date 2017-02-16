@@ -19,6 +19,16 @@ public class TitleScreenManager : MonoBehaviour {
 		ButtonCreditsQuit.SetActive(false);
 		CreditsImage.enabled = false;
 		Cursor.visible = true;
+		WayPoints.level1IntroFinished = false;
+		TextBoxManager.dialogFinished = false;
+		WayPoints.arrived = false;
+		WayPoints.respawned = false;
+		WayPoints.triggerdTrike = false;
+		WayPoints.heliMoving = false;
+		WayPoints.triggerdTrex = false;
+		WayPoints.trexSpawnAnimationPlaying = false;
+		WayPoints.trexSpawnAnimationFinished = false;
+		WayPoints.trexCam = false;
 	}
 
 	public void EnableButtons(){

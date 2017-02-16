@@ -36,7 +36,7 @@ public class WayPoints : MonoBehaviour {
 	 public static bool trexSpawnAnimationPlaying;
 	 [HideInInspector]
 	 public static bool trexSpawnAnimationFinished;
-	 public static bool trexCam = false;
+	 public static bool trexCam;
 	 private AudioSource soundPlayer;
 
      void Start () {
