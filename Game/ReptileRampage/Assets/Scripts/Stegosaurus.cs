@@ -21,7 +21,7 @@ public class Stegosaurus : MonoBehaviour {
 	public bool isChasing = false;
 	private bool isWandering = false;
 	private bool avoiding = false;
-	private bool flipped = false;
+	public bool flipped = false;
 	private bool disabled = true;
 	private bool stopped;
 
@@ -131,12 +131,12 @@ public class Stegosaurus : MonoBehaviour {
 		if (!disabled) {
 			//Direction
 			if ((transform.position.x > xPrev + 0.02) && !flipped) {
-				sr.flipX = true;
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = true;
 				GetComponent<Enemy>().noFlip = false;
 			}
 			if ((transform.position.x < xPrev - 0.02) && flipped) {
-				sr.flipX = false;
+				transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 				flipped = false;
 				GetComponent<Enemy>().noFlip = true;
 			}

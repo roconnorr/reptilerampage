@@ -24,6 +24,7 @@ public class StegoTurret : MonoBehaviour {
 	private SpriteRenderer spriteRenderer;
 	private Transform firePoint;
 	private int bulletCount;
+	private bool flipped = false;
 
 	void Start () {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
@@ -31,6 +32,13 @@ public class StegoTurret : MonoBehaviour {
 	}
 
 	void Update () {
+		if (GetComponentInParent<Stegosaurus> ().flipped && !flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = true;
+		} else if (!GetComponentInParent<Stegosaurus> ().flipped && flipped) {
+			transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+			flipped = false;
+		}
 		targetInShootRange = Vector3.Distance(gameObject.transform.position, target.transform.position) < shootRange;
 
 		if(targetInShootRange && GetComponentInParent<Stegosaurus>().isChasing){
