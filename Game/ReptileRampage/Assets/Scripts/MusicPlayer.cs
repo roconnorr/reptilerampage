@@ -19,14 +19,11 @@ public class MusicPlayer : MonoBehaviour {
 	private float defaultMusicVolume = 0.2f;
 	public static float masterVolume;
 	private float defaultMasterVolume = 1;
-	private float prefferedVolume = 0.2f;
 	private static bool musicVolumeChangedByPlayer; 
 	private static bool masterVolumeChangedByPlayer;
 	private bool stopChanging;
 
 	void Start () {
-		Debug.Log(masterVolume);
-		Debug.Log(volume);
 		if(musicVolumeChangedByPlayer){
 			stopChanging = true;
 		}
@@ -43,10 +40,8 @@ public class MusicPlayer : MonoBehaviour {
 			bossMusicPlayed = false;
 			levelMusicPlayed = true;
 			if(!musicVolumeChangedByPlayer){
-				Debug.Log("bad");
 				musicPlayer.volume = defaultMusicVolume;
 			}else if(musicVolumeChangedByPlayer){
-				Debug.Log("good");
 				musicPlayer.volume = volume;
 				stopChanging = false;
 			}
@@ -60,7 +55,6 @@ public class MusicPlayer : MonoBehaviour {
 	}
 	
 	void Update () {
-		Debug.Log(stopChanging);
 		if(volume != musicPlayer.volume && !stopChanging){
 			volume = musicPlayer.volume;
 		}
@@ -110,16 +104,13 @@ public class MusicPlayer : MonoBehaviour {
 
 	public void VolumeControl(float volumeInput){
 		if(volumeInput != defaultMusicVolume && !musicVolumeChangedByPlayer){
-			Debug.Log("music volume changed by user");
 			musicVolumeChangedByPlayer = true;
 		}
-		//prefferedVolume = volumeInput;
 		musicPlayer.volume = volumeInput;
 	}
 
 	public void MasterVolumeControl(float volumeInput){
 		if(volumeInput != defaultMasterVolume && !masterVolumeChangedByPlayer){
-			Debug.Log("master volume changed by user");
 			masterVolumeChangedByPlayer = true;
 		}
 		AudioListener.volume = volumeInput;
