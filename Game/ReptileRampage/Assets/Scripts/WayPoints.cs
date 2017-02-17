@@ -68,6 +68,7 @@ public class WayPoints : MonoBehaviour {
 				 		firstRun1 = false;
 						TextBoxManager.dialogFinished = false;
 						level1IntroFinished = true;
+						playerScript.isInvulnerable = false;
 			 	 	}
 			 	 }
 		 	 }
@@ -176,6 +177,7 @@ public class WayPoints : MonoBehaviour {
 			 }
 			 if(trexSpawnAnimationFinished){
 				 trexSpawnAnimationPlaying = false;
+				 playerScript.isInvulnerable = false;
 				 playerScript.canMove = true;
 				 playerScript.canShoot = true;
 				 wait = false;
@@ -224,6 +226,7 @@ public class WayPoints : MonoBehaviour {
 
 	 void cameraBackToplayer() {
 		 heliMoving = false;
+		 playerScript.isInvulnerable = false;
 		 playerScript.canMove = true;
 		 playerScript.canShoot = true;
 		 wait = false;
