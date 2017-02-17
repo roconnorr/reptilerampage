@@ -53,6 +53,7 @@ public class TextBoxManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(dialogActive){
+			playerScript.isInvulnerable = true;
 			playerScript.canMove = false;
 			playerScript.canShoot = false;
 			//playerScript.slot[playerScript.slotActive].SetActive(false);
@@ -88,15 +89,15 @@ public class TextBoxManager : MonoBehaviour {
 				dialogActive = false;
 				if (Player.scene.name == "Level1" && PlayDialog.atDialog0) {
 					dialogFinished = true;
-					PlayDialog.atDialog0 = false;
+					PlayDialog.atDialog0 = false;					
 				} else if (Player.scene.name == "Level1" && TrikeFight.atTrikeDialog) {
 					dialogFinished = true;
-					TrikeFight.atTrikeDialog = false;
+					TrikeFight.atTrikeDialog = false;					
 				} else if (Player.scene.name == "Level2" && TRexFight.atTrexDialog) {
 					dialogFinished = true;
-					TRexFight.atTrexDialog = false;
+					TRexFight.atTrexDialog = false;					
 				} else if (Player.scene.name == "Level2" && PlayDialog.atDialog6) {
-					dialogFinished = true;
+					//dialogFinished = true;
 					PlayDialog.atDialog6 = false;
 				}else if(Player.scene.name == "FinalBoss" && !lastDialog){
 					GameObject.Find("Diplo").GetComponent<Gavin>().isActive = true;
@@ -144,6 +145,7 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	private void unFreeze() {
+		playerScript.isInvulnerable = false;
 		playerScript.canMove = true;
 		playerScript.canShoot = true;
 	}
