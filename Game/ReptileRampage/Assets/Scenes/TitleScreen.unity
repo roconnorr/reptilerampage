@@ -1948,7 +1948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelMusic: {fileID: 8300000, guid: b514324c641f747ddaac3d144cb266c5, type: 3}
-  bossMusic: {fileID: 8300000, guid: d3f3fcd6799494d43bf5e34f3fcfc875, type: 3}
+  bossMusic: {fileID: 0}
   canvas: {fileID: 738024112}
   titleScreen: 1
   player: {fileID: 0}
@@ -2019,7 +2019,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:

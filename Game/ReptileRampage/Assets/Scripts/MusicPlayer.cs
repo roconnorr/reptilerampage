@@ -13,13 +13,20 @@ public class MusicPlayer : MonoBehaviour {
 	private Player playerScript;
 	public GameObject player;
 	public static bool won;
-	public static bool fadeToBoss = false;
-	public static bool fadeToLevel = false;
-	public static float volume = 0.2f;
-	public static float masterVolume = 1;
-	private float prefferedVolume = 0.2f;
+	private static bool fadeToBoss = false;
+	private static bool fadeToLevel = false;
+	public static float volume;
+	private float defaultMusicVolume = 0.2f;
+	public static float masterVolume;
+	private float defaultMasterVolume = 1;
+	private static bool musicVolumeChangedByPlayer; 
+	private static bool masterVolumeChangedByPlayer;
+	private bool stopChanging;
 
 	void Start () {
+		if(musicVolumeChangedByPlayer){
+			stopChanging = true;
+		}
 		musicPlayer = GetComponent<AudioSource>();
 		hudManager = canvas.GetComponent<HUDManager>();
 		musicPlayer.loop = true;
@@ -32,13 +39,23 @@ public class MusicPlayer : MonoBehaviour {
 		} else {
 			bossMusicPlayed = false;
 			levelMusicPlayed = true;
-			musicPlayer.volume = volume;
-			AudioListener.volume = masterVolume;
+			if(!musicVolumeChangedByPlayer){
+				musicPlayer.volume = defaultMusicVolume;
+			}else if(musicVolumeChangedByPlayer){
+				musicPlayer.volume = volume;
+				stopChanging = false;
+			}
+
+			if(!masterVolumeChangedByPlayer){
+				AudioListener.volume = defaultMasterVolume;
+			}else if(masterVolumeChangedByPlayer){
+				AudioListener.volume = masterVolume;
+			}
 		}
 	}
 	
 	void Update () {
-		if(volume != musicPlayer.volume){
+		if(volume != musicPlayer.volume && !stopChanging){
 			volume = musicPlayer.volume;
 		}
 		if(masterVolume != AudioListener.volume){
@@ -46,27 +63,31 @@ public class MusicPlayer : MonoBehaviour {
 		}
 
 		if (fadeToBoss) {
-			if (musicPlayer.volume > 0.05) { 
+			if (musicPlayer.volume > 0.05) {
+				stopChanging = true;
 				musicPlayer.volume *= 0.95f;
 			} else {
+				stopChanging = false;
 				musicPlayer.clip = bossMusic;
 				musicPlayer.Play();
 				bossMusicPlayed = true;
 				levelMusicPlayed = false;
 				fadeToBoss = false;
-				musicPlayer.volume = prefferedVolume;
+				musicPlayer.volume = volume;
 			}
 		}
 		if (fadeToLevel && !won) {
 			if (musicPlayer.volume > 0.05) { 
+				stopChanging = true;
 				musicPlayer.volume *= 0.95f;
 			} else {
+				stopChanging = false;
 				musicPlayer.clip = levelMusic;
 				musicPlayer.Play();
 				bossMusicPlayed = false;
 				levelMusicPlayed = true;
 				fadeToLevel = false;
-				musicPlayer.volume = prefferedVolume;
+				musicPlayer.volume = volume;
 			}
 		}
 		if(!titleScreen){
@@ -82,11 +103,16 @@ public class MusicPlayer : MonoBehaviour {
 	}
 
 	public void VolumeControl(float volumeInput){
-		prefferedVolume = volumeInput;
+		if(volumeInput != defaultMusicVolume && !musicVolumeChangedByPlayer){
+			musicVolumeChangedByPlayer = true;
+		}
 		musicPlayer.volume = volumeInput;
 	}
 
 	public void MasterVolumeControl(float volumeInput){
+		if(volumeInput != defaultMasterVolume && !masterVolumeChangedByPlayer){
+			masterVolumeChangedByPlayer = true;
+		}
 		AudioListener.volume = volumeInput;
 	}
 }
