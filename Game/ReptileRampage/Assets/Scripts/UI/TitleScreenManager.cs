@@ -47,6 +47,10 @@ public class TitleScreenManager : MonoBehaviour {
 		GameMaster.level1Checkpoint = false;
 		GameMaster.level2Checkpoint = false;
 		GameMaster.currentLevel = 1;
+		PlayDialog.atDialog0 = false;
+		PlayDialog.atDialog6 = false;
+		TRexFight.atTrexDialog = false;
+		TrikeFight.atTrikeDialog = false;
 	}
 
 	public void EnableButtons(){
