@@ -86,15 +86,18 @@ public class TextBoxManager : MonoBehaviour {
 			if(currentLine == textLines.Length){
 				dialogBox.SetActive(false);
 				dialogActive = false;
-				if(Player.scene.name == "Level1" && PlayDialog.atDialog0){
+				if (Player.scene.name == "Level1" && PlayDialog.atDialog0) {
 					dialogFinished = true;
 					PlayDialog.atDialog0 = false;
-				}else if(Player.scene.name == "Level1" && TrikeFight.atTrikeDialog){
+				} else if (Player.scene.name == "Level1" && TrikeFight.atTrikeDialog) {
 					dialogFinished = true;
 					TrikeFight.atTrikeDialog = false;
-				}else if(Player.scene.name == "Level2" && TRexFight.atTrexDialog){
+				} else if (Player.scene.name == "Level2" && TRexFight.atTrexDialog) {
 					dialogFinished = true;
 					TRexFight.atTrexDialog = false;
+				} else if (Player.scene.name == "Level2" && PlayDialog.atDialog6) {
+					dialogFinished = true;
+					PlayDialog.atDialog6 = false;
 				}else if(Player.scene.name == "FinalBoss" && !lastDialog){
 					GameObject.Find("Diplo").GetComponent<Gavin>().isActive = true;
 					Invoke ("unFreeze", 0.1f);
@@ -118,7 +121,6 @@ public class TextBoxManager : MonoBehaviour {
 		}
 		//Spawn Trex after dialog and cut scene is finished
 		if(inBossFight && levelBoss == CurrentLevelBoss.trex && WayPoints.triggerdTrex && !trexSpawned){
-			Debug.Log ("asdf");
 			BossTrigger.GetComponent<TRexFight>().SpawnTRex();
 			WayPoints.trexSpawnAnimationPlaying = true;
 			trexSpawned = true;
