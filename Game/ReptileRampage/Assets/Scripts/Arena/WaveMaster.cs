@@ -134,7 +134,7 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
 				break;
 			case 10:
-				spawners[3].GetComponent<EnemySpawner>().Spawn("Trike", 1);
+				spawners[4].GetComponent<EnemySpawner>().Spawn("Trike", 1);
 				break;
 			case 11:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Velociraptor", 2);
@@ -201,7 +201,7 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
 				break;
 			case 20:
-				spawners[3].GetComponent<EnemySpawner>().Spawn("Trex", 1);
+				spawners[5].GetComponent<EnemySpawner>().Spawn("Trex", 1);
 				break;
 			case 21:
 				spawners [0].GetComponent<EnemySpawner> ().Spawn ("Pteradactyl", 3);
@@ -279,8 +279,8 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
 				break;
 			case 30:
-				spawners[1].GetComponent<EnemySpawner>().Spawn("Trike", 1);
-				spawners[3].GetComponent<EnemySpawner>().Spawn("Trex", 1);
+				spawners[4].GetComponent<EnemySpawner>().Spawn("Trike", 1);
+				spawners[5].GetComponent<EnemySpawner>().Spawn("Trex", 1);
 				break;
 			case 31:
 				waveIndex = 21;

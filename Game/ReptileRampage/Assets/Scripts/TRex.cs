@@ -53,13 +53,20 @@ public class TRex : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(PlayDialog.atDialog6 && firstRun){
-			dialog6Started = true;
-			firstRun = false;
-		}
-		if(!PlayDialog.atDialog6 && dialog6Started && firstRun1){
-			setSpawnAnimationToFinished();
-			firstRun1 = false;
+		if(Player.scene.name == "Level2"){
+			if(PlayDialog.atDialog6 && firstRun){
+				dialog6Started = true;
+				firstRun = false;
+			}
+			if(!PlayDialog.atDialog6 && dialog6Started && firstRun1){
+				setSpawnAnimationToFinished();
+				firstRun1 = false;
+			}
+		}else if(Player.scene.name != "Level2"){
+			spawnIdle = 150;
+			transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
+			spawned = true;
+			animator.speed = 1;
 		}
 
 		if (spawnIdle > 0) {
