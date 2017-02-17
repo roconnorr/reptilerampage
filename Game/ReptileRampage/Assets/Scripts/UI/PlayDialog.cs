@@ -6,6 +6,7 @@ public class PlayDialog : MonoBehaviour {
 
 	private TextBoxManager textBoxManager;
 	public static bool atDialog0;
+	public static bool atDialog6;
 
 	public GameObject AfterTrikeDialog;
 
@@ -79,6 +80,7 @@ public class PlayDialog : MonoBehaviour {
 
 	public void PlayTrexDialog(){
 		textBoxManager.SetDialogNumber(6, 5);
+		atDialog6 = true;
 		textBoxManager.dialogActive = true;
 	}
 

@@ -50,7 +50,8 @@ public class Player : MonoBehaviour
 
 	private Vector3 knockback;
 	private int knockbackTimer = 0;
-    private bool isInvulnerable;
+	[HideInInspector]
+    public bool isInvulnerable;
     public int invulnerableTime = 1;
     private float horizontal;
     private float vertical;
