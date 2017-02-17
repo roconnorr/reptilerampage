@@ -24,8 +24,8 @@ public class WaveMaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		currentWave = 30;
-		waveIndex = 30;
+		currentWave = 1;
+		waveIndex = 1;
 		timer = 0;
 		enemiesAlive = 0;
 		betweenWaves = false;
