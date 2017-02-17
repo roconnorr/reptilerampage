@@ -143,7 +143,9 @@ public class TRex : MonoBehaviour {
 
 
 	void setSpawnAnimationToFinished(){
-		spawnIdle = 150;
+		if (!GameObject.Find ("HUDManager").GetComponent<HUDManager> ().arenaMode) {
+			spawnIdle = 150;
+		}
 		WayPoints.trexSpawnAnimationFinished = true;
 		transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
 		spawned = true;
