@@ -62,7 +62,7 @@ public class WaveMaster : MonoBehaviour {
 			for(int i = 0; i<amount; i++){
 				Instantiate(tier2crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
 			}
-		}else if(currentWave < 30){
+		}else if(currentWave >= 20){
 			for(int i = 0; i<amount; i++){
 				Instantiate(tier3crate, new Vector3(Random.Range(-10f, 10f), Random.Range(-10f, 10f), -2), new Quaternion(0,0,0,0));
 			}
@@ -204,10 +204,10 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Trex", 1);
 				break;
 			case 21:
-				spawners [0].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
-				spawners [1].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
-				spawners [2].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
-				spawners [3].GetComponent<EnemySpawner> ().Spawn ("Velociraptor", 5);
+				spawners [0].GetComponent<EnemySpawner> ().Spawn ("Pteradactyl", 3);
+				spawners [1].GetComponent<EnemySpawner> ().Spawn ("Pteradactyl", 3);
+				spawners [2].GetComponent<EnemySpawner> ().Spawn ("Pteradactyl", 3);
+				spawners [3].GetComponent<EnemySpawner> ().Spawn ("Pteradactyl", 3);
 				Destroy (player.slot [2]);  
 				player.slot [2] = Instantiate (player.weaponsprefabs [(int)Player.WeaponType.deserteagle], player.transform.position + player.weaponsprefabs [(int)Player.WeaponType.deserteagle].transform.position, new Quaternion (0, 0, 0, 0), player.transform);
 				player.slot3type = Player.WeaponType.deserteagle;
@@ -225,8 +225,8 @@ public class WaveMaster : MonoBehaviour {
 			case 23:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
 				spawners[1].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
-				spawners[2].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
-				spawners[3].GetComponent<EnemySpawner>().Spawn("Anklyosaurus", 1);
+				spawners[2].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 2);
+				spawners[3].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 2);
 				break;
 			case 24:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
@@ -235,6 +235,8 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Velociraptor", 5);
 				spawners[2].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
+				spawners[2].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 2);
+				spawners[3].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 2);
 				break;
 			case 25:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Velociraptor", 10);
@@ -261,10 +263,10 @@ public class WaveMaster : MonoBehaviour {
 				spawners[3].GetComponent<EnemySpawner>().Spawn("Velociraptor", 3);
 				break;
 			case 28:
-				spawners[0].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
-				spawners[1].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
-				spawners[2].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
-				spawners[3].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
+				spawners[0].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 5);
+				spawners[1].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 5);
+				spawners[2].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 5);
+				spawners[3].GetComponent<EnemySpawner>().Spawn("Pteradactyl", 5);
 				break;
 			case 29:
 				spawners[0].GetComponent<EnemySpawner>().Spawn("Stegosaurus", 1);
