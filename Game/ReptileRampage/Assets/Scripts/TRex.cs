@@ -53,6 +53,7 @@ public class TRex : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log (spawnIdle);
 		if(Player.scene.name == "Level2"){
 			if(PlayDialog.atDialog6 && firstRun){
 				dialog6Started = true;
@@ -62,11 +63,16 @@ public class TRex : MonoBehaviour {
 				setSpawnAnimationToFinished();
 				firstRun1 = false;
 			}
-		}else if(Player.scene.name != "Level2"){
-			spawnIdle = 150;
+		}else if(Player.scene.name != "Level2" && firstRun){
+			if (Player.scene.name == "Arena") {
+				spawnIdle = 0;
+			} else {
+				spawnIdle = 150;
+			}
 			transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
 			spawned = true;
 			animator.speed = 1;
+			firstRun = false;
 		}
 
 		if (spawnIdle > 0) {
@@ -150,9 +156,7 @@ public class TRex : MonoBehaviour {
 
 
 	void setSpawnAnimationToFinished(){
-		if (!GameObject.Find ("HUDManager").GetComponent<HUDManager> ().arenaMode) {
-			spawnIdle = 150;
-		}
+		spawnIdle = 150;
 		WayPoints.trexSpawnAnimationFinished = true;
 		transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
 		spawned = true;
