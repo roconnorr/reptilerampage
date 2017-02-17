@@ -95,6 +95,9 @@ public class Weapon : MonoBehaviour {
 					CreateBullet ();
 					if (!infiniteAmmo) {
 						ammo--;
+						if (type == Player.WeaponType.minigun) {
+							maxAmmo--;
+						}
 					}
 				}else if(player.canShoot && ammo == 0 && Time.timeScale != 0 && !loopedSoundSource.isPlaying){
 					loopedSoundSource.clip = nobulletSound;
