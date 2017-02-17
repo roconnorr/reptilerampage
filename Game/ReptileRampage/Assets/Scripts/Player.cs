@@ -53,6 +53,8 @@ public class Player : MonoBehaviour
 	[HideInInspector]
     public bool isInvulnerable;
     public int invulnerableTime = 1;
+	[HideInInspector]
+	public bool dialogInvulnerable;
     private float horizontal;
     private float vertical;
 	private Transform shadow;
@@ -72,7 +74,6 @@ public class Player : MonoBehaviour
         } else if(GameMaster.level2Checkpoint){
             transform.position = new Vector3(40, -40, -1);
         }
-        isInvulnerable = false;  
         rb = GetComponent<Rigidbody2D>();
         gameOver = false;
         soundSource = gameObject.GetComponent<AudioSource>();
@@ -325,7 +326,7 @@ public class Player : MonoBehaviour
 
 	public void TakeDamage(int amount, Quaternion dir, float force, Transform source){
 		if (!isDead) {
-			if (!isInvulnerable) {
+			if (!isInvulnerable && !dialogInvulnerable) {
 				PlayHitSound(playerHitClip, this.transform.position);
 				health -= amount;
 				FireBloodParticles (dir);
@@ -353,6 +354,7 @@ public class Player : MonoBehaviour
 				canMove = false;
 				canShoot = false;
 				isInvulnerable = false;
+				dialogInvulnerable = false;
 				GetComponent<Rigidbody2D> ().isKinematic = true;
 				slot [slotActive].SetActive (false);
 				gameOver = true;

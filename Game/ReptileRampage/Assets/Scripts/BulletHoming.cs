@@ -75,7 +75,6 @@ public class BulletHoming : MonoBehaviour {
 			Explode ();
 		}
 		if (other.gameObject.tag == "Bridge" && iFrames == 0){
-			Debug.Log("hit");
 			Explode ();
 		}
 	}
