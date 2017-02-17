@@ -30,6 +30,9 @@ public class TRex : MonoBehaviour {
 	private int spawnIdle;
 	private AudioSource roarSource;
 	public AudioClip roarSound;
+	private bool dialog6Started;
+	private bool firstRun = true;
+	private bool firstRun1 = true;
 
 	// Use this for initialization
 	void Start () {
@@ -44,20 +47,21 @@ public class TRex : MonoBehaviour {
 			animator.Play("TrexSpawn");
 			GameObject.Find("Player").GetComponent<PlayDialog>().PlayTrexDialog();
 		}
-		Invoke("setSpawnAnimationToFinished", 4f);
+		//Invoke("setSpawnAnimationToFinished", 4f);
 		roarSource = gameObject.GetComponent<AudioSource>();
-	}
-
-	void setSpawnAnimationToFinished(){
-		spawnIdle = 150;
-		WayPoints.trexSpawnAnimationFinished = true;
-		transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
-		spawned = true;
-		animator.speed = 1;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if(PlayDialog.atDialog6 && firstRun){
+			dialog6Started = true;
+			firstRun = false;
+		}
+		if(!PlayDialog.atDialog6 && dialog6Started && firstRun1){
+			setSpawnAnimationToFinished();
+			firstRun1 = false;
+		}
+
 		if (spawnIdle > 0) {
 			spawnIdle--;
 		} else {
@@ -65,7 +69,7 @@ public class TRex : MonoBehaviour {
 				walkTimer--;
 			}
 			//Idle Behaviour
-			if (state == State.Idle) {
+			if (state == State.Idle && spawned) {
 				if (timeSinceLastAction < 50) {
 					timeSinceLastAction++;
 				} else {
@@ -135,6 +139,15 @@ public class TRex : MonoBehaviour {
 				sr.color = Color.white;
 			}
 		}
+	}
+
+
+	void setSpawnAnimationToFinished(){
+		spawnIdle = 150;
+		WayPoints.trexSpawnAnimationFinished = true;
+		transform.Find ("Shadow").GetComponent<SpriteRenderer>().enabled = true;
+		spawned = true;
+		animator.speed = 1;
 	}
 
 	void ShootRocket(){
