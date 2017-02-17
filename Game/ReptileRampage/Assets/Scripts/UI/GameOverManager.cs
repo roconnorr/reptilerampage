@@ -25,7 +25,6 @@ public class GameOverManager : MonoBehaviour {
 		if(Player.scene.name == "Level1"){
 			WayPoints.respawned = true;
 		}
-		Debug.Log ("Loading Scene");
 	    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 	}
 

@@ -148,7 +148,6 @@ public class Stegosaurus : MonoBehaviour {
 	bool PositionHiddenByObstacles(Vector3 position)  {
 		float distanceToPlayer = Vector2.Distance(transform.position, position);
 		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, position - transform.position, distanceToPlayer);
-		Debug.DrawRay(transform.position, position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
 
 		foreach (RaycastHit2D hit in hits) {
 			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)
@@ -163,7 +162,6 @@ public class Stegosaurus : MonoBehaviour {
 	bool PositionObstructedByObstacles(Vector3 position)  {
 		float distanceToPlayer = Vector2.Distance(transform.position, position);
 		RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, position - transform.position, distanceToPlayer);
-		Debug.DrawRay(transform.position, position - this.transform.position, Color.blue); // draw line in the Scene window to show where the raycast is looking
 
 		foreach (RaycastHit2D hit in hits) {
 			// if anything other than the player is hit then it must be between the player and the enemy's eyes (since the enemy can only see as far as the player)

@@ -53,7 +53,7 @@ public class TextBoxManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(dialogActive){
-			playerScript.isInvulnerable = true;
+			playerScript.dialogInvulnerable = true;
 			playerScript.canMove = false;
 			playerScript.canShoot = false;
 			//playerScript.slot[playerScript.slotActive].SetActive(false);
@@ -145,7 +145,7 @@ public class TextBoxManager : MonoBehaviour {
 	}
 
 	private void unFreeze() {
-		playerScript.isInvulnerable = false;
+		playerScript.dialogInvulnerable = false;
 		playerScript.canMove = true;
 		playerScript.canShoot = true;
 	}
