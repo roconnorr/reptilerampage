@@ -124,12 +124,11 @@ public class Enemy : MonoBehaviour {
 					}
 				}
 				if(deadEnemyPrefab != null){
-					Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
-					if (!noFlip) {
-						deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
-					} else if (noFlip) {
-						deadEnemyPrefab.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+					GameObject deadBody = Instantiate (deadEnemyPrefab, transform.position, transform.rotation);
+					if (noFlip) {
+						deadBody.transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					}
+					Destroy (deadBody, 120f);
 				}
 				if (arenaMode) {
 					GameObject.Find("WaveMaster").GetComponent<WaveMaster>().enemiesAlive--;
@@ -166,6 +165,7 @@ public class Enemy : MonoBehaviour {
 			float randY = Random.Range (-0.5f, 0.5f);
 			GameObject blood = Instantiate (bloodPrefab, new Vector3(transform.position.x + randX, transform.position.y + randY), transform.localRotation);
 			blood.GetComponent<SpriteRenderer> ().sprite = bloodSplatters [Random.Range (0, 6)];
+			Destroy (blood, 120f);
 		}
 	}
 

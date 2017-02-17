@@ -118,12 +118,12 @@ public class Velociraptor : MonoBehaviour {
 				if ((transform.position.x > xPrev) && !flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = true;
-					GetComponent<Enemy>().noFlip = true;
+					GetComponent<Enemy>().noFlip = false;
 				}
 				if ((transform.position.x < xPrev) && flipped) {
 					transform.localScale = new Vector3 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
 					flipped = false;
-					GetComponent<Enemy>().noFlip = false;
+					GetComponent<Enemy>().noFlip = true;
 				}
 				//Has a buffer of 0.05 so that they don't freak out when travelling directly up or when they're inside the player
 			} else {
