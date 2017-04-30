@@ -40,6 +40,7 @@ If you have any issues with performance or want the game to be the best quality 
 recommend downloading a build here:
 
 Windows: https://mega.nz/#!rwUmkJaI!r7SwLoWMg0oih5QACaP0TBH33ocfCpWyUcCtYGKBb8c
+
 OSX: https://mega.nz/#!PotgXCxD!8zvVVpwXv541_2arN_C5plv_PD-o4jo_7fGKPN_41cs
 
 MUSIC
