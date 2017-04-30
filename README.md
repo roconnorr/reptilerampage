@@ -56,3 +56,5 @@ CREDITS
 -----
 
 Game developed by Rory O'Connor, Joe Gasparich and Percy Hu
+
+Design documents in the wiki
