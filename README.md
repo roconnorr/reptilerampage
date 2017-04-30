@@ -21,12 +21,12 @@ weaponized dinos and stop the madman Gavin before he takes over the world!
 CONTROLS
 --------
 
-WASD 					= Move
-Mouse 					= Aim
-Left Click 				= Shoot
-Right Click / G 		= Grenade
-E 						= Pick up Weapon
-Tab / Scroll / 1,2,3 	= Swap weapon
+ * WASD 					      = Move
+ * Mouse 					      = Aim
+ * Left Click 				  = Shoot
+ * Right Click / G 		  = Grenade
+ * E 						        = Pick up Weapon
+ * Tab / Scroll / 1,2,3 = Swap weapon
 
 KNOWN ISSUES
 ------------ 
@@ -45,12 +45,14 @@ OSX: https://mega.nz/#!PotgXCxD!8zvVVpwXv541_2arN_C5plv_PD-o4jo_7fGKPN_41cs
 
 MUSIC
 -----
-All original
 
-Level 1 track - Composed by Hyuck Lee
-Level 2 track - Composed by Joe Gasparich
-Level 3 track - Composed by Ollie Gasparich
-Boss 1 + 2 track - Composed by Ollie Gasparich 
-Final Boss track - Composed by Ollie Gasparich
+ * Level 1 track - Composed by Hyuck Lee
+ * Level 2 track - Composed by Joe Gasparich
+ * Level 3 track - Composed by Ollie Gasparich
+ * Boss 1 + 2 track - Composed by Ollie Gasparich 
+ * Final Boss track - Composed by Ollie Gasparich
+
+CREDITS
+-----
 
 Game developed by Rory O'Connor, Joe Gasparich and Percy Hu
