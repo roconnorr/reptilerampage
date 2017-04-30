@@ -51,3 +51,5 @@ Level 2 track - Composed by Joe Gasparich
 Level 3 track - Composed by Ollie Gasparich
 Boss 1 + 2 track - Composed by Ollie Gasparich 
 Final Boss track - Composed by Ollie Gasparich
+
+Game developed by Rory O'Connor, Joe Gasparich and Percy Hu
