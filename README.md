@@ -57,4 +57,9 @@ CREDITS
 
 Game developed by Rory O'Connor, Joe Gasparich and Percy Hu
 
-Design documents in the wiki
+Documents
+-----
+
+![Game Design Document](https://github.com/roconnorr/reptilerampage/wiki/Game-Design-Document)
+
+![Prototyping Document](https://github.com/roconnorr/reptilerampage/wiki/Prototyping)
