@@ -21,12 +21,12 @@ weaponized dinos and stop the madman Gavin before he takes over the world!
 CONTROLS
 --------
 
- * WASD 					      = Move
- * Mouse 					      = Aim
- * Left Click 				  = Shoot
- * Right Click / G 		  = Grenade
- * E 						        = Pick up Weapon
- * Tab / Scroll / 1,2,3 = Swap weapon
+ * WASD 					= Move
+ * Mouse 					= Aim
+ * Left Click 				= Shoot
+ * Right Click / G 		  	= Grenade
+ * E 						= Pick up Weapon
+ * Tab / Scroll / 1,2,3 	= Swap weapon
 
 KNOWN ISSUES
 ------------ 
